@@ -31,9 +31,9 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // ===== Scroll-triggered fade-in animations =====
-  constfadeElements = document.querySelectorAll('.fade-in');
+  const fadeElements = document.querySelectorAll('.fade-in');
 
-  constobserver = new IntersectionObserver(
+  const observer = new IntersectionObserver(
     function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
@@ -53,18 +53,18 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // ===== Contact form — mailto fallback =====
-  constcontactForm = document.getElementById('contactForm');
+  const contactForm = document.getElementById('contactForm');
 
   contactForm.addEventListener('submit', function (e) {
     e.preventDefault();
 
-    constname = document.getElementById('name').value;
-    constemail = document.getElementById('email').value;
-    constrole = document.getElementById('role').value;
-    constmessage = document.getElementById('message').value;
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const role = document.getElementById('role').value;
+    const message = document.getElementById('message').value;
 
-    constsubject = encodeURIComponent('AI學徒 iTech — 聯絡表單 from ' + name);
-    constbody = encodeURIComponent(
+    const subject = encodeURIComponent('AI學徒 iTech — 聯絡表單 from ' + name);
+    const body = encodeURIComponent(
       '姓名 Name: ' + name + '\n' +
       'Email: ' + email + '\n' +
       '身份 Role: ' + role + '\n\n' +
