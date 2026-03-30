@@ -1,320 +1,322 @@
-# AI學徒 iTech
+# AI Apprentice iTech
 
-**用科技傳承台灣職人技藝**
+**Preserving Taiwan's Craft Mastery Through Technology**
 
-AI + AR 讓師傅的 40 年功力，3 個月傳給 20 歲新手。
+AI + AR enables a 20-year-old beginner to learn a master's 40 years of expertise in just 3 months.
 
-| 指標 | 數據 |
-|------|------|
-| 每年流失技術工 | 8,000 位 |
-| 學習效率提升 | 400% |
-| 年市場規模 | 170 億元 |
-| 創造就業機會 | 10,000+ |
-
----
-
-## 問題：台灣製造業生存危機
-
-台灣製造業正面臨前所未有的人才斷層挑戰。資深師傅即將大量退休，而年輕世代卻不願投入，傳統技藝面臨失傳危機。
-
-### 人才斷層嚴重
-- 35% 師傅（60歲+）將在 5 年內退休
-- 僅 12% 年輕人願投入製造業
-- 年損失 8,000 位資深技術工
-
-### 傳承效率低落
-- 傳統學習週期：2-5 年
-- 新手錯誤率：15-25%
-- 隱性知識難傳遞：「要有手感」「聽聲音」「憑經驗」
-
-### 產業轉型壓力
-- 製造業缺工 12 萬人（缺工率 4.2%）
-- 東南亞/中國人力成本競爭
-- 技術優勢流失 = 失去生存空間
-
-**經濟損失估算：** 技術斷層損失 420 億 + 效率低落損失 180 億 + 品質不穩損失 95 億
+| Metric | Data |
+|--------|------|
+| Skilled workers lost per year | 8,000 |
+| Learning efficiency improvement | 400% |
+| Annual market size | NT$17 billion |
+| Jobs created | 10,000+ |
 
 ---
 
-## 解決方案：三大技術創新
+## The Problem: Taiwan's Manufacturing Survival Crisis
 
-AI學徒 iTech 透過創新技術，將師傅的隱性知識轉化為可量化、可輕鬆學習、可傳承的數位資產。
+Taiwan's manufacturing industry faces an unprecedented talent gap. Senior masters are retiring en masse while younger generations refuse to enter the industry, putting traditional craftsmanship at risk of extinction.
 
-### 1. 隱性知識顯性化
+### Critical Talent Shortage
+- 35% of masters (age 60+) will retire within 5 years
+- Only 12% of young people are willing to enter manufacturing
+- 8,000 senior technicians lost annually
 
-AI 分析師傅 100 次操作後，建立精確參數：
+### Low Transfer Efficiency
+- Traditional learning cycle: 2-5 years
+- Beginner error rate: 15-25%
+- Tacit knowledge is hard to transfer: "feel the touch," "listen to the sound," "rely on experience"
 
-- 聲音頻率：800-1200 Hz
-- 持續時間：2.3 ± 0.3 秒
-- 移動速度：15 cm/秒
-- 焊槍角度：45° ± 5°
+### Industry Transformation Pressure
+- Manufacturing workforce shortage: 120,000 (vacancy rate 4.2%)
+- Cost competition from Southeast Asia and China
+- Loss of technical advantage = loss of survival
 
-技術：MediaPipe + 神經網路模型
-
-### 2. AR 即時指導
-
-學徒使用 AR 眼鏡或手機，攝影機捕捉動作後 AI 即時比對標準，透過 AR 疊加視覺化指導：
-
-- 綠色骨架 = 動作正確
-- 紅色骨架 = 動作錯誤
-- 箭頭指示修正方向
-- 語音提供即時提示
-
-60 FPS 低延遲確保流暢學習體驗。技術：Three.js + WebXR
-
-### 3. AI 智慧評分
-
-系統自動生成詳細學習報告，提供綜合評分、細項分析、錯誤定位與改善建議：
-
-- 動作準確度：85 分（優良）
-- 時機掌握：65 分（需改善）
-- 流暢度：58 分（重點加強）
-
-技術：DTW 時間序列比對 + GPT 建議生成
+**Estimated economic losses:** Skills gap NT$42B + Efficiency loss NT$18B + Quality instability NT$9.5B
 
 ---
 
-## 完整學習流程
+## The Solution: Three Core Technology Innovations
 
-1. **師傅錄製** — 多角度拍攝操作影片，捕捉完整技能細節
-2. **AI 分析優化** — 自動提取關鍵點，建立數位技能包
-3. **學徒練習** — 觀看教學 → AR 跟練 → AI 評分反饋
-4. **技能認證** — 達到 80 分標準後獲得技能認證
+AI Apprentice iTech transforms masters' tacit knowledge into quantifiable, easily learnable, and transferable digital assets through innovative technology.
 
-### 核心成效對比
+### 1. Quantifying Tacit Knowledge
 
-| 指標 | 傳統方式 | AI學徒 | 改善幅度 |
-|------|---------|--------|---------|
-| 學習週期 | 2-5 年 | 3-9 個月 | ↓ 75% |
-| 錯誤率 | 15-25% | 6-10% | ↓ 60% |
-| 師傅時間 | 2-3 小時/天 | 0.5-1 小時/天 | ↓ 70% |
-| 廢料成本 | 15-30 萬/人 | 3-6 萬/人 | ↓ 80% |
+AI analyzes 100+ master operations to establish precise parameters:
 
-### 客戶價值
+- Sound frequency: 800-1200 Hz
+- Duration: 2.3 ± 0.3 seconds
+- Movement speed: 15 cm/sec
+- Torch angle: 45° ± 5°
 
-企業每培訓 1 人節省：**349 萬元/人**（師傅時間成本 64 萬 + 錯誤損失 60 萬 + 時間成本 225 萬）
+Tech: MediaPipe + Neural Network Models
 
-定價 30 萬元/年 → 客戶 ROI：**1,063%**
+### 2. Real-time AR Guidance
 
----
+Apprentices use AR glasses or smartphones. The camera captures movements while AI compares them against standards in real-time, providing visual guidance through AR overlay:
 
-## 競爭優勢
+- Green skeleton = Correct movement
+- Red skeleton = Incorrect movement
+- Arrows indicate correction direction
+- Voice provides real-time prompts
 
-| 方案 | 優點 | 缺點 | iTech 差異化 |
-|------|------|------|------------|
-| 傳統師徒制 | 手把手教學 | 2-5年，無法規模化 | AI 加速 4 倍 + 可複製 |
-| 教學影片 | 成本低 | 無互動，看不出錯 | AR 即時指導 + AI 評分 |
-| VR 訓練 | 沉浸感強 | 成本高 50-100 萬 | 成本僅 1/10 + 真實操作 |
-| 文字 SOP | 易保存 | 無法描述動作細節 | 視覺化 + 量化標準 |
+60 FPS low-latency ensures a smooth learning experience. Tech: Three.js + WebXR
 
-**競品對比：**
-- **美國 Strivr**（估值 $1B）：VR 標準化流程，成本 50-100 萬 vs iTech 5-10 萬
-- **日本 SkillSaver**：僅記錄 vs iTech 即時指導 + AI 評分，專案制 vs 平台化
+### 3. AI Smart Scoring
 
-**四大護城河：** 技能數據庫（網絡效應）、AI 模型優勢（專屬數據訓練）、政府關係、師傅網絡
+The system automatically generates detailed learning reports with comprehensive scores, detailed analysis, error pinpointing, and improvement suggestions:
+
+- Movement accuracy: 85 points (Good)
+- Timing mastery: 65 points (Needs improvement)
+- Fluency: 58 points (Key focus area)
+
+Tech: DTW time-series comparison + GPT suggestion generation
 
 ---
 
-## 商業模式
+## Complete Learning Flow
 
-AI學徒採用多元收入模式，從政府專案建立品牌，拓展企業客戶穩定營收，透過個人訂閱實現規模化成長。
+1. **Master Recording** — Multi-angle video capture of complete skill details
+2. **AI Analysis & Optimization** — Auto-extract key points, build digital skill packages
+3. **Apprentice Practice** — Watch tutorial → AR practice → AI scoring feedback
+4. **Skill Certification** — Achieve 80+ score to earn certification
 
-### Phase 1：系統授權（Year 1-3 主力）
+### Core Performance Comparison
 
-**B2G 政府方案**
-- 基礎版：300 萬（建置）+ 60 萬/年（維護）
-- 進階版：500 萬（建置）+ 100 萬/年（維護）
+| Metric | Traditional | AI Apprentice | Improvement |
+|--------|------------|---------------|-------------|
+| Learning period | 2-5 years | 3-9 months | ↓ 75% |
+| Error rate | 15-25% | 6-10% | ↓ 60% |
+| Master's time | 2-3 hrs/day | 0.5-1 hr/day | ↓ 70% |
+| Material waste | NT$150-300K/person | NT$30-60K/person | ↓ 80% |
 
-**B2B 企業方案**
-- 小型（<50人）：15 萬/年
-- 中型（50-200人）：30 萬/年
-- 大型（>200人）：50-100 萬/年
+### Customer Value
 
-### Phase 2：內容製作服務（Year 2+）
+Savings per trainee: **NT$3.49M/person** (Master's time NT$640K + Error losses NT$600K + Time cost NT$2.25M)
 
-- 基礎技能（10分鐘）：8 萬/個
-- 進階技能（30分鐘）：20 萬/個
-- 專家技能（60分鐘+）：50 萬/個
-- 毛利率：34-50%
-
-### Phase 3：SaaS 訂閱 + 平台生態（Year 3+）
-
-- 單技能：1,500 元
-- 月訂閱：599 元/月
-- 年訂閱：5,990 元/年
-- 平台生態（Year 4+）：師傅上傳技能，平台抽成 30%
-
-### Phase 4：B2C 優化訂閱 + 自動化（Year 3-5+）
-
-- AI 技能優化方案
-- 導入人形機器人，邁向無人工廠
+Pricing: NT$300K/year → Customer ROI: **1,063%**
 
 ---
 
-## 單位經濟
+## Competitive Advantages
 
-| 指標 | 行業標準 | AI學徒 |
-|------|---------|--------|
-| 毛利率 | >70% | **80-84%** |
+| Method | Advantage | Disadvantage | iTech Edge |
+|--------|-----------|-------------|------------|
+| Traditional apprenticeship | Hands-on teaching | 2-5 years, not scalable | AI 4x faster + replicable |
+| Tutorial videos | Low cost | No interaction, can't spot errors | AR real-time guidance + AI scoring |
+| VR training | Immersive | High cost NT$500K-1M | 1/10 the cost + real operation |
+| Written SOP | Easy to store | Can't describe motion details | Visual + quantified standards |
+
+**Competitor Comparison:**
+- **Strivr (US)** (valued at $1B): VR standardized processes, cost NT$500K-1M vs iTech NT$50-100K
+- **SkillSaver (Japan)**: Recording only vs iTech real-time guidance + AI scoring; project-based vs platform model
+
+**Four Moats:** Skill database (network effects), AI model advantage (proprietary training data), government relations, master network
+
+---
+
+## Business Model
+
+AI Apprentice adopts a diversified revenue model — building brand through government projects, expanding to enterprise clients for stable revenue, and achieving scalable growth through individual subscriptions.
+
+### Phase 1: System Licensing (Year 1-3, Primary)
+
+**B2G Government Plans**
+- Basic: NT$3M (setup) + NT$600K/year (maintenance)
+- Advanced: NT$5M (setup) + NT$1M/year (maintenance)
+
+**B2B Enterprise Plans**
+- Small (<50 employees): NT$150K/year
+- Medium (50-200 employees): NT$300K/year
+- Large (>200 employees): NT$500K-1M/year
+
+### Phase 2: Content Production Services (Year 2+)
+
+- Basic skill (10 min): NT$80K/module
+- Advanced skill (30 min): NT$200K/module
+- Expert skill (60 min+): NT$500K/module
+- Gross margin: 34-50%
+
+### Phase 3: SaaS Subscription + Platform Ecosystem (Year 3+)
+
+- Single skill: NT$1,500
+- Monthly subscription: NT$599/month
+- Annual subscription: NT$5,990/year
+- Platform ecosystem (Year 4+): Masters upload skills, platform takes 30% commission
+
+### Phase 4: B2C Optimization + Automation (Year 3-5+)
+
+- AI skill optimization solutions
+- Integration of humanoid robots toward fully automated factories
+
+---
+
+## Unit Economics
+
+| Metric | Industry Standard | AI Apprentice |
+|--------|------------------|---------------|
+| Gross margin | >70% | **80-84%** |
 | LTV/CAC | >3 | **16-38** |
-| 回本期 | <12月 | **3-8月** |
-| 客戶留存率 | >80% | **90%+** |
-| 淨留存率(NRR) | >100% | **125%+** |
+| Payback period | <12 months | **3-8 months** |
+| Customer retention | >80% | **90%+** |
+| Net retention (NRR) | >100% | **125%+** |
 
 ---
 
-## 市場規模
+## Market Size
 
-| 區間 | 規模 | 說明 |
-|------|------|------|
-| TAM | 100 億 | 台灣製造業數位培訓總市場 |
-| SAM | 50 億 | 可服務市場範圍 |
-| SOM | 5 億 | Year 1-3 可獲取市場目標 |
+| Segment | Size | Description |
+|---------|------|-------------|
+| TAM | NT$10B | Total Taiwan manufacturing digital training market |
+| SAM | NT$5B | Serviceable market |
+| SOM | NT$500M | Year 1-3 obtainable market target |
 
-### 市場進入策略
+### Go-to-Market Strategy
 
-| 階段 | 時間 | 策略 |
-|------|------|------|
-| Phase 1 | Year 1-2 | B2G 政府市場，切入勞動力發展署及職訓中心 |
-| Phase 2 | Year 2-4 | B2B 企業客戶，CNC 加工廠、模具廠、金屬/電焊/鈑金廠 |
-| Phase 3 | Year 5+ | B2C 多元產業，前往東南亞、日本及美國市場 |
+| Phase | Timeline | Strategy |
+|-------|----------|----------|
+| Phase 1 | Year 1-2 | B2G government market — workforce development agencies & vocational training centers |
+| Phase 2 | Year 2-4 | B2B enterprise clients — CNC, mold, metal/welding/sheet metal factories |
+| Phase 3 | Year 5+ | B2C multi-industry — Southeast Asia, Japan, and US markets |
 
-### 台灣產業佈局
+### Taiwan Industry Deployment
 
-| 產業 | Year 10 SOM | 優先級 |
-|------|-------------|------|
-| CNC 加工 | 4.66 億 | P0 |
-| 模具製造 | 3.4 億 | P1 |
-| 電焊技術 | 1.93 億 | P1 |
-| 汽車維修 | 1.87 億 | P2 |
-| 水電工程 | 1.26 億 | P2 |
-| 車床操作 | 1.2 億 | P2 |
-| 鈑金加工 | 1 億 | P3 |
-| 烘焙/中餐 | 8,000 萬 | P3 |
-| 美容美髮 | 6,000 萬 | P3 |
-| 傳統工藝 | 3,500 萬 | P3 |
-
----
-
-## 全球市場展望
-
-| 區域 | TAM（億美元） | Year 10 SOM（億美元） | 占比 |
-|------|-----------|-------------------|------|
-| 亞太 | 80 | 6 | 40% |
-| 北美 | 35 | 5.25 | 35% |
-| 歐洲 | 25 | 3 | 20% |
-| 其他 | 10 | 0.75 | 5% |
-| **全球** | **150** | **15** | **100%** |
-
-**Year 10 關鍵指標：** 15 億全球營收、橫跨 15 國、服務 5,000 家企業、培育 30 萬名技職人才
-
-### 全球化里程碑
-
-1. **Year 3** — 亞太啟動：新加坡區域總部，海外營收占 20%
-2. **Year 5** — 多區域佈局：東南亞 6 國、日本授權，海外營收占 35%
-3. **Year 7** — 跨洲發展：美國子公司、歐洲試點，海外營收占 55%
-4. **Year 10** — 全球領導：15 國全覆蓋、NASDAQ IPO，海外營收占 80%
+| Industry | Year 10 SOM | Priority |
+|----------|-------------|----------|
+| CNC machining | NT$466M | P0 |
+| Mold manufacturing | NT$340M | P1 |
+| Welding | NT$193M | P1 |
+| Auto repair | NT$187M | P2 |
+| Plumbing & electrical | NT$126M | P2 |
+| Lathe operation | NT$120M | P2 |
+| Sheet metal | NT$100M | P3 |
+| Baking/Chinese cuisine | NT$80M | P3 |
+| Beauty & hairdressing | NT$60M | P3 |
+| Traditional crafts | NT$35M | P3 |
 
 ---
 
-## 資金規劃
+## Global Market Outlook
 
-**總需求：300 萬（6 個月執行期）**
+| Region | TAM (USD) | Year 10 SOM (USD) | Share |
+|--------|-----------|-------------------|-------|
+| Asia Pacific | $8B | $600M | 40% |
+| North America | $3.5B | $525M | 35% |
+| Europe | $2.5B | $300M | 20% |
+| Others | $1B | $75M | 5% |
+| **Global** | **$15B** | **$1.5B** | **100%** |
 
-| 項目 | 金額 | 占比 |
-|------|------|------|
-| 產品開發 | 120 萬 | 40% |
-| 內容製作 | 60 萬 | 20% |
-| 市場驗證 | 62 萬 | 20.7% |
-| 團隊人事 | 48 萬 | 16% |
-| 營運費用 | 10 萬 | 3.3% |
+**Year 10 Key Metrics:** $1.5B global revenue, across 15 countries, serving 5,000 enterprises, training 300,000 skilled workers
 
-### 6 個月執行時程
+### Global Expansion Milestones
 
-- **Month 1-2（啟動期）**：團隊組建與需求訪談、技術 POC 驗證、基礎環境建置
-- **Month 3-5（開發期）**：AI 模型密集訓練、AR 系統完整開發、CNC 對刀技能完整製作、系統整合與測試
-- **Month 6（驗證期）**：職訓中心試點（20 學員）、企業 POC（3 家）、驗證報告產出、LOI 簽署
-
-### 關鍵里程碑
-
-| 時間 | 里程碑 | 驗證指標 |
-|------|---------|---------|
-| Month 2 | 技術 POC 完成 | AI 模型準確率 >85% |
-| Month 3 | MVP Alpha 版 | 可進行內部 Demo |
-| Month 4 | MVP Beta 版 | 開始客戶試用 |
-| Month 5 | 試點執行 | 20+ 學員使用數據 |
-| Month 6 | 驗證完成 | 3 項量化指標達成 |
+1. **Year 3** — Asia Pacific launch: Singapore regional HQ, overseas revenue 20%
+2. **Year 5** — Multi-region expansion: 6 Southeast Asian countries + Japan licensing, overseas revenue 35%
+3. **Year 7** — Cross-continental growth: US subsidiary + European pilots, overseas revenue 55%
+4. **Year 10** — Global leadership: 15-country coverage, NASDAQ IPO, overseas revenue 80%
 
 ---
 
-## 成功指標
+## Funding Plan
 
-| 指標 | 合格標準 | 權重 |
-|------|---------|------|
-| 技術可行性 | 學習效率提升 ≥300% | 40% |
-| 市場需求 | 取得 ≥2 個 LOI | 40% |
-| 產品完成度 | 核心功能完成度 ≥80% | 20% |
+**Total requirement: NT$3M (6-month execution period)**
 
----
+| Item | Amount | Share |
+|------|--------|-------|
+| Product development | NT$1.2M | 40% |
+| Content production | NT$600K | 20% |
+| Market validation | NT$620K | 20.7% |
+| Team & personnel | NT$480K | 16% |
+| Operations | NT$100K | 3.3% |
 
-## 10 年發展藍圖
+### 6-Month Execution Timeline
 
-### Year 1-2｜政府驗證期
-- 客戶：2 → 18 個（政府+企業試點）
-- 營收：1,400 萬 → 4,870 萬
-- 技能：50 → 100 個
+- **Month 1-2 (Launch)**: Team assembly & requirements interviews, technical POC validation, infrastructure setup
+- **Month 3-5 (Development)**: AI model intensive training, complete AR system development, CNC tool-setting skill production, system integration & testing
+- **Month 6 (Validation)**: Vocational center pilot (20 trainees), enterprise POC (3 companies), validation report, LOI signing
 
-### Year 3-4｜企業擴張期
-- 客戶：100 → 280 家企業
-- 營收：1.03 億 → 1.95 億
-- 地區：台灣 + 東南亞試點
+### Key Milestones
 
-### Year 5-7｜生態建立期
-- 客戶：500 → 1,500 家
-- 營收：3 億 → 6.13 億
-- 地區：亞太 + 日本 + 美國試點
-
-### Year 8-10｜全球領導期
-- 客戶：2,000 → 5,000 家
-- 營收：15 億 → 38.7 億
-- 地區：全球 15 國、20+ 產業
-
-### 最終願景（Year 10）
-
-- 全球前 3 大技能傳承平台
-- 市值 300-450 億台幣
-- 服務 30 萬+ 用戶、5,000+ 企業
-- 引領「技能→自動化」產業革命
-- 保存 10,000+ 人類技藝
+| Timeline | Milestone | Validation Metric |
+|----------|-----------|-------------------|
+| Month 2 | Technical POC complete | AI model accuracy >85% |
+| Month 3 | MVP Alpha | Internal demo ready |
+| Month 4 | MVP Beta | Customer trial begins |
+| Month 5 | Pilot execution | 20+ trainee usage data |
+| Month 6 | Validation complete | 3 quantified metrics achieved |
 
 ---
 
-## 技術架構
+## Success Criteria
 
-| 領域 | 技術棧 |
-|------|--------|
-| 後端 | Django, FastAPI, Celery, Redis, PostgreSQL |
-| AI | PyTorch, TensorFlow, MediaPipe, OpenCV |
-| 前端 | React, TypeScript, Three.js, WebXR |
-| 部署 | Docker, Ansible, GCP/AWS, Kubernetes |
-
----
-
-## 團隊
-
-團隊成員畢業於國立清華大學，擁有資工、法律、經濟等專長背景，具備從 0 到 1 建立 AI 系統的完整經驗。
-
-**競賽成績：**
-- 法律科技黑客松 2022 法遵特別獎（團隊領導）
-- ITRI AI 資料科學人才培育計畫結業簡報競賽第三名（團隊領導 + LSTM 模型）
-
-**實戰經驗：**
-- 半導體晶圓製程 AI 優化
-- 太陽能廠 AIoT 系統建置
-- 新創軟體公司從 0 到 1 開發
+| Metric | Passing Standard | Weight |
+|--------|-----------------|--------|
+| Technical feasibility | Learning efficiency ≥300% improvement | 40% |
+| Market demand | Obtain ≥2 LOIs | 40% |
+| Product completeness | Core feature completion ≥80% | 20% |
 
 ---
 
-## 聯絡我們
+## 10-Year Development Roadmap
 
-歡迎對 AI學徒 iTech 有興趣的投資人、企業夥伴與政府單位與我們聯繫。
+### Year 1-2 | Government Validation
+- Clients: 2 → 18 (government + enterprise pilots)
+- Revenue: NT$14M → NT$48.7M
+- Skills: 50 → 100
+
+### Year 3-4 | Enterprise Expansion
+- Clients: 100 → 280 enterprises
+- Revenue: NT$103M → NT$195M
+- Region: Taiwan + Southeast Asia pilots
+
+### Year 5-7 | Ecosystem Building
+- Clients: 500 → 1,500
+- Revenue: NT$300M → NT$613M
+- Region: Asia Pacific + Japan + US pilots
+
+### Year 8-10 | Global Leadership
+- Clients: 2,000 → 5,000
+- Revenue: NT$1.5B → NT$3.87B
+- Region: 15 countries, 20+ industries
+
+### Ultimate Vision (Year 10)
+
+- Top 3 global skill transfer platform
+- Market cap NT$30-45B
+- Serving 300K+ users, 5,000+ enterprises
+- Leading the "skills → automation" industry revolution
+- Preserving 10,000+ human craft skills
+
+---
+
+## Tech Stack
+
+| Layer | Technologies |
+|-------|-------------|
+| Backend | Django, FastAPI, Celery, Redis, PostgreSQL |
+| AI/ML | PyTorch, TensorFlow, MediaPipe, OpenCV |
+| Frontend | React, TypeScript, Three.js, WebXR |
+| Deployment | Docker, Ansible, GCP/AWS, Kubernetes |
+
+---
+
+## Team
+
+Team members graduated from National Tsing Hua University with expertise spanning Computer Science, Law, and Economics. The team has end-to-end experience building AI systems from 0 to 1.
+
+**Competition Results:**
+- Legal Tech Hackathon 2022 — Compliance Special Award (Team Lead)
+- ITRI AI Data Science Talent Program — Final Presentation Competition 3rd Place (Team Lead + LSTM Model)
+
+**Industry Experience:**
+- Semiconductor wafer process AI optimization
+- Solar panel AIoT system deployment
+- Startup software company 0-to-1 development
+
+---
+
+## Contact Us
+
+We welcome investors, enterprise partners, and government agencies interested in AI Apprentice iTech to get in touch.
+
+Website: [Kairos.ai](https://www.kairosaitech.com/?lang=zh-TW)
