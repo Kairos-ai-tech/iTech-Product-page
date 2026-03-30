@@ -1,0 +1,32 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## Project Overview
+
+AI學徒 iTech (AI Apprentice iTech) — a product page / strategy documentation project for an AI + AR platform that digitizes and preserves Taiwan's manufacturing craft skills. Currently in pre-MVP planning stage with business strategy documentation only (no application code yet).
+
+## Repository Contents
+
+- `README.md` — Full business plan covering problem, solution, market, business model, financials, and 10-year roadmap
+- `AI學徒-iTech商業策略書簡報.pdf` — Business strategy presentation deck (Chinese)
+
+## Planned Tech Stack
+
+| Layer | Technologies |
+|-------|-------------|
+| Backend | Django, FastAPI, Celery, Redis, PostgreSQL |
+| AI/ML | PyTorch, TensorFlow, MediaPipe, OpenCV |
+| Frontend | React, TypeScript, Three.js, WebXR |
+| Deployment | Docker, Ansible, GCP/AWS, Kubernetes |
+
+## Key Domain Concepts
+
+- **隱性知識顯性化**: Converting implicit craft knowledge (hand feel, sound, experience) into quantifiable AI parameters
+- **AR即時指導**: Real-time AR overlay guidance using skeleton tracking (green=correct, red=incorrect)
+- **AI智慧評分**: Automated scoring using DTW time-series comparison + GPT-generated improvement suggestions
+- Target industries: CNC machining, mold making, welding, auto repair, plumbing, sheet metal
+
+## Language
+
+All business documentation is in Traditional Chinese (繁體中文). The README and PDF are written for a Taiwanese audience (investors, government, enterprise clients).
