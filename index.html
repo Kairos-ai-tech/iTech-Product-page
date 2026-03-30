@@ -18,20 +18,27 @@
 <body>
   <nav class="navbar" id="navbar">
     <div class="nav-container">
-      <a href="#" class="nav-logo">
+      <a href="https://www.kairosaitech.com/?lang=zh-TW" class="nav-logo" target="_blank" rel="noopener">
         <span class="logo-mark">技</span>
         <span class="logo-text">AI學徒 iTech</span>
       </a>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-        <span class="hamburger"></span>
-      </button>
+      <div class="nav-right">
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="zh-TW" onclick="setLanguage('zh-TW')">中</button>
+          <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
+          <button class="lang-btn" data-lang="ja" onclick="setLanguage('ja')">日</button>
+        </div>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+          <span class="hamburger"></span>
+        </button>
+      </div>
       <ul class="nav-links" id="navLinks">
-        <li><a href="#problem">危機</a></li>
-        <li><a href="#solution">技術</a></li>
-        <li><a href="#process">流程</a></li>
-        <li><a href="#results">成效</a></li>
-        <li><a href="#advantage">優勢</a></li>
-        <li><a href="#contact" class="nav-cta">聯絡我們</a></li>
+        <li><a href="#problem" data-i18n="nav.crisis">危機</a></li>
+        <li><a href="#solution" data-i18n="nav.tech">技術</a></li>
+        <li><a href="#process" data-i18n="nav.process">流程</a></li>
+        <li><a href="#results" data-i18n="nav.results">成效</a></li>
+        <li><a href="#advantage" data-i18n="nav.advantage">優勢</a></li>
+        <li><a href="#contact" class="nav-cta" data-i18n="nav.contact">聯絡我們</a></li>
       </ul>
     </div>
   </nav>
@@ -43,37 +50,31 @@
       <div class="hero-overlay"></div>
     </div>
     <div class="hero-content">
-      <div class="hero-badge fade-in">AI + AR 技能傳承平台</div>
-      <h1 class="hero-title fade-in" data-delay="1">
-        用科技傳承<br>台灣職人技藝
-      </h1>
-      <p class="hero-subtitle fade-in" data-delay="2">
-        讓師傅的 40 年功力，3 個月傳給 20 歲新手
-      </p>
-      <p class="hero-subtitle-en fade-in" data-delay="2">
-        Preserving Taiwan's craft mastery through AI + AR
-      </p>
+      <div class="hero-badge fade-in" data-i18n="hero.badge">AI + AR 技能傳承平台</div>
+      <h1 class="hero-title fade-in" data-delay="1" data-i18n="hero.title">用科技傳承<br>台灣職人技藝</h1>
+      <p class="hero-subtitle fade-in" data-delay="2" data-i18n="hero.subtitle">讓師傅的 40 年功力，3 個月傳給 20 歲新手</p>
+      <p class="hero-subtitle-en fade-in" data-delay="2" data-i18n="hero.subtitle-en">Preserving Taiwan's craft mastery through AI + AR</p>
       <a href="#contact" class="hero-cta fade-in" data-delay="3">
-        開始合作
+        <span data-i18n="hero.cta">開始合作</span>
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
     </div>
     <div class="hero-stats">
       <div class="stat fade-in" data-delay="4">
         <span class="stat-number" data-count="8000">0</span>
-        <span class="stat-label">每年流失技術工</span>
+        <span class="stat-label" data-i18n="hero.stat1.label">每年流失技術工</span>
       </div>
       <div class="stat fade-in" data-delay="5">
         <span class="stat-number">400<span class="stat-unit">%</span></span>
-        <span class="stat-label">學習效率提升</span>
+        <span class="stat-label" data-i18n="hero.stat2.label">學習效率提升</span>
       </div>
       <div class="stat fade-in" data-delay="6">
         <span class="stat-number">170<span class="stat-unit">億</span></span>
-        <span class="stat-label">年市場規模</span>
+        <span class="stat-label" data-i18n="hero.stat3.label">年市場規模</span>
       </div>
       <div class="stat fade-in" data-delay="7">
         <span class="stat-number">10K<span class="stat-unit">+</span></span>
-        <span class="stat-label">創造就業機會</span>
+        <span class="stat-label" data-i18n="hero.stat4.label">創造就業機會</span>
       </div>
     </div>
     <div class="scroll-hint" aria-hidden="true">
@@ -88,32 +89,32 @@
       <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=960&q=80" alt="Manufacturing worker" class="problem-img fade-in">
     </div>
     <div class="problem-content">
-      <p class="section-label fade-in">THE CRISIS 產業危機</p>
-      <h2 class="section-heading fade-in" data-delay="1">台灣製造業<br>正在失去它的靈魂</h2>
-      <p class="section-lead fade-in" data-delay="2">資深師傅即將大量退休，而年輕世代卻不願投入。傳統技藝面臨失傳危機，嚴重威脅產業競爭力。</p>
+      <p class="section-label fade-in" data-i18n="problem.label">THE CRISIS 產業危機</p>
+      <h2 class="section-heading fade-in" data-delay="1" data-i18n="problem.heading">台灣製造業<br>正在失去它的靈魂</h2>
+      <p class="section-lead fade-in" data-delay="2" data-i18n="problem.lead">資深師傅即將大量退休，而年輕世代卻不願投入。傳統技藝面臨失傳危機，嚴重威脅產業競爭力。</p>
 
       <div class="crisis-grid fade-in" data-delay="3">
         <div class="crisis-item">
-          <span class="crisis-stat">35%</span>
-          <p>師傅將在 5 年內退休</p>
+          <span class="crisis-stat" data-i18n="problem.crisis1.stat">35%</span>
+          <p data-i18n="problem.crisis1.text">師傅將在 5 年內退休</p>
         </div>
         <div class="crisis-item">
-          <span class="crisis-stat">12%</span>
-          <p>年輕人願投入製造業</p>
+          <span class="crisis-stat" data-i18n="problem.crisis2.stat">12%</span>
+          <p data-i18n="problem.crisis2.text">年輕人願投入製造業</p>
         </div>
         <div class="crisis-item">
-          <span class="crisis-stat">8,000</span>
-          <p>每年損失資深技術工</p>
+          <span class="crisis-stat" data-i18n="problem.crisis3.stat">8,000</span>
+          <p data-i18n="problem.crisis3.text">每年損失資深技術工</p>
         </div>
         <div class="crisis-item">
-          <span class="crisis-stat">2-5年</span>
-          <p>傳統學習週期</p>
+          <span class="crisis-stat" data-i18n="problem.crisis4.stat">2-5年</span>
+          <p data-i18n="problem.crisis4.text">傳統學習週期</p>
         </div>
       </div>
 
       <blockquote class="crisis-quote fade-in" data-delay="4">
-        <p>「最會調模具的李師傅明年退休，他的技術沒人學得會。他走了，那些訂單就接不了了。」</p>
-        <cite>— 台中某模具廠老闆</cite>
+        <p data-i18n="problem.quote">「最會調模具的李師傅明年退休，他的技術沒人學得會。他走了，那些訂單就接不了了。」</p>
+        <cite data-i18n="problem.quote.cite">— 台中某模具廠老闆</cite>
       </blockquote>
     </div>
 
@@ -121,15 +122,15 @@
       <div class="loss-banner-inner">
         <div class="loss-item fade-in">
           <span class="loss-number" data-count="420">0</span><span class="loss-unit">億</span>
-          <span class="loss-label">技術斷層損失</span>
+          <span class="loss-label" data-i18n="problem.loss1.label">技術斷層損失</span>
         </div>
         <div class="loss-item fade-in" data-delay="1">
           <span class="loss-number" data-count="180">0</span><span class="loss-unit">億</span>
-          <span class="loss-label">效率低落損失</span>
+          <span class="loss-label" data-i18n="problem.loss2.label">效率低落損失</span>
         </div>
         <div class="loss-item fade-in" data-delay="2">
           <span class="loss-number" data-count="95">0</span><span class="loss-unit">億</span>
-          <span class="loss-label">品質不穩損失</span>
+          <span class="loss-label" data-i18n="problem.loss3.label">品質不穩損失</span>
         </div>
       </div>
     </div>
@@ -138,9 +139,9 @@
   <!-- ===== SOLUTION ===== -->
   <section class="solution" id="solution">
     <div class="container">
-      <p class="section-label fade-in">OUR TECHNOLOGY 核心技術</p>
-      <h2 class="section-heading fade-in" data-delay="1">三大技術創新</h2>
-      <p class="section-lead fade-in" data-delay="2">將師傅的隱性知識轉化為可量化、可傳承的數位資產</p>
+      <p class="section-label fade-in" data-i18n="solution.label">OUR TECHNOLOGY 核心技術</p>
+      <h2 class="section-heading fade-in" data-delay="1" data-i18n="solution.heading">三大技術創新</h2>
+      <p class="section-lead fade-in" data-delay="2" data-i18n="solution.lead">將師傅的隱性知識轉化為可量化、可傳承的數位資產</p>
     </div>
 
     <div class="tech-showcase">
@@ -150,19 +151,16 @@
           <span class="tech-number">01</span>
         </div>
         <div class="tech-panel-content">
-          <h3>隱性知識顯性化</h3>
-          <p class="tech-en">Quantifying Tacit Knowledge</p>
-          <p>AI 分析師傅 100 次操作，將「要有手感」「聽聲音」等隱性知識轉化為可量化標準。</p>
+          <h3 data-i18n="solution.t1.title">隱性知識顯性化</h3>
+          <p class="tech-en" data-i18n="solution.t1.en">Quantifying Tacit Knowledge</p>
+          <p data-i18n="solution.t1.desc">AI 分析師傅 100 次操作，將「要有手感」「聽聲音」等隱性知識轉化為可量化標準。</p>
           <div class="tech-metrics">
-            <span>聲音頻率 800-1200 Hz</span>
-            <span>持續時間 2.3 ± 0.3 秒</span>
-            <span>移動速度 15 cm/秒</span>
-            <span>焊槍角度 45° ± 5°</span>
+            <span data-i18n="solution.t1.m1">聲音頻率 800-1200 Hz</span>
+            <span data-i18n="solution.t1.m2">持續時間 2.3 ± 0.3 秒</span>
+            <span data-i18n="solution.t1.m3">移動速度 15 cm/秒</span>
+            <span data-i18n="solution.t1.m4">焊槍角度 45° ± 5°</span>
           </div>
-          <div class="tech-tags">
-            <span>MediaPipe</span>
-            <span>Neural Networks</span>
-          </div>
+          <div class="tech-tags"><span>MediaPipe</span><span>Neural Networks</span></div>
         </div>
       </article>
 
@@ -172,19 +170,16 @@
           <span class="tech-number">02</span>
         </div>
         <div class="tech-panel-content">
-          <h3>AR 即時指導</h3>
-          <p class="tech-en">Real-time AR Guidance</p>
-          <p>攝影機捕捉動作後 AI 即時比對標準，透過 AR 疊加視覺化指導。60 FPS 低延遲確保流暢學習。</p>
+          <h3 data-i18n="solution.t2.title">AR 即時指導</h3>
+          <p class="tech-en" data-i18n="solution.t2.en">Real-time AR Guidance</p>
+          <p data-i18n="solution.t2.desc">攝影機捕捉動作後 AI 即時比對標準，透過 AR 疊加視覺化指導。60 FPS 低延遲確保流暢學習。</p>
           <div class="tech-metrics">
-            <span class="correct">✓ 綠色骨架 = 正確</span>
-            <span class="incorrect">✗ 紅色骨架 = 錯誤</span>
-            <span>→ 箭頭修正方向</span>
-            <span>🔊 語音即時提示</span>
+            <span class="correct" data-i18n="solution.t2.m1">✓ 綠色骨架 = 正確</span>
+            <span class="incorrect" data-i18n="solution.t2.m2">✗ 紅色骨架 = 錯誤</span>
+            <span data-i18n="solution.t2.m3">→ 箭頭修正方向</span>
+            <span data-i18n="solution.t2.m4">🔊 語音即時提示</span>
           </div>
-          <div class="tech-tags">
-            <span>Three.js</span>
-            <span>WebXR</span>
-          </div>
+          <div class="tech-tags"><span>Three.js</span><span>WebXR</span></div>
         </div>
       </article>
 
@@ -194,18 +189,15 @@
           <span class="tech-number">03</span>
         </div>
         <div class="tech-panel-content">
-          <h3>AI 智慧評分</h3>
-          <p class="tech-en">AI Smart Scoring</p>
-          <p>系統自動生成詳細學習報告，提供綜合評分、細項分析、錯誤定位與改善建議。</p>
+          <h3 data-i18n="solution.t3.title">AI 智慧評分</h3>
+          <p class="tech-en" data-i18n="solution.t3.en">AI Smart Scoring</p>
+          <p data-i18n="solution.t3.desc">系統自動生成詳細學習報告，提供綜合評分、細項分析、錯誤定位與改善建議。</p>
           <div class="tech-metrics">
-            <span>動作準確度 85分</span>
-            <span>時機掌握 65分</span>
-            <span>流暢度 58分</span>
+            <span data-i18n="solution.t3.m1">動作準確度 85分</span>
+            <span data-i18n="solution.t3.m2">時機掌握 65分</span>
+            <span data-i18n="solution.t3.m3">流暢度 58分</span>
           </div>
-          <div class="tech-tags">
-            <span>DTW</span>
-            <span>GPT</span>
-          </div>
+          <div class="tech-tags"><span>DTW</span><span>GPT</span></div>
         </div>
       </article>
     </div>
@@ -214,8 +206,8 @@
   <!-- ===== PROCESS ===== -->
   <section class="process" id="process">
     <div class="container">
-      <p class="section-label fade-in">HOW IT WORKS 學習流程</p>
-      <h2 class="section-heading fade-in" data-delay="1">從錄製到認證</h2>
+      <p class="section-label fade-in" data-i18n="process.label">HOW IT WORKS 學習流程</p>
+      <h2 class="section-heading fade-in" data-delay="1" data-i18n="process.heading">從錄製到認證</h2>
     </div>
 
     <div class="timeline">
@@ -224,36 +216,36 @@
         <div class="timeline-marker">1</div>
         <div class="timeline-content">
           <div class="timeline-icon">📹</div>
-          <h3>師傅錄製</h3>
-          <p class="timeline-en">Master Recording</p>
-          <p>多角度拍攝操作影片，捕捉完整技能細節</p>
+          <h3 data-i18n="process.s1.title">師傅錄製</h3>
+          <p class="timeline-en" data-i18n="process.s1.en">Master Recording</p>
+          <p data-i18n="process.s1.desc">多角度拍攝操作影片，捕捉完整技能細節</p>
         </div>
       </div>
       <div class="timeline-step fade-in" data-delay="3">
         <div class="timeline-marker">2</div>
         <div class="timeline-content">
           <div class="timeline-icon">🔍</div>
-          <h3>AI 分析優化</h3>
-          <p class="timeline-en">AI Analysis</p>
-          <p>自動提取關鍵點，建立數位技能包</p>
+          <h3 data-i18n="process.s2.title">AI 分析優化</h3>
+          <p class="timeline-en" data-i18n="process.s2.en">AI Analysis</p>
+          <p data-i18n="process.s2.desc">自動提取關鍵點，建立數位技能包</p>
         </div>
       </div>
       <div class="timeline-step fade-in" data-delay="4">
         <div class="timeline-marker">3</div>
         <div class="timeline-content">
           <div class="timeline-icon">🥽</div>
-          <h3>學徒練習</h3>
-          <p class="timeline-en">Apprentice Practice</p>
-          <p>觀看教學 → AR 跟練 → AI 評分反饋</p>
+          <h3 data-i18n="process.s3.title">學徒練習</h3>
+          <p class="timeline-en" data-i18n="process.s3.en">Apprentice Practice</p>
+          <p data-i18n="process.s3.desc">觀看教學 → AR 跟練 → AI 評分反饋</p>
         </div>
       </div>
       <div class="timeline-step fade-in" data-delay="5">
         <div class="timeline-marker">4</div>
         <div class="timeline-content">
           <div class="timeline-icon">🏆</div>
-          <h3>技能認證</h3>
-          <p class="timeline-en">Skill Certification</p>
-          <p>達到 80 分標準後獲得技能認證</p>
+          <h3 data-i18n="process.s4.title">技能認證</h3>
+          <p class="timeline-en" data-i18n="process.s4.en">Skill Certification</p>
+          <p data-i18n="process.s4.desc">達到 80 分標準後獲得技能認證</p>
         </div>
       </div>
     </div>
@@ -266,44 +258,44 @@
       <div class="results-overlay"></div>
     </div>
     <div class="container results-inner">
-      <p class="section-label light fade-in">PROVEN RESULTS 驗證成效</p>
-      <h2 class="section-heading light fade-in" data-delay="1">驚人的改善幅度</h2>
+      <p class="section-label light fade-in" data-i18n="results.label">PROVEN RESULTS 驗證成效</p>
+      <h2 class="section-heading light fade-in" data-delay="1" data-i18n="results.heading">驚人的改善幅度</h2>
 
       <div class="results-grid">
         <div class="result-card fade-in" data-delay="2">
           <span class="result-metric">↓ 75%</span>
-          <h3>學習週期</h3>
+          <h3 data-i18n="results.r1.title">學習週期</h3>
           <p class="result-compare">
-            <span class="result-old">2-5 年</span>
+            <span class="result-old" data-i18n="results.r1.old">2-5 年</span>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            <span class="result-new">3-9 個月</span>
+            <span class="result-new" data-i18n="results.r1.new">3-9 個月</span>
           </p>
         </div>
         <div class="result-card fade-in" data-delay="3">
           <span class="result-metric">↓ 60%</span>
-          <h3>錯誤率</h3>
+          <h3 data-i18n="results.r2.title">錯誤率</h3>
           <p class="result-compare">
-            <span class="result-old">15-25%</span>
+            <span class="result-old" data-i18n="results.r2.old">15-25%</span>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            <span class="result-new">6-10%</span>
+            <span class="result-new" data-i18n="results.r2.new">6-10%</span>
           </p>
         </div>
         <div class="result-card fade-in" data-delay="4">
           <span class="result-metric">↓ 70%</span>
-          <h3>師傅時間</h3>
+          <h3 data-i18n="results.r3.title">師傅時間</h3>
           <p class="result-compare">
-            <span class="result-old">2-3 小時/天</span>
+            <span class="result-old" data-i18n="results.r3.old">2-3 小時/天</span>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            <span class="result-new">0.5-1 小時/天</span>
+            <span class="result-new" data-i18n="results.r3.new">0.5-1 小時/天</span>
           </p>
         </div>
         <div class="result-card fade-in" data-delay="5">
           <span class="result-metric">↓ 80%</span>
-          <h3>廢料成本</h3>
+          <h3 data-i18n="results.r4.title">廢料成本</h3>
           <p class="result-compare">
-            <span class="result-old">15-30 萬/人</span>
+            <span class="result-old" data-i18n="results.r4.old">15-30 萬/人</span>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            <span class="result-new">3-6 萬/人</span>
+            <span class="result-new" data-i18n="results.r4.new">3-6 萬/人</span>
           </p>
         </div>
       </div>
@@ -313,43 +305,43 @@
   <!-- ===== ADVANTAGE ===== -->
   <section class="advantage" id="advantage">
     <div class="container">
-      <p class="section-label fade-in">COMPETITIVE EDGE 競爭優勢</p>
-      <h2 class="section-heading fade-in" data-delay="1">為什麼選擇 iTech</h2>
+      <p class="section-label fade-in" data-i18n="advantage.label">COMPETITIVE EDGE 競爭優勢</p>
+      <h2 class="section-heading fade-in" data-delay="1" data-i18n="advantage.heading">為什麼選擇 iTech</h2>
 
       <div class="compare-table-wrap fade-in" data-delay="2">
         <table class="compare-table">
           <thead>
             <tr>
-              <th>方案</th>
-              <th>優點</th>
-              <th>缺點</th>
-              <th>iTech 差異</th>
+              <th data-i18n="advantage.th1">方案</th>
+              <th data-i18n="advantage.th2">優點</th>
+              <th data-i18n="advantage.th3">缺點</th>
+              <th data-i18n="advantage.th4">iTech 差異</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>傳統師徒制</td>
-              <td>手把手教學</td>
-              <td>2-5年，無法規模化</td>
-              <td><span class="edge-badge">AI 加速 4 倍</span></td>
+              <td data-i18n="advantage.r1.method">傳統師徒制</td>
+              <td data-i18n="advantage.r1.pro">手把手教學</td>
+              <td data-i18n="advantage.r1.con">2-5年，無法規模化</td>
+              <td><span class="edge-badge" data-i18n="advantage.r1.edge">AI 加速 4 倍</span></td>
             </tr>
             <tr>
-              <td>教學影片</td>
-              <td>成本低</td>
-              <td>無互動，看不出錯</td>
-              <td><span class="edge-badge">AR 即時指導</span></td>
+              <td data-i18n="advantage.r2.method">教學影片</td>
+              <td data-i18n="advantage.r2.pro">成本低</td>
+              <td data-i18n="advantage.r2.con">無互動，看不出錯</td>
+              <td><span class="edge-badge" data-i18n="advantage.r2.edge">AR 即時指導</span></td>
             </tr>
             <tr>
-              <td>VR 訓練</td>
-              <td>沉浸感強</td>
-              <td>成本高 50-100萬</td>
-              <td><span class="edge-badge">成本僅 1/10</span></td>
+              <td data-i18n="advantage.r3.method">VR 訓練</td>
+              <td data-i18n="advantage.r3.pro">沉浸感強</td>
+              <td data-i18n="advantage.r3.con">成本高 50-100萬</td>
+              <td><span class="edge-badge" data-i18n="advantage.r3.edge">成本僅 1/10</span></td>
             </tr>
             <tr>
-              <td>文字 SOP</td>
-              <td>易保存</td>
-              <td>無法描述動作</td>
-              <td><span class="edge-badge">視覺化標準</span></td>
+              <td data-i18n="advantage.r4.method">文字 SOP</td>
+              <td data-i18n="advantage.r4.pro">易保存</td>
+              <td data-i18n="advantage.r4.con">無法描述動作</td>
+              <td><span class="edge-badge" data-i18n="advantage.r4.edge">視覺化標準</span></td>
             </tr>
           </tbody>
         </table>
@@ -358,23 +350,23 @@
       <div class="moats">
         <div class="moat fade-in" data-delay="3">
           <div class="moat-line"></div>
-          <h3>技能數據庫</h3>
-          <p>網絡效應，越用越強，累積專屬台灣製造業的技能知識庫</p>
+          <h3 data-i18n="advantage.moat1.title">技能數據庫</h3>
+          <p data-i18n="advantage.moat1.desc">網絡效應，越用越強，累積專屬台灣製造業的技能知識庫</p>
         </div>
         <div class="moat fade-in" data-delay="4">
           <div class="moat-line"></div>
-          <h3>AI 模型優勢</h3>
-          <p>針對台灣製造業專屬數據訓練，精準度持續提升</p>
+          <h3 data-i18n="advantage.moat2.title">AI 模型優勢</h3>
+          <p data-i18n="advantage.moat2.desc">針對台灣製造業專屬數據訓練，精準度持續提升</p>
         </div>
         <div class="moat fade-in" data-delay="5">
           <div class="moat-line"></div>
-          <h3>政府關係</h3>
-          <p>優先建立行業標準，取得政府背書與資源支持</p>
+          <h3 data-i18n="advantage.moat3.title">政府關係</h3>
+          <p data-i18n="advantage.moat3.desc">優先建立行業標準，取得政府背書與資源支持</p>
         </div>
         <div class="moat fade-in" data-delay="6">
           <div class="moat-line"></div>
-          <h3>師傅網絡</h3>
-          <p>信任後主動推薦，口碑傳播形成社群效應</p>
+          <h3 data-i18n="advantage.moat4.title">師傅網絡</h3>
+          <p data-i18n="advantage.moat4.desc">信任後主動推薦，口碑傳播形成社群效應</p>
         </div>
       </div>
     </div>
@@ -384,39 +376,39 @@
   <section class="contact" id="contact">
     <div class="contact-inner">
       <div class="contact-info fade-in">
-        <p class="section-label light">GET IN TOUCH</p>
-        <h2 class="section-heading light">讓我們一起<br>用科技傳承技藝</h2>
-        <p class="contact-desc">無論您是企業、政府機構、投資人或個人，我們都期待與您合作，共同推動台灣技能傳承的數位轉型。</p>
-        <p class="contact-desc-en">Whether you're an enterprise, government agency, investor, or individual — let's preserve craftsmanship together.</p>
+        <p class="section-label light" data-i18n="contact.label">GET IN TOUCH</p>
+        <h2 class="section-heading light" data-i18n="contact.heading">讓我們一起<br>用科技傳承技藝</h2>
+        <p class="contact-desc" data-i18n="contact.desc">無論您是企業、政府機構、投資人或個人，我們都期待與您合作，共同推動台灣技能傳承的數位轉型。</p>
+        <p class="contact-desc-en" data-i18n="contact.desc-en">Whether you're an enterprise, government agency, investor, or individual — let's preserve craftsmanship together.</p>
       </div>
       <form class="contact-form fade-in" data-delay="2" id="contactForm">
         <div class="form-row">
           <div class="form-group">
-            <label for="name">姓名 Name</label>
-            <input type="text" id="name" name="name" required placeholder="您的姓名">
+            <label for="name" data-i18n="contact.name">姓名 Name</label>
+            <input type="text" id="name" name="name" required placeholder="您的姓名" data-i18n-placeholder="contact.name.placeholder">
           </div>
           <div class="form-group">
-            <label for="email">Email</label>
+            <label for="email" data-i18n="contact.email">Email</label>
             <input type="email" id="email" name="email" required placeholder="you@example.com">
           </div>
         </div>
         <div class="form-group">
-          <label for="role">身份 Role</label>
+          <label for="role" data-i18n="contact.role">身份 Role</label>
           <select id="role" name="role" required>
-            <option value="" disabled selected>請選擇 Select</option>
-            <option value="enterprise">企業 Enterprise</option>
-            <option value="government">政府機構 Government</option>
-            <option value="individual">個人 Individual</option>
-            <option value="investor">投資人 Investor</option>
-            <option value="other">其他 Other</option>
+            <option value="" disabled selected data-i18n="contact.role.placeholder">請選擇 Select</option>
+            <option value="enterprise" data-i18n="contact.role.enterprise">企業 Enterprise</option>
+            <option value="government" data-i18n="contact.role.government">政府機構 Government</option>
+            <option value="individual" data-i18n="contact.role.individual">個人 Individual</option>
+            <option value="investor" data-i18n="contact.role.investor">投資人 Investor</option>
+            <option value="other" data-i18n="contact.role.other">其他 Other</option>
           </select>
         </div>
         <div class="form-group">
-          <label for="message">訊息 Message</label>
-          <textarea id="message" name="message" rows="4" placeholder="請輸入您的訊息..."></textarea>
+          <label for="message" data-i18n="contact.message">訊息 Message</label>
+          <textarea id="message" name="message" rows="4" placeholder="請輸入您的訊息..." data-i18n-placeholder="contact.message.placeholder"></textarea>
         </div>
         <button type="submit" class="form-submit">
-          送出訊息 Send Message
+          <span data-i18n="contact.submit">送出訊息 Send Message</span>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </button>
       </form>
@@ -427,12 +419,13 @@
     <div class="container footer-inner">
       <div class="footer-brand">
         <span class="logo-mark">技</span>
-        <span>AI學徒 iTech</span>
+        <a href="https://www.kairosaitech.com/?lang=zh-TW" target="_blank" rel="noopener" data-i18n="footer.company">Kairos AI Tech</a>
       </div>
-      <p>&copy; 2026 AI學徒 iTech. All rights reserved.</p>
+      <p data-i18n="footer.rights">© 2026 AI學徒 iTech. All rights reserved.</p>
     </div>
   </footer>
 
+  <script src="i18n.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

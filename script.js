@@ -100,6 +100,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }, { passive: true });
   }
 
+  // ===== Initialize language =====
+  initLanguage();
+
   // ===== Contact form =====
   const contactForm = document.getElementById('contactForm');
 

@@ -175,6 +175,42 @@ img { max-width: 100%; display: block; }
   transform: translateY(-1px);
 }
 
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.lang-switcher {
+  display: flex;
+  gap: 2px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 6px;
+  padding: 2px;
+}
+
+.lang-btn {
+  padding: 4px 10px;
+  border: none;
+  background: transparent;
+  color: rgba(255,255,255,0.6);
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: var(--font-body);
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.lang-btn:hover {
+  color: var(--warm-white);
+}
+
+.lang-btn.active {
+  background: var(--teal);
+  color: var(--warm-white);
+}
+
 .nav-toggle {
   display: none;
   background: none;
