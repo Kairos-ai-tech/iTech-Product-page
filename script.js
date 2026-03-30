@@ -2,13 +2,16 @@ document.addEventListener('DOMContentLoaded', function () {
   // ===== Sticky navbar background on scroll =====
   const navbar = document.getElementById('navbar');
 
-  window.addEventListener('scroll', function () {
+  function updateNavbar() {
     if (window.scrollY > 50) {
       navbar.classList.add('scrolled');
     } else {
       navbar.classList.remove('scrolled');
     }
-  });
+  }
+
+  updateNavbar();
+  window.addEventListener('scroll', updateNavbar);
 
   // ===== Mobile nav toggle =====
   const navToggle = document.getElementById('navToggle');
@@ -28,9 +31,9 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // ===== Scroll-triggered fade-in animations =====
-  var fadeElements = document.querySelectorAll('.fade-in');
+  constfadeElements = document.querySelectorAll('.fade-in');
 
-  var observer = new IntersectionObserver(
+  constobserver = new IntersectionObserver(
     function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
@@ -50,18 +53,18 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // ===== Contact form — mailto fallback =====
-  var contactForm = document.getElementById('contactForm');
+  constcontactForm = document.getElementById('contactForm');
 
   contactForm.addEventListener('submit', function (e) {
     e.preventDefault();
 
-    var name = document.getElementById('name').value;
-    var email = document.getElementById('email').value;
-    var role = document.getElementById('role').value;
-    var message = document.getElementById('message').value;
+    constname = document.getElementById('name').value;
+    constemail = document.getElementById('email').value;
+    constrole = document.getElementById('role').value;
+    constmessage = document.getElementById('message').value;
 
-    var subject = encodeURIComponent('AI學徒 iTech — 聯絡表單 from ' + name);
-    var body = encodeURIComponent(
+    constsubject = encodeURIComponent('AI學徒 iTech — 聯絡表單 from ' + name);
+    constbody = encodeURIComponent(
       '姓名 Name: ' + name + '\n' +
       'Email: ' + email + '\n' +
       '身份 Role: ' + role + '\n\n' +
