@@ -130,7 +130,7 @@ const translations = {
     "contact.message.placeholder": "請輸入您的訊息...",
     "contact.submit": "送出訊息 Send Message",
     "footer.rights": "© 2026 AI學徒 iTech. All rights reserved.",
-    "footer.company": "Kairos AI Tech"
+    "footer.company": "Kairos.ai"
   },
   "en": {
     "nav.crisis": "Crisis",
@@ -263,7 +263,7 @@ const translations = {
     "contact.message.placeholder": "Enter your message...",
     "contact.submit": "Send Message",
     "footer.rights": "© 2026 AI學徒 iTech. All rights reserved.",
-    "footer.company": "Kairos AI Tech"
+    "footer.company": "Kairos.ai"
   },
   "ja": {
     "nav.crisis": "課題",
@@ -396,7 +396,7 @@ const translations = {
     "contact.message.placeholder": "メッセージを入力してください...",
     "contact.submit": "送信する",
     "footer.rights": "© 2026 AI學徒 iTech. All rights reserved.",
-    "footer.company": "Kairos AI Tech"
+    "footer.company": "Kairos.ai"
   }
 };
 
