@@ -16,6 +16,10 @@ const translations = {
     "hero.stat3.label": "年市場規模 TWD",
     "hero.stat3.unit": "兆",
     "hero.stat4.label": "驗收週期縮短 (目標)",
+    "alt.problem": "工地現場",
+    "alt.solution.t1": "結構施工圖自動解析",
+    "alt.solution.t2": "AR 現場指導",
+    "alt.solution.t3": "AI 即時驗證",
     "problem.label": "THE CRISIS 產業缺口",
     "problem.heading": ["設計與現場脫節", "鋼筋錯誤太晚才發現"],
     "problem.lead": "施工圖意圖經人工判讀後才到現場，誤差往往在監造抽查或灌漿後才浮現。鋼筋工嚴重短缺、返工成本高昂，且全程缺乏可稽核的竣工紀錄。",
@@ -29,6 +33,7 @@ const translations = {
     "problem.crisis4.text": "傳統工法可稽核竣工資料",
     "problem.quote": "「圖照著綁了，監造一來說間距不對、保護層不夠。打掉重綁一次，當週進度就沒了。」",
     "problem.quote.cite": "— 工地主任訪談（說明性引述，非署名客戶）",
+    "problem.loss.unit": "億",
     "problem.loss1.label": "鋼筋返工直接成本",
     "problem.loss2.label": "工期延誤損失",
     "problem.loss3.label": "驗收失敗重做",
@@ -147,7 +152,7 @@ const translations = {
     "nav.advantage": "Advantages",
     "nav.contact": "Contact Us",
     "hero.badge": "AI + AR Construction Execution Platform",
-    "hero.title": ["From Drawing to Inspection,", "Zero-Error Rebar Execution"],
+    "hero.title": ["From Drawing to Inspection", "Zero-Error Rebar Execution"],
     "hero.subtitle": "AR-guided field placement, AI-verified rebar, auditable as-built records.",
     "hero.subtitle-en": "From structural drawing to verified-in-place rebar.",
     "hero.cta": "Start a conversation",
@@ -156,6 +161,10 @@ const translations = {
     "hero.stat3.label": "Taiwan construction TAM (TWD)",
     "hero.stat3.unit": "T",
     "hero.stat4.label": "Target inspection time reduction",
+    "alt.problem": "Construction site",
+    "alt.solution.t1": "Structural drawing parsing",
+    "alt.solution.t2": "AR field guidance",
+    "alt.solution.t3": "Real-time AI verification",
     "problem.label": "THE CRISIS",
     "problem.heading": ["Design Intent and Field Execution", "Are Disconnected"],
     "problem.lead": "Structural drawings are interpreted by hand before they reach the slab. Errors surface only at inspection — or after the pour. Skilled ironworkers are scarce, rework is expensive, and no auditable as-built record exists.",
@@ -169,9 +178,10 @@ const translations = {
     "problem.crisis4.text": "auditable as-built record today",
     "problem.quote": "\"We tied to the drawing. Inspector arrived, said spacing was off and cover was short. Cut, re-tie — there goes the week.\"",
     "problem.quote.cite": "— Site superintendent interview (illustrative, not an attributed customer quote)",
-    "problem.loss1.label": "Direct rebar rework cost (TWD)",
-    "problem.loss2.label": "Schedule delay losses (TWD)",
-    "problem.loss3.label": "Inspection-failure redo (TWD)",
+    "problem.loss.unit": "× 100M TWD",
+    "problem.loss1.label": "Direct rebar rework cost",
+    "problem.loss2.label": "Schedule delay losses",
+    "problem.loss3.label": "Inspection-failure redo",
     "solution.label": "OUR TECHNOLOGY",
     "solution.heading": ["End-to-End Execution Pipeline"],
     "solution.lead": "The structural drawing is ground truth — AI runs everything from fabrication to verified placement.",
@@ -296,6 +306,10 @@ const translations = {
     "hero.stat3.label": "年間市場規模（TWD）",
     "hero.stat3.unit": "兆",
     "hero.stat4.label": "検査サイクル短縮（目標）",
+    "alt.problem": "建設現場",
+    "alt.solution.t1": "構造施工図の自動解析",
+    "alt.solution.t2": "AR 現場ガイダンス",
+    "alt.solution.t3": "AI リアルタイム検証",
     "problem.label": "産業の課題",
     "problem.heading": ["設計と現場が分断され", "鉄筋エラーが手遅れで発見される"],
     "problem.lead": "施工図は人手で読まれて現場に届き、誤差は監理検査や打設後にようやく現れます。鉄筋工は人手不足、手戻りは高コスト、そして監査可能な竣工記録は存在しません。",
@@ -309,6 +323,7 @@ const translations = {
     "problem.crisis4.text": "従来工法での監査可能な竣工データ",
     "problem.quote": "「図面通りに結束したのに、監理が来て間隔と被りがダメだと。剥がしてやり直し、一週間が消える。」",
     "problem.quote.cite": "— 現場代理人インタビュー（説明用引用、実名顧客ではありません）",
+    "problem.loss.unit": "億",
     "problem.loss1.label": "鉄筋手戻り直接コスト",
     "problem.loss2.label": "工期遅延損失",
     "problem.loss3.label": "検査不合格の再施工",
@@ -450,6 +465,11 @@ function setLanguage(lang) {
   document.querySelectorAll("[data-i18n-placeholder]").forEach(function (el) {
     var key = el.getAttribute("data-i18n-placeholder");
     if (t[key] !== undefined) el.placeholder = t[key];
+  });
+
+  document.querySelectorAll("[data-i18n-alt]").forEach(function (el) {
+    var key = el.getAttribute("data-i18n-alt");
+    if (t[key] !== undefined) el.alt = t[key];
   });
 
   // Toggle visibility of elements with empty translations

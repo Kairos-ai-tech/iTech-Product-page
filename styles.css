@@ -14,7 +14,6 @@
   /* surfaces */
   --bg: #FBFAF7;
   --surface: #FFFFFF;
-  --surface-elev: #FFFFFF;
   --cream: #F4F1EC;
   --warm-white: #FBFAF7;
 
@@ -73,6 +72,18 @@ ul { list-style: none; }
 img { max-width: 100%; display: block; }
 
 ::selection { background: var(--teal); color: #fff; }
+
+:focus-visible {
+  outline: 2px solid var(--accent-mint);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.nav-cta:focus-visible,
+.hero-cta:focus-visible,
+.form-submit:focus-visible {
+  outline-offset: 3px;
+}
 
 /* ===== Shared ===== */
 .container {
@@ -402,7 +413,7 @@ img { max-width: 100%; display: block; }
 
 .hero-subtitle-en {
   font-size: clamp(0.85rem, 1.4vw, 0.95rem);
-  color: rgba(255, 255, 255, 0.42);
+  color: rgba(255, 255, 255, 0.6);
   margin-bottom: 40px;
   letter-spacing: 0.01em;
 }
@@ -466,7 +477,7 @@ img { max-width: 100%; display: block; }
 
 .stat-label {
   font-size: 0.78rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.72);
   letter-spacing: 0.01em;
 }
 
@@ -642,7 +653,7 @@ img { max-width: 100%; display: block; }
 .loss-label {
   display: block;
   font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.7);
   margin-top: 10px;
   letter-spacing: 0.02em;
 }
@@ -688,8 +699,8 @@ img { max-width: 100%; display: block; }
   transform: translateY(-3px);
 }
 
-.tech-panel.reverse { direction: rtl; }
-.tech-panel.reverse > * { direction: ltr; }
+.tech-panel.reverse .tech-panel-img { order: 2; }
+.tech-panel.reverse .tech-panel-content { order: 1; }
 
 .tech-panel-img {
   position: relative;
@@ -999,9 +1010,9 @@ img { max-width: 100%; display: block; }
 }
 
 .result-old {
-  color: rgba(255, 255, 255, 0.42);
+  color: rgba(255, 255, 255, 0.62);
   text-decoration: line-through;
-  text-decoration-color: rgba(255, 255, 255, 0.25);
+  text-decoration-color: rgba(255, 255, 255, 0.35);
 }
 
 .result-compare svg {
@@ -1152,7 +1163,7 @@ img { max-width: 100%; display: block; }
 
 .contact-desc-en {
   font-size: 0.88rem;
-  color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.6);
   margin-top: 12px;
   max-width: 440px;
 }
@@ -1201,7 +1212,7 @@ img { max-width: 100%; display: block; }
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-  color: rgba(255, 255, 255, 0.32);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .form-group select {
@@ -1283,7 +1294,7 @@ img { max-width: 100%; display: block; }
 }
 
 .footer p {
-  color: rgba(255, 255, 255, 0.35);
+  color: rgba(255, 255, 255, 0.55);
   font-size: 0.78rem;
 }
 
@@ -1348,7 +1359,11 @@ img { max-width: 100%; display: block; }
   .tech-panel,
   .tech-panel.reverse {
     grid-template-columns: 1fr;
-    direction: ltr;
+  }
+
+  .tech-panel.reverse .tech-panel-img,
+  .tech-panel.reverse .tech-panel-content {
+    order: 0;
   }
 
   .tech-panel-img img {

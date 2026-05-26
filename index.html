@@ -95,7 +95,7 @@
   <section class="problem" id="problem">
     <div class="problem-visual">
       <!-- TODO: replace with branded rebar / construction site image (steel reinforcement close-up preferred) -->
-      <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=960&q=80" alt="Construction site" class="problem-img fade-in">
+      <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=960&q=80" alt="Construction site" data-i18n-alt="alt.problem" class="problem-img fade-in">
     </div>
     <div class="problem-content">
       <p class="section-label fade-in" data-i18n="problem.label">THE CRISIS 產業缺口</p>
@@ -130,15 +130,15 @@
     <div class="loss-banner">
       <div class="loss-banner-inner">
         <div class="loss-item fade-in">
-          <span class="loss-number" data-count="180">0</span><span class="loss-unit">億</span>
+          <span class="loss-number" data-count="180">0</span><span class="loss-unit" data-i18n="problem.loss.unit">億</span>
           <span class="loss-label" data-i18n="problem.loss1.label">鋼筋返工直接成本</span>
         </div>
         <div class="loss-item fade-in" data-delay="1">
-          <span class="loss-number" data-count="75">0</span><span class="loss-unit">億</span>
+          <span class="loss-number" data-count="75">0</span><span class="loss-unit" data-i18n="problem.loss.unit">億</span>
           <span class="loss-label" data-i18n="problem.loss2.label">工期延誤損失</span>
         </div>
         <div class="loss-item fade-in" data-delay="2">
-          <span class="loss-number" data-count="50">0</span><span class="loss-unit">億</span>
+          <span class="loss-number" data-count="50">0</span><span class="loss-unit" data-i18n="problem.loss.unit">億</span>
           <span class="loss-label" data-i18n="problem.loss3.label">驗收失敗重做</span>
         </div>
       </div>
@@ -157,7 +157,7 @@
       <article class="tech-panel fade-in" data-delay="3">
         <div class="tech-panel-img">
           <!-- TODO: replace with branded structural drawing / blueprint image -->
-          <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80" alt="Structural drawing parsing">
+          <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80" alt="Structural drawing parsing" data-i18n-alt="alt.solution.t1">
           <span class="tech-number">01</span>
         </div>
         <div class="tech-panel-content">
@@ -177,7 +177,7 @@
       <article class="tech-panel reverse fade-in" data-delay="3">
         <div class="tech-panel-img">
           <!-- TODO: replace with branded AR-on-site / tablet-on-formwork image -->
-          <img src="https://images.unsplash.com/photo-1592478411213-6153e4ebc07d?w=800&q=80" alt="AR field guidance">
+          <img src="https://images.unsplash.com/photo-1592478411213-6153e4ebc07d?w=800&q=80" alt="AR field guidance" data-i18n-alt="alt.solution.t2">
           <span class="tech-number">02</span>
         </div>
         <div class="tech-panel-content">
@@ -197,7 +197,7 @@
       <article class="tech-panel fade-in" data-delay="3">
         <div class="tech-panel-img">
           <!-- TODO: replace with branded rebar inspection / CV verification image -->
-          <img src="https://images.unsplash.com/photo-1565043666747-69f6646db940?w=800&q=80" alt="Real-time AI verification">
+          <img src="https://images.unsplash.com/photo-1565043666747-69f6646db940?w=800&q=80" alt="Real-time AI verification" data-i18n-alt="alt.solution.t3">
           <span class="tech-number">03</span>
         </div>
         <div class="tech-panel-content">
@@ -420,7 +420,7 @@
         </div>
         <div class="form-group">
           <label for="message" data-i18n="contact.message">訊息 Message</label>
-          <textarea id="message" name="message" rows="4" placeholder="請輸入您的訊息..." data-i18n-placeholder="contact.message.placeholder"></textarea>
+          <textarea id="message" name="message" rows="4" maxlength="1200" placeholder="請輸入您的訊息..." data-i18n-placeholder="contact.message.placeholder"></textarea>
         </div>
         <button type="submit" class="form-submit">
           <span data-i18n="contact.submit">送出訊息 Send Message</span>
