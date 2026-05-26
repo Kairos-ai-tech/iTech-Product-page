@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const role = document.getElementById('role').value;
     const message = document.getElementById('message').value;
 
-    const subject = encodeURIComponent('AI學徒 iTech — 聯絡表單 from ' + name);
+    const subject = encodeURIComponent('iTech 營造執行平台 — 聯絡表單 from ' + name);
     const body = encodeURIComponent(
       '姓名 Name: ' + name + '\n' +
       'Email: ' + email + '\n' +
