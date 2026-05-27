@@ -122,6 +122,6 @@ document.addEventListener('DOMContentLoaded', function () {
       '訊息 Message:\n' + message
     );
 
-    window.location.href = 'mailto:contact@kairosaitech.com?subject=' + subject + '&body=' + body;
+    window.location.href = 'mailto:kairos.ai.tech@gmail.com?subject=' + subject + '&body=' + body;
   });
 });
