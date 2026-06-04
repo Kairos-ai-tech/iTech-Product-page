@@ -434,6 +434,7 @@ section { position: relative; padding: clamp(84px, 12vh, 150px) 0; }
 .compare-table th, .compare-table td { text-align: left; padding: 16px 20px; border-bottom: 1px solid var(--line-2); font-size: 0.92rem; }
 .compare-table thead th { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cyan); font-weight: 500; border-bottom: 1px solid var(--line); }
 .compare-table tbody td { color: var(--muted); }
+.compare-table tbody th { color: var(--paper); font-weight: 500; }
 .compare-table tbody tr { transition: background 0.2s; }
 .compare-table tbody tr:hover { background: rgba(91, 200, 255, 0.04); }
 .compare-table tbody tr:last-child td { border-bottom: none; }
