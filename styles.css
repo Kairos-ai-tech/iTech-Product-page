@@ -44,6 +44,7 @@ ul { list-style: none; }
   --spine-x: clamp(18px, 4vw, 56px);
   --radius: 14px;
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --nav-h: 74px; /* navbar height; JS swaps to scrolled height so the mobile menu tracks it */
 }
 
 /* ---------- Base ---------- */
@@ -99,6 +100,9 @@ body {
 .container { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter); }
 .flow { position: relative; }
 section { position: relative; padding: clamp(84px, 12vh, 150px) 0; }
+/* Offset content past the rebar spine by default; the mobile query below
+   hides the spine AND resets this, so a single 760px boundary governs both. */
+.flow > section .container { padding-left: calc(var(--gutter) + 44px); }
 
 /* ===== Scroll progress rail (top) ===== */
 .scroll-rail {
@@ -472,7 +476,7 @@ section { position: relative; padding: clamp(84px, 12vh, 150px) 0; }
   transition: border-color 0.25s, background 0.25s, box-shadow 0.25s;
 }
 .contact-form input::placeholder, .contact-form textarea::placeholder { color: var(--faint); }
-.contact-form select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%235bc8ff' stroke-width='1.5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; padding-right: 40px; }
+.contact-form select { -webkit-appearance: none; -moz-appearance: none; appearance: none; background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%235bc8ff' stroke-width='1.5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; padding-right: 40px; }
 .contact-form select option { background: var(--ink-700); color: var(--paper); }
 .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus {
   outline: none; border-color: var(--cyan); background: rgba(91, 200, 255, 0.05); box-shadow: 0 0 0 3px rgba(91, 200, 255, 0.22);
@@ -529,7 +533,7 @@ section { position: relative; padding: clamp(84px, 12vh, 150px) 0; }
 
 @media (max-width: 760px) {
   .nav-menu {
-    position: fixed; inset: 72px 0 auto 0; flex-direction: column; align-items: stretch; gap: 4px;
+    position: fixed; inset: var(--nav-h) 0 auto 0; flex-direction: column; align-items: stretch; gap: 4px;
     background: rgba(8, 12, 20, 0.97); backdrop-filter: blur(16px); padding: 16px var(--gutter) 24px;
     border-bottom: 1px solid var(--line); transform: translateY(-130%); transition: transform 0.4s var(--ease), visibility 0.4s;
     visibility: hidden;
@@ -541,6 +545,7 @@ section { position: relative; padding: clamp(84px, 12vh, 150px) 0; }
   .nav-toggle { display: flex; }
   .logo-text { font-size: 1.12rem; }
   .spine { display: none; }
+  .flow > section .container { padding-left: var(--gutter); }
   .hero-metrics { grid-template-columns: repeat(2, 1fr); }
   .hero-metric:nth-child(odd) { border-right: 1px solid var(--line); }
   .hero-metric:nth-child(even) { border-right: none; }
@@ -552,11 +557,6 @@ section { position: relative; padding: clamp(84px, 12vh, 150px) 0; }
   .footer-contact { justify-content: center; gap: 18px; }
   .section-tag { letter-spacing: 0.14em; }
   .scroll-hint { display: none; }
-}
-
-/* spine offset content on desktop */
-@media (min-width: 761px) {
-  .flow > section .container { padding-left: calc(var(--gutter) + 44px); }
 }
 
 @media (prefers-reduced-motion: reduce) {

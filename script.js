@@ -120,7 +120,12 @@ document.addEventListener('DOMContentLoaded', function () {
     if (rail) rail.style.setProperty('--p', p);
     root.style.setProperty('--spine-fill', (p * 100).toFixed(2) + '%');
     root.style.setProperty('--grid-shift', (-scrollTop * 0.04).toFixed(1) + 'px');
-    if (navbar) navbar.classList.toggle('scrolled', scrollTop > 60);
+    if (navbar) {
+      var scrolled = scrollTop > 60;
+      navbar.classList.toggle('scrolled', scrolled);
+      // Keep the mobile dropdown flush against the navbar in both heights.
+      root.style.setProperty('--nav-h', scrolled ? '60px' : '74px');
+    }
     ticking = false;
   }
   window.addEventListener('scroll', function () {
