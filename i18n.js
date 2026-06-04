@@ -16,10 +16,6 @@ const translations = {
     "hero.stat3.label": "年市場規模 TWD",
     "hero.stat3.unit": "兆",
     "hero.stat4.label": "驗收週期縮短 (目標)",
-    "alt.problem": "工地現場",
-    "alt.solution.t1": "結構施工圖自動解析",
-    "alt.solution.t2": "AR 現場指導",
-    "alt.solution.t3": "AI 即時驗證",
     "problem.label": "THE CRISIS 產業缺口",
     "problem.heading": ["設計與現場脫節", "鋼筋錯誤太晚才發現"],
     "problem.lead": "施工圖意圖經人工判讀後才到現場，誤差往往在監造抽查或灌漿後才浮現。鋼筋工嚴重短缺、返工成本高昂，且全程缺乏可稽核的竣工紀錄。",
@@ -37,6 +33,7 @@ const translations = {
     "problem.loss1.label": "鋼筋返工直接成本",
     "problem.loss2.label": "工期延誤損失",
     "problem.loss3.label": "驗收失敗重做",
+    "problem.loss.caption": "產業推估，未經獨立驗證",
     "solution.label": "OUR TECHNOLOGY 核心技術",
     "solution.heading": ["端到端施工執行管線"],
     "solution.lead": "以結構施工圖為唯一真值，從下料到驗收全程由 AI 接管",
@@ -154,17 +151,13 @@ const translations = {
     "hero.badge": "AI + AR Construction Execution Platform",
     "hero.title": ["From Drawing to Inspection", "Zero-Error Rebar Execution"],
     "hero.subtitle": "AR-guided field placement, AI-verified rebar, auditable as-built records.",
-    "hero.subtitle-en": "From structural drawing to verified-in-place rebar.",
+    "hero.subtitle-en": "",
     "hero.cta": "Start a conversation",
     "hero.stat1.label": "Target rebar rework reduction",
     "hero.stat2.label": "Target estimation hours saved",
-    "hero.stat3.label": "Taiwan construction TAM (TWD)",
+    "hero.stat3.label": "Taiwan construction market (TWD)",
     "hero.stat3.unit": "T",
     "hero.stat4.label": "Target inspection time reduction",
-    "alt.problem": "Construction site",
-    "alt.solution.t1": "Structural drawing parsing",
-    "alt.solution.t2": "AR field guidance",
-    "alt.solution.t3": "Real-time AI verification",
     "problem.label": "THE CRISIS",
     "problem.heading": ["Design Intent and Field Execution", "Are Disconnected"],
     "problem.lead": "Structural drawings are interpreted by hand before they reach the slab. Errors surface only at inspection — or after the pour. Skilled ironworkers are scarce, rework is expensive, and no auditable as-built record exists.",
@@ -178,13 +171,14 @@ const translations = {
     "problem.crisis4.text": "auditable as-built record today",
     "problem.quote": "\"We tied to the drawing. Inspector arrived, said spacing was off and cover was short. Cut, re-tie — there goes the week.\"",
     "problem.quote.cite": "— Site superintendent interview (illustrative, not an attributed customer quote)",
-    "problem.loss.unit": "億",
+    "problem.loss.unit": "",
     "problem.loss1.label": "Direct rebar rework cost (× 100M TWD)",
     "problem.loss2.label": "Schedule delay losses (× 100M TWD)",
     "problem.loss3.label": "Inspection-failure redo (× 100M TWD)",
+    "problem.loss.caption": "Industry estimates, not independently verified",
     "solution.label": "OUR TECHNOLOGY",
     "solution.heading": ["End-to-End Execution Pipeline"],
-    "solution.lead": "The structural drawing is ground truth — AI runs everything from fabrication to verified placement.",
+    "solution.lead": "The structural drawing is ground truth — AI runs everything from fabrication to verified, inspection-ready placement.",
     "solution.t1.title": "Automated Drawing Parsing",
     "solution.t1.en": "",
     "solution.t1.desc": "Structural drawing → bar schedule, cut list, bending list. Integrated with the Wei-Zhi engine to drive fabrication shops directly.",
@@ -306,10 +300,6 @@ const translations = {
     "hero.stat3.label": "年間市場規模（TWD）",
     "hero.stat3.unit": "兆",
     "hero.stat4.label": "検査サイクル短縮（目標）",
-    "alt.problem": "建設現場",
-    "alt.solution.t1": "構造施工図の自動解析",
-    "alt.solution.t2": "AR 現場ガイダンス",
-    "alt.solution.t3": "AI リアルタイム検証",
     "problem.label": "産業の課題",
     "problem.heading": ["設計と現場が分断され", "鉄筋エラーが手遅れで発見される"],
     "problem.lead": "施工図は人手で読まれて現場に届き、誤差は監理検査や打設後にようやく現れます。鉄筋工は人手不足、手戻りは高コスト、そして監査可能な竣工記録は存在しません。",
@@ -327,9 +317,10 @@ const translations = {
     "problem.loss1.label": "鉄筋手戻り直接コスト",
     "problem.loss2.label": "工期遅延損失",
     "problem.loss3.label": "検査不合格の再施工",
+    "problem.loss.caption": "業界推計、未検証",
     "solution.label": "コア技術",
     "solution.heading": ["エンド・ツー・エンド施工実行パイプライン"],
-    "solution.lead": "構造施工図を唯一の正とし、加工から検証配筋まですべてをAIが担当",
+    "solution.lead": "構造施工図を唯一の正とし、加工から検証・竣工まですべてをAIが担当",
     "solution.t1.title": "施工図の自動解析",
     "solution.t1.en": "Automated Drawing Parsing",
     "solution.t1.desc": "構造施工図 → 鉄筋計量表・切断表・加工表。威智（Wei-Zhi）エンジンと連携し加工工場に直接送出。",
@@ -467,11 +458,6 @@ function setLanguage(lang) {
     if (t[key] !== undefined) el.placeholder = t[key];
   });
 
-  document.querySelectorAll("[data-i18n-alt]").forEach(function (el) {
-    var key = el.getAttribute("data-i18n-alt");
-    if (t[key] !== undefined) el.alt = t[key];
-  });
-
   // Toggle visibility of elements with empty translations
   document.querySelectorAll("[data-i18n]").forEach(function (el) {
     var key = el.getAttribute("data-i18n");
@@ -485,7 +471,9 @@ function setLanguage(lang) {
 
   // Update active language button
   document.querySelectorAll(".lang-btn").forEach(function (btn) {
-    btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
+    var isActive = btn.getAttribute("data-lang") === lang;
+    btn.classList.toggle("active", isActive);
+    btn.setAttribute("aria-pressed", isActive ? "true" : "false");
   });
 
   localStorage.setItem("itech-lang", lang);
