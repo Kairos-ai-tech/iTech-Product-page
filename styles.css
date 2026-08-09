@@ -245,6 +245,7 @@ section[id] { scroll-margin-top: 84px; }
   font-weight: 500;
   transition: color 0.2s;
   position: relative;
+  white-space: nowrap;
 }
 
 .nav-links a:not(.nav-cta):hover { color: #fff; }
@@ -1407,18 +1408,12 @@ section[id] { scroll-margin-top: 84px; }
   }
 }
 
-/* six nav items + CTA no longer fit at the default gap/size in this band */
+/* Six nav items + CTA don't reliably fit a shrinking flex row in English at
+   tablet widths — the CTA button's text wraps internally before the row as a
+   whole "overflows" in any way a container-width check would catch. Simplest
+   correct fix: use the mobile (hamburger) nav in this whole band instead of
+   trying to squeeze a 7-item row. */
 @media (max-width: 900px) {
-  .nav-links {
-    gap: 16px;
-  }
-
-  .nav-links a:not(.nav-cta) {
-    font-size: 0.82rem;
-  }
-}
-
-@media (max-width: 768px) {
   .nav-toggle { display: block; }
 
   .nav-links {
@@ -1440,7 +1435,9 @@ section[id] { scroll-margin-top: 84px; }
   .nav-cta {
     text-align: center;
   }
+}
 
+@media (max-width: 768px) {
   .hero-content {
     padding-top: 130px;
   }
