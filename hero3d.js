@@ -38,6 +38,15 @@ async function init() {
   renderer.setClearColor(0x0b1a2d, 1);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, isNarrow ? 1.5 : 2));
 
+  let contextLost = false;
+  canvas.addEventListener('webglcontextlost', (e) => {
+    e.preventDefault();
+    contextLost = true;
+  });
+  canvas.addEventListener('webglcontextrestored', () => {
+    contextLost = false;
+  });
+
   // ===== Blueprint ground grid =====
   const grid = new THREE.GridHelper(70, 56, 0x0ea5a0, 0x15293f);
   grid.position.y = -3;
@@ -128,7 +137,7 @@ async function init() {
 
   function tick() {
     requestAnimationFrame(tick);
-    if (!active) return;
+    if (!active || contextLost) return;
 
     const t = (performance.now() - startTime) / 1000;
     const p = getProgress();

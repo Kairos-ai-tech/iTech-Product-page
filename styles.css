@@ -942,12 +942,6 @@ section[id] { scroll-margin-top: 84px; }
   flex: 1;
 }
 
-/* Emoji icons read as consumer-grade next to the numbered markers —
-   hidden for a more restrained, engineering-document tone. */
-.timeline-icon {
-  display: none;
-}
-
 .timeline-content h3 {
   font-family: var(--font-display);
   font-size: 1.2rem;
@@ -1410,6 +1404,17 @@ section[id] { scroll-margin-top: 84px; }
 
   .moats {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* six nav items + CTA no longer fit at the default gap/size in this band */
+@media (max-width: 900px) {
+  .nav-links {
+    gap: 16px;
+  }
+
+  .nav-links a:not(.nav-cta) {
+    font-size: 0.82rem;
   }
 }
 
