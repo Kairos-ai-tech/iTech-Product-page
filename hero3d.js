@@ -24,7 +24,7 @@ async function init() {
   try {
     THREE = await import('three');
   } catch (e) {
-    return; // CDN unreachable — keep the static fallback, fail silently
+    return; // module load failed — keep the static fallback, fail silently
   }
 
   const isNarrow = window.innerWidth < 768;
