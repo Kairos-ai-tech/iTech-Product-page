@@ -19,8 +19,12 @@
   <title>iTech — AI + AR 營造執行平台｜鋼筋施工零誤差</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;900&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <!-- Vendored, not CDN-loaded: no runtime dependency on a third-party host. -->
+  <script type="importmap">
+    { "imports": { "three": "./vendor/three.module.min.js" } }
+  </script>
 </head>
 <body>
   <nav class="navbar" id="navbar">
@@ -42,6 +46,7 @@
       <ul class="nav-links" id="navLinks">
         <li><a href="#problem" data-i18n="nav.crisis">危機</a></li>
         <li><a href="#solution" data-i18n="nav.tech">技術</a></li>
+        <li><a href="#product" data-i18n="nav.product">產品</a></li>
         <li><a href="#process" data-i18n="nav.process">流程</a></li>
         <li><a href="#results" data-i18n="nav.results">成效</a></li>
         <li><a href="#advantage" data-i18n="nav.advantage">優勢</a></li>
@@ -50,11 +55,13 @@
     </div>
   </nav>
 
-  <!-- ===== HERO ===== -->
+  <!-- ===== HERO (scroll-scrubbed 3D: camera flies toward a rebar cage) ===== -->
+  <div class="hero-track">
   <section class="hero" id="hero">
     <div class="hero-bg">
       <!-- TODO: replace with branded construction site / rebar / formwork hero image -->
       <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1920&q=80" alt="" class="hero-img">
+      <canvas id="hero-canvas" class="hero-canvas" aria-hidden="true"></canvas>
       <div class="hero-overlay"></div>
     </div>
     <div class="hero-content">
@@ -90,6 +97,7 @@
       <div class="scroll-line"></div>
     </div>
   </section>
+  </div>
 
   <!-- ===== PROBLEM ===== -->
   <section class="problem" id="problem">
@@ -215,6 +223,62 @@
     </div>
   </section>
 
+  <!-- ===== PRODUCT (live today) ===== -->
+  <section class="product" id="product">
+    <div class="container">
+      <p class="section-label fade-in" data-i18n="product.label">MODULE LIVE TODAY 現行落地模組</p>
+      <h2 class="section-heading fade-in" data-delay="1" data-i18n="product.heading">不只是願景<br>鋼筋估算已在產線運作</h2>
+      <p class="section-lead fade-in" data-delay="2" data-i18n="product.lead">施工圖解析引擎已作為獨立模組上線：AutoCAD 結構圖 → 施工圖 → 計料表，全流程自動化，並原生對接客戶既有巨集匯入流程。</p>
+    </div>
+
+    <div class="tech-showcase">
+      <article class="tech-panel fade-in" data-delay="3">
+        <div class="tech-panel-img">
+          <!-- TODO: replace with branded AutoCAD / shop-drawing screenshot -->
+          <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80" alt="Rebar estimation automation system" data-i18n-alt="alt.product">
+          <span class="tech-number">✓</span>
+        </div>
+        <div class="tech-panel-content">
+          <h3 data-i18n="product.panel.title">鋼筋估算自動化系統</h3>
+          <p class="tech-en" data-i18n="product.panel.en">Rebar Estimation Automation System</p>
+          <p data-i18n="product.panel.desc">AutoCAD 2021 外掛加上跨平台桌面版，將結構施工圖直接轉為加工圖與計料表 (.xlsm)。樑柱辨識準確率達合約驗收門檻，輸出免二次轉檔即可匯入客戶既有巨集系統。</p>
+          <div class="tech-metrics">
+            <span class="correct" data-i18n="product.m1">樑柱辨識 ≥ 90%</span>
+            <span data-i18n="product.m2">施工圖 → 計料表 全自動</span>
+            <span data-i18n="product.m3">GTA / CCM 巨集原生相容</span>
+            <span data-i18n="product.m4">Style Guide 可調規則引擎</span>
+          </div>
+          <div class="tech-tags"><span>AutoCAD 2021</span><span>.NET</span><span>Avalonia Desktop</span></div>
+        </div>
+      </article>
+    </div>
+
+    <div class="container">
+      <div class="moats">
+        <div class="moat fade-in" data-delay="4">
+          <div class="moat-line"></div>
+          <h3 data-i18n="product.moat1.title">施工圖辨識</h3>
+          <p data-i18n="product.moat1.desc">自動判讀樑、柱配置與尺寸標註，比對 Style Guide 規則</p>
+        </div>
+        <div class="moat fade-in" data-delay="5">
+          <div class="moat-line"></div>
+          <h3 data-i18n="product.moat2.title">加工圖自動生成</h3>
+          <p data-i18n="product.moat2.desc">依辨識結果產出可送加工廠的施工圖 (.dwg / DXF)</p>
+        </div>
+        <div class="moat fade-in" data-delay="6">
+          <div class="moat-line"></div>
+          <h3 data-i18n="product.moat3.title">計料表匯出</h3>
+          <p data-i18n="product.moat3.desc">產出符合客戶既有巨集格式的 .xlsm 計料表，免重工轉檔</p>
+        </div>
+        <div class="moat fade-in" data-delay="7">
+          <div class="moat-line"></div>
+          <h3 data-i18n="product.moat4.title">工作流與品管追蹤</h3>
+          <p data-i18n="product.moat4.desc">逐元件狀態追蹤，收斂為可交付的最終品管紀錄</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== PROCESS ===== -->
   <section class="process" id="process">
     <div class="container">
@@ -227,7 +291,6 @@
       <div class="timeline-step fade-in" data-delay="2">
         <div class="timeline-marker">1</div>
         <div class="timeline-content">
-          <div class="timeline-icon">📐</div>
           <h3 data-i18n="process.s1.title">施工圖匯入</h3>
           <p class="timeline-en" data-i18n="process.s1.en">Import Drawing</p>
           <p data-i18n="process.s1.desc">上傳結構施工圖，自動生成計料表與下料表</p>
@@ -236,7 +299,6 @@
       <div class="timeline-step fade-in" data-delay="3">
         <div class="timeline-marker">2</div>
         <div class="timeline-content">
-          <div class="timeline-icon">🏭</div>
           <h3 data-i18n="process.s2.title">加工配送</h3>
           <p class="timeline-en" data-i18n="process.s2.en">Fabricate &amp; Deliver</p>
           <p data-i18n="process.s2.desc">驅動加工廠機具，逐根 QR 標籤，按澆置區配送</p>
@@ -245,7 +307,6 @@
       <div class="timeline-step fade-in" data-delay="4">
         <div class="timeline-marker">3</div>
         <div class="timeline-content">
-          <div class="timeline-icon">📱</div>
           <h3 data-i18n="process.s3.title">AR 指導綁紮</h3>
           <p class="timeline-en" data-i18n="process.s3.en">AR-Guided Placement</p>
           <p data-i18n="process.s3.desc">工班透過平板看 3D 疊圖，依規範即時就位綁紮</p>
@@ -254,7 +315,6 @@
       <div class="timeline-step fade-in" data-delay="5">
         <div class="timeline-marker">4</div>
         <div class="timeline-content">
-          <div class="timeline-icon">✅</div>
           <h3 data-i18n="process.s4.title">驗證與竣工紀錄</h3>
           <p class="timeline-en" data-i18n="process.s4.en">Verify &amp; Snapshot</p>
           <p data-i18n="process.s4.desc">灌漿前 CV 驗證，產出可簽章的稽核級竣工紀錄</p>
@@ -452,5 +512,6 @@
 
   <script src="i18n.js"></script>
   <script src="script.js"></script>
+  <script type="module" src="hero3d.js"></script>
 </body>
 </html>
