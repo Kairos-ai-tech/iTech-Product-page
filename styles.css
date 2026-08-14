@@ -263,6 +263,14 @@ section[id] { scroll-margin-top: 84px; }
 
 .nav-links a:not(.nav-cta):hover::after { transform: scaleX(1); }
 
+.nav-disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.nav-disabled:hover { color: rgba(255, 255, 255, 0.72) !important; }
+.nav-disabled::after { display: none; }
+
 .nav-cta {
   background: var(--teal) !important;
   color: #fff !important;
