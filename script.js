@@ -19,11 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   navLinks.querySelectorAll('a').forEach(function (link) {
-    link.addEventListener('click', function (e) {
-      if (link.getAttribute('aria-disabled') === 'true') {
-        e.preventDefault();
-        return;
-      }
+    link.addEventListener('click', function () {
       navToggle.classList.remove('active');
       navLinks.classList.remove('active');
     });

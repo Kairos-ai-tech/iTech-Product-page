@@ -266,6 +266,7 @@ section[id] { scroll-margin-top: 84px; }
 .nav-disabled {
   opacity: 0.45;
   cursor: not-allowed;
+  pointer-events: none;
 }
 
 .nav-disabled:hover { color: rgba(255, 255, 255, 0.72) !important; }
@@ -1356,10 +1357,9 @@ section[id] { scroll-margin-top: 84px; }
 
 .pilot-inner .section-label,
 .pilot-inner .contact-desc {
-  margin: 20px auto 0;
+  margin-left: auto;
+  margin-right: auto;
 }
-
-.pilot-inner .section-label { margin-top: 0; }
 
 .pilot-form {
   text-align: left;
