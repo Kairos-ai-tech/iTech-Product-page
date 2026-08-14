@@ -51,8 +51,8 @@
         <li><a href="#results" data-i18n="nav.results">成效</a></li>
         <li><a href="#advantage" data-i18n="nav.advantage">優勢</a></li>
         <li><a href="#pilot" data-i18n="nav.pilot">免費試點</a></li>
-        <!-- TODO: replace href with the real application URL -->
-        <li><a href="#" target="_blank" rel="noopener" data-i18n="nav.app">應用系統</a></li>
+        <!-- TODO: replace href="#" with the real application URL, then add target="_blank" rel="noopener" -->
+        <li><a href="#" data-i18n="nav.app">應用系統</a></li>
         <li><a href="#contact" class="nav-cta" data-i18n="nav.contact">聯絡我們</a></li>
       </ul>
     </div>
@@ -461,7 +461,7 @@
         </div>
         <div class="form-group">
           <label for="pilotEmail" data-i18n="contact.email">Email</label>
-          <input type="email" id="pilotEmail" name="email" required placeholder="you@example.com">
+          <input type="email" id="pilotEmail" name="email" required placeholder="you@example.com" data-i18n-placeholder="contact.email.placeholder">
         </div>
         <div class="form-group">
           <label for="pilotType" data-i18n="pilot.type">施工類型 Construction Type</label>
@@ -499,7 +499,7 @@
           </div>
           <div class="form-group">
             <label for="email" data-i18n="contact.email">Email</label>
-            <input type="email" id="email" name="email" required placeholder="you@example.com">
+            <input type="email" id="email" name="email" required placeholder="you@example.com" data-i18n-placeholder="contact.email.placeholder">
           </div>
         </div>
         <div class="form-group">
