@@ -266,7 +266,6 @@ section[id] { scroll-margin-top: 84px; }
 .nav-disabled {
   opacity: 0.45;
   cursor: not-allowed;
-  pointer-events: none;
 }
 
 .nav-disabled:hover { color: rgba(255, 255, 255, 0.72) !important; }
@@ -1346,6 +1345,7 @@ section[id] { scroll-margin-top: 84px; }
     radial-gradient(80% 60% at 100% 0%, rgba(14, 165, 160, 0.18) 0%, transparent 55%),
     linear-gradient(155deg, var(--navy) 0%, var(--navy-mid) 100%);
   padding: clamp(80px, 12vh, 140px) 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .pilot-inner {
