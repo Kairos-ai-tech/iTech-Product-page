@@ -126,4 +126,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
     window.location.href = 'mailto:kairos.ai.tech@gmail.com?subject=' + subject + '&body=' + body;
   });
+
+  // ===== Pilot application form =====
+  const pilotForm = document.getElementById('pilotForm');
+
+  pilotForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const company = document.getElementById('pilotCompany').value;
+    const email = document.getElementById('pilotEmail').value;
+    const constructionType = document.getElementById('pilotType').value;
+
+    const subject = encodeURIComponent('iTech 免費試點申請 from ' + company);
+    const body = encodeURIComponent(
+      '公司名稱 Company: ' + company + '\n' +
+      'Email: ' + email + '\n' +
+      '施工類型 Construction Type: ' + constructionType
+    );
+
+    window.location.href = 'mailto:kairos.ai.tech@gmail.com?subject=' + subject + '&body=' + body;
+  });
 });

@@ -50,6 +50,9 @@
         <li><a href="#process" data-i18n="nav.process">流程</a></li>
         <li><a href="#results" data-i18n="nav.results">成效</a></li>
         <li><a href="#advantage" data-i18n="nav.advantage">優勢</a></li>
+        <li><a href="#pilot" data-i18n="nav.pilot">免費試點</a></li>
+        <!-- TODO: replace href with the real application URL -->
+        <li><a href="#" target="_blank" rel="noopener" data-i18n="nav.app">應用系統</a></li>
         <li><a href="#contact" class="nav-cta" data-i18n="nav.contact">聯絡我們</a></li>
       </ul>
     </div>
@@ -442,6 +445,40 @@
           <p data-i18n="advantage.moat4.desc">與威智 (Wei-Zhi) 鋼筋施工圖自動化整合，串接加工廠與營造廠的既有產業鏈</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ===== PILOT (free pilot application) ===== -->
+  <section class="pilot" id="pilot">
+    <div class="pilot-inner">
+      <p class="section-label light fade-in" data-i18n="pilot.label">FREE PILOT 免費試點</p>
+      <h2 class="section-heading light fade-in" data-delay="1" data-i18n="pilot.heading">申請免費試點</h2>
+      <p class="contact-desc fade-in" data-delay="2" data-i18n="pilot.desc">留下公司資訊，我們將與您聯繫安排試點導入。</p>
+      <form class="contact-form pilot-form fade-in" data-delay="3" id="pilotForm">
+        <div class="form-group">
+          <label for="pilotCompany" data-i18n="pilot.company">公司名稱 Company</label>
+          <input type="text" id="pilotCompany" name="company" required placeholder="您的公司名稱" data-i18n-placeholder="pilot.company.placeholder">
+        </div>
+        <div class="form-group">
+          <label for="pilotEmail" data-i18n="contact.email">Email</label>
+          <input type="email" id="pilotEmail" name="email" required placeholder="you@example.com">
+        </div>
+        <div class="form-group">
+          <label for="pilotType" data-i18n="pilot.type">施工類型 Construction Type</label>
+          <select id="pilotType" name="constructionType" required>
+            <option value="" disabled selected data-i18n="contact.role.placeholder">請選擇 Select</option>
+            <option value="building" data-i18n="pilot.type.building">建築工程 Building Construction</option>
+            <option value="civil" data-i18n="pilot.type.civil">土木工程 Civil Engineering</option>
+            <option value="industrial" data-i18n="pilot.type.industrial">廠房/工業建築 Industrial / Factory</option>
+            <option value="public" data-i18n="pilot.type.public">公共工程 Public Works</option>
+            <option value="other" data-i18n="pilot.type.other">其他 Other</option>
+          </select>
+        </div>
+        <button type="submit" class="form-submit">
+          <span data-i18n="pilot.submit">申請免費試點 Apply for Free Pilot</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </form>
     </div>
   </section>
 
