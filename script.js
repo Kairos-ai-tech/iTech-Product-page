@@ -105,6 +105,13 @@ document.addEventListener('DOMContentLoaded', function () {
   // ===== Initialize language =====
   initLanguage();
 
+  // ===== mailto form submission =====
+  function submitViaMailto(subject, bodyLines) {
+    const encodedSubject = encodeURIComponent(subject);
+    const encodedBody = encodeURIComponent(bodyLines.join('\n'));
+    window.location.href = 'mailto:kairos.ai.tech@gmail.com?subject=' + encodedSubject + '&body=' + encodedBody;
+  }
+
   // ===== Contact form =====
   const contactForm = document.getElementById('contactForm');
 
@@ -116,14 +123,29 @@ document.addEventListener('DOMContentLoaded', function () {
     const role = document.getElementById('role').value;
     const message = document.getElementById('message').value;
 
-    const subject = encodeURIComponent('iTech 營造執行平台 — 聯絡表單 from ' + name);
-    const body = encodeURIComponent(
-      '姓名 Name: ' + name + '\n' +
-      'Email: ' + email + '\n' +
-      '身份 Role: ' + role + '\n\n' +
-      '訊息 Message:\n' + message
-    );
+    submitViaMailto('iTech 營造執行平台 — 聯絡表單 from ' + name, [
+      '姓名 Name: ' + name,
+      'Email: ' + email,
+      '身份 Role: ' + role,
+      '',
+      '訊息 Message:\n' + message,
+    ]);
+  });
 
-    window.location.href = 'mailto:kairos.ai.tech@gmail.com?subject=' + subject + '&body=' + body;
+  // ===== Pilot application form =====
+  const pilotForm = document.getElementById('pilotForm');
+
+  pilotForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const company = document.getElementById('pilotCompany').value;
+    const email = document.getElementById('pilotEmail').value;
+    const constructionType = document.getElementById('pilotType').value;
+
+    submitViaMailto('iTech 免費試點申請 from ' + company, [
+      '公司名稱 Company: ' + company,
+      'Email: ' + email,
+      '施工類型 Construction Type: ' + constructionType,
+    ]);
   });
 });

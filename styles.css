@@ -263,6 +263,14 @@ section[id] { scroll-margin-top: 84px; }
 
 .nav-links a:not(.nav-cta):hover::after { transform: scaleX(1); }
 
+.nav-disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.nav-disabled:hover { color: rgba(255, 255, 255, 0.72) !important; }
+.nav-disabled::after { display: none; }
+
 .nav-cta {
   background: var(--teal) !important;
   color: #fff !important;
@@ -1331,6 +1339,33 @@ section[id] { scroll-margin-top: 84px; }
 .form-submit svg { transition: transform 0.2s; }
 .form-submit:hover svg { transform: translateX(4px); }
 
+/* ===== PILOT (free pilot application) ===== */
+.pilot {
+  background:
+    radial-gradient(80% 60% at 100% 0%, rgba(14, 165, 160, 0.18) 0%, transparent 55%),
+    linear-gradient(155deg, var(--navy) 0%, var(--navy-mid) 100%);
+  padding: clamp(80px, 12vh, 140px) 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.pilot-inner {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 48px);
+  text-align: center;
+}
+
+.pilot-inner .section-label,
+.pilot-inner .contact-desc {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pilot-form {
+  text-align: left;
+  margin-top: 40px;
+}
+
 /* ===== FOOTER ===== */
 .footer {
   background: var(--navy);
@@ -1408,12 +1443,14 @@ section[id] { scroll-margin-top: 84px; }
   }
 }
 
-/* Six nav items + CTA don't reliably fit a shrinking flex row in English at
-   tablet widths — the CTA button's text wraps internally before the row as a
-   whole "overflows" in any way a container-width check would catch. Simplest
-   correct fix: use the mobile (hamburger) nav in this whole band instead of
-   trying to squeeze a 7-item row. */
-@media (max-width: 900px) {
+/* Eight nav items + CTA (added Free Pilot / Application) don't reliably fit a
+   shrinking flex row in English at tablet widths — the CTA button's text
+   wraps internally before the row as a whole "overflows" in any way a
+   container-width check would catch. Simplest correct fix: use the mobile
+   (hamburger) nav in this whole band instead of trying to squeeze a 9-item
+   row. Measured overflow cutoff at 1040px (EN, longest labels); breakpoint
+   set with margin above that. */
+@media (max-width: 1080px) {
   .nav-toggle { display: block; }
 
   .nav-links {

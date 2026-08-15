@@ -14,7 +14,15 @@
   <meta property="og:image" content="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1200&q=80">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="800">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="iTech — AI + AR 營造執行平台｜從施工圖到驗收，鋼筋施工零誤差">
+  <meta name="twitter:description" content="結構施工圖為唯一真值，AI 接管下料、配送、AR 指導綁紮、CV 驗證與竣工紀錄。From drawing to verified-in-place rebar.">
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1200&q=80">
   <link rel="canonical" href="https://itech.kairosaitech.com/">
+  <link rel="alternate" hreflang="zh-Hant" href="https://itech.kairosaitech.com/">
+  <link rel="alternate" hreflang="en" href="https://itech.kairosaitech.com/">
+  <link rel="alternate" hreflang="ja" href="https://itech.kairosaitech.com/">
+  <link rel="alternate" hreflang="x-default" href="https://itech.kairosaitech.com/">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏗️</text></svg>">
   <title>iTech — AI + AR 營造執行平台｜鋼筋施工零誤差</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,13 +33,50 @@
   <script type="importmap">
     { "imports": { "three": "./vendor/three.module.min.js" } }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://itech.kairosaitech.com/#organization",
+        "name": "iTech",
+        "url": "https://itech.kairosaitech.com/",
+        "email": "kairos.ai.tech@gmail.com",
+        "description": "AI + AR construction execution platform for structural rebar: automated drawing parsing, AR field guidance, and computer-vision as-built verification.",
+        "parentOrganization": {
+          "@type": "Organization",
+          "name": "Kairos.ai",
+          "url": "https://www.kairosaitech.com/?lang=zh-TW"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://itech.kairosaitech.com/#website",
+        "url": "https://itech.kairosaitech.com/",
+        "name": "iTech",
+        "inLanguage": ["zh-Hant", "en", "ja"],
+        "publisher": { "@id": "https://itech.kairosaitech.com/#organization" }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "iTech Rebar Estimation Automation System",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Windows, AutoCAD 2021",
+        "url": "https://itech.kairosaitech.com/#product",
+        "description": "AutoCAD 2021 plugin plus a cross-platform desktop app that converts structural drawings directly into shop drawings and a material-list workbook (.xlsm), importing natively into a fabricator's existing macro tooling. Beam/column recognition ≥ 90%.",
+        "provider": { "@id": "https://itech.kairosaitech.com/#organization" }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <nav class="navbar" id="navbar">
     <div class="nav-container">
       <a href="https://www.kairosaitech.com/?lang=zh-TW" class="nav-logo" target="_blank" rel="noopener">
         <span class="logo-mark">技</span>
-        <span class="logo-text">AI學徒 iTech</span>
+        <span class="logo-text">iTech</span>
       </a>
       <div class="nav-right">
         <div class="lang-switcher">
@@ -50,6 +95,9 @@
         <li><a href="#process" data-i18n="nav.process">流程</a></li>
         <li><a href="#results" data-i18n="nav.results">成效</a></li>
         <li><a href="#advantage" data-i18n="nav.advantage">優勢</a></li>
+        <li><a href="#pilot" data-i18n="nav.pilot">免費試點</a></li>
+        <!-- TODO: add href="<real application URL>" target="_blank" rel="noopener" and remove class="nav-disabled" aria-disabled="true" -->
+        <li><a class="nav-disabled" aria-disabled="true" data-i18n="nav.app">應用系統</a></li>
         <li><a href="#contact" class="nav-cta" data-i18n="nav.contact">聯絡我們</a></li>
       </ul>
     </div>
@@ -445,6 +493,40 @@
     </div>
   </section>
 
+  <!-- ===== PILOT (free pilot application) ===== -->
+  <section class="pilot" id="pilot">
+    <div class="pilot-inner">
+      <p class="section-label light fade-in" data-i18n="pilot.label">FREE PILOT 免費試點</p>
+      <h2 class="section-heading light fade-in" data-delay="1" data-i18n="pilot.heading">申請免費試點</h2>
+      <p class="contact-desc fade-in" data-delay="2" data-i18n="pilot.desc">留下公司資訊，我們將與您聯繫安排試點導入。</p>
+      <form class="contact-form pilot-form fade-in" data-delay="3" id="pilotForm">
+        <div class="form-group">
+          <label for="pilotCompany" data-i18n="pilot.company">公司名稱 Company</label>
+          <input type="text" id="pilotCompany" name="company" required placeholder="您的公司名稱" data-i18n-placeholder="pilot.company.placeholder">
+        </div>
+        <div class="form-group">
+          <label for="pilotEmail" data-i18n="contact.email">Email</label>
+          <input type="email" id="pilotEmail" name="email" required placeholder="you@example.com" data-i18n-placeholder="contact.email.placeholder">
+        </div>
+        <div class="form-group">
+          <label for="pilotType" data-i18n="pilot.type">施工類型 Construction Type</label>
+          <select id="pilotType" name="constructionType" required>
+            <option value="" disabled selected data-i18n="contact.role.placeholder">請選擇 Select</option>
+            <option value="building" data-i18n="pilot.type.building">建築工程 Building Construction</option>
+            <option value="civil" data-i18n="pilot.type.civil">土木工程 Civil Engineering</option>
+            <option value="industrial" data-i18n="pilot.type.industrial">廠房/工業建築 Industrial / Factory</option>
+            <option value="public" data-i18n="pilot.type.public">公共工程 Public Works</option>
+            <option value="other" data-i18n="pilot.type.other">其他 Other</option>
+          </select>
+        </div>
+        <button type="submit" class="form-submit">
+          <span data-i18n="pilot.submit">申請免費試點 Apply for Free Pilot</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </form>
+    </div>
+  </section>
+
   <!-- ===== CONTACT ===== -->
   <section class="contact" id="contact">
     <div class="contact-inner">
@@ -462,7 +544,7 @@
           </div>
           <div class="form-group">
             <label for="email" data-i18n="contact.email">Email</label>
-            <input type="email" id="email" name="email" required placeholder="you@example.com">
+            <input type="email" id="email" name="email" required placeholder="you@example.com" data-i18n-placeholder="contact.email.placeholder">
           </div>
         </div>
         <div class="form-group">
@@ -506,7 +588,7 @@
           <span>kairos.ai.tech@gmail.com</span>
         </a>
       </div>
-      <p class="footer-rights" data-i18n="footer.rights">© 2026 AI學徒 iTech. All rights reserved.</p>
+      <p class="footer-rights" data-i18n="footer.rights">© 2026 iTech. All rights reserved.</p>
     </div>
   </footer>
 
