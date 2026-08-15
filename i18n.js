@@ -176,7 +176,7 @@ const translations = {
     "contact.message": "訊息 Message",
     "contact.message.placeholder": "請輸入您的訊息...",
     "contact.submit": "送出訊息 Send Message",
-    "footer.rights": "© 2026 AI學徒 iTech. All rights reserved.",
+    "footer.rights": "© 2026 iTech. All rights reserved.",
     "footer.company": "Kairos.ai"
   },
   "en": {
@@ -356,7 +356,7 @@ const translations = {
     "contact.message": "Message",
     "contact.message.placeholder": "Enter your message...",
     "contact.submit": "Send Message",
-    "footer.rights": "© 2026 AI學徒 iTech. All rights reserved.",
+    "footer.rights": "© 2026 iTech. All rights reserved.",
     "footer.company": "Kairos.ai"
   },
   "ja": {
@@ -536,7 +536,7 @@ const translations = {
     "contact.message": "メッセージ",
     "contact.message.placeholder": "メッセージを入力してください...",
     "contact.submit": "送信する",
-    "footer.rights": "© 2026 AI學徒 iTech. All rights reserved.",
+    "footer.rights": "© 2026 iTech. All rights reserved.",
     "footer.company": "Kairos.ai"
   }
 };
