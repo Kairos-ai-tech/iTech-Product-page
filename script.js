@@ -18,6 +18,13 @@ document.addEventListener('DOMContentLoaded', function () {
     navLinks.classList.toggle('active');
   });
 
+  // ===== Language switcher =====
+  const langSelect = document.getElementById('langSelect');
+
+  langSelect.addEventListener('change', function () {
+    setLanguage(this.value);
+  });
+
   navLinks.querySelectorAll('a').forEach(function (link) {
     link.addEventListener('click', function () {
       navToggle.classList.remove('active');
