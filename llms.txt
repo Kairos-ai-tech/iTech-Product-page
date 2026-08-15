@@ -1,0 +1,19 @@
+# iTech
+
+> AI + AR construction execution platform for structural rebar. iTech turns a structural drawing into the single source of truth for a construction site: automated bar-schedule/cut-list generation from the drawing, AR overlays that guide field crews placing rebar, and computer-vision verification that produces an auditable as-built record before the pour. Built by Kairos.ai for the Taiwanese construction market (營造/鋼筋施工).
+
+## Product
+
+- [Rebar Estimation Automation System](https://itech.kairosaitech.com/#product): Shipping today. An AutoCAD 2021 plugin plus a cross-platform desktop app that converts structural drawings directly into shop drawings and a material-list workbook (.xlsm), importing natively into a fabricator's existing macro tooling. Beam/column recognition ≥ 90%.
+- [AR field guidance + AI verification](https://itech.kairosaitech.com/#solution): In development. 3D rebar layout overlaid on formwork (green = correct placement, red = deviation), and computer-vision comparison of as-built vs. as-designed rebar before the pour.
+- [Free pilot program](https://itech.kairosaitech.com/#pilot): Construction companies, rebar fabricators, and structural engineering firms can apply for a free pilot — company name, email, and construction type.
+
+## Company
+
+- [Contact](https://itech.kairosaitech.com/#contact): Contractors, fabricators, structural engineers, developers, public agencies, and investors — reach out via kairos.ai.tech@gmail.com or the on-page contact form.
+- [Kairos.ai](https://www.kairosaitech.com/?lang=zh-TW): Parent company site.
+
+## Notes
+
+- The product page is bilingual (繁體中文 default, with English and Japanese switchers) — content above reflects the English version.
+- Target market: Taiwan construction — CNC machining, mold making, welding, auto repair, plumbing, and sheet metal shops are adjacent verticals in the broader roadmap, but rebar/structural construction is the current focus.
