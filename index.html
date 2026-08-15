@@ -107,8 +107,7 @@
   <div class="hero-track">
   <section class="hero" id="hero">
     <div class="hero-bg">
-      <!-- TODO: replace with branded construction site / rebar / formwork hero image -->
-      <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1920&q=80" alt="" class="hero-img">
+      <div class="hero-static" aria-hidden="true"></div>
       <canvas id="hero-canvas" class="hero-canvas" aria-hidden="true"></canvas>
       <div class="hero-overlay"></div>
     </div>
@@ -212,8 +211,47 @@
     <div class="tech-showcase">
       <article class="tech-panel fade-in" data-delay="3">
         <div class="tech-panel-img">
-          <!-- TODO: replace with branded structural drawing / blueprint image -->
-          <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=800&q=80" alt="Structural drawing parsing" data-i18n-alt="alt.solution.t1">
+          <svg class="tech-illustration" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" role="img" aria-hidden="true">
+            <defs>
+              <pattern id="grid-t1" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M40 0H0V40" fill="none" stroke="#5EEAD4" stroke-opacity="0.06"/>
+              </pattern>
+              <marker id="arrow-t1" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+                <path d="M0 0 L10 5 L0 10 Z" fill="#5EEAD4"/>
+              </marker>
+            </defs>
+            <rect width="800" height="600" fill="#0B1A2D"/>
+            <rect width="800" height="600" fill="url(#grid-t1)"/>
+            <g stroke="#F4F1EC" stroke-width="1.5" fill="none" opacity="0.85">
+              <rect x="90" y="160" width="180" height="280"/>
+              <line x1="90" y1="160" x2="60" y2="130"/>
+              <line x1="270" y1="160" x2="300" y2="130"/>
+              <line x1="60" y1="130" x2="300" y2="130"/>
+            </g>
+            <g fill="#5EEAD4">
+              <circle cx="120" cy="200" r="5"/>
+              <circle cx="180" cy="200" r="5"/>
+              <circle cx="240" cy="200" r="5"/>
+              <circle cx="120" cy="400" r="5"/>
+              <circle cx="180" cy="400" r="5"/>
+              <circle cx="240" cy="400" r="5"/>
+            </g>
+            <g stroke="#0EA5A0" stroke-width="1">
+              <line x1="90" y1="460" x2="270" y2="460"/>
+              <line x1="90" y1="452" x2="90" y2="468"/>
+              <line x1="270" y1="452" x2="270" y2="468"/>
+            </g>
+            <text x="180" y="484" fill="#5EEAD4" font-family="DM Sans, sans-serif" font-size="14" text-anchor="middle">450mm</text>
+            <path d="M330 300 H430" stroke="#5EEAD4" stroke-width="2" marker-end="url(#arrow-t1)"/>
+            <rect x="460" y="180" width="260" height="240" rx="8" fill="#0F2337" stroke="#0EA5A0" stroke-opacity="0.3"/>
+            <text x="484" y="216" fill="#F4F1EC" font-family="DM Sans, sans-serif" font-size="13" font-weight="600">Bar Mark B1</text>
+            <line x1="484" y1="230" x2="696" y2="230" stroke="#ffffff" stroke-opacity="0.08"/>
+            <text x="484" y="256" fill="#9AA7B5" font-family="DM Sans, sans-serif" font-size="12">直徑 Φ13</text>
+            <text x="484" y="282" fill="#9AA7B5" font-family="DM Sans, sans-serif" font-size="12">長度 1,250 ± 5 mm</text>
+            <text x="484" y="308" fill="#9AA7B5" font-family="DM Sans, sans-serif" font-size="12">彎折 90° 鉤</text>
+            <rect x="484" y="330" width="70" height="24" rx="12" fill="#0EA5A0" fill-opacity="0.15" stroke="#0EA5A0" stroke-opacity="0.4"/>
+            <text x="519" y="346" fill="#5EEAD4" font-family="DM Sans, sans-serif" font-size="11" text-anchor="middle">已解析</text>
+          </svg>
           <span class="tech-number">01</span>
         </div>
         <div class="tech-panel-content">
@@ -232,8 +270,41 @@
 
       <article class="tech-panel reverse fade-in" data-delay="3">
         <div class="tech-panel-img">
-          <!-- TODO: replace with branded AR-on-site / tablet-on-formwork image -->
-          <img src="https://images.unsplash.com/photo-1592478411213-6153e4ebc07d?w=800&q=80" alt="AR field guidance" data-i18n-alt="alt.solution.t2">
+          <svg class="tech-illustration" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" role="img" aria-hidden="true">
+            <defs>
+              <pattern id="grid-t2" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M40 0H0V40" fill="none" stroke="#5EEAD4" stroke-opacity="0.06"/>
+              </pattern>
+            </defs>
+            <rect width="800" height="600" fill="#0B1A2D"/>
+            <rect width="800" height="600" fill="url(#grid-t2)"/>
+            <circle cx="400" cy="300" r="140" fill="none" stroke="#ffffff" stroke-opacity="0.15" stroke-dasharray="4 6"/>
+            <circle cx="540" cy="300" r="14" fill="none" stroke="#5EEAD4" stroke-width="1" stroke-opacity="0.4"/>
+            <circle cx="357" cy="437" r="14" fill="none" stroke="#5EEAD4" stroke-width="1" stroke-opacity="0.4"/>
+            <g fill="#5EEAD4">
+              <circle cx="540" cy="300" r="8"/>
+              <circle cx="513" cy="382" r="8"/>
+              <circle cx="443" cy="437" r="8"/>
+              <circle cx="357" cy="437" r="8"/>
+              <circle cx="287" cy="382" r="8"/>
+              <circle cx="260" cy="300" r="8"/>
+              <circle cx="287" cy="218" r="8"/>
+              <circle cx="357" cy="163" r="8"/>
+              <circle cx="443" cy="163" r="8"/>
+            </g>
+            <circle cx="513" cy="218" r="9" fill="#B91C1C"/>
+            <circle cx="513" cy="218" r="16" fill="none" stroke="#B91C1C" stroke-width="1.5" stroke-opacity="0.6"/>
+            <g stroke="#5EEAD4" stroke-width="2" fill="none" opacity="0.7">
+              <path d="M170 170 v40 M170 170 h40"/>
+              <path d="M630 170 v40 M630 170 h-40"/>
+              <path d="M170 430 v-40 M170 430 h40"/>
+              <path d="M630 430 v-40 M630 430 h-40"/>
+            </g>
+            <line x1="513" y1="218" x2="570" y2="150" stroke="#B91C1C" stroke-width="1.5"/>
+            <rect x="570" y="108" width="150" height="48" rx="6" fill="#0F2337" stroke="#B91C1C" stroke-opacity="0.5"/>
+            <text x="586" y="128" fill="#F87171" font-family="DM Sans, sans-serif" font-size="11" font-weight="600">偏差需修正</text>
+            <text x="586" y="146" fill="#9AA7B5" font-family="DM Sans, sans-serif" font-size="10">保護層 -8mm</text>
+          </svg>
           <span class="tech-number">02</span>
         </div>
         <div class="tech-panel-content">
@@ -252,8 +323,41 @@
 
       <article class="tech-panel fade-in" data-delay="3">
         <div class="tech-panel-img">
-          <!-- TODO: replace with branded rebar inspection / CV verification image -->
-          <img src="https://images.unsplash.com/photo-1565043666747-69f6646db940?w=800&q=80" alt="Real-time AI verification" data-i18n-alt="alt.solution.t3">
+          <svg class="tech-illustration" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" role="img" aria-hidden="true">
+            <defs>
+              <pattern id="grid-t3" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M40 0H0V40" fill="none" stroke="#5EEAD4" stroke-opacity="0.06"/>
+              </pattern>
+              <linearGradient id="scan-t3" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#5EEAD4" stop-opacity="0"/>
+                <stop offset="50%" stop-color="#5EEAD4" stop-opacity="0.9"/>
+                <stop offset="100%" stop-color="#5EEAD4" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <rect width="800" height="600" fill="#0B1A2D"/>
+            <rect width="800" height="600" fill="url(#grid-t3)"/>
+            <g stroke="#F4F1EC" stroke-opacity="0.1" stroke-width="1.5">
+              <line x1="260" y1="120" x2="260" y2="480"/>
+              <line x1="330" y1="120" x2="330" y2="480"/>
+              <line x1="400" y1="120" x2="400" y2="480"/>
+              <line x1="470" y1="120" x2="470" y2="480"/>
+              <line x1="540" y1="120" x2="540" y2="480"/>
+            </g>
+            <rect x="0" y="248" width="800" height="6" fill="url(#scan-t3)"/>
+            <rect x="220" y="150" width="360" height="230" rx="10" fill="#0F2337" fill-opacity="0.9" stroke="#ffffff" stroke-opacity="0.08"/>
+            <text x="248" y="184" fill="#9AA7B5" font-family="DM Sans, sans-serif" font-size="11" letter-spacing="0.08em">AS-BUILT VERIFICATION</text>
+            <circle cx="252" cy="214" r="5" fill="#15803D"/>
+            <text x="268" y="219" fill="#F4F1EC" font-family="DM Sans, sans-serif" font-size="13">間距 Spacing</text>
+            <text x="532" y="219" fill="#4ADE80" font-family="DM Sans, sans-serif" font-size="13" text-anchor="end" font-weight="600">通過 96%</text>
+            <circle cx="252" cy="254" r="5" fill="#15803D"/>
+            <text x="268" y="259" fill="#F4F1EC" font-family="DM Sans, sans-serif" font-size="13">搭接長度 Lap Length</text>
+            <text x="532" y="259" fill="#4ADE80" font-family="DM Sans, sans-serif" font-size="13" text-anchor="end" font-weight="600">通過 92%</text>
+            <circle cx="252" cy="294" r="5" fill="#B91C1C"/>
+            <text x="268" y="299" fill="#F4F1EC" font-family="DM Sans, sans-serif" font-size="13">保護層 Cover</text>
+            <text x="532" y="299" fill="#F87171" font-family="DM Sans, sans-serif" font-size="13" text-anchor="end" font-weight="600">偏差 -8mm</text>
+            <line x1="248" y1="326" x2="552" y2="326" stroke="#ffffff" stroke-opacity="0.08"/>
+            <text x="248" y="356" fill="#9AA7B5" font-family="DM Sans, sans-serif" font-size="11">竣工快照 已產出，可簽章</text>
+          </svg>
           <span class="tech-number">03</span>
         </div>
         <div class="tech-panel-content">
@@ -282,8 +386,50 @@
     <div class="tech-showcase">
       <article class="tech-panel fade-in" data-delay="3">
         <div class="tech-panel-img">
-          <!-- TODO: replace with branded AutoCAD / shop-drawing screenshot -->
-          <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80" alt="Rebar estimation automation system" data-i18n-alt="alt.product">
+          <svg class="tech-illustration" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" role="img" aria-hidden="true">
+            <defs>
+              <pattern id="grid-p" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M40 0H0V40" fill="none" stroke="#5EEAD4" stroke-opacity="0.06"/>
+              </pattern>
+              <marker id="arrow-p" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+                <path d="M0 0 L10 5 L0 10 Z" fill="#5EEAD4"/>
+              </marker>
+            </defs>
+            <rect width="800" height="600" fill="#0B1A2D"/>
+            <rect width="800" height="600" fill="url(#grid-p)"/>
+            <rect x="90" y="210" width="150" height="180" rx="6" fill="#0F2337" stroke="#ffffff" stroke-opacity="0.12"/>
+            <g stroke="#F4F1EC" stroke-opacity="0.6" stroke-width="1.5">
+              <line x1="112" y1="240" x2="208" y2="240"/>
+              <line x1="112" y1="264" x2="190" y2="264"/>
+              <line x1="112" y1="288" x2="208" y2="288"/>
+              <line x1="112" y1="312" x2="170" y2="312"/>
+            </g>
+            <text x="165" y="372" fill="#9AA7B5" font-family="DM Sans, sans-serif" font-size="12" text-anchor="middle">DWG</text>
+            <path d="M255 300 H345" stroke="#5EEAD4" stroke-width="2" marker-end="url(#arrow-p)"/>
+            <g transform="translate(400,300)" fill="none" stroke="#0EA5A0" stroke-width="3">
+              <circle r="46"/>
+              <circle r="14" fill="#0EA5A0" stroke="none"/>
+              <line x1="0" y1="-58" x2="0" y2="-70"/>
+              <line x1="0" y1="58" x2="0" y2="70"/>
+              <line x1="-58" y1="0" x2="-70" y2="0"/>
+              <line x1="58" y1="0" x2="70" y2="0"/>
+              <line x1="41" y1="-41" x2="49" y2="-49"/>
+              <line x1="-41" y1="-41" x2="-49" y2="-49"/>
+              <line x1="41" y1="41" x2="49" y2="49"/>
+              <line x1="-41" y1="41" x2="-49" y2="49"/>
+            </g>
+            <path d="M455 300 H545" stroke="#5EEAD4" stroke-width="2" marker-end="url(#arrow-p)"/>
+            <rect x="560" y="210" width="150" height="180" rx="6" fill="#0F2337" stroke="#0EA5A0" stroke-opacity="0.35"/>
+            <g stroke="#ffffff" stroke-opacity="0.1">
+              <line x1="560" y1="252" x2="710" y2="252"/>
+              <line x1="560" y1="288" x2="710" y2="288"/>
+              <line x1="560" y1="324" x2="710" y2="324"/>
+              <line x1="618" y1="210" x2="618" y2="390"/>
+              <line x1="662" y1="210" x2="662" y2="390"/>
+            </g>
+            <rect x="618" y="252" width="44" height="36" fill="#0EA5A0" fill-opacity="0.18"/>
+            <text x="635" y="372" fill="#5EEAD4" font-family="DM Sans, sans-serif" font-size="12" text-anchor="middle" font-weight="600">.xlsm</text>
+          </svg>
           <span class="tech-number">✓</span>
         </div>
         <div class="tech-panel-content">
@@ -374,8 +520,7 @@
   <!-- ===== RESULTS ===== -->
   <section class="results" id="results">
     <div class="results-bg">
-      <!-- TODO: replace with branded construction-site / rebar background -->
-      <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80" alt="" class="results-bg-img">
+      <div class="results-static" aria-hidden="true"></div>
       <div class="results-overlay"></div>
     </div>
     <div class="container results-inner">

@@ -88,20 +88,6 @@ document.addEventListener('DOMContentLoaded', function () {
     requestAnimationFrame(tick);
   }
 
-  // ===== Parallax on hero image (fallback only — skipped once hero3d.js's canvas covers it) =====
-  const heroImg = document.querySelector('.hero-img');
-  const heroCanvas = document.getElementById('hero-canvas');
-
-  if (heroImg && window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
-    window.addEventListener('scroll', function () {
-      if (heroCanvas && heroCanvas.classList.contains('ready')) return;
-      const scrolled = window.scrollY;
-      if (scrolled < window.innerHeight) {
-        heroImg.style.transform = 'scale(1.05) translateY(' + (scrolled * 0.15) + 'px)';
-      }
-    }, { passive: true });
-  }
-
   // ===== Initialize language =====
   initLanguage();
 
