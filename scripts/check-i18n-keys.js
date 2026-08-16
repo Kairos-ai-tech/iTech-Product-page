@@ -19,9 +19,10 @@
 //    translations — a 3rd hand-maintained list (display names) that nothing
 //    else keeps in sync.
 // 5. Runtime smoke test: actually fire i18n.js's DOMContentLoaded listener
-//    and call setLanguage() for every locale against a minimal fake DOM,
-//    to catch a throwing bug in populateLangSelect()/initLanguage()/
-//    setLanguage() itself — parts 1-4 only validate the static data.
+//    and call setLanguage() for every locale against a minimal fake DOM
+//    carrying every attribute from the same selector part 2 derived, so
+//    a throwing bug in populateLangSelect()/initLanguage()/setLanguage()
+//    itself is caught too — parts 1-4 only validate the static data.
 
 const fs = require("fs");
 const path = require("path");
@@ -32,16 +33,39 @@ const i18nPath = path.join(repoRoot, "i18n.js");
 const htmlPath = path.join(repoRoot, "index.html");
 const code = fs.readFileSync(i18nPath, "utf8");
 const html = fs.readFileSync(htmlPath, "utf8");
+
+let failed = false;
+
+// One sandbox, one execution: a fake DOM rich enough to both read back the
+// static translations/LANG_LABELS objects AND, later, actually drive
+// setLanguage() end to end (part 5). Previously this ran two separate
+// vm.runInContext passes with two independently-stubbed sandboxes, which
+// was redundant work and its own source of drift.
+let fakeElements = [];
+let capturedListener = null;
+const fakeSelect = { value: "", innerHTML: "", appendChild: () => {}, addEventListener: () => {} };
 const sandbox = {
   console,
-  // i18n.js registers a DOMContentLoaded listener at load time; stub just
-  // enough to let the file evaluate so we can read `translations` back out.
-  document: { addEventListener: function () {}, getElementById: function () { return null; } },
-  localStorage: { getItem: function () { return null; }, setItem: function () {} },
+  document: {
+    addEventListener: (evt, cb) => { if (evt === "DOMContentLoaded") capturedListener = cb; },
+    getElementById: (id) => (id === "langSelect" ? fakeSelect : null),
+    querySelectorAll: () => fakeElements,
+    createElement: () => ({ setAttribute: () => {}, appendChild: () => {} }),
+    createTextNode: () => ({}),
+    documentElement: {},
+  },
+  localStorage: (() => {
+    const store = {};
+    return { getItem: (k) => (k in store ? store[k] : null), setItem: (k, v) => { store[k] = v; } };
+  })(),
   navigator: { language: "en-US" },
 };
 vm.createContext(sandbox);
-vm.runInContext(code + "\n;globalThis.translations = translations; globalThis.LANG_LABELS = LANG_LABELS;", sandbox, { filename: i18nPath });
+vm.runInContext(
+  code + "\n;globalThis.translations = translations; globalThis.LANG_LABELS = LANG_LABELS; globalThis.setLanguage = setLanguage;",
+  sandbox,
+  { filename: i18nPath }
+);
 
 const translations = sandbox.translations;
 const langLabels = sandbox.LANG_LABELS;
@@ -54,8 +78,6 @@ locales.forEach((locale) => {
 const allKeys = new Set();
 locales.forEach((locale) => keysets[locale].forEach((k) => allKeys.add(k)));
 
-let failed = false;
-
 // --- 1. cross-locale key parity ---
 locales.forEach((locale) => {
   const missing = [...allKeys].filter((k) => !keysets[locale].has(k));
@@ -66,26 +88,27 @@ locales.forEach((locale) => {
 });
 
 // --- 2. index.html data-i18n* keys exist in translations ---
-// Pull the attribute suffix list out of i18n.js's own setLanguage() selector
+// Pull the attribute suffix list out of i18n.js's setLanguage() selector
 // instead of hand-duplicating it, so a new attribute type added there is
-// automatically covered here too.
+// automatically covered here (and in part 5's smoke test, see below).
 const baseLocale = translations[locales[0]];
-const selectorMatch = code.match(/\.querySelectorAll\(\s*"([^"]+)"\s*\)/);
-if (!selectorMatch) {
+const setLanguageBody = code.slice(code.indexOf("function setLanguage"));
+const selectorMatch = setLanguageBody.match(/\.querySelectorAll\(\s*"([^"]+)"\s*\)/);
+const attrNames = selectorMatch ? [...selectorMatch[1].matchAll(/data-i18n[a-z-]*/g)].map((mm) => mm[0]) : [];
+if (attrNames.length === 0) {
   failed = true;
-  console.error("Could not find setLanguage()'s querySelectorAll selector in i18n.js");
+  console.error("Could not find setLanguage()'s querySelectorAll selector (or it had no data-i18n* attributes) in i18n.js — refusing to run a degenerate check.");
 }
-const attrNames = selectorMatch
-  ? [...selectorMatch[1].matchAll(/data-i18n[a-z-]*/g)].map((mm) => mm[0])
-  : ["data-i18n"];
-const attrPattern = new RegExp(`(?:${attrNames.join("|")})="([^"]+)"`, "g");
+const attrPattern = attrNames.length ? new RegExp(`(?:${attrNames.join("|")})="([^"]+)"`, "g") : null;
 const htmlKeys = new Set();
-let m;
-while ((m = attrPattern.exec(html))) htmlKeys.add(m[1]);
-const missingFromTranslations = [...htmlKeys].filter((k) => !(k in baseLocale));
-if (missingFromTranslations.length) {
-  failed = true;
-  console.error(`index.html references key(s) not in translations: ${missingFromTranslations.join(", ")}`);
+if (attrPattern) {
+  let m;
+  while ((m = attrPattern.exec(html))) htmlKeys.add(m[1]);
+  const missingFromTranslations = [...htmlKeys].filter((k) => !(k in baseLocale));
+  if (missingFromTranslations.length) {
+    failed = true;
+    console.error(`index.html references key(s) not in translations: ${missingFromTranslations.join(", ")}`);
+  }
 }
 
 // --- 3. static no-JS <option> fallback matches translations' languages + labels ---
@@ -132,53 +155,31 @@ if (missingFromLabels.length || extraInLabels.length) {
 }
 
 // --- 5. runtime smoke test: actually run setLanguage() for every locale ---
-// Fake elements carrying each data-i18n* attribute, wired to real keys, so
+// Fake elements carrying each data-i18n* attribute (same list part 2 derived,
+// so a new attribute type is covered here too), wired to real keys, so
 // setLanguage()'s per-element branches (textContent/array-<br>-join/
 // placeholder/alt/aria-label/unknown-key-warn) all actually execute.
 const stringKey = Object.keys(baseLocale).find((k) => typeof baseLocale[k] === "string");
 const arrayKey = Object.keys(baseLocale).find((k) => Array.isArray(baseLocale[k]));
 function makeEl(attrs) {
-  const attrMap = attrs;
   return {
     style: {},
     firstChild: null,
-    getAttribute: (name) => (name in attrMap ? attrMap[name] : null),
+    getAttribute: (name) => (name in attrs ? attrs[name] : null),
     setAttribute: () => {},
     appendChild: () => {},
     removeChild: () => {},
   };
 }
-const fakeElements = [
-  makeEl({ "data-i18n": stringKey }),
-  makeEl({ "data-i18n": arrayKey }),
-  makeEl({ "data-i18n-placeholder": stringKey }),
-  makeEl({ "data-i18n-alt": stringKey }),
-  makeEl({ "data-i18n-aria-label": stringKey }),
-];
-let capturedListener = null;
-const fakeSelect = { value: "", innerHTML: "", appendChild: () => {}, addEventListener: () => {} };
-const runtimeSandbox = {
-  console,
-  document: {
-    addEventListener: (evt, cb) => { if (evt === "DOMContentLoaded") capturedListener = cb; },
-    getElementById: (id) => (id === "langSelect" ? fakeSelect : null),
-    querySelectorAll: () => fakeElements,
-    createElement: () => ({ setAttribute: () => {}, appendChild: () => {} }),
-    createTextNode: () => ({}),
-    documentElement: {},
-  },
-  localStorage: (() => {
-    const store = {};
-    return { getItem: (k) => (k in store ? store[k] : null), setItem: (k, v) => { store[k] = v; } };
-  })(),
-  navigator: { language: "en-US" },
-};
-vm.createContext(runtimeSandbox);
+if (attrNames.length) {
+  fakeElements = attrNames.flatMap((attr) =>
+    attr === "data-i18n" ? [makeEl({ [attr]: stringKey }), makeEl({ [attr]: arrayKey })] : [makeEl({ [attr]: stringKey })]
+  );
+}
 try {
-  vm.runInContext(code + "\n;globalThis.setLanguage = setLanguage;", runtimeSandbox, { filename: i18nPath });
   if (typeof capturedListener !== "function") throw new Error("DOMContentLoaded listener was never registered");
   capturedListener();
-  locales.forEach((locale) => runtimeSandbox.setLanguage(locale));
+  locales.forEach((locale) => sandbox.setLanguage(locale));
 } catch (e) {
   failed = true;
   console.error(`Runtime smoke test threw: ${e.stack || e}`);
