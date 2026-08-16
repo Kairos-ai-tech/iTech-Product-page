@@ -40,6 +40,7 @@ const translations = {
     "solution.label": "OUR TECHNOLOGY 核心技術",
     "solution.heading": ["端到端施工執行管線"],
     "solution.lead": "以結構施工圖為唯一真值，從下料到驗收全程由 AI 接管",
+    "aria.langSelect": "語言",
     "alt.solution.t1": "示意圖：施工圖解析為鋼筋計料表",
     "alt.solution.t2": "示意圖：AR 疊加指導現場鋼筋施工",
     "alt.solution.t3": "示意圖：AI 比對竣工與設計狀態",
@@ -220,6 +221,7 @@ const translations = {
     "solution.label": "OUR TECHNOLOGY",
     "solution.heading": ["End-to-End Execution Pipeline"],
     "solution.lead": "The structural drawing is ground truth — AI runs everything from fabrication to verified placement.",
+    "aria.langSelect": "Language",
     "alt.solution.t1": "Diagram: structural drawing parsed into a rebar bar-mark schedule",
     "alt.solution.t2": "Diagram: AR overlay guiding rebar placement on-site",
     "alt.solution.t3": "Diagram: AI verification comparing as-built to as-designed",
@@ -400,6 +402,7 @@ const translations = {
     "solution.label": "コア技術",
     "solution.heading": ["エンド・ツー・エンド施工実行パイプライン"],
     "solution.lead": "構造施工図を唯一の正とし、加工から検証配筋まですべてをAIが担当",
+    "aria.langSelect": "言語",
     "alt.solution.t1": "図：構造図を鉄筋加工表に自動解析",
     "alt.solution.t2": "図：ARで現場の鉄筋配置を指導",
     "alt.solution.t3": "図：AIが竣工と設計を照合検証",
@@ -580,6 +583,7 @@ const translations = {
     "solution.label": "NUESTRA TECNOLOGÍA",
     "solution.heading": ["Pipeline de Ejecución de Extremo a Extremo"],
     "solution.lead": "El plano estructural es la fuente de verdad — la IA gestiona todo, desde la fabricación hasta la colocación verificada.",
+    "aria.langSelect": "Idioma",
     "alt.solution.t1": "Diagrama: plano estructural analizado en una lista de despiece de armadura",
     "alt.solution.t2": "Diagrama: guía AR para la colocación de armadura en obra",
     "alt.solution.t3": "Diagrama: verificación por IA comparando lo construido con lo diseñado",
@@ -760,6 +764,7 @@ const translations = {
     "solution.label": "NOTRE TECHNOLOGIE",
     "solution.heading": ["Un Pipeline d'Exécution de Bout en Bout"],
     "solution.lead": "Le plan de structure fait foi — l'IA pilote tout, de la fabrication à la pose vérifiée.",
+    "aria.langSelect": "Langue",
     "alt.solution.t1": "Schéma : plan structurel analysé en nomenclature d'armatures",
     "alt.solution.t2": "Schéma : guidage AR pour le placement des armatures sur chantier",
     "alt.solution.t3": "Schéma : vérification par IA comparant l'existant au plan",
@@ -940,6 +945,7 @@ const translations = {
     "solution.label": "UNSERE TECHNOLOGIE",
     "solution.heading": ["Durchgängige Ausführungs-Pipeline"],
     "solution.lead": "Der Statikplan ist die einzige Wahrheit — KI übernimmt alles von der Fertigung bis zur geprüften Verlegung.",
+    "aria.langSelect": "Sprache",
     "alt.solution.t1": "Diagramm: Bauplan wird in eine Bewehrungsliste zerlegt",
     "alt.solution.t2": "Diagramm: AR-Overlay leitet die Bewehrungsverlegung vor Ort an",
     "alt.solution.t3": "Diagramm: KI-Abgleich von Ist- und Sollzustand",
@@ -1120,6 +1126,7 @@ const translations = {
     "solution.label": "LA NOSTRA TECNOLOGIA",
     "solution.heading": ["Pipeline di Esecuzione End-to-End"],
     "solution.lead": "Il disegno strutturale è l'unica fonte di verità — l'IA gestisce tutto, dalla lavorazione alla posa verificata.",
+    "aria.langSelect": "Lingua",
     "alt.solution.t1": "Schema: disegno strutturale analizzato in un elenco ferri d'armatura",
     "alt.solution.t2": "Schema: guida AR per il posizionamento dei ferri in cantiere",
     "alt.solution.t3": "Schema: verifica IA che confronta lo stato costruito col progetto",
@@ -1300,6 +1307,7 @@ const translations = {
     "solution.label": "NOSSA TECNOLOGIA",
     "solution.heading": ["Pipeline de Execução de Ponta a Ponta"],
     "solution.lead": "O desenho estrutural é a fonte da verdade — a IA cuida de tudo, da fabricação à colocação verificada.",
+    "aria.langSelect": "Idioma",
     "alt.solution.t1": "Diagrama: desenho estrutural convertido em lista de armaduras",
     "alt.solution.t2": "Diagrama: orientação em AR para posicionamento de armaduras em obra",
     "alt.solution.t3": "Diagrama: verificação por IA comparando o construído com o projetado",
@@ -1442,32 +1450,51 @@ const translations = {
 };
 
 // TODO: native review — JA/ES/FR/DE/IT/PT copy is best-effort translation; please have a
-// native reviewer pass over construction terminology in each language (rebar/AR/as-built
-// terms especially) before public launch.
+// native reviewer pass over construction terminology in each language before public
+// launch, especially: JA 結束/配筋/かぶり/打設 (tie/rebar-layout/cover/pour), and the
+// rebar/AR/as-built terms in ES/FR/DE/IT/PT.
 
-// Adding a language? Update all 4: this object, translations (above),
-// BROWSER_LANG_PREFIXES (below), and the <select id="langSelect"> options
-// in index.html. Nothing enforces these stay in sync.
-var HTML_LANG_MAP = {
-  "zh-TW": "zh-Hant",
-  en: "en",
-  ja: "ja",
-  es: "es",
-  fr: "fr",
-  de: "de",
-  it: "it",
-  pt: "pt"
+// Native display name shown in the <select> option for each language. Adding a
+// language only requires touching this object and `translations` above — the
+// <select>'s options, the HTML lang attribute, and BROWSER_LANG_PREFIXES are
+// all derived from translations' keys below, so there's nothing else to keep in sync.
+var LANG_LABELS = {
+  "zh-TW": "中文",
+  en: "English",
+  ja: "日本語",
+  es: "Español",
+  fr: "Français",
+  de: "Deutsch",
+  it: "Italiano",
+  pt: "Português"
 };
+
+function toHtmlLang(lang) {
+  return lang === "zh-TW" ? "zh-Hant" : lang;
+}
+
+function populateLangSelect() {
+  var langSelect = document.getElementById("langSelect");
+  if (!langSelect) return;
+  langSelect.innerHTML = "";
+  Object.keys(translations).forEach(function (lang) {
+    var option = document.createElement("option");
+    option.value = lang;
+    option.textContent = LANG_LABELS[lang] || lang;
+    langSelect.appendChild(option);
+  });
+}
 
 function setLanguage(lang) {
   var t = translations[lang];
-  if (!t) {
+  var isFallback = !t;
+  if (isFallback) {
     console.warn('setLanguage: unknown lang "' + lang + '", falling back to zh-TW');
     lang = "zh-TW";
     t = translations[lang];
   }
 
-  document.documentElement.lang = HTML_LANG_MAP[lang] || "zh-Hant";
+  document.documentElement.lang = toHtmlLang(lang);
 
   document.querySelectorAll("[data-i18n]").forEach(function (el) {
     var key = el.getAttribute("data-i18n");
@@ -1500,6 +1527,11 @@ function setLanguage(lang) {
     if (t[key] !== undefined) el.alt = t[key];
   });
 
+  document.querySelectorAll("[data-i18n-aria-label]").forEach(function (el) {
+    var key = el.getAttribute("data-i18n-aria-label");
+    if (t[key] !== undefined) el.setAttribute("aria-label", t[key]);
+  });
+
   // Toggle visibility of elements with empty translations
   document.querySelectorAll("[data-i18n]").forEach(function (el) {
     var key = el.getAttribute("data-i18n");
@@ -1515,29 +1547,15 @@ function setLanguage(lang) {
   var langSelect = document.getElementById("langSelect");
   if (langSelect) langSelect.value = lang;
 
-  localStorage.setItem("itech-lang", lang);
+  // Don't persist a fallback: an invalid `lang` shouldn't clobber a real saved preference.
+  if (!isFallback) localStorage.setItem("itech-lang", lang);
 }
 
-// Keep in sync with HTML_LANG_MAP above (see comment there) — zh-TW is the
-// fallback so it's intentionally absent from this list.
-var BROWSER_LANG_PREFIXES = ["ja", "en", "es", "fr", "de", "it", "pt"];
-
-// Runtime guard for the drift the comments above warn about: catches a language
-// added to `translations` but missed in HTML_LANG_MAP/BROWSER_LANG_PREFIXES (or vice versa).
-(function checkLangListsInSync() {
-  var translationLangs = Object.keys(translations).sort();
-  var mapLangs = Object.keys(HTML_LANG_MAP).sort();
-  var prefixLangs = BROWSER_LANG_PREFIXES.concat(["zh-TW"]).sort();
-  [
-    ["HTML_LANG_MAP", mapLangs],
-    ["BROWSER_LANG_PREFIXES", prefixLangs]
-  ].forEach(function (pair) {
-    var name = pair[0], list = pair[1];
-    if (JSON.stringify(list) !== JSON.stringify(translationLangs)) {
-      console.warn(name + " is out of sync with translations: " + JSON.stringify(list) + " vs " + JSON.stringify(translationLangs));
-    }
-  });
-})();
+// zh-TW is the browser-locale fallback, so it's intentionally excluded here —
+// every other language auto-detects from navigator.language.
+var BROWSER_LANG_PREFIXES = Object.keys(translations).filter(function (lang) {
+  return lang !== "zh-TW";
+});
 
 function initLanguage() {
   var saved = localStorage.getItem("itech-lang");
@@ -1555,9 +1573,12 @@ function initLanguage() {
   setLanguage("zh-TW");
 }
 
-// Wired here (not script.js) so the switcher works even if script.js's own
-// DOMContentLoaded handler throws before reaching its later setup steps.
+// All language init lives in this one listener (not script.js) so it runs
+// regardless of what script.js's own DOMContentLoaded handler does.
 document.addEventListener("DOMContentLoaded", function () {
+  populateLangSelect();
+  initLanguage();
+
   var langSelect = document.getElementById("langSelect");
   if (langSelect) {
     langSelect.addEventListener("change", function () {

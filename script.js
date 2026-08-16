@@ -89,9 +89,6 @@ document.addEventListener('DOMContentLoaded', function () {
     requestAnimationFrame(tick);
   }
 
-  // ===== Initialize language =====
-  initLanguage();
-
   // ===== mailto form submission =====
   function submitViaMailto(subject, bodyLines) {
     const encodedSubject = encodeURIComponent(subject);

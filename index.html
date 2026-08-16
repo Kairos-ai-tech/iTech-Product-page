@@ -85,9 +85,10 @@
       </a>
       <div class="nav-right">
         <div class="lang-switcher">
-          <!-- Adding a language? Also update translations, HTML_LANG_MAP, and
-               BROWSER_LANG_PREFIXES in i18n.js — see comment there. -->
-          <select id="langSelect" class="lang-select" aria-label="Language / 語言">
+          <!-- Options rebuilt from translations by populateLangSelect() in i18n.js;
+               this static list is just a no-JS fallback. Adding a language only
+               requires touching LANG_LABELS + translations in i18n.js. -->
+          <select id="langSelect" class="lang-select" aria-label="Language / 語言" data-i18n-aria-label="aria.langSelect">
             <option value="zh-TW">中文</option>
             <option value="en">English</option>
             <option value="ja">日本語</option>
@@ -317,8 +318,8 @@
               <path d="M170 430 v-40 M170 430 h40"/>
               <path d="M630 430 v-40 M630 430 h-40"/>
             </g>
-            <line x1="513" y1="218" x2="570" y2="150" stroke="var(--accent-red)" stroke-width="1.5"/>
-            <rect x="570" y="108" width="150" height="48" rx="6" fill="#0F2337" stroke="var(--accent-red)" stroke-opacity="0.5"/>
+            <line x1="513" y1="218" x2="570" y2="150" stroke="#F87171" stroke-width="1.5"/>
+            <rect x="570" y="108" width="150" height="48" rx="6" fill="#0F2337" stroke="#F87171" stroke-opacity="0.5"/>
             <text x="586" y="128" fill="#F87171" font-size="11" font-weight="600">-8mm</text>
           </svg>
           <span class="tech-number">02</span>
