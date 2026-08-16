@@ -85,6 +85,8 @@
       </a>
       <div class="nav-right">
         <div class="lang-switcher">
+          <!-- Adding a language? Also update translations, HTML_LANG_MAP, and
+               BROWSER_LANG_PREFIXES in i18n.js — see comment there. -->
           <select id="langSelect" class="lang-select" aria-label="Language / 語言">
             <option value="zh-TW">中文</option>
             <option value="en">English</option>
@@ -212,6 +214,18 @@
     </div>
   </section>
 
+  <!-- Shared defs for the tech-illustration SVGs below (blueprint grid + arrow marker) -->
+  <svg width="0" height="0" aria-hidden="true" style="position: absolute">
+    <defs>
+      <pattern id="tech-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+        <path d="M40 0H0V40" fill="none" stroke="#5EEAD4" stroke-opacity="0.06"/>
+      </pattern>
+      <marker id="tech-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+        <path d="M0 0 L10 5 L0 10 Z" fill="#5EEAD4"/>
+      </marker>
+    </defs>
+  </svg>
+
   <!-- ===== SOLUTION ===== -->
   <section class="solution" id="solution">
     <div class="container">
@@ -223,17 +237,9 @@
     <div class="tech-showcase">
       <article class="tech-panel fade-in" data-delay="3">
         <div class="tech-panel-img">
-          <svg class="tech-illustration" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" role="img" aria-hidden="true">
-            <defs>
-              <pattern id="grid-t1" width="40" height="40" patternUnits="userSpaceOnUse">
-                <path d="M40 0H0V40" fill="none" stroke="#5EEAD4" stroke-opacity="0.06"/>
-              </pattern>
-              <marker id="arrow-t1" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
-                <path d="M0 0 L10 5 L0 10 Z" fill="#5EEAD4"/>
-              </marker>
-            </defs>
+          <svg class="tech-illustration" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
             <rect width="800" height="600" fill="#0B1A2D"/>
-            <rect width="800" height="600" fill="url(#grid-t1)"/>
+            <rect width="800" height="600" fill="url(#tech-grid)"/>
             <g stroke="#F4F1EC" stroke-width="1.5" fill="none" opacity="0.85">
               <rect x="90" y="160" width="180" height="280"/>
               <line x1="90" y1="160" x2="60" y2="130"/>
@@ -254,7 +260,7 @@
               <line x1="270" y1="452" x2="270" y2="468"/>
             </g>
             <text x="180" y="484" fill="#5EEAD4" font-family="DM Sans, sans-serif" font-size="14" text-anchor="middle">450mm</text>
-            <path d="M330 300 H430" stroke="#5EEAD4" stroke-width="2" marker-end="url(#arrow-t1)"/>
+            <path d="M330 300 H430" stroke="#5EEAD4" stroke-width="2" marker-end="url(#tech-arrow)"/>
             <rect x="460" y="180" width="260" height="240" rx="8" fill="#0F2337" stroke="#0EA5A0" stroke-opacity="0.3"/>
             <text x="484" y="216" fill="#F4F1EC" font-family="DM Sans, sans-serif" font-size="13" font-weight="600">Bar Mark B1</text>
             <line x1="484" y1="230" x2="696" y2="230" stroke="#ffffff" stroke-opacity="0.08"/>
@@ -282,14 +288,9 @@
 
       <article class="tech-panel reverse fade-in" data-delay="3">
         <div class="tech-panel-img">
-          <svg class="tech-illustration" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" role="img" aria-hidden="true">
-            <defs>
-              <pattern id="grid-t2" width="40" height="40" patternUnits="userSpaceOnUse">
-                <path d="M40 0H0V40" fill="none" stroke="#5EEAD4" stroke-opacity="0.06"/>
-              </pattern>
-            </defs>
+          <svg class="tech-illustration" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
             <rect width="800" height="600" fill="#0B1A2D"/>
-            <rect width="800" height="600" fill="url(#grid-t2)"/>
+            <rect width="800" height="600" fill="url(#tech-grid)"/>
             <circle cx="400" cy="300" r="140" fill="none" stroke="#ffffff" stroke-opacity="0.15" stroke-dasharray="4 6"/>
             <circle cx="540" cy="300" r="14" fill="none" stroke="#5EEAD4" stroke-width="1" stroke-opacity="0.4"/>
             <circle cx="357" cy="437" r="14" fill="none" stroke="#5EEAD4" stroke-width="1" stroke-opacity="0.4"/>
@@ -335,11 +336,8 @@
 
       <article class="tech-panel fade-in" data-delay="3">
         <div class="tech-panel-img">
-          <svg class="tech-illustration" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" role="img" aria-hidden="true">
+          <svg class="tech-illustration" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
             <defs>
-              <pattern id="grid-t3" width="40" height="40" patternUnits="userSpaceOnUse">
-                <path d="M40 0H0V40" fill="none" stroke="#5EEAD4" stroke-opacity="0.06"/>
-              </pattern>
               <linearGradient id="scan-t3" x1="0" y1="0" x2="1" y2="0">
                 <stop offset="0%" stop-color="#5EEAD4" stop-opacity="0"/>
                 <stop offset="50%" stop-color="#5EEAD4" stop-opacity="0.9"/>
@@ -347,7 +345,7 @@
               </linearGradient>
             </defs>
             <rect width="800" height="600" fill="#0B1A2D"/>
-            <rect width="800" height="600" fill="url(#grid-t3)"/>
+            <rect width="800" height="600" fill="url(#tech-grid)"/>
             <g stroke="#F4F1EC" stroke-opacity="0.1" stroke-width="1.5">
               <line x1="260" y1="120" x2="260" y2="480"/>
               <line x1="330" y1="120" x2="330" y2="480"/>
@@ -398,17 +396,9 @@
     <div class="tech-showcase">
       <article class="tech-panel fade-in" data-delay="3">
         <div class="tech-panel-img">
-          <svg class="tech-illustration" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" role="img" aria-hidden="true">
-            <defs>
-              <pattern id="grid-p" width="40" height="40" patternUnits="userSpaceOnUse">
-                <path d="M40 0H0V40" fill="none" stroke="#5EEAD4" stroke-opacity="0.06"/>
-              </pattern>
-              <marker id="arrow-p" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
-                <path d="M0 0 L10 5 L0 10 Z" fill="#5EEAD4"/>
-              </marker>
-            </defs>
+          <svg class="tech-illustration" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
             <rect width="800" height="600" fill="#0B1A2D"/>
-            <rect width="800" height="600" fill="url(#grid-p)"/>
+            <rect width="800" height="600" fill="url(#tech-grid)"/>
             <rect x="90" y="210" width="150" height="180" rx="6" fill="#0F2337" stroke="#ffffff" stroke-opacity="0.12"/>
             <g stroke="#F4F1EC" stroke-opacity="0.6" stroke-width="1.5">
               <line x1="112" y1="240" x2="208" y2="240"/>
@@ -417,7 +407,7 @@
               <line x1="112" y1="312" x2="170" y2="312"/>
             </g>
             <text x="165" y="372" fill="#9AA7B5" font-family="DM Sans, sans-serif" font-size="12" text-anchor="middle">DWG</text>
-            <path d="M255 300 H345" stroke="#5EEAD4" stroke-width="2" marker-end="url(#arrow-p)"/>
+            <path d="M255 300 H345" stroke="#5EEAD4" stroke-width="2" marker-end="url(#tech-arrow)"/>
             <g transform="translate(400,300)" fill="none" stroke="#0EA5A0" stroke-width="3">
               <circle r="46"/>
               <circle r="14" fill="#0EA5A0" stroke="none"/>
@@ -430,7 +420,7 @@
               <line x1="41" y1="41" x2="49" y2="49"/>
               <line x1="-41" y1="41" x2="-49" y2="49"/>
             </g>
-            <path d="M455 300 H545" stroke="#5EEAD4" stroke-width="2" marker-end="url(#arrow-p)"/>
+            <path d="M455 300 H545" stroke="#5EEAD4" stroke-width="2" marker-end="url(#tech-arrow)"/>
             <rect x="560" y="210" width="150" height="180" rx="6" fill="#0F2337" stroke="#0EA5A0" stroke-opacity="0.35"/>
             <g stroke="#ffffff" stroke-opacity="0.1">
               <line x1="560" y1="252" x2="710" y2="252"/>

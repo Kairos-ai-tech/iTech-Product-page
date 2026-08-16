@@ -1413,6 +1413,9 @@ const translations = {
 // native reviewer pass over construction terminology in each language (rebar/AR/as-built
 // terms especially) before public launch.
 
+// Adding a language? Update all 4: this object, translations (above),
+// BROWSER_LANG_PREFIXES (below), and the <select id="langSelect"> options
+// in index.html. Nothing enforces these stay in sync.
 var HTML_LANG_MAP = {
   "zh-TW": "zh-Hant",
   en: "en",
@@ -1476,6 +1479,8 @@ function setLanguage(lang) {
   localStorage.setItem("itech-lang", lang);
 }
 
+// Keep in sync with HTML_LANG_MAP above (see comment there) — zh-TW is the
+// fallback so it's intentionally absent from this list.
 var BROWSER_LANG_PREFIXES = ["ja", "en", "es", "fr", "de", "it", "pt"];
 
 function initLanguage() {
@@ -1493,3 +1498,14 @@ function initLanguage() {
   }
   setLanguage("zh-TW");
 }
+
+// Wired here (not script.js) so the switcher works even if script.js's own
+// DOMContentLoaded handler throws before reaching its later setup steps.
+document.addEventListener("DOMContentLoaded", function () {
+  var langSelect = document.getElementById("langSelect");
+  if (langSelect) {
+    langSelect.addEventListener("change", function () {
+      setLanguage(this.value);
+    });
+  }
+});
