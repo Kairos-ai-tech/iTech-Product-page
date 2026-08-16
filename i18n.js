@@ -1,3 +1,12 @@
+// Keys ending in ".en"/"-en" (e.g. solution.t1.en, contact.desc-en) are small
+// English glosses shown under a non-English heading/label — real text in
+// zh-TW/ja (readers benefit from the English term), deliberately blank ""
+// in en/es/fr/de/it/pt (setLanguage() hides an element when its value is
+// "" — see the empty-translations-hide-the-element comment below — so the
+// gloss doesn't show under text that's already in a Latin-script language).
+// hero.subtitle-en is the one exception: it's a distinct, always-shown
+// secondary English tagline (different wording from hero.subtitle in every
+// locale, including "en" itself), not a gloss — leave it real text everywhere.
 const translations = {
   "zh-TW": {
     "nav.crisis": "危機",

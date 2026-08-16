@@ -81,6 +81,11 @@ img { max-width: 100%; display: block; }
 
 section[id] { scroll-margin-top: 84px; }
 
+/* Any translated text node can end up holding an unbroken long word (German
+   compound nouns especially) in a narrow container — guard all of them at
+   the source instead of re-adding this per heading class as it recurs. */
+[data-i18n] { overflow-wrap: break-word; }
+
 ::selection { background: var(--teal); color: #fff; }
 
 :focus-visible {
@@ -150,7 +155,6 @@ section[id] { scroll-margin-top: 84px; }
   color: var(--navy);
   margin-bottom: 20px;
   text-wrap: balance;
-  overflow-wrap: break-word;
 }
 
 .section-heading.light { color: #FBFAF7; }
@@ -471,7 +475,6 @@ section[id] { scroll-margin-top: 84px; }
   letter-spacing: 0.02em;
   margin-bottom: 28px;
   backdrop-filter: blur(8px);
-  overflow-wrap: break-word;
 }
 
 .hero-badge::before {
@@ -493,7 +496,6 @@ section[id] { scroll-margin-top: 84px; }
   color: #fff;
   margin-bottom: 24px;
   max-width: 760px;
-  overflow-wrap: break-word;
 }
 
 .hero-subtitle {
@@ -855,7 +857,6 @@ section[id] { scroll-margin-top: 84px; }
   color: var(--navy);
   margin-bottom: 4px;
   letter-spacing: -0.015em;
-  overflow-wrap: break-word;
 }
 
 .tech-en {
@@ -1120,7 +1121,6 @@ section[id] { scroll-margin-top: 84px; }
   color: #fff;
   margin-bottom: 14px;
   letter-spacing: -0.005em;
-  overflow-wrap: break-word;
 }
 
 .result-compare {
@@ -1497,13 +1497,15 @@ section[id] { scroll-margin-top: 84px; }
 }
 
 /* Eight nav items + CTA (added Free Pilot / Application) don't reliably fit a
-   shrinking flex row in English at tablet widths — the CTA button's text
-   wraps internally before the row as a whole "overflows" in any way a
+   shrinking flex row at tablet widths — the CTA button's text wraps
+   internally before the row as a whole "overflows" in any way a
    container-width check would catch. Simplest correct fix: use the mobile
    (hamburger) nav in this whole band instead of trying to squeeze a 9-item
-   row. Measured overflow cutoff at 1040px (EN, longest labels); breakpoint
-   set with margin above that. */
-@media (max-width: 1080px) {
+   row. Re-measured after adding German (longest labels): the logo/lang-
+   select/first-nav-link cluster collides (0px gap) as low as 1121px, not
+   comfortable again until ~1195px. Breakpoint set to 1200px for margin
+   above that. */
+@media (max-width: 1200px) {
   .nav-toggle { display: block; }
 
   .nav-links {
