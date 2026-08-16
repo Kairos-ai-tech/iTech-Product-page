@@ -1472,7 +1472,10 @@ function setLanguage(lang) {
   document.querySelectorAll("[data-i18n]").forEach(function (el) {
     var key = el.getAttribute("data-i18n");
     var val = t[key];
-    if (val === undefined) return;
+    if (val === undefined) {
+      console.warn('setLanguage: missing key "' + key + '" for lang "' + lang + '"');
+      return;
+    }
 
     // Arrays become <br>-joined lines (for headings)
     if (Array.isArray(val)) {
@@ -1518,6 +1521,23 @@ function setLanguage(lang) {
 // Keep in sync with HTML_LANG_MAP above (see comment there) — zh-TW is the
 // fallback so it's intentionally absent from this list.
 var BROWSER_LANG_PREFIXES = ["ja", "en", "es", "fr", "de", "it", "pt"];
+
+// Runtime guard for the drift the comments above warn about: catches a language
+// added to `translations` but missed in HTML_LANG_MAP/BROWSER_LANG_PREFIXES (or vice versa).
+(function checkLangListsInSync() {
+  var translationLangs = Object.keys(translations).sort();
+  var mapLangs = Object.keys(HTML_LANG_MAP).sort();
+  var prefixLangs = BROWSER_LANG_PREFIXES.concat(["zh-TW"]).sort();
+  [
+    ["HTML_LANG_MAP", mapLangs],
+    ["BROWSER_LANG_PREFIXES", prefixLangs]
+  ].forEach(function (pair) {
+    var name = pair[0], list = pair[1];
+    if (JSON.stringify(list) !== JSON.stringify(translationLangs)) {
+      console.warn(name + " is out of sync with translations: " + JSON.stringify(list) + " vs " + JSON.stringify(translationLangs));
+    }
+  });
+})();
 
 function initLanguage() {
   var saved = localStorage.getItem("itech-lang");

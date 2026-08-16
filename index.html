@@ -223,6 +223,10 @@
       <marker id="tech-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
         <path d="M0 0 L10 5 L0 10 Z" fill="var(--accent-mint)"/>
       </marker>
+      <g id="tech-bg">
+        <rect width="800" height="600" fill="var(--navy)"/>
+        <rect width="800" height="600" fill="url(#tech-grid)"/>
+      </g>
     </defs>
   </svg>
 
@@ -239,8 +243,7 @@
         <div class="tech-panel-img">
           <svg class="tech-illustration" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" role="img" aria-labelledby="tech-illust-t1">
             <title id="tech-illust-t1" data-i18n="alt.solution.t1">示意圖：施工圖解析為鋼筋計料表</title>
-            <rect width="800" height="600" fill="var(--navy)"/>
-            <rect width="800" height="600" fill="url(#tech-grid)"/>
+            <use href="#tech-bg"/>
             <g stroke="var(--cream)" stroke-width="1.5" fill="none" opacity="0.85">
               <rect x="90" y="160" width="180" height="280"/>
               <line x1="90" y1="160" x2="60" y2="130"/>
@@ -291,8 +294,7 @@
         <div class="tech-panel-img">
           <svg class="tech-illustration" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" role="img" aria-labelledby="tech-illust-t2">
             <title id="tech-illust-t2" data-i18n="alt.solution.t2">示意圖：AR 疊加指導現場鋼筋施工</title>
-            <rect width="800" height="600" fill="var(--navy)"/>
-            <rect width="800" height="600" fill="url(#tech-grid)"/>
+            <use href="#tech-bg"/>
             <circle cx="400" cy="300" r="140" fill="none" stroke="#ffffff" stroke-opacity="0.15" stroke-dasharray="4 6"/>
             <circle cx="540" cy="300" r="14" fill="none" stroke="var(--accent-mint)" stroke-width="1" stroke-opacity="0.4"/>
             <circle cx="357" cy="437" r="14" fill="none" stroke="var(--accent-mint)" stroke-width="1" stroke-opacity="0.4"/>
@@ -307,8 +309,8 @@
               <circle cx="357" cy="163" r="8"/>
               <circle cx="443" cy="163" r="8"/>
             </g>
-            <circle cx="513" cy="218" r="9" fill="var(--accent-red)"/>
-            <circle cx="513" cy="218" r="16" fill="none" stroke="var(--accent-red)" stroke-width="1.5" stroke-opacity="0.6"/>
+            <circle cx="513" cy="218" r="9" fill="#F87171"/>
+            <circle cx="513" cy="218" r="16" fill="none" stroke="#F87171" stroke-width="1.5" stroke-opacity="0.6"/>
             <g stroke="var(--accent-mint)" stroke-width="2" fill="none" opacity="0.7">
               <path d="M170 170 v40 M170 170 h40"/>
               <path d="M630 170 v40 M630 170 h-40"/>
@@ -346,8 +348,7 @@
                 <stop offset="100%" stop-color="var(--accent-mint)" stop-opacity="0"/>
               </linearGradient>
             </defs>
-            <rect width="800" height="600" fill="var(--navy)"/>
-            <rect width="800" height="600" fill="url(#tech-grid)"/>
+            <use href="#tech-bg"/>
             <g stroke="var(--cream)" stroke-opacity="0.1" stroke-width="1.5">
               <line x1="260" y1="120" x2="260" y2="480"/>
               <line x1="330" y1="120" x2="330" y2="480"/>
@@ -358,11 +359,11 @@
             <rect x="0" y="248" width="800" height="6" fill="url(#scan-t3)"/>
             <rect x="220" y="150" width="360" height="230" rx="10" fill="#0F2337" fill-opacity="0.9" stroke="#ffffff" stroke-opacity="0.08"/>
             <text x="248" y="184" fill="#9AA7B5" font-size="11" letter-spacing="0.08em">AS-BUILT VERIFICATION</text>
-            <circle cx="252" cy="214" r="5" fill="var(--accent-green)"/>
+            <circle cx="252" cy="214" r="5" fill="#4ADE80"/>
             <text x="532" y="219" fill="#4ADE80" font-size="13" text-anchor="end" font-weight="600">96%</text>
-            <circle cx="252" cy="254" r="5" fill="var(--accent-green)"/>
+            <circle cx="252" cy="254" r="5" fill="#4ADE80"/>
             <text x="532" y="259" fill="#4ADE80" font-size="13" text-anchor="end" font-weight="600">92%</text>
-            <circle cx="252" cy="294" r="5" fill="var(--accent-red)"/>
+            <circle cx="252" cy="294" r="5" fill="#F87171"/>
             <text x="532" y="299" fill="#F87171" font-size="13" text-anchor="end" font-weight="600">-8mm</text>
             <line x1="248" y1="326" x2="552" y2="326" stroke="#ffffff" stroke-opacity="0.08"/>
           </svg>
@@ -396,8 +397,7 @@
         <div class="tech-panel-img">
           <svg class="tech-illustration" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" role="img" aria-labelledby="tech-illust-product">
             <title id="tech-illust-product" data-i18n="alt.product">示意圖：圖檔轉換為鋼筋計料表</title>
-            <rect width="800" height="600" fill="var(--navy)"/>
-            <rect width="800" height="600" fill="url(#tech-grid)"/>
+            <use href="#tech-bg"/>
             <rect x="90" y="210" width="150" height="180" rx="6" fill="#0F2337" stroke="#ffffff" stroke-opacity="0.12"/>
             <g stroke="var(--cream)" stroke-opacity="0.6" stroke-width="1.5">
               <line x1="112" y1="240" x2="208" y2="240"/>
