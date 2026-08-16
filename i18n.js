@@ -1504,6 +1504,10 @@ function setLanguage(lang) {
       return;
     }
 
+    // Empty translations hide the element entirely (e.g. a unit label some
+    // locales fold into the surrounding text instead)
+    el.style.display = val === "" ? "none" : "";
+
     // Arrays become <br>-joined lines (for headings)
     if (Array.isArray(val)) {
       // Clear and rebuild with text nodes + <br>
@@ -1532,23 +1536,12 @@ function setLanguage(lang) {
     if (t[key] !== undefined) el.setAttribute("aria-label", t[key]);
   });
 
-  // Toggle visibility of elements with empty translations
-  document.querySelectorAll("[data-i18n]").forEach(function (el) {
-    var key = el.getAttribute("data-i18n");
-    var val = t[key];
-    if (val === "") {
-      el.style.display = "none";
-    } else if (val !== undefined) {
-      el.style.display = "";
-    }
-  });
-
   // Sync language switcher
   var langSelect = document.getElementById("langSelect");
   if (langSelect) langSelect.value = lang;
 
   // Don't persist a fallback: an invalid `lang` shouldn't clobber a real saved preference.
-  if (!isFallback) localStorage.setItem("itech-lang", lang);
+  if (!isFallback) safeStorageSet("itech-lang", lang);
 }
 
 // zh-TW is the browser-locale fallback, so it's intentionally excluded here —
@@ -1557,8 +1550,26 @@ var BROWSER_LANG_PREFIXES = Object.keys(translations).filter(function (lang) {
   return lang !== "zh-TW";
 });
 
+// localStorage can throw (blocked storage, sandboxed iframe, hardened browser
+// config) — never let that abort language init or the langSelect listener setup.
+function safeStorageGet(key) {
+  try {
+    return localStorage.getItem(key);
+  } catch (e) {
+    return null;
+  }
+}
+
+function safeStorageSet(key, value) {
+  try {
+    localStorage.setItem(key, value);
+  } catch (e) {
+    // ignore — worst case the preference just doesn't persist
+  }
+}
+
 function initLanguage() {
-  var saved = localStorage.getItem("itech-lang");
+  var saved = safeStorageGet("itech-lang");
   if (saved && translations[saved]) {
     setLanguage(saved);
     return;

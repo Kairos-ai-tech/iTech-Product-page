@@ -85,9 +85,10 @@
       </a>
       <div class="nav-right">
         <div class="lang-switcher">
-          <!-- Options rebuilt from translations by populateLangSelect() in i18n.js;
-               this static list is just a no-JS fallback. Adding a language only
-               requires touching LANG_LABELS + translations in i18n.js. -->
+          <!-- With JS enabled, populateLangSelect() in i18n.js replaces this list at
+               load, built off LANG_LABELS + translations — that's the only place
+               to touch for JS users. This static list is a separate, hand-maintained
+               no-JS fallback: update it too if a language should also work without JS. -->
           <select id="langSelect" class="lang-select" aria-label="Language / 語言" data-i18n-aria-label="aria.langSelect">
             <option value="zh-TW">中文</option>
             <option value="en">English</option>
