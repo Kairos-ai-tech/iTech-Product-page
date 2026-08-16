@@ -531,7 +531,7 @@ const translations = {
     "contact.label": "お問い合わせ",
     "contact.heading": ["ゼロエラーの現場を", "一緒につくりましょう"],
     "contact.desc": "ゼネコン、鉄筋加工工場、構造設計事務所、デベロッパー、政府機関、投資家 — 施工執行を正しく仕上げたいすべての方とお話ししたいです。",
-    "contact.desc-en": "",
+    "contact.desc-en": "Contractors, fabricators, structural engineers, developers, agencies, investors — let's get construction execution right.",
     "contact.name": "お名前",
     "contact.name.placeholder": "お名前を入力",
     "contact.email": "メールアドレス",

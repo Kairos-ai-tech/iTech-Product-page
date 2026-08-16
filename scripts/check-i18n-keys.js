@@ -37,6 +37,11 @@
 //    custom property, including the inline-SVG color tokens that have no
 //    other runtime signal when broken (they just silently fall back to
 //    the CSS-wide initial value).
+// 9. index.html's <link rel="alternate" hreflang="..."> tags and the
+//    JSON-LD @graph's WebSite.inLanguage array must both list exactly
+//    translations' locales (run through toHtmlLang(), same as
+//    document.documentElement.lang) — two more hand-maintained locale
+//    lists (SEO/hreflang, structured data) nothing else kept in sync.
 
 const fs = require("fs");
 const path = require("path");
@@ -78,7 +83,7 @@ const sandbox = {
 };
 vm.createContext(sandbox);
 vm.runInContext(
-  code + "\n;globalThis.translations = translations; globalThis.LANG_LABELS = LANG_LABELS; globalThis.setLanguage = setLanguage; globalThis.DEFAULT_LANG = DEFAULT_LANG; globalThis.I18N_ATTRS = I18N_ATTRS;",
+  code + "\n;globalThis.translations = translations; globalThis.LANG_LABELS = LANG_LABELS; globalThis.setLanguage = setLanguage; globalThis.DEFAULT_LANG = DEFAULT_LANG; globalThis.I18N_ATTRS = I18N_ATTRS; globalThis.toHtmlLang = toHtmlLang;",
   sandbox,
   { filename: i18nPath }
 );
@@ -230,6 +235,41 @@ const undefinedProps = [...usedProps].filter((p) => !definedProps.has(p));
 if (undefinedProps.length) {
   failed = true;
   console.error(`var() reference(s) to custom propert(y/ies) not defined in styles.css's :root: ${undefinedProps.join(", ")}`);
+}
+
+// --- 9. hreflang <link> tags and JSON-LD inLanguage match translations ---
+const expectedHtmlLangs = new Set(locales.map((l) => sandbox.toHtmlLang(l)));
+
+const hreflangs = [...html.matchAll(/<link[^>]*\brel="alternate"[^>]*\bhreflang="([^"]+)"/g)].map((mm) => mm[1]);
+const hreflangSet = new Set(hreflangs.filter((h) => h !== "x-default"));
+const missingHreflangs = [...expectedHtmlLangs].filter((h) => !hreflangSet.has(h));
+const extraHreflangs = [...hreflangSet].filter((h) => !expectedHtmlLangs.has(h));
+if (missingHreflangs.length) {
+  failed = true;
+  console.error(`index.html is missing hreflang tag(s) for: ${missingHreflangs.join(", ")}`);
+}
+if (extraHreflangs.length) {
+  failed = true;
+  console.error(`index.html has hreflang tag(s) for language(s) not in translations: ${extraHreflangs.join(", ")}`);
+}
+
+const jsonLdMatch = html.match(/"inLanguage":\s*(\[[^\]]*\])/);
+if (jsonLdMatch) {
+  const jsonLdLangs = JSON.parse(jsonLdMatch[1]);
+  const jsonLdSet = new Set(jsonLdLangs);
+  const missingFromJsonLd = [...expectedHtmlLangs].filter((h) => !jsonLdSet.has(h));
+  const extraInJsonLd = jsonLdLangs.filter((h) => !expectedHtmlLangs.has(h));
+  if (missingFromJsonLd.length) {
+    failed = true;
+    console.error(`JSON-LD inLanguage is missing: ${missingFromJsonLd.join(", ")}`);
+  }
+  if (extraInJsonLd.length) {
+    failed = true;
+    console.error(`JSON-LD inLanguage has language(s) not in translations: ${extraInJsonLd.join(", ")}`);
+  }
+} else {
+  failed = true;
+  console.error("Could not find JSON-LD inLanguage array in index.html");
 }
 
 if (failed) {
