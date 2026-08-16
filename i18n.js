@@ -40,6 +40,10 @@ const translations = {
     "solution.label": "OUR TECHNOLOGY 核心技術",
     "solution.heading": ["端到端施工執行管線"],
     "solution.lead": "以結構施工圖為唯一真值，從下料到驗收全程由 AI 接管",
+    "alt.solution.t1": "示意圖：施工圖解析為鋼筋計料表",
+    "alt.solution.t2": "示意圖：AR 疊加指導現場鋼筋施工",
+    "alt.solution.t3": "示意圖：AI 比對竣工與設計狀態",
+    "alt.product": "示意圖：圖檔轉換為鋼筋計料表",
     "solution.t1.title": "施工圖自動解析",
     "solution.t1.en": "Automated Drawing Parsing",
     "solution.t1.desc": "結構施工圖 → 鋼筋計料表、下料表、加工表。整合威智引擎，自動生成可送加工廠的數位資料。",
@@ -216,6 +220,10 @@ const translations = {
     "solution.label": "OUR TECHNOLOGY",
     "solution.heading": ["End-to-End Execution Pipeline"],
     "solution.lead": "The structural drawing is ground truth — AI runs everything from fabrication to verified placement.",
+    "alt.solution.t1": "Diagram: structural drawing parsed into a rebar bar-mark schedule",
+    "alt.solution.t2": "Diagram: AR overlay guiding rebar placement on-site",
+    "alt.solution.t3": "Diagram: AI verification comparing as-built to as-designed",
+    "alt.product": "Diagram: drawing file converted into a rebar material-list workbook",
     "solution.t1.title": "Automated Drawing Parsing",
     "solution.t1.en": "",
     "solution.t1.desc": "Structural drawing → bar schedule, cut list, bending list. Integrated with the Wei-Zhi engine to drive fabrication shops directly.",
@@ -392,6 +400,10 @@ const translations = {
     "solution.label": "コア技術",
     "solution.heading": ["エンド・ツー・エンド施工実行パイプライン"],
     "solution.lead": "構造施工図を唯一の正とし、加工から検証配筋まですべてをAIが担当",
+    "alt.solution.t1": "図：構造図を鉄筋加工表に自動解析",
+    "alt.solution.t2": "図：ARで現場の鉄筋配置を指導",
+    "alt.solution.t3": "図：AIが竣工と設計を照合検証",
+    "alt.product": "図：図面ファイルを鉄筋計料表に変換",
     "solution.t1.title": "施工図の自動解析",
     "solution.t1.en": "Automated Drawing Parsing",
     "solution.t1.desc": "構造施工図 → 鉄筋計量表・切断表・加工表。威智（Wei-Zhi）エンジンと連携し加工工場に直接送出。",
@@ -568,6 +580,10 @@ const translations = {
     "solution.label": "NUESTRA TECNOLOGÍA",
     "solution.heading": ["Pipeline de Ejecución de Extremo a Extremo"],
     "solution.lead": "El plano estructural es la fuente de verdad — la IA gestiona todo, desde la fabricación hasta la colocación verificada.",
+    "alt.solution.t1": "Diagrama: plano estructural analizado en una lista de despiece de armadura",
+    "alt.solution.t2": "Diagrama: guía AR para la colocación de armadura en obra",
+    "alt.solution.t3": "Diagrama: verificación por IA comparando lo construido con lo diseñado",
+    "alt.product": "Diagrama: archivo de plano convertido en lista de materiales de armadura",
     "solution.t1.title": "Análisis Automático de Planos",
     "solution.t1.en": "",
     "solution.t1.desc": "Plano estructural → lista de despiece, lista de corte, lista de doblado. Integrado con el motor Wei-Zhi para enviar datos directamente al taller de fabricación.",
@@ -744,6 +760,10 @@ const translations = {
     "solution.label": "NOTRE TECHNOLOGIE",
     "solution.heading": ["Un Pipeline d'Exécution de Bout en Bout"],
     "solution.lead": "Le plan de structure fait foi — l'IA pilote tout, de la fabrication à la pose vérifiée.",
+    "alt.solution.t1": "Schéma : plan structurel analysé en nomenclature d'armatures",
+    "alt.solution.t2": "Schéma : guidage AR pour le placement des armatures sur chantier",
+    "alt.solution.t3": "Schéma : vérification par IA comparant l'existant au plan",
+    "alt.product": "Schéma : fichier de plan converti en liste de matériel d'armatures",
     "solution.t1.title": "Analyse Automatique des Plans",
     "solution.t1.en": "",
     "solution.t1.desc": "Plan de structure → nomenclature d'armatures, liste de découpe, liste de façonnage. Intégré au moteur Wei-Zhi pour alimenter directement les ateliers de façonnage.",
@@ -920,6 +940,10 @@ const translations = {
     "solution.label": "UNSERE TECHNOLOGIE",
     "solution.heading": ["Durchgängige Ausführungs-Pipeline"],
     "solution.lead": "Der Statikplan ist die einzige Wahrheit — KI übernimmt alles von der Fertigung bis zur geprüften Verlegung.",
+    "alt.solution.t1": "Diagramm: Bauplan wird in eine Bewehrungsliste zerlegt",
+    "alt.solution.t2": "Diagramm: AR-Overlay leitet die Bewehrungsverlegung vor Ort an",
+    "alt.solution.t3": "Diagramm: KI-Abgleich von Ist- und Sollzustand",
+    "alt.product": "Diagramm: Planzeichnung wird in eine Bewehrungs-Materialliste umgewandelt",
     "solution.t1.title": "Automatische Planauswertung",
     "solution.t1.en": "",
     "solution.t1.desc": "Statikplan → Biegeliste, Schnittliste, Stahlliste. Integriert mit der Wei-Zhi-Engine, die Fertigungsbetriebe direkt ansteuert.",
@@ -1096,6 +1120,10 @@ const translations = {
     "solution.label": "LA NOSTRA TECNOLOGIA",
     "solution.heading": ["Pipeline di Esecuzione End-to-End"],
     "solution.lead": "Il disegno strutturale è l'unica fonte di verità — l'IA gestisce tutto, dalla lavorazione alla posa verificata.",
+    "alt.solution.t1": "Schema: disegno strutturale analizzato in un elenco ferri d'armatura",
+    "alt.solution.t2": "Schema: guida AR per il posizionamento dei ferri in cantiere",
+    "alt.solution.t3": "Schema: verifica IA che confronta lo stato costruito col progetto",
+    "alt.product": "Schema: file di disegno convertito in distinta materiali dei ferri",
     "solution.t1.title": "Analisi Automatica dei Disegni",
     "solution.t1.en": "",
     "solution.t1.desc": "Disegno strutturale → distinta ferri, lista di taglio, lista di piegatura. Integrato con il motore Wei-Zhi per inviare i dati direttamente all'officina di lavorazione.",
@@ -1272,6 +1300,10 @@ const translations = {
     "solution.label": "NOSSA TECNOLOGIA",
     "solution.heading": ["Pipeline de Execução de Ponta a Ponta"],
     "solution.lead": "O desenho estrutural é a fonte da verdade — a IA cuida de tudo, da fabricação à colocação verificada.",
+    "alt.solution.t1": "Diagrama: desenho estrutural convertido em lista de armaduras",
+    "alt.solution.t2": "Diagrama: orientação em AR para posicionamento de armaduras em obra",
+    "alt.solution.t3": "Diagrama: verificação por IA comparando o construído com o projetado",
+    "alt.product": "Diagrama: arquivo de desenho convertido em lista de materiais de armadura",
     "solution.t1.title": "Análise Automática de Desenhos",
     "solution.t1.en": "",
     "solution.t1.desc": "Desenho estrutural → lista de ferros, lista de corte, lista de dobra. Integrado ao motor Wei-Zhi para alimentar diretamente as oficinas de fabricação.",
@@ -1429,7 +1461,11 @@ var HTML_LANG_MAP = {
 
 function setLanguage(lang) {
   var t = translations[lang];
-  if (!t) return;
+  if (!t) {
+    console.warn('setLanguage: unknown lang "' + lang + '", falling back to zh-TW');
+    lang = "zh-TW";
+    t = translations[lang];
+  }
 
   document.documentElement.lang = HTML_LANG_MAP[lang] || "zh-Hant";
 
