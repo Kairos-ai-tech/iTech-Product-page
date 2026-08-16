@@ -10,7 +10,12 @@
 //    of supported data-i18n* attribute suffixes is read directly off
 //    i18n.js's own I18N_ATTRS constant (not hand-duplicated or regex-
 //    scraped here), so adding a new attribute type to setLanguage() extends
-//    this check automatically.
+//    this check automatically. For data-i18n-placeholder/-alt/-aria-label
+//    specifically (setLanguage() requires these to be strings, unlike
+//    data-i18n which also allows arrays), also checks the value is actually
+//    a string in every locale that has the key — key existence alone isn't
+//    enough, since a wrong-typed value passes "k in baseLocale" but still
+//    breaks at runtime.
 // 3. index.html's static no-JS <option value="..."> fallback list must list
 //    exactly the same language codes AND display text as translations/
 //    LANG_LABELS — populateLangSelect() rebuilds the select for JS users,
@@ -42,6 +47,9 @@
 //    translations' locales (run through toHtmlLang(), same as
 //    document.documentElement.lang) — two more hand-maintained locale
 //    lists (SEO/hreflang, structured data) nothing else kept in sync.
+// 10. i18n.js's hero.subtitle-en key must be byte-identical across every
+//     locale — it's documented as a persistent tagline, not a per-locale
+//     gloss, and nothing previously enforced that invariant.
 
 const fs = require("fs");
 const path = require("path");
@@ -52,10 +60,10 @@ const i18nPath = path.join(repoRoot, "i18n.js");
 const htmlPath = path.join(repoRoot, "index.html");
 const cssPath = path.join(repoRoot, "styles.css");
 const code = fs.readFileSync(i18nPath, "utf8");
-const css = fs.readFileSync(cssPath, "utf8");
 // Comments stripped once, up front, so no regex scan below can be tripped
-// up by markup mentioned inside an explanatory <!-- comment --> rather than
-// live in the page.
+// up by markup/declarations mentioned inside an explanatory comment rather
+// than live in the page/stylesheet.
+const css = fs.readFileSync(cssPath, "utf8").replace(/\/\*[\s\S]*?\*\//g, "");
 const html = fs.readFileSync(htmlPath, "utf8").replace(/<!--[\s\S]*?-->/g, "");
 
 let failed = false;
@@ -125,11 +133,7 @@ locales.forEach((locale) => keysets[locale].forEach((k) => allKeys.add(k)));
 
 // --- 1. cross-locale key parity ---
 locales.forEach((locale) => {
-  const missing = [...allKeys].filter((k) => !keysets[locale].has(k));
-  if (missing.length) {
-    failed = true;
-    console.error(`[${locale}] missing ${missing.length} key(s): ${missing.join(", ")}`);
-  }
+  diffSets(`[${locale}]`, keysets[locale], allKeys);
 });
 
 // --- 2 & 7. index.html's data-i18n* attributes: values exist in translations
@@ -145,10 +149,15 @@ if (attrNames.length === 0) {
 const attrValuePattern = /\s(data-i18n[a-z-]*)="([^"]*)"/g;
 const usedAttrs = new Set();
 const htmlKeys = new Set();
+const keysByAttr = {};
+attrNames.forEach((a) => { keysByAttr[a] = new Set(); });
 let m;
 while ((m = attrValuePattern.exec(html))) {
   usedAttrs.add(m[1]);
-  if (attrNames.includes(m[1])) htmlKeys.add(m[2]);
+  if (attrNames.includes(m[1])) {
+    htmlKeys.add(m[2]);
+    keysByAttr[m[1]].add(m[2]);
+  }
 }
 const missingFromTranslations = [...htmlKeys].filter((k) => !(k in baseLocale));
 if (missingFromTranslations.length) {
@@ -160,6 +169,23 @@ if (unknownAttrs.length) {
   failed = true;
   console.error(`index.html uses data-i18n* attribute(s) setLanguage() doesn't select for (typo?): ${unknownAttrs.join(", ")}`);
 }
+
+// data-i18n itself may hold a string or an array (<br>-joined heading);
+// every other data-i18n-* attribute (placeholder/alt/aria-label) requires
+// a string in every locale, since setLanguage() checks `typeof === "string"`
+// and silently clears the attribute otherwise — a value that's merely
+// present but non-string in one locale would pass part 2's `k in baseLocale`
+// check yet still break at runtime for that locale.
+attrNames.filter((a) => a !== "data-i18n").forEach((attr) => {
+  keysByAttr[attr].forEach((key) => {
+    locales.forEach((locale) => {
+      if (Object.prototype.hasOwnProperty.call(translations[locale], key) && typeof translations[locale][key] !== "string") {
+        failed = true;
+        console.error(`translations["${locale}"]["${key}"] is not a string, but is used via ${attr} in index.html`);
+      }
+    });
+  });
+});
 
 // --- 3. static no-JS <option> fallback matches translations' languages + labels ---
 const selectMatch = html.match(/<select[^>]*\bid="langSelect"[^>]*>([\s\S]*?)<\/select>/);
@@ -228,7 +254,14 @@ if (undefinedProps.length) {
 // --- 9. hreflang <link> tags and JSON-LD inLanguage match translations ---
 const expectedHtmlLangs = locales.map((l) => sandbox.toHtmlLang(l));
 
-const hreflangs = [...html.matchAll(/<link[^>]*\brel="alternate"[^>]*\bhreflang="([^"]+)"/g)]
+// Attribute order within the tag isn't fixed by HTML, so match the whole
+// <link> tag first and require rel="alternate" and hreflang="..." to both
+// appear somewhere inside it, rather than anchoring on which comes first.
+const hreflangs = [...html.matchAll(/<link\b[^>]*>/g)]
+  .map((mm) => mm[0])
+  .filter((tag) => /\brel="alternate"/.test(tag))
+  .map((tag) => tag.match(/\bhreflang="([^"]+)"/))
+  .filter(Boolean)
   .map((mm) => mm[1])
   .filter((h) => h !== "x-default");
 diffSets("index.html's hreflang tags", hreflangs, expectedHtmlLangs);
@@ -239,6 +272,16 @@ if (jsonLdMatch) {
 } else {
   failed = true;
   console.error("Could not find JSON-LD inLanguage array in index.html");
+}
+
+// --- 10. hero.subtitle-en is byte-identical across every locale ---
+// i18n.js's header comment documents it as the one .en/-en key that's a
+// persistent tagline rather than a per-locale gloss, and calls out that it
+// must stay identical everywhere — nothing previously enforced that.
+const heroSubtitleEnValues = new Set(locales.map((l) => translations[l]["hero.subtitle-en"]));
+if (heroSubtitleEnValues.size > 1) {
+  failed = true;
+  console.error(`hero.subtitle-en differs across locales (should be identical everywhere): ${[...heroSubtitleEnValues].map((v) => JSON.stringify(v)).join(" vs ")}`);
 }
 
 if (failed) {

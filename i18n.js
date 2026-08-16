@@ -1514,19 +1514,24 @@ function populateLangSelect() {
 // script reads I18N_SIMPLE_ATTRS back out via the same vm sandbox it already
 // uses for translations/LANG_LABELS/DEFAULT_LANG.
 var I18N_SIMPLE_ATTRS = [
-  { attr: "data-i18n-placeholder", apply: function (el, val) { el.placeholder = val; } },
-  { attr: "data-i18n-alt", apply: function (el, val) { el.alt = val; } },
-  { attr: "data-i18n-aria-label", apply: function (el, val) { el.setAttribute("aria-label", val); } },
+  { attr: "data-i18n-placeholder", apply: function (el, val) { el.placeholder = val; }, reset: function (el) { el.placeholder = ""; } },
+  { attr: "data-i18n-alt", apply: function (el, val) { el.alt = val; }, reset: function (el) { el.alt = ""; } },
+  { attr: "data-i18n-aria-label", apply: function (el, val) { el.setAttribute("aria-label", val); }, reset: function (el) { el.removeAttribute("aria-label"); } },
 ];
 var I18N_ATTRS = ["data-i18n"].concat(I18N_SIMPLE_ATTRS.map(function (spec) { return spec.attr; }));
 var I18N_SELECTOR = I18N_ATTRS.map(function (attr) { return "[" + attr + "]"; }).join(", ");
 
+// hasOwnProperty, not `translations[lang]` truthiness: a bare property
+// lookup on a string like "constructor" resolves through the prototype
+// chain to Object's constructor function (truthy), which would silently
+// treat garbage from localStorage (or a bad browser-language guess) as a
+// valid locale.
+function isKnownLocale(lang) {
+  return Object.prototype.hasOwnProperty.call(translations, lang);
+}
+
 function setLanguage(lang) {
-  // hasOwnProperty, not `translations[lang]` truthiness: a bare property
-  // lookup on a string like "constructor" resolves through the prototype
-  // chain to Object's constructor function (truthy), which would silently
-  // treat garbage from localStorage as a valid locale.
-  var isFallback = !Object.prototype.hasOwnProperty.call(translations, lang);
+  var isFallback = !isKnownLocale(lang);
   var t = translations[lang];
   if (isFallback) {
     console.warn('setLanguage: unknown lang "' + lang + '", falling back to ' + DEFAULT_LANG);
@@ -1576,6 +1581,9 @@ function setLanguage(lang) {
         spec.apply(el, t[attrKey]);
       } else {
         console.warn('setLanguage: missing/non-string key "' + attrKey + '" for lang "' + lang + '" (' + spec.attr + ')');
+        // Clear rather than leave a previous locale's text showing under
+        // the wrong language.
+        spec.reset(el);
       }
     });
   });
@@ -1614,7 +1622,7 @@ function safeStorageSet(key, value) {
 
 function initLanguage() {
   var saved = safeStorageGet("itech-lang");
-  if (saved && Object.prototype.hasOwnProperty.call(translations, saved)) {
+  if (saved && isKnownLocale(saved)) {
     setLanguage(saved);
     return;
   }
