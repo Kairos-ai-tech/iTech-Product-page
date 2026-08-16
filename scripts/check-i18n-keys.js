@@ -5,11 +5,12 @@
 //    in setLanguage() would otherwise only surface to a real user of that
 //    locale.
 // 2. Every data-i18n*/data-i18n-placeholder/-alt/-aria-label key referenced
-//    in index.html must exist in translations (checked against zh-TW, the
-//    base locale) — catches a typo'd key in the markup itself. The set of
-//    supported data-i18n* attribute suffixes is read out of i18n.js's own
-//    setLanguage() selector (not hand-duplicated here), so adding a new
-//    attribute type to setLanguage() extends this check automatically.
+//    in index.html must exist in translations (checked against DEFAULT_LANG,
+//    the base locale) — catches a typo'd key in the markup itself. The set
+//    of supported data-i18n* attribute suffixes is read directly off
+//    i18n.js's own I18N_ATTRS constant (not hand-duplicated or regex-
+//    scraped here), so adding a new attribute type to setLanguage() extends
+//    this check automatically.
 // 3. index.html's static no-JS <option value="..."> fallback list must list
 //    exactly the same language codes AND display text as translations/
 //    LANG_LABELS — populateLangSelect() rebuilds the select for JS users,
@@ -77,7 +78,7 @@ const sandbox = {
 };
 vm.createContext(sandbox);
 vm.runInContext(
-  code + "\n;globalThis.translations = translations; globalThis.LANG_LABELS = LANG_LABELS; globalThis.setLanguage = setLanguage; globalThis.DEFAULT_LANG = DEFAULT_LANG;",
+  code + "\n;globalThis.translations = translations; globalThis.LANG_LABELS = LANG_LABELS; globalThis.setLanguage = setLanguage; globalThis.DEFAULT_LANG = DEFAULT_LANG; globalThis.I18N_ATTRS = I18N_ATTRS;",
   sandbox,
   { filename: i18nPath }
 );
@@ -109,16 +110,16 @@ locales.forEach((locale) => {
 });
 
 // --- 2. index.html data-i18n* keys exist in translations ---
-// Pull the attribute suffix list out of i18n.js's setLanguage() selector
-// instead of hand-duplicating it, so a new attribute type added there is
-// automatically covered here (and in part 5's smoke test, see below).
+// Read the attribute suffix list directly off i18n.js's own I18N_ATTRS
+// constant (via the sandbox, not regex-scraped from source text), so a new
+// attribute type added there is automatically covered here (and in part
+// 5's smoke test, see below) with no risk of the extraction regex missing
+// a reformatted selector.
 const baseLocale = translations[sandbox.DEFAULT_LANG] || translations[locales[0]];
-const setLanguageBody = code.slice(code.indexOf("function setLanguage"));
-const selectorMatch = setLanguageBody.match(/\.querySelectorAll\(\s*"([^"]+)"\s*\)/);
-const attrNames = selectorMatch ? [...selectorMatch[1].matchAll(/data-i18n[a-z-]*/g)].map((mm) => mm[0]) : [];
+const attrNames = Array.isArray(sandbox.I18N_ATTRS) ? sandbox.I18N_ATTRS : [];
 if (attrNames.length === 0) {
   failed = true;
-  console.error("Could not find setLanguage()'s querySelectorAll selector (or it had no data-i18n* attributes) in i18n.js — refusing to run a degenerate check.");
+  console.error("i18n.js's I18N_ATTRS was empty or missing — refusing to run a degenerate check.");
 }
 const attrPattern = attrNames.length ? new RegExp(`(?:${attrNames.join("|")})="([^"]+)"`, "g") : null;
 const htmlKeys = new Set();
@@ -146,7 +147,7 @@ if (unknownAttrs.length) {
 // --- 3. static no-JS <option> fallback matches translations' languages + labels ---
 const selectMatch = html.match(/<select[^>]*\bid="langSelect"[^>]*>([\s\S]*?)<\/select>/);
 if (selectMatch) {
-  const options = [...selectMatch[1].matchAll(/<option value="([^"]+)">([^<]*)<\/option>/g)];
+  const options = [...selectMatch[1].matchAll(/<option[^>]*\bvalue="([^"]+)"[^>]*>([^<]*)<\/option>/g)];
   const optionLangs = options.map((mm) => mm[1]);
   const optionSet = new Set(optionLangs);
   const localeSet = new Set(locales);

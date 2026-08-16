@@ -1,12 +1,10 @@
 name: i18n Key Parity Check
 
 on:
-  pull_request:
-    paths:
-      - 'i18n.js'
-      - 'index.html'
-      - 'styles.css'
-      - 'scripts/check-i18n-keys.js'
+  # No path filter: the check runs in well under a second, and a path
+  # allowlist risks silently not running on a future refactor that moves
+  # i18n data/markup/CSS without touching one of these exact filenames.
+  pull_request: {}
 
 jobs:
   check:

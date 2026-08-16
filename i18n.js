@@ -1506,6 +1506,21 @@ function populateLangSelect() {
   });
 }
 
+// Every data-i18n-* attribute setLanguage() understands, beyond data-i18n
+// itself (handled separately since it also drives display:none/array-<br>
+// logic the other three don't need). Declared once here — rather than
+// hand-duplicated as a querySelectorAll selector string and separately in
+// scripts/check-i18n-keys.js — so both stay in sync by construction: the CI
+// script reads I18N_SIMPLE_ATTRS back out via the same vm sandbox it already
+// uses for translations/LANG_LABELS/DEFAULT_LANG.
+var I18N_SIMPLE_ATTRS = [
+  { attr: "data-i18n-placeholder", apply: function (el, val) { el.placeholder = val; } },
+  { attr: "data-i18n-alt", apply: function (el, val) { el.alt = val; } },
+  { attr: "data-i18n-aria-label", apply: function (el, val) { el.setAttribute("aria-label", val); } },
+];
+var I18N_ATTRS = ["data-i18n"].concat(I18N_SIMPLE_ATTRS.map(function (spec) { return spec.attr; }));
+var I18N_SELECTOR = I18N_ATTRS.map(function (attr) { return "[" + attr + "]"; }).join(", ");
+
 function setLanguage(lang) {
   var t = translations[lang];
   var isFallback = !t;
@@ -1521,60 +1536,41 @@ function setLanguage(lang) {
   // element may match more than one (e.g. an <input> needing both a
   // placeholder and an aria-label), so each attribute is handled
   // independently rather than as mutually-exclusive branches.
-  document
-    .querySelectorAll("[data-i18n], [data-i18n-placeholder], [data-i18n-alt], [data-i18n-aria-label]")
-    .forEach(function (el) {
-      var key = el.getAttribute("data-i18n");
-      if (key !== null) {
-        var val = t[key];
-        if (val === undefined) {
-          console.warn('setLanguage: missing key "' + key + '" for lang "' + lang + '"');
-        } else {
-          // Empty translations hide the element entirely (e.g. a unit label
-          // some locales fold into the surrounding text instead)
-          el.style.display = val === "" ? "none" : "";
+  document.querySelectorAll(I18N_SELECTOR).forEach(function (el) {
+    var key = el.getAttribute("data-i18n");
+    if (key !== null) {
+      var val = t[key];
+      if (val === undefined) {
+        console.warn('setLanguage: missing key "' + key + '" for lang "' + lang + '"');
+      } else {
+        // Empty translations hide the element entirely (e.g. a unit label
+        // some locales fold into the surrounding text instead)
+        el.style.display = val === "" ? "none" : "";
 
-          // Arrays become <br>-joined lines (for headings)
-          if (Array.isArray(val)) {
-            // Clear and rebuild with text nodes + <br>
-            while (el.firstChild) el.removeChild(el.firstChild);
-            val.forEach(function (line, i) {
-              el.appendChild(document.createTextNode(line));
-              if (i < val.length - 1) el.appendChild(document.createElement("br"));
-            });
-          } else {
-            el.textContent = val;
-          }
+        // Arrays become <br>-joined lines (for headings)
+        if (Array.isArray(val)) {
+          // Clear and rebuild with text nodes + <br>
+          while (el.firstChild) el.removeChild(el.firstChild);
+          val.forEach(function (line, i) {
+            el.appendChild(document.createTextNode(line));
+            if (i < val.length - 1) el.appendChild(document.createElement("br"));
+          });
+        } else {
+          el.textContent = val;
         }
       }
+    }
 
-      var placeholderKey = el.getAttribute("data-i18n-placeholder");
-      if (placeholderKey !== null) {
-        if (typeof t[placeholderKey] === "string") {
-          el.placeholder = t[placeholderKey];
-        } else {
-          console.warn('setLanguage: missing/non-string key "' + placeholderKey + '" for lang "' + lang + '" (data-i18n-placeholder)');
-        }
-      }
-
-      var altKey = el.getAttribute("data-i18n-alt");
-      if (altKey !== null) {
-        if (typeof t[altKey] === "string") {
-          el.alt = t[altKey];
-        } else {
-          console.warn('setLanguage: missing/non-string key "' + altKey + '" for lang "' + lang + '" (data-i18n-alt)');
-        }
-      }
-
-      var ariaLabelKey = el.getAttribute("data-i18n-aria-label");
-      if (ariaLabelKey !== null) {
-        if (typeof t[ariaLabelKey] === "string") {
-          el.setAttribute("aria-label", t[ariaLabelKey]);
-        } else {
-          console.warn('setLanguage: missing/non-string key "' + ariaLabelKey + '" for lang "' + lang + '" (data-i18n-aria-label)');
-        }
+    I18N_SIMPLE_ATTRS.forEach(function (spec) {
+      var attrKey = el.getAttribute(spec.attr);
+      if (attrKey === null) return;
+      if (typeof t[attrKey] === "string") {
+        spec.apply(el, t[attrKey]);
+      } else {
+        console.warn('setLanguage: missing/non-string key "' + attrKey + '" for lang "' + lang + '" (' + spec.attr + ')');
       }
     });
+  });
 
   // Sync language switcher
   var langSelect = document.getElementById("langSelect");
