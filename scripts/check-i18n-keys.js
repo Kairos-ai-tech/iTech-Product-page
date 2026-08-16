@@ -23,6 +23,19 @@
 //    carrying every attribute from the same selector part 2 derived, so
 //    a throwing bug in populateLangSelect()/initLanguage()/setLanguage()
 //    itself is caught too — parts 1-4 only validate the static data.
+// 6. i18n.js's DEFAULT_LANG must itself be a real key in translations —
+//    initLanguage()'s final fallback is setLanguage(DEFAULT_LANG); if that
+//    constant and the translations key ever drift apart, every visitor
+//    who falls through to the fallback hits a throw.
+// 7. Every data-i18n* attribute actually used in index.html must be one
+//    setLanguage() knows about (the reverse of part 2) — catches a typo'd
+//    attribute name (e.g. data-i18n-arialabel) that matches neither side
+//    and so silently does nothing at runtime.
+// 8. Every var(--foo) referenced in index.html or styles.css must be
+//    defined in styles.css's :root block — catches a typo'd/renamed CSS
+//    custom property, including the inline-SVG color tokens that have no
+//    other runtime signal when broken (they just silently fall back to
+//    the CSS-wide initial value).
 
 const fs = require("fs");
 const path = require("path");
@@ -31,8 +44,10 @@ const vm = require("vm");
 const repoRoot = path.join(__dirname, "..");
 const i18nPath = path.join(repoRoot, "i18n.js");
 const htmlPath = path.join(repoRoot, "index.html");
+const cssPath = path.join(repoRoot, "styles.css");
 const code = fs.readFileSync(i18nPath, "utf8");
 const html = fs.readFileSync(htmlPath, "utf8");
+const css = fs.readFileSync(cssPath, "utf8");
 
 let failed = false;
 
@@ -62,7 +77,7 @@ const sandbox = {
 };
 vm.createContext(sandbox);
 vm.runInContext(
-  code + "\n;globalThis.translations = translations; globalThis.LANG_LABELS = LANG_LABELS; globalThis.setLanguage = setLanguage;",
+  code + "\n;globalThis.translations = translations; globalThis.LANG_LABELS = LANG_LABELS; globalThis.setLanguage = setLanguage; globalThis.DEFAULT_LANG = DEFAULT_LANG;",
   sandbox,
   { filename: i18nPath }
 );
@@ -70,6 +85,12 @@ vm.runInContext(
 const translations = sandbox.translations;
 const langLabels = sandbox.LANG_LABELS;
 const locales = Object.keys(translations);
+
+// --- 6. DEFAULT_LANG is a real translations key ---
+if (!(sandbox.DEFAULT_LANG in translations)) {
+  failed = true;
+  console.error(`i18n.js's DEFAULT_LANG ("${sandbox.DEFAULT_LANG}") is not a key in translations — initLanguage()'s fallback would throw.`);
+}
 const keysets = {};
 locales.forEach((locale) => {
   keysets[locale] = new Set(Object.keys(translations[locale]));
@@ -91,7 +112,7 @@ locales.forEach((locale) => {
 // Pull the attribute suffix list out of i18n.js's setLanguage() selector
 // instead of hand-duplicating it, so a new attribute type added there is
 // automatically covered here (and in part 5's smoke test, see below).
-const baseLocale = translations[locales[0]];
+const baseLocale = translations[sandbox.DEFAULT_LANG] || translations[locales[0]];
 const setLanguageBody = code.slice(code.indexOf("function setLanguage"));
 const selectorMatch = setLanguageBody.match(/\.querySelectorAll\(\s*"([^"]+)"\s*\)/);
 const attrNames = selectorMatch ? [...selectorMatch[1].matchAll(/data-i18n[a-z-]*/g)].map((mm) => mm[0]) : [];
@@ -109,6 +130,17 @@ if (attrPattern) {
     failed = true;
     console.error(`index.html references key(s) not in translations: ${missingFromTranslations.join(", ")}`);
   }
+}
+
+// --- 7. every data-i18n* attribute actually used in index.html is known ---
+// Reverse of part 2: catches a typo'd attribute name (e.g. data-i18n-arialabel)
+// that would match neither setLanguage()'s selector nor part 2's attrPattern,
+// so it silently does nothing at runtime with no signal from either check.
+const usedAttrs = new Set([...html.matchAll(/\sdata-i18n[a-z-]*(?==")/g)].map((mm) => mm[0].trim()));
+const unknownAttrs = [...usedAttrs].filter((a) => !attrNames.includes(a));
+if (unknownAttrs.length) {
+  failed = true;
+  console.error(`index.html uses data-i18n* attribute(s) setLanguage() doesn't select for (typo?): ${unknownAttrs.join(", ")}`);
 }
 
 // --- 3. static no-JS <option> fallback matches translations' languages + labels ---
@@ -183,6 +215,20 @@ try {
 } catch (e) {
   failed = true;
   console.error(`Runtime smoke test threw: ${e.stack || e}`);
+}
+
+// --- 8. every var(--foo) reference resolves to a defined custom property ---
+// Scans the whole stylesheet, not just :root, since some custom properties
+// (e.g. --mask-pos) are intentionally scoped to a single selector rather
+// than declared globally.
+const definedProps = new Set([...css.matchAll(/--[\w-]+(?=\s*:)/g)].map((mm) => mm[0]));
+const usedProps = new Set(
+  [...html.matchAll(/var\((--[\w-]+)/g), ...css.matchAll(/var\((--[\w-]+)/g)].map((mm) => mm[1])
+);
+const undefinedProps = [...usedProps].filter((p) => !definedProps.has(p));
+if (undefinedProps.length) {
+  failed = true;
+  console.error(`var() reference(s) to custom propert(y/ies) not defined in styles.css's :root: ${undefinedProps.join(", ")}`);
 }
 
 if (failed) {

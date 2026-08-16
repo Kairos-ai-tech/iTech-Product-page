@@ -5,6 +5,7 @@ on:
     paths:
       - 'i18n.js'
       - 'index.html'
+      - 'styles.css'
       - 'scripts/check-i18n-keys.js'
 
 jobs:

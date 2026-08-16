@@ -402,7 +402,7 @@ section[id] { scroll-margin-top: 84px; }
   inset: 0;
   background:
     radial-gradient(120% 90% at 15% 15%, rgba(14, 165, 160, 0.16) 0%, transparent 55%),
-    linear-gradient(160deg, var(--navy) 0%, #0F2337 55%, var(--navy) 100%);
+    linear-gradient(160deg, var(--navy) 0%, var(--navy-deep) 55%, var(--navy) 100%);
 }
 
 .hero-static::before,
@@ -410,6 +410,10 @@ section[id] { scroll-margin-top: 84px; }
   content: '';
   position: absolute;
   inset: 0;
+  /* fallback for browsers without color-mix() (pre-2023) — same tint, hand-computed */
+  background-image:
+    linear-gradient(rgba(94, 234, 212, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(94, 234, 212, 0.06) 1px, transparent 1px);
   background-image:
     linear-gradient(color-mix(in srgb, var(--accent-mint) 6%, transparent) 1px, transparent 1px),
     linear-gradient(90deg, color-mix(in srgb, var(--accent-mint) 6%, transparent) 1px, transparent 1px);
@@ -476,6 +480,7 @@ section[id] { scroll-margin-top: 84px; }
   height: 6px;
   border-radius: 50%;
   background: var(--accent-mint);
+  box-shadow: 0 0 0 4px rgba(94, 234, 212, 0.18);
   box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent-mint) 18%, transparent);
 }
 
@@ -1092,6 +1097,7 @@ section[id] { scroll-margin-top: 84px; }
 
 .result-card:hover {
   background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(94, 234, 212, 0.35);
   border-color: color-mix(in srgb, var(--accent-mint) 35%, transparent);
   transform: translateY(-3px);
 }

@@ -1540,18 +1540,30 @@ function setLanguage(lang) {
       }
 
       var placeholderKey = el.getAttribute("data-i18n-placeholder");
-      if (placeholderKey !== null && t[placeholderKey] !== undefined) {
-        el.placeholder = t[placeholderKey];
+      if (placeholderKey !== null) {
+        if (typeof t[placeholderKey] === "string") {
+          el.placeholder = t[placeholderKey];
+        } else {
+          console.warn('setLanguage: missing/non-string key "' + placeholderKey + '" for lang "' + lang + '" (data-i18n-placeholder)');
+        }
       }
 
       var altKey = el.getAttribute("data-i18n-alt");
-      if (altKey !== null && t[altKey] !== undefined) {
-        el.alt = t[altKey];
+      if (altKey !== null) {
+        if (typeof t[altKey] === "string") {
+          el.alt = t[altKey];
+        } else {
+          console.warn('setLanguage: missing/non-string key "' + altKey + '" for lang "' + lang + '" (data-i18n-alt)');
+        }
       }
 
       var ariaLabelKey = el.getAttribute("data-i18n-aria-label");
-      if (ariaLabelKey !== null && typeof t[ariaLabelKey] === "string") {
-        el.setAttribute("aria-label", t[ariaLabelKey]);
+      if (ariaLabelKey !== null) {
+        if (typeof t[ariaLabelKey] === "string") {
+          el.setAttribute("aria-label", t[ariaLabelKey]);
+        } else {
+          console.warn('setLanguage: missing/non-string key "' + ariaLabelKey + '" for lang "' + lang + '" (data-i18n-aria-label)');
+        }
       }
     });
 
