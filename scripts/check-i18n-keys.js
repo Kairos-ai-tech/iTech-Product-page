@@ -11,6 +11,9 @@
 //    exactly the same languages as translations — populateLangSelect()
 //    rebuilds the select for JS users, but this static list is a separate,
 //    hand-maintained fallback nothing else keeps in sync.
+// 4. i18n.js's LANG_LABELS object must have exactly the same locale keys as
+//    translations — a 3rd hand-maintained list (display names) that nothing
+//    else keeps in sync.
 
 const fs = require("fs");
 const path = require("path");
@@ -30,9 +33,10 @@ const sandbox = {
   navigator: { language: "en-US" },
 };
 vm.createContext(sandbox);
-vm.runInContext(code + "\n;globalThis.translations = translations;", sandbox, { filename: i18nPath });
+vm.runInContext(code + "\n;globalThis.translations = translations; globalThis.LANG_LABELS = LANG_LABELS;", sandbox, { filename: i18nPath });
 
 const translations = sandbox.translations;
+const langLabels = sandbox.LANG_LABELS;
 const locales = Object.keys(translations);
 const keysets = {};
 locales.forEach((locale) => {
@@ -85,6 +89,21 @@ if (selectMatch) {
 } else {
   failed = true;
   console.error("Could not find <select id=\"langSelect\"> in index.html");
+}
+
+// --- 4. LANG_LABELS keys match translations' locales ---
+const labelSet = new Set(Object.keys(langLabels));
+const localeSet4 = new Set(locales);
+const missingFromLabels = locales.filter((l) => !labelSet.has(l));
+const extraInLabels = Object.keys(langLabels).filter((l) => !localeSet4.has(l));
+if (missingFromLabels.length || extraInLabels.length) {
+  failed = true;
+  if (missingFromLabels.length) {
+    console.error(`LANG_LABELS is missing: ${missingFromLabels.join(", ")}`);
+  }
+  if (extraInLabels.length) {
+    console.error(`LANG_LABELS has language(s) not in translations: ${extraInLabels.join(", ")}`);
+  }
 }
 
 if (failed) {

@@ -9,6 +9,10 @@
   --navy-soft: rgba(11, 26, 45, 0.04);
   --accent-red: #B91C1C;
   --accent-green: #15803D;
+  /* lighter tints for status markers on dark navy SVG backgrounds — the
+     base --accent-red/--accent-green are ~2.3:1 contrast there, near-invisible */
+  --accent-red-light: #F87171;
+  --accent-green-light: #4ADE80;
   --accent-mint: #5EEAD4;
 
   /* surfaces */
@@ -1329,7 +1333,7 @@ section[id] { scroll-margin-top: 84px; }
 .form-group select:focus,
 .form-group textarea:focus {
   border-color: var(--teal);
-  background: rgba(255, 255, 255, 0.08);
+  background-color: rgba(255, 255, 255, 0.08);
   box-shadow: 0 0 0 3px rgba(14, 165, 160, 0.18);
 }
 
