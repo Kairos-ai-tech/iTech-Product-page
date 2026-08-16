@@ -1522,8 +1522,12 @@ var I18N_ATTRS = ["data-i18n"].concat(I18N_SIMPLE_ATTRS.map(function (spec) { re
 var I18N_SELECTOR = I18N_ATTRS.map(function (attr) { return "[" + attr + "]"; }).join(", ");
 
 function setLanguage(lang) {
+  // hasOwnProperty, not `translations[lang]` truthiness: a bare property
+  // lookup on a string like "constructor" resolves through the prototype
+  // chain to Object's constructor function (truthy), which would silently
+  // treat garbage from localStorage as a valid locale.
+  var isFallback = !Object.prototype.hasOwnProperty.call(translations, lang);
   var t = translations[lang];
-  var isFallback = !t;
   if (isFallback) {
     console.warn('setLanguage: unknown lang "' + lang + '", falling back to ' + DEFAULT_LANG);
     lang = DEFAULT_LANG;
@@ -1542,6 +1546,10 @@ function setLanguage(lang) {
       var val = t[key];
       if (val === undefined) {
         console.warn('setLanguage: missing key "' + key + '" for lang "' + lang + '"');
+        // Don't leave the element hidden from a previous locale's "" value
+        // (see the empty-translations-hide-the-element comment below) —
+        // a missing key isn't the same as a deliberately blank one.
+        el.style.display = "";
       } else {
         // Empty translations hide the element entirely (e.g. a unit label
         // some locales fold into the surrounding text instead)
@@ -1606,7 +1614,7 @@ function safeStorageSet(key, value) {
 
 function initLanguage() {
   var saved = safeStorageGet("itech-lang");
-  if (saved && translations[saved]) {
+  if (saved && Object.prototype.hasOwnProperty.call(translations, saved)) {
     setLanguage(saved);
     return;
   }

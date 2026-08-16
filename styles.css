@@ -340,6 +340,10 @@ section[id] { scroll-margin-top: 84px; }
   padding: 5px 26px 5px 12px;
   cursor: pointer;
   transition: background 0.2s, border-color 0.2s;
+  /* Smaller twin of .form-group select's chevron below (10x6 vs 12x8) —
+     same stroke color/width baked into both data-URIs; a CSS custom
+     property can't parameterize a color inside a data: URI, so if the
+     chevron color ever changes, update both. */
   background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='rgba(255,255,255,0.5)' stroke-width='1.5'/%3E%3C/svg%3E");
   background-position: right 10px center;
 }
@@ -483,6 +487,7 @@ section[id] { scroll-margin-top: 84px; }
   height: 6px;
   border-radius: 50%;
   background: var(--accent-mint);
+  /* pre-color-mix() fallback, same pattern as above */
   box-shadow: 0 0 0 4px rgba(94, 234, 212, 0.18);
   box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent-mint) 18%, transparent);
 }
@@ -1098,6 +1103,7 @@ section[id] { scroll-margin-top: 84px; }
 
 .result-card:hover {
   background: rgba(255, 255, 255, 0.07);
+  /* pre-color-mix() fallback, same pattern as above */
   border-color: rgba(94, 234, 212, 0.35);
   border-color: color-mix(in srgb, var(--accent-mint) 35%, transparent);
   transform: translateY(-3px);

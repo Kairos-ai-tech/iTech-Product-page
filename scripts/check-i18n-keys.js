@@ -52,10 +52,28 @@ const i18nPath = path.join(repoRoot, "i18n.js");
 const htmlPath = path.join(repoRoot, "index.html");
 const cssPath = path.join(repoRoot, "styles.css");
 const code = fs.readFileSync(i18nPath, "utf8");
-const html = fs.readFileSync(htmlPath, "utf8");
 const css = fs.readFileSync(cssPath, "utf8");
+// Comments stripped once, up front, so no regex scan below can be tripped
+// up by markup mentioned inside an explanatory <!-- comment --> rather than
+// live in the page.
+const html = fs.readFileSync(htmlPath, "utf8").replace(/<!--[\s\S]*?-->/g, "");
 
 let failed = false;
+
+function diffSets(label, actual, expected) {
+  const actualSet = new Set(actual);
+  const expectedSet = new Set(expected);
+  const missing = [...expectedSet].filter((x) => !actualSet.has(x));
+  const extra = [...actualSet].filter((x) => !expectedSet.has(x));
+  if (missing.length) {
+    failed = true;
+    console.error(`${label} is missing: ${missing.join(", ")}`);
+  }
+  if (extra.length) {
+    failed = true;
+    console.error(`${label} has unexpected: ${extra.join(", ")}`);
+  }
+}
 
 // One sandbox, one execution: a fake DOM rich enough to both read back the
 // static translations/LANG_LABELS objects AND, later, actually drive
@@ -114,35 +132,29 @@ locales.forEach((locale) => {
   }
 });
 
-// --- 2. index.html data-i18n* keys exist in translations ---
-// Read the attribute suffix list directly off i18n.js's own I18N_ATTRS
-// constant (via the sandbox, not regex-scraped from source text), so a new
-// attribute type added there is automatically covered here (and in part
-// 5's smoke test, see below) with no risk of the extraction regex missing
-// a reformatted selector.
+// --- 2 & 7. index.html's data-i18n* attributes: values exist in translations
+//            (2), and attribute names are ones setLanguage() knows about (7) —
+//            one pass over the markup captures both name and value, instead
+//            of two separately-anchored regexes that could drift apart.
 const baseLocale = translations[sandbox.DEFAULT_LANG] || translations[locales[0]];
 const attrNames = Array.isArray(sandbox.I18N_ATTRS) ? sandbox.I18N_ATTRS : [];
 if (attrNames.length === 0) {
   failed = true;
   console.error("i18n.js's I18N_ATTRS was empty or missing — refusing to run a degenerate check.");
 }
-const attrPattern = attrNames.length ? new RegExp(`(?:${attrNames.join("|")})="([^"]+)"`, "g") : null;
+const attrValuePattern = /\s(data-i18n[a-z-]*)="([^"]*)"/g;
+const usedAttrs = new Set();
 const htmlKeys = new Set();
-if (attrPattern) {
-  let m;
-  while ((m = attrPattern.exec(html))) htmlKeys.add(m[1]);
-  const missingFromTranslations = [...htmlKeys].filter((k) => !(k in baseLocale));
-  if (missingFromTranslations.length) {
-    failed = true;
-    console.error(`index.html references key(s) not in translations: ${missingFromTranslations.join(", ")}`);
-  }
+let m;
+while ((m = attrValuePattern.exec(html))) {
+  usedAttrs.add(m[1]);
+  if (attrNames.includes(m[1])) htmlKeys.add(m[2]);
 }
-
-// --- 7. every data-i18n* attribute actually used in index.html is known ---
-// Reverse of part 2: catches a typo'd attribute name (e.g. data-i18n-arialabel)
-// that would match neither setLanguage()'s selector nor part 2's attrPattern,
-// so it silently does nothing at runtime with no signal from either check.
-const usedAttrs = new Set([...html.matchAll(/\sdata-i18n[a-z-]*(?==")/g)].map((mm) => mm[0].trim()));
+const missingFromTranslations = [...htmlKeys].filter((k) => !(k in baseLocale));
+if (missingFromTranslations.length) {
+  failed = true;
+  console.error(`index.html references key(s) not in translations: ${missingFromTranslations.join(", ")}`);
+}
 const unknownAttrs = [...usedAttrs].filter((a) => !attrNames.includes(a));
 if (unknownAttrs.length) {
   failed = true;
@@ -153,19 +165,7 @@ if (unknownAttrs.length) {
 const selectMatch = html.match(/<select[^>]*\bid="langSelect"[^>]*>([\s\S]*?)<\/select>/);
 if (selectMatch) {
   const options = [...selectMatch[1].matchAll(/<option[^>]*\bvalue="([^"]+)"[^>]*>([^<]*)<\/option>/g)];
-  const optionLangs = options.map((mm) => mm[1]);
-  const optionSet = new Set(optionLangs);
-  const localeSet = new Set(locales);
-  const missingFromOptions = locales.filter((l) => !optionSet.has(l));
-  const extraInOptions = optionLangs.filter((l) => !localeSet.has(l));
-  if (missingFromOptions.length) {
-    failed = true;
-    console.error(`#langSelect's static <option> fallback is missing: ${missingFromOptions.join(", ")}`);
-  }
-  if (extraInOptions.length) {
-    failed = true;
-    console.error(`#langSelect's static <option> fallback has language(s) not in translations: ${extraInOptions.join(", ")}`);
-  }
+  diffSets("#langSelect's static <option> fallback", options.map((mm) => mm[1]), locales);
   options.forEach(([, lang, text]) => {
     if (langLabels[lang] !== undefined && langLabels[lang] !== text) {
       failed = true;
@@ -178,19 +178,7 @@ if (selectMatch) {
 }
 
 // --- 4. LANG_LABELS keys match translations' locales ---
-const labelSet = new Set(Object.keys(langLabels));
-const localeSet4 = new Set(locales);
-const missingFromLabels = locales.filter((l) => !labelSet.has(l));
-const extraInLabels = Object.keys(langLabels).filter((l) => !localeSet4.has(l));
-if (missingFromLabels.length || extraInLabels.length) {
-  failed = true;
-  if (missingFromLabels.length) {
-    console.error(`LANG_LABELS is missing: ${missingFromLabels.join(", ")}`);
-  }
-  if (extraInLabels.length) {
-    console.error(`LANG_LABELS has language(s) not in translations: ${extraInLabels.join(", ")}`);
-  }
-}
+diffSets("LANG_LABELS", Object.keys(langLabels), locales);
 
 // --- 5. runtime smoke test: actually run setLanguage() for every locale ---
 // Fake elements carrying each data-i18n* attribute (same list part 2 derived,
@@ -238,35 +226,16 @@ if (undefinedProps.length) {
 }
 
 // --- 9. hreflang <link> tags and JSON-LD inLanguage match translations ---
-const expectedHtmlLangs = new Set(locales.map((l) => sandbox.toHtmlLang(l)));
+const expectedHtmlLangs = locales.map((l) => sandbox.toHtmlLang(l));
 
-const hreflangs = [...html.matchAll(/<link[^>]*\brel="alternate"[^>]*\bhreflang="([^"]+)"/g)].map((mm) => mm[1]);
-const hreflangSet = new Set(hreflangs.filter((h) => h !== "x-default"));
-const missingHreflangs = [...expectedHtmlLangs].filter((h) => !hreflangSet.has(h));
-const extraHreflangs = [...hreflangSet].filter((h) => !expectedHtmlLangs.has(h));
-if (missingHreflangs.length) {
-  failed = true;
-  console.error(`index.html is missing hreflang tag(s) for: ${missingHreflangs.join(", ")}`);
-}
-if (extraHreflangs.length) {
-  failed = true;
-  console.error(`index.html has hreflang tag(s) for language(s) not in translations: ${extraHreflangs.join(", ")}`);
-}
+const hreflangs = [...html.matchAll(/<link[^>]*\brel="alternate"[^>]*\bhreflang="([^"]+)"/g)]
+  .map((mm) => mm[1])
+  .filter((h) => h !== "x-default");
+diffSets("index.html's hreflang tags", hreflangs, expectedHtmlLangs);
 
 const jsonLdMatch = html.match(/"inLanguage":\s*(\[[^\]]*\])/);
 if (jsonLdMatch) {
-  const jsonLdLangs = JSON.parse(jsonLdMatch[1]);
-  const jsonLdSet = new Set(jsonLdLangs);
-  const missingFromJsonLd = [...expectedHtmlLangs].filter((h) => !jsonLdSet.has(h));
-  const extraInJsonLd = jsonLdLangs.filter((h) => !expectedHtmlLangs.has(h));
-  if (missingFromJsonLd.length) {
-    failed = true;
-    console.error(`JSON-LD inLanguage is missing: ${missingFromJsonLd.join(", ")}`);
-  }
-  if (extraInJsonLd.length) {
-    failed = true;
-    console.error(`JSON-LD inLanguage has language(s) not in translations: ${extraInJsonLd.join(", ")}`);
-  }
+  diffSets("JSON-LD inLanguage", JSON.parse(jsonLdMatch[1]), expectedHtmlLangs);
 } else {
   failed = true;
   console.error("Could not find JSON-LD inLanguage array in index.html");
