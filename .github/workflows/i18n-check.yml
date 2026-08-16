@@ -4,9 +4,13 @@ on:
   push:
     paths:
       - 'i18n.js'
+      - 'index.html'
+      - 'scripts/check-i18n-keys.js'
   pull_request:
     paths:
       - 'i18n.js'
+      - 'index.html'
+      - 'scripts/check-i18n-keys.js'
 
 jobs:
   check:

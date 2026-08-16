@@ -10,7 +10,6 @@
   --accent-red: #B91C1C;
   --accent-green: #15803D;
   --accent-mint: #5EEAD4;
-  --accent-mint-rgb: 94, 234, 212;
 
   /* surfaces */
   --bg: #FBFAF7;
@@ -404,8 +403,8 @@ section[id] { scroll-margin-top: 84px; }
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(var(--accent-mint-rgb), 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(var(--accent-mint-rgb), 0.06) 1px, transparent 1px);
+    linear-gradient(color-mix(in srgb, var(--accent-mint) 6%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--accent-mint) 6%, transparent) 1px, transparent 1px);
   background-size: 64px 64px;
   mask-image: radial-gradient(70% 70% at var(--mask-pos, 50% 50%), black 0%, transparent 75%);
   -webkit-mask-image: radial-gradient(70% 70% at var(--mask-pos, 50% 50%), black 0%, transparent 75%);
@@ -468,7 +467,7 @@ section[id] { scroll-margin-top: 84px; }
   height: 6px;
   border-radius: 50%;
   background: var(--accent-mint);
-  box-shadow: 0 0 0 4px rgba(var(--accent-mint-rgb), 0.18);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent-mint) 18%, transparent);
 }
 
 .hero-title {
@@ -1082,7 +1081,7 @@ section[id] { scroll-margin-top: 84px; }
 
 .result-card:hover {
   background: rgba(255, 255, 255, 0.07);
-  border-color: rgba(var(--accent-mint-rgb), 0.35);
+  border-color: color-mix(in srgb, var(--accent-mint) 35%, transparent);
   transform: translateY(-3px);
 }
 

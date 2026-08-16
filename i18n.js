@@ -1454,6 +1454,11 @@ const translations = {
 // launch, especially: JA 結束/配筋/かぶり/打設 (tie/rebar-layout/cover/pour), and the
 // rebar/AR/as-built terms in ES/FR/DE/IT/PT.
 
+// zh-TW is the site's fallback locale: used whenever no saved/browser
+// preference matches, and excluded from browser-language auto-detection
+// (it's what everything else falls back to).
+var DEFAULT_LANG = "zh-TW";
+
 // Native display name shown in the <select> option for each language. Adding a
 // language for JS-enabled users only requires touching this object and
 // `translations` above — the JS-populated <select> options and
@@ -1477,7 +1482,7 @@ var LANG_LABELS = {
 // zh-TW is the only translations key that isn't already a valid bare BCP-47
 // subtag on its own, hence the single special case rather than a full map.
 function toHtmlLang(lang) {
-  return lang === "zh-TW" ? "zh-Hant" : lang;
+  return lang === DEFAULT_LANG ? "zh-Hant" : lang;
 }
 
 function populateLangSelect() {
@@ -1496,52 +1501,59 @@ function setLanguage(lang) {
   var t = translations[lang];
   var isFallback = !t;
   if (isFallback) {
-    console.warn('setLanguage: unknown lang "' + lang + '", falling back to zh-TW');
-    lang = "zh-TW";
+    console.warn('setLanguage: unknown lang "' + lang + '", falling back to ' + DEFAULT_LANG);
+    lang = DEFAULT_LANG;
     t = translations[lang];
   }
 
   document.documentElement.lang = toHtmlLang(lang);
 
-  document.querySelectorAll("[data-i18n]").forEach(function (el) {
-    var key = el.getAttribute("data-i18n");
-    var val = t[key];
-    if (val === undefined) {
-      console.warn('setLanguage: missing key "' + key + '" for lang "' + lang + '"');
-      return;
-    }
+  // One pass over every element carrying any data-i18n-* attribute — a given
+  // element may match more than one (e.g. an <input> needing both a
+  // placeholder and an aria-label), so each attribute is handled
+  // independently rather than as mutually-exclusive branches.
+  document
+    .querySelectorAll("[data-i18n], [data-i18n-placeholder], [data-i18n-alt], [data-i18n-aria-label]")
+    .forEach(function (el) {
+      var key = el.getAttribute("data-i18n");
+      if (key !== null) {
+        var val = t[key];
+        if (val === undefined) {
+          console.warn('setLanguage: missing key "' + key + '" for lang "' + lang + '"');
+        } else {
+          // Empty translations hide the element entirely (e.g. a unit label
+          // some locales fold into the surrounding text instead)
+          el.style.display = val === "" ? "none" : "";
 
-    // Empty translations hide the element entirely (e.g. a unit label some
-    // locales fold into the surrounding text instead)
-    el.style.display = val === "" ? "none" : "";
+          // Arrays become <br>-joined lines (for headings)
+          if (Array.isArray(val)) {
+            // Clear and rebuild with text nodes + <br>
+            while (el.firstChild) el.removeChild(el.firstChild);
+            val.forEach(function (line, i) {
+              el.appendChild(document.createTextNode(line));
+              if (i < val.length - 1) el.appendChild(document.createElement("br"));
+            });
+          } else {
+            el.textContent = val;
+          }
+        }
+      }
 
-    // Arrays become <br>-joined lines (for headings)
-    if (Array.isArray(val)) {
-      // Clear and rebuild with text nodes + <br>
-      while (el.firstChild) el.removeChild(el.firstChild);
-      val.forEach(function (line, i) {
-        el.appendChild(document.createTextNode(line));
-        if (i < val.length - 1) el.appendChild(document.createElement("br"));
-      });
-    } else {
-      el.textContent = val;
-    }
-  });
+      var placeholderKey = el.getAttribute("data-i18n-placeholder");
+      if (placeholderKey !== null && t[placeholderKey] !== undefined) {
+        el.placeholder = t[placeholderKey];
+      }
 
-  document.querySelectorAll("[data-i18n-placeholder]").forEach(function (el) {
-    var key = el.getAttribute("data-i18n-placeholder");
-    if (t[key] !== undefined) el.placeholder = t[key];
-  });
+      var altKey = el.getAttribute("data-i18n-alt");
+      if (altKey !== null && t[altKey] !== undefined) {
+        el.alt = t[altKey];
+      }
 
-  document.querySelectorAll("[data-i18n-alt]").forEach(function (el) {
-    var key = el.getAttribute("data-i18n-alt");
-    if (t[key] !== undefined) el.alt = t[key];
-  });
-
-  document.querySelectorAll("[data-i18n-aria-label]").forEach(function (el) {
-    var key = el.getAttribute("data-i18n-aria-label");
-    if (t[key] !== undefined) el.setAttribute("aria-label", t[key]);
-  });
+      var ariaLabelKey = el.getAttribute("data-i18n-aria-label");
+      if (ariaLabelKey !== null && typeof t[ariaLabelKey] === "string") {
+        el.setAttribute("aria-label", t[ariaLabelKey]);
+      }
+    });
 
   // Sync language switcher
   var langSelect = document.getElementById("langSelect");
@@ -1554,7 +1566,7 @@ function setLanguage(lang) {
 // zh-TW is the browser-locale fallback, so it's intentionally excluded here —
 // every other language auto-detects from navigator.language.
 var BROWSER_LANG_PREFIXES = Object.keys(translations).filter(function (lang) {
-  return lang !== "zh-TW";
+  return lang !== DEFAULT_LANG;
 });
 
 // localStorage can throw (blocked storage, sandboxed iframe, hardened browser
@@ -1588,7 +1600,7 @@ function initLanguage() {
       return;
     }
   }
-  setLanguage("zh-TW");
+  setLanguage(DEFAULT_LANG);
 }
 
 // All language init lives in this one listener (not script.js) so it runs
