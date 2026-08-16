@@ -1455,9 +1455,14 @@ const translations = {
 // rebar/AR/as-built terms in ES/FR/DE/IT/PT.
 
 // Native display name shown in the <select> option for each language. Adding a
-// language only requires touching this object and `translations` above — the
-// <select>'s options, the HTML lang attribute, and BROWSER_LANG_PREFIXES are
-// all derived from translations' keys below, so there's nothing else to keep in sync.
+// language for JS-enabled users only requires touching this object and
+// `translations` above — the JS-populated <select> options and
+// BROWSER_LANG_PREFIXES are both derived from translations' keys below.
+// Two things still need manual attention: toHtmlLang() below (only zh-TW
+// needs a real BCP-47 remap today, but a future key that isn't already a
+// valid bare subtag — e.g. a "pt-BR" alongside "pt" — would too), and the
+// static <option> list in index.html's #langSelect (the no-JS fallback,
+// not touched by populateLangSelect() until JS runs).
 var LANG_LABELS = {
   "zh-TW": "中文",
   en: "English",
@@ -1469,6 +1474,8 @@ var LANG_LABELS = {
   pt: "Português"
 };
 
+// zh-TW is the only translations key that isn't already a valid bare BCP-47
+// subtag on its own, hence the single special case rather than a full map.
 function toHtmlLang(lang) {
   return lang === "zh-TW" ? "zh-Hant" : lang;
 }

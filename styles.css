@@ -299,11 +299,26 @@ section[id] { scroll-margin-top: 84px; }
   align-items: center;
 }
 
-.lang-select {
+/* Shared by every custom-chevron <select> on the page (this one + .form-group
+   select below) — chevron SVG/size/position stays per-component since the
+   two are different-sized controls, but appearance reset, no-repeat and the
+   dark <option> styling are the same and shouldn't drift independently. */
+.lang-select,
+.form-group select {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  background: rgba(255, 255, 255, 0.08);
+  background-repeat: no-repeat;
+}
+
+.lang-select option,
+.form-group select option {
+  background: var(--navy);
+  color: #fff;
+}
+
+.lang-select {
+  background-color: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: var(--r-full);
   color: #fff;
@@ -315,18 +330,12 @@ section[id] { scroll-margin-top: 84px; }
   cursor: pointer;
   transition: background 0.2s, border-color 0.2s;
   background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='rgba(255,255,255,0.5)' stroke-width='1.5'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
   background-position: right 10px center;
 }
 
 .lang-select:hover {
   background-color: rgba(255, 255, 255, 0.14);
   border-color: rgba(255, 255, 255, 0.22);
-}
-
-.lang-select option {
-  background: var(--navy);
-  color: #fff;
 }
 
 .nav-toggle {
@@ -398,8 +407,8 @@ section[id] { scroll-margin-top: 84px; }
     linear-gradient(rgba(var(--accent-mint-rgb), 0.06) 1px, transparent 1px),
     linear-gradient(90deg, rgba(var(--accent-mint-rgb), 0.06) 1px, transparent 1px);
   background-size: 64px 64px;
-  mask-image: radial-gradient(70% 70% at var(--mask-pos), black 0%, transparent 75%);
-  -webkit-mask-image: radial-gradient(70% 70% at var(--mask-pos), black 0%, transparent 75%);
+  mask-image: radial-gradient(70% 70% at var(--mask-pos, 50% 50%), black 0%, transparent 75%);
+  -webkit-mask-image: radial-gradient(70% 70% at var(--mask-pos, 50% 50%), black 0%, transparent 75%);
 }
 
 .hero-static::before {
@@ -459,7 +468,7 @@ section[id] { scroll-margin-top: 84px; }
   height: 6px;
   border-radius: 50%;
   background: var(--accent-mint);
-  box-shadow: 0 0 0 4px rgba(94, 234, 212, 0.18);
+  box-shadow: 0 0 0 4px rgba(var(--accent-mint-rgb), 0.18);
 }
 
 .hero-title {
@@ -1073,7 +1082,7 @@ section[id] { scroll-margin-top: 84px; }
 
 .result-card:hover {
   background: rgba(255, 255, 255, 0.07);
-  border-color: rgba(94, 234, 212, 0.35);
+  border-color: rgba(var(--accent-mint-rgb), 0.35);
   transform: translateY(-3px);
 }
 
@@ -1297,7 +1306,7 @@ section[id] { scroll-margin-top: 84px; }
 .form-group textarea {
   width: 100%;
   padding: 12px 16px;
-  background: rgba(255, 255, 255, 0.05);
+  background-color: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--r-md);
   font-size: 0.95rem;
@@ -1312,16 +1321,9 @@ section[id] { scroll-margin-top: 84px; }
 }
 
 .form-group select {
-  appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='rgba(255,255,255,0.5)' stroke-width='1.5'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
   background-position: right 16px center;
   padding-right: 40px;
-}
-
-.form-group select option {
-  background: var(--navy);
-  color: #fff;
 }
 
 .form-group input:focus,
