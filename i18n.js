@@ -1,3 +1,12 @@
+// Keys ending in ".en"/"-en" (e.g. solution.t1.en, contact.desc-en) are small
+// English glosses shown under a non-English heading/label — real text in
+// zh-TW/ja (readers benefit from the English term), deliberately blank ""
+// in en/es/fr/de/it/pt (setLanguage() hides an element when its value is
+// "" — see the empty-translations-hide-the-element comment below — so the
+// gloss doesn't show under text that's already in a Latin-script language).
+// hero.subtitle-en is the one exception: it's a distinct, always-shown
+// secondary English tagline (different wording from hero.subtitle in every
+// locale, including "en" itself), not a gloss — leave it real text everywhere.
 const translations = {
   "zh-TW": {
     "nav.crisis": "危機",
@@ -20,9 +29,6 @@ const translations = {
     "hero.stat3.unit": "兆",
     "hero.stat4.label": "驗收週期縮短 (目標)",
     "alt.problem": "工地現場",
-    "alt.solution.t1": "結構施工圖自動解析",
-    "alt.solution.t2": "AR 現場指導",
-    "alt.solution.t3": "AI 即時驗證",
     "problem.label": "THE CRISIS 產業缺口",
     "problem.heading": ["設計與現場脫節", "鋼筋錯誤太晚才發現"],
     "problem.lead": "施工圖意圖經人工判讀後才到現場，誤差往往在監造抽查或灌漿後才浮現。鋼筋工嚴重短缺、返工成本高昂，且全程缺乏可稽核的竣工紀錄。",
@@ -43,6 +49,11 @@ const translations = {
     "solution.label": "OUR TECHNOLOGY 核心技術",
     "solution.heading": ["端到端施工執行管線"],
     "solution.lead": "以結構施工圖為唯一真值，從下料到驗收全程由 AI 接管",
+    "aria.langSelect": "語言",
+    "alt.solution.t1": "示意圖：施工圖解析為鋼筋計料表",
+    "alt.solution.t2": "示意圖：AR 疊加指導現場鋼筋施工",
+    "alt.solution.t3": "示意圖：AI 比對竣工與設計狀態",
+    "alt.product": "示意圖：圖檔轉換為鋼筋計料表",
     "solution.t1.title": "施工圖自動解析",
     "solution.t1.en": "Automated Drawing Parsing",
     "solution.t1.desc": "結構施工圖 → 鋼筋計料表、下料表、加工表。整合威智引擎，自動生成可送加工廠的數位資料。",
@@ -63,7 +74,6 @@ const translations = {
     "solution.t3.m1": "間距：通過 (信心 96%)",
     "solution.t3.m2": "搭接長度：通過 (信心 92%)",
     "solution.t3.m3": "保護層：偏差 -8 mm",
-    "alt.product": "鋼筋估算自動化系統操作畫面",
     "product.label": "MODULE LIVE TODAY 現行落地模組",
     "product.heading": ["不只是願景", "鋼筋估算已在產線運作"],
     "product.lead": "施工圖解析引擎已作為獨立模組上線：AutoCAD 結構圖 → 施工圖 → 計料表，全流程自動化，並原生對接客戶既有巨集匯入流程。",
@@ -97,7 +107,7 @@ const translations = {
     "process.s4.en": "Verify & Snapshot",
     "process.s4.desc": "灌漿前 CV 驗證，產出可簽章的稽核級竣工紀錄",
     "results.label": "TARGET OUTCOMES 目標成效",
-    "results.heading": ["試點目標 (尚未驗證)"],
+    "results.heading": ["試點目標 (驗證中)"],
     "results.r1.title": "鋼筋返工率",
     "results.r1.metric": "目標 ≤ 5%",
     "results.r1.old": "業界 15-25%",
@@ -200,9 +210,6 @@ const translations = {
     "hero.stat3.unit": "T",
     "hero.stat4.label": "Target inspection time reduction",
     "alt.problem": "Construction site",
-    "alt.solution.t1": "Structural drawing parsing",
-    "alt.solution.t2": "AR field guidance",
-    "alt.solution.t3": "Real-time AI verification",
     "problem.label": "THE CRISIS",
     "problem.heading": ["Design Intent and Field Execution", "Are Disconnected"],
     "problem.lead": "Structural drawings are interpreted by hand before they reach the slab. Errors surface only at inspection — or after the pour. Skilled ironworkers are scarce, rework is expensive, and no auditable as-built record exists.",
@@ -216,13 +223,18 @@ const translations = {
     "problem.crisis4.text": "auditable as-built record today",
     "problem.quote": "\"We tied to the drawing. Inspector arrived, said spacing was off and cover was short. Cut, re-tie — there goes the week.\"",
     "problem.quote.cite": "— Site superintendent interview (illustrative, not an attributed customer quote)",
-    "problem.loss.unit": "億",
+    "problem.loss.unit": "",
     "problem.loss1.label": "Direct rebar rework cost (× 100M TWD)",
     "problem.loss2.label": "Schedule delay losses (× 100M TWD)",
     "problem.loss3.label": "Inspection-failure redo (× 100M TWD)",
     "solution.label": "OUR TECHNOLOGY",
     "solution.heading": ["End-to-End Execution Pipeline"],
     "solution.lead": "The structural drawing is ground truth — AI runs everything from fabrication to verified placement.",
+    "aria.langSelect": "Language",
+    "alt.solution.t1": "Diagram: structural drawing parsed into a rebar bar-mark schedule",
+    "alt.solution.t2": "Diagram: AR overlay guiding rebar placement on-site",
+    "alt.solution.t3": "Diagram: AI verification comparing as-built to as-designed",
+    "alt.product": "Diagram: drawing file converted into a rebar material-list workbook",
     "solution.t1.title": "Automated Drawing Parsing",
     "solution.t1.en": "",
     "solution.t1.desc": "Structural drawing → bar schedule, cut list, bending list. Integrated with the Wei-Zhi engine to drive fabrication shops directly.",
@@ -243,7 +255,6 @@ const translations = {
     "solution.t3.m1": "Spacing: pass (conf. 96%)",
     "solution.t3.m2": "Lap length: pass (conf. 92%)",
     "solution.t3.m3": "Cover: -8 mm deviation",
-    "alt.product": "Rebar estimation automation system",
     "product.label": "MODULE LIVE TODAY",
     "product.heading": ["Not Just a Vision", "Rebar Estimation Is Already Running"],
     "product.lead": "The drawing-parsing engine ships today as a standalone module: AutoCAD structural drawing → shop drawing → material list, fully automated, importing natively into the client's existing macro workflow.",
@@ -277,7 +288,7 @@ const translations = {
     "process.s4.en": "",
     "process.s4.desc": "CV verification before pour; signed inspection-ready record",
     "results.label": "TARGET OUTCOMES",
-    "results.heading": ["Pilot Targets (Not Yet Validated)"],
+    "results.heading": ["Pilot Targets (Validation In Progress)"],
     "results.r1.title": "Rebar rework rate",
     "results.r1.metric": "Target ≤ 5%",
     "results.r1.old": "Industry 15-25%",
@@ -380,9 +391,6 @@ const translations = {
     "hero.stat3.unit": "兆",
     "hero.stat4.label": "検査サイクル短縮（目標）",
     "alt.problem": "建設現場",
-    "alt.solution.t1": "構造施工図の自動解析",
-    "alt.solution.t2": "AR 現場ガイダンス",
-    "alt.solution.t3": "AI リアルタイム検証",
     "problem.label": "産業の課題",
     "problem.heading": ["設計と現場が分断され", "鉄筋エラーが手遅れで発見される"],
     "problem.lead": "施工図は人手で読まれて現場に届き、誤差は監理検査や打設後にようやく現れます。鉄筋工は人手不足、手戻りは高コスト、そして監査可能な竣工記録は存在しません。",
@@ -403,6 +411,11 @@ const translations = {
     "solution.label": "コア技術",
     "solution.heading": ["エンド・ツー・エンド施工実行パイプライン"],
     "solution.lead": "構造施工図を唯一の正とし、加工から検証配筋まですべてをAIが担当",
+    "aria.langSelect": "言語",
+    "alt.solution.t1": "図：構造図を鉄筋加工表に自動解析",
+    "alt.solution.t2": "図：ARで現場の鉄筋配置を指導",
+    "alt.solution.t3": "図：AIが竣工と設計を照合検証",
+    "alt.product": "図：図面ファイルを鉄筋計料表に変換",
     "solution.t1.title": "施工図の自動解析",
     "solution.t1.en": "Automated Drawing Parsing",
     "solution.t1.desc": "構造施工図 → 鉄筋計量表・切断表・加工表。威智（Wei-Zhi）エンジンと連携し加工工場に直接送出。",
@@ -423,7 +436,6 @@ const translations = {
     "solution.t3.m1": "間隔: 合格 (信頼度 96%)",
     "solution.t3.m2": "継手長: 合格 (信頼度 92%)",
     "solution.t3.m3": "かぶり: -8 mm 偏差",
-    "alt.product": "鉄筋積算自動化システムの画面",
     "product.label": "稼働中モジュール",
     "product.heading": ["ビジョンだけでなく", "鉄筋積算はすでに稼働中"],
     "product.lead": "施工図解析エンジンは独立モジュールとしてすでに稼働：AutoCAD構造図 → 施工図 → 計量表を全自動化し、顧客既存のマクロ取込フローにネイティブ対応。",
@@ -457,7 +469,7 @@ const translations = {
     "process.s4.en": "Verify & Snapshot",
     "process.s4.desc": "打設前にCV検証、署名可能な監査品質の竣工記録を生成",
     "results.label": "目標成果",
-    "results.heading": ["パイロット目標（未検証）"],
+    "results.heading": ["パイロット目標（検証中）"],
     "results.r1.title": "鉄筋手戻り率",
     "results.r1.metric": "目標 ≤ 5%",
     "results.r1.old": "業界 15-25%",
@@ -519,7 +531,7 @@ const translations = {
     "contact.label": "お問い合わせ",
     "contact.heading": ["ゼロエラーの現場を", "一緒につくりましょう"],
     "contact.desc": "ゼネコン、鉄筋加工工場、構造設計事務所、デベロッパー、政府機関、投資家 — 施工執行を正しく仕上げたいすべての方とお話ししたいです。",
-    "contact.desc-en": "",
+    "contact.desc-en": "Contractors, fabricators, structural engineers, developers, agencies, investors — let's get construction execution right.",
     "contact.name": "お名前",
     "contact.name.placeholder": "お名前を入力",
     "contact.email": "メールアドレス",
@@ -538,76 +550,1102 @@ const translations = {
     "contact.submit": "送信する",
     "footer.rights": "© 2026 iTech. All rights reserved.",
     "footer.company": "Kairos.ai"
+  },
+  "es": {
+    "nav.crisis": "Brecha",
+    "nav.tech": "Tecnología",
+    "nav.product": "Producto",
+    "nav.process": "Proceso",
+    "nav.results": "Objetivos",
+    "nav.advantage": "Ventajas",
+    "nav.pilot": "Piloto Gratuito",
+    "nav.app": "Aplicación",
+    "nav.contact": "Contacto",
+    "hero.badge": "Plataforma de Ejecución de Obra con IA + RA",
+    "hero.title": ["Del Plano a la Inspección", "Armadura Sin Errores"],
+    "hero.subtitle": "Colocación guiada por RA, armadura verificada por IA, registros as-built auditables.",
+    "hero.subtitle-en": "From structural drawing to verified-in-place rebar.",
+    "hero.cta": "Iniciar una conversación",
+    "hero.stat1.label": "Reducción objetivo de retrabajo de armadura",
+    "hero.stat2.label": "Horas de estimación ahorradas (objetivo)",
+    "hero.stat3.label": "Mercado de construcción en Taiwán (TWD)",
+    "hero.stat3.unit": "T",
+    "hero.stat4.label": "Reducción del ciclo de inspección (objetivo)",
+    "alt.problem": "Obra en construcción",
+    "problem.label": "LA CRISIS",
+    "problem.heading": ["La Intención de Diseño y la Ejecución", "en Obra Están Desconectadas"],
+    "problem.lead": "Los planos estructurales se interpretan a mano antes de llegar a la losa. Los errores solo aparecen en la inspección — o después del vertido. Faltan armadores calificados, el retrabajo es costoso y no existe un registro as-built auditable.",
+    "problem.crisis1.stat": "30%",
+    "problem.crisis1.text": "de los sobrecostos provienen del retrabajo",
+    "problem.crisis2.stat": "45%",
+    "problem.crisis2.text": "de déficit de armadores calificados",
+    "problem.crisis3.stat": "70%",
+    "problem.crisis3.text": "de los defectos se detectan después del vertido",
+    "problem.crisis4.stat": "0",
+    "problem.crisis4.text": "registros as-built auditables hoy",
+    "problem.quote": "\"Atamos la armadura según el plano. Llegó el inspector y dijo que la separación estaba mal y el recubrimiento era insuficiente. Cortar y volver a atar — se perdió la semana.\"",
+    "problem.quote.cite": "— Entrevista a un jefe de obra (ilustrativa, no es una cita atribuida a un cliente)",
+    "problem.loss.unit": "",
+    "problem.loss1.label": "Costo directo de retrabajo de armadura (× 100M TWD)",
+    "problem.loss2.label": "Pérdidas por retraso de obra (× 100M TWD)",
+    "problem.loss3.label": "Rehacer por fallo de inspección (× 100M TWD)",
+    "solution.label": "NUESTRA TECNOLOGÍA",
+    "solution.heading": ["Pipeline de Ejecución de Extremo a Extremo"],
+    "solution.lead": "El plano estructural es la fuente de verdad — la IA gestiona todo, desde la fabricación hasta la colocación verificada.",
+    "aria.langSelect": "Idioma",
+    "alt.solution.t1": "Diagrama: plano estructural analizado en una lista de despiece de armadura",
+    "alt.solution.t2": "Diagrama: guía AR para la colocación de armadura en obra",
+    "alt.solution.t3": "Diagrama: verificación por IA comparando lo construido con lo diseñado",
+    "alt.product": "Diagrama: archivo de plano convertido en lista de materiales de armadura",
+    "solution.t1.title": "Análisis Automático de Planos",
+    "solution.t1.en": "",
+    "solution.t1.desc": "Plano estructural → lista de despiece, lista de corte, lista de doblado. Integrado con el motor Wei-Zhi para enviar datos directamente al taller de fabricación.",
+    "solution.t1.m1": "Bar Mark: B1 / B2 / B3",
+    "solution.t1.m2": "Diámetro: #3 ~ #11",
+    "solution.t1.m3": "Longitud: 1.250 ± 5 mm",
+    "solution.t1.m4": "Doblado: gancho de 90° / 135°",
+    "solution.t2.title": "Guía de Campo con RA",
+    "solution.t2.en": "",
+    "solution.t2.desc": "La disposición 3D de la armadura se superpone sobre el encofrado real. Separación, longitud de solape y orientación del gancho por cada barra — la cuadrilla coloca según el plano.",
+    "solution.t2.m1": "✓ Verde = colocación correcta",
+    "solution.t2.m2": "✗ Rojo = desviación, corregir",
+    "solution.t2.m3": "→ Avisos de separación / recubrimiento",
+    "solution.t2.m4": "🏷 El código QR confirma la identidad de la barra",
+    "solution.t3.title": "Verificación con IA en Tiempo Real",
+    "solution.t3.en": "",
+    "solution.t3.desc": "La visión artificial compara as-built con as-designed, marca cada desviación y genera una instantánea firmada antes del vertido.",
+    "solution.t3.m1": "Separación: aprobado (conf. 96%)",
+    "solution.t3.m2": "Longitud de solape: aprobado (conf. 92%)",
+    "solution.t3.m3": "Recubrimiento: desviación de -8 mm",
+    "product.label": "MÓDULO YA EN PRODUCCIÓN",
+    "product.heading": ["No Es Solo una Visión", "la Estimación de Armadura Ya Está Funcionando"],
+    "product.lead": "El motor de análisis de planos ya opera como módulo independiente: plano estructural de AutoCAD → plano de taller → lista de materiales, totalmente automatizado, con importación nativa al flujo de macros existente del cliente.",
+    "product.panel.title": "Sistema de Automatización de Estimación de Armadura",
+    "product.panel.en": "",
+    "product.panel.desc": "Un plugin de AutoCAD 2021 más una app de escritorio multiplataforma convierten los planos estructurales directamente en planos de taller y un libro de lista de materiales (.xlsm). El reconocimiento de vigas/columnas supera el umbral de precisión contractual, y la salida se importa de forma nativa a las macros del cliente — sin necesidad de retooling.",
+    "product.m1": "Reconocimiento de vigas/columnas ≥ 90%",
+    "product.m2": "Plano → lista de materiales, totalmente automático",
+    "product.m3": "Compatibilidad nativa con macros GTA / CCM",
+    "product.m4": "Motor de reglas configurable (Style Guide)",
+    "product.moat1.title": "Reconocimiento de Planos",
+    "product.moat1.desc": "Lee automáticamente la disposición de vigas/columnas y las anotaciones de cotas según las reglas del Style Guide",
+    "product.moat2.title": "Generación de Planos de Taller",
+    "product.moat2.desc": "Genera planos de taller listos para fabricación (.dwg / DXF) a partir del reconocimiento",
+    "product.moat3.title": "Exportación de Lista de Materiales",
+    "product.moat3.desc": "Genera una lista de materiales .xlsm en el formato de macro existente del cliente — sin reintroducir datos a mano",
+    "product.moat4.title": "Flujo de Trabajo y Control de Calidad",
+    "product.moat4.desc": "El seguimiento de estado por elemento se consolida en un registro final de control de calidad entregable",
+    "process.label": "CÓMO FUNCIONA",
+    "process.heading": ["Del Plano al As-Built Firmado"],
+    "process.s1.title": "Importar Plano",
+    "process.s1.en": "",
+    "process.s1.desc": "Sube el plano estructural; la lista de despiece se genera automáticamente",
+    "process.s2.title": "Fabricar y Entregar",
+    "process.s2.en": "",
+    "process.s2.desc": "Se controla la maquinaria del taller, cada barra se etiqueta con QR y se entrega por zona de vertido",
+    "process.s3.title": "Colocación Guiada por RA",
+    "process.s3.en": "",
+    "process.s3.desc": "La cuadrilla ve la superposición 3D en una tableta y ata la armadura según especificación",
+    "process.s4.title": "Verificar y Registrar",
+    "process.s4.en": "",
+    "process.s4.desc": "Verificación por visión artificial antes del vertido; registro firmado listo para inspección",
+    "results.label": "OBJETIVOS DEL PILOTO",
+    "results.heading": ["Objetivos del Piloto (Validación en Curso)"],
+    "results.r1.title": "Tasa de retrabajo de armadura",
+    "results.r1.metric": "Objetivo ≤ 5%",
+    "results.r1.old": "Industria 15-25%",
+    "results.r1.new": "Objetivo ≤ 5%",
+    "results.r2.title": "Horas de estimación",
+    "results.r2.metric": "Objetivo < 1 h",
+    "results.r2.old": "Hoy 8-12 h",
+    "results.r2.new": "Objetivo < 1 h",
+    "results.r3.title": "Ciclo de inspección",
+    "results.r3.metric": "Objetivo mismo día",
+    "results.r3.old": "Hoy 3-5 días",
+    "results.r3.new": "Objetivo mismo día",
+    "results.r4.title": "Merma de material",
+    "results.r4.metric": "Objetivo ≤ 2%",
+    "results.r4.old": "Hoy 5-8%",
+    "results.r4.new": "Objetivo ≤ 2%",
+    "advantage.label": "VENTAJA COMPETITIVA",
+    "advantage.heading": ["Por Qué Elegir iTech"],
+    "advantage.th1": "Enfoque",
+    "advantage.th2": "Ventaja",
+    "advantage.th3": "Desventaja",
+    "advantage.th4": "Diferencia iTech",
+    "advantage.r1.method": "Lectura manual de planos 2D",
+    "advantage.r1.pro": "Flujo de trabajo conocido",
+    "advantage.r1.con": "Propenso a errores, sin verificación en campo",
+    "advantage.r1.edge": "Análisis automático + alineación RA",
+    "advantage.r2.method": "Visores BIM (Navisworks)",
+    "advantage.r2.pro": "Visualización 3D",
+    "advantage.r2.con": "Herramienta de oficina, no llega a obra",
+    "advantage.r2.edge": "RA llevada a la losa",
+    "advantage.r3.method": "Inspección manual por muestreo",
+    "advantage.r3.pro": "Juicio de un inspector experimentado",
+    "advantage.r3.con": "Muestreo limitado, a menudo tras el vertido",
+    "advantage.r3.edge": "Verificación continua al 100%",
+    "advantage.r4.method": "Estimación manual",
+    "advantage.r4.pro": "Se ajusta a los hábitos existentes",
+    "advantage.r4.con": "Lento, propenso a errores, caos de versiones",
+    "advantage.r4.edge": "Del plano a la estimación en segundos",
+    "advantage.moat1.title": "Red de Datos As-Built",
+    "advantage.moat1.desc": "Cada obra suma datos as-built que afinan el modelo — un foso de datos específico de Taiwán",
+    "advantage.moat2.title": "Modelos de Visión Locales",
+    "advantage.moat2.desc": "Modelos de verificación entrenados en obras taiwanesas con especificaciones y prácticas locales de armadura",
+    "advantage.moat3.title": "Relaciones con Obra Pública",
+    "advantage.moat3.desc": "Cumple los requisitos de auditoría de obra pública; ayuda a definir estándares de registro as-built para obras inteligentes",
+    "advantage.moat4.title": "Red de Fabricantes y Contratistas",
+    "advantage.moat4.desc": "Construido con Wei-Zhi, cuya automatización de planos de taller de armadura conecta con la cadena existente de fabricantes y contratistas",
+    "pilot.label": "PILOTO GRATUITO",
+    "pilot.heading": "Solicitar un Piloto Gratuito",
+    "pilot.desc": "Cuéntanos sobre tu empresa y nos pondremos en contacto para organizar el piloto.",
+    "pilot.company": "Empresa",
+    "pilot.company.placeholder": "Nombre de tu empresa",
+    "pilot.type": "Tipo de Obra",
+    "pilot.type.building": "Edificación",
+    "pilot.type.civil": "Obra Civil",
+    "pilot.type.industrial": "Industrial / Nave",
+    "pilot.type.public": "Obra Pública",
+    "pilot.type.other": "Otro",
+    "pilot.submit": "Solicitar Piloto Gratuito",
+    "contact.label": "CONTÁCTANOS",
+    "contact.heading": ["Construyamos Juntos", "Obras Sin Errores"],
+    "contact.desc": "Contratistas, talleres de fabricación, ingenieros estructurales, promotores, entidades públicas, inversores — queremos hablar con cualquiera que le importe hacer bien la ejecución.",
+    "contact.desc-en": "",
+    "contact.name": "Nombre",
+    "contact.name.placeholder": "Tu nombre",
+    "contact.email": "Correo electrónico",
+    "contact.email.placeholder": "you@example.com",
+    "contact.role": "Rol",
+    "contact.role.placeholder": "Selecciona",
+    "contact.role.contractor": "Contratista",
+    "contact.role.fabricator": "Taller de Armadura",
+    "contact.role.engineer": "Ingeniería Estructural",
+    "contact.role.developer": "Promotor / Propietario",
+    "contact.role.government": "Entidad Pública",
+    "contact.role.investor": "Inversor",
+    "contact.role.other": "Otro",
+    "contact.message": "Mensaje",
+    "contact.message.placeholder": "Escribe tu mensaje...",
+    "contact.submit": "Enviar Mensaje",
+    "footer.rights": "© 2026 iTech. Todos los derechos reservados.",
+    "footer.company": "Kairos.ai"
+  },
+  "fr": {
+    "nav.crisis": "Écart",
+    "nav.tech": "Technologie",
+    "nav.product": "Produit",
+    "nav.process": "Processus",
+    "nav.results": "Objectifs",
+    "nav.advantage": "Avantages",
+    "nav.pilot": "Pilote Gratuit",
+    "nav.app": "Application",
+    "nav.contact": "Contact",
+    "hero.badge": "Plateforme d'Exécution de Chantier IA + RA",
+    "hero.title": ["Du Plan à la Réception", "Armature Sans Erreur"],
+    "hero.subtitle": "Pose guidée par RA, armature vérifiée par IA, dossier des ouvrages exécutés auditable.",
+    "hero.subtitle-en": "From structural drawing to verified-in-place rebar.",
+    "hero.cta": "Démarrer un échange",
+    "hero.stat1.label": "Réduction cible de la reprise d'armature",
+    "hero.stat2.label": "Heures d'estimation économisées (cible)",
+    "hero.stat3.label": "Marché de la construction à Taïwan (TWD)",
+    "hero.stat3.unit": "T",
+    "hero.stat4.label": "Réduction du cycle de réception (cible)",
+    "alt.problem": "Chantier de construction",
+    "problem.label": "LA CRISE",
+    "problem.heading": ["L'Intention de Conception et l'Exécution", "sur Chantier Sont Déconnectées"],
+    "problem.lead": "Les plans de structure sont interprétés manuellement avant d'arriver sur la dalle. Les erreurs n'apparaissent qu'à la réception — ou après le coulage. Les ferrailleurs qualifiés manquent, la reprise coûte cher, et aucun dossier des ouvrages exécutés auditable n'existe.",
+    "problem.crisis1.stat": "30%",
+    "problem.crisis1.text": "des dépassements de coûts viennent de la reprise",
+    "problem.crisis2.stat": "45%",
+    "problem.crisis2.text": "de pénurie de ferrailleurs qualifiés",
+    "problem.crisis3.stat": "70%",
+    "problem.crisis3.text": "des défauts trouvés après le coulage",
+    "problem.crisis4.stat": "0",
+    "problem.crisis4.text": "dossier des ouvrages exécutés auditable aujourd'hui",
+    "problem.quote": "« On a ferraillé selon le plan. L'inspecteur est arrivé, a dit que l'espacement n'allait pas et que l'enrobage était insuffisant. Tout couper et reficeler — la semaine est perdue. »",
+    "problem.quote.cite": "— Entretien avec un chef de chantier (illustratif, pas une citation attribuée à un client)",
+    "problem.loss.unit": "",
+    "problem.loss1.label": "Coût direct de la reprise d'armature (× 100M TWD)",
+    "problem.loss2.label": "Pertes liées aux retards de planning (× 100M TWD)",
+    "problem.loss3.label": "Reprise pour échec à la réception (× 100M TWD)",
+    "solution.label": "NOTRE TECHNOLOGIE",
+    "solution.heading": ["Un Pipeline d'Exécution de Bout en Bout"],
+    "solution.lead": "Le plan de structure fait foi — l'IA pilote tout, de la fabrication à la pose vérifiée.",
+    "aria.langSelect": "Langue",
+    "alt.solution.t1": "Schéma : plan structurel analysé en nomenclature d'armatures",
+    "alt.solution.t2": "Schéma : guidage AR pour le placement des armatures sur chantier",
+    "alt.solution.t3": "Schéma : vérification par IA comparant l'existant au plan",
+    "alt.product": "Schéma : fichier de plan converti en liste de matériel d'armatures",
+    "solution.t1.title": "Analyse Automatique des Plans",
+    "solution.t1.en": "",
+    "solution.t1.desc": "Plan de structure → nomenclature d'armatures, liste de découpe, liste de façonnage. Intégré au moteur Wei-Zhi pour alimenter directement les ateliers de façonnage.",
+    "solution.t1.m1": "Bar Mark : B1 / B2 / B3",
+    "solution.t1.m2": "Diamètre : #3 ~ #11",
+    "solution.t1.m3": "Longueur : 1 250 ± 5 mm",
+    "solution.t1.m4": "Façonnage : crochet 90° / 135°",
+    "solution.t2.title": "Guidage de Chantier en RA",
+    "solution.t2.en": "",
+    "solution.t2.desc": "Le calepinage 3D de l'armature se superpose au coffrage réel. Espacement, longueur de recouvrement, orientation du crochet, barre par barre — l'équipe pose au plan.",
+    "solution.t2.m1": "✓ Vert = position correcte",
+    "solution.t2.m2": "✗ Rouge = écart à corriger",
+    "solution.t2.m3": "→ Alertes espacement / enrobage",
+    "solution.t2.m4": "🏷 Le QR code confirme l'identité de la barre",
+    "solution.t3.title": "Vérification IA en Temps Réel",
+    "solution.t3.en": "",
+    "solution.t3.desc": "La vision par ordinateur compare le tel-que-construit au tel-que-conçu, signale chaque écart, produit un instantané signé avant coulage.",
+    "solution.t3.m1": "Espacement : conforme (conf. 96%)",
+    "solution.t3.m2": "Longueur de recouvrement : conforme (conf. 92%)",
+    "solution.t3.m3": "Enrobage : écart de -8 mm",
+    "product.label": "MODULE DÉJÀ EN PRODUCTION",
+    "product.heading": ["Pas Seulement une Vision", "l'Estimation d'Armature Tourne Déjà"],
+    "product.lead": "Le moteur d'analyse de plans fonctionne déjà en module autonome : plan de structure AutoCAD → plan d'atelier → nomenclature de matériaux, entièrement automatisé, avec import natif dans le flux de macros existant du client.",
+    "product.panel.title": "Système d'Automatisation de l'Estimation d'Armature",
+    "product.panel.en": "",
+    "product.panel.desc": "Un plugin AutoCAD 2021 associé à une application de bureau multiplateforme convertit directement les plans de structure en plans d'atelier et en classeur de nomenclature (.xlsm). La reconnaissance poutres/poteaux atteint le seuil de précision contractuel, et la sortie s'importe nativement dans les macros existantes du client — sans nouvel outillage.",
+    "product.m1": "Reconnaissance poutres/poteaux ≥ 90%",
+    "product.m2": "Plan → nomenclature, entièrement automatique",
+    "product.m3": "Compatibilité native macros GTA / CCM",
+    "product.m4": "Moteur de règles Style Guide configurable",
+    "product.moat1.title": "Reconnaissance des Plans",
+    "product.moat1.desc": "Lit automatiquement le calepinage des poutres/poteaux et les cotes selon les règles du Style Guide",
+    "product.moat2.title": "Génération des Plans d'Atelier",
+    "product.moat2.desc": "Produit des plans d'atelier prêts pour la fabrication (.dwg / DXF) à partir de la reconnaissance",
+    "product.moat3.title": "Export de la Nomenclature",
+    "product.moat3.desc": "Génère une nomenclature .xlsm au format macro existant du client — sans ressaisie manuelle",
+    "product.moat4.title": "Suivi de Flux et Qualité",
+    "product.moat4.desc": "Le suivi de statut par élément se consolide en un dossier qualité final livrable",
+    "process.label": "COMMENT ÇA MARCHE",
+    "process.heading": ["Du Plan au Tel-Que-Construit Signé"],
+    "process.s1.title": "Importer le Plan",
+    "process.s1.en": "",
+    "process.s1.desc": "Téléversez le plan de structure ; la nomenclature d'armatures est générée automatiquement",
+    "process.s2.title": "Façonner et Livrer",
+    "process.s2.en": "",
+    "process.s2.desc": "Pilotage des machines d'atelier, chaque barre étiquetée QR, livraison par zone de coulage",
+    "process.s3.title": "Pose Guidée par RA",
+    "process.s3.en": "",
+    "process.s3.desc": "L'équipe voit la superposition 3D sur une tablette et ferraille selon les spécifications",
+    "process.s4.title": "Vérifier et Enregistrer",
+    "process.s4.en": "",
+    "process.s4.desc": "Vérification par vision par ordinateur avant coulage ; dossier signé prêt pour la réception",
+    "results.label": "OBJECTIFS DU PILOTE",
+    "results.heading": ["Objectifs du Pilote (Validation en Cours)"],
+    "results.r1.title": "Taux de reprise d'armature",
+    "results.r1.metric": "Cible ≤ 5%",
+    "results.r1.old": "Secteur 15-25%",
+    "results.r1.new": "Cible ≤ 5%",
+    "results.r2.title": "Heures d'estimation",
+    "results.r2.metric": "Cible < 1 h",
+    "results.r2.old": "Aujourd'hui 8-12 h",
+    "results.r2.new": "Cible < 1 h",
+    "results.r3.title": "Cycle de réception",
+    "results.r3.metric": "Cible même jour",
+    "results.r3.old": "Aujourd'hui 3-5 jours",
+    "results.r3.new": "Cible même jour",
+    "results.r4.title": "Taux de chute matière",
+    "results.r4.metric": "Cible ≤ 2%",
+    "results.r4.old": "Aujourd'hui 5-8%",
+    "results.r4.new": "Cible ≤ 2%",
+    "advantage.label": "AVANTAGE CONCURRENTIEL",
+    "advantage.heading": ["Pourquoi Choisir iTech"],
+    "advantage.th1": "Approche",
+    "advantage.th2": "Avantage",
+    "advantage.th3": "Inconvénient",
+    "advantage.th4": "Différence iTech",
+    "advantage.r1.method": "Lecture manuelle des plans 2D",
+    "advantage.r1.pro": "Flux de travail familier",
+    "advantage.r1.con": "Sujet aux erreurs, sans vérification terrain",
+    "advantage.r1.edge": "Analyse automatique + alignement RA",
+    "advantage.r2.method": "Visionneuses BIM (Navisworks)",
+    "advantage.r2.pro": "Visualisation 3D",
+    "advantage.r2.con": "Outil de bureau, pas sur le chantier",
+    "advantage.r2.edge": "La RA apportée jusqu'à la dalle",
+    "advantage.r3.method": "Contrôle manuel par sondage",
+    "advantage.r3.pro": "Jugement d'expert",
+    "advantage.r3.con": "Échantillonnage limité, souvent après coulage",
+    "advantage.r3.edge": "Vérification continue à 100%",
+    "advantage.r4.method": "Estimation manuelle",
+    "advantage.r4.pro": "S'intègre aux habitudes existantes",
+    "advantage.r4.con": "Lent, sujet aux erreurs, chaos de versions",
+    "advantage.r4.edge": "Du plan à l'estimation en quelques secondes",
+    "advantage.moat1.title": "Réseau de Données Tel-Que-Construit",
+    "advantage.moat1.desc": "Chaque chantier enrichit les données tel-que-construit et affine le modèle — une barrière de données propre à Taïwan",
+    "advantage.moat2.title": "Modèles de Vision Locaux",
+    "advantage.moat2.desc": "Modèles de vérification entraînés sur des chantiers taïwanais, aux normes et pratiques d'armature locales",
+    "advantage.moat3.title": "Relations avec les Marchés Publics",
+    "advantage.moat3.desc": "Répond aux exigences d'audit des marchés publics ; contribue à définir les normes de dossier des ouvrages exécutés pour les chantiers intelligents",
+    "advantage.moat4.title": "Réseau Façonneurs + Entreprises",
+    "advantage.moat4.desc": "Construit avec Wei-Zhi, dont l'automatisation des plans d'atelier d'armature se connecte à la chaîne existante des façonneurs et entreprises",
+    "pilot.label": "PILOTE GRATUIT",
+    "pilot.heading": "Demander un Pilote Gratuit",
+    "pilot.desc": "Parlez-nous de votre entreprise, nous vous contacterons pour organiser le déploiement pilote.",
+    "pilot.company": "Entreprise",
+    "pilot.company.placeholder": "Nom de votre entreprise",
+    "pilot.type": "Type de Chantier",
+    "pilot.type.building": "Bâtiment",
+    "pilot.type.civil": "Génie Civil",
+    "pilot.type.industrial": "Industriel / Usine",
+    "pilot.type.public": "Marché Public",
+    "pilot.type.other": "Autre",
+    "pilot.submit": "Demander un Pilote Gratuit",
+    "contact.label": "NOUS CONTACTER",
+    "contact.heading": ["Construisons Ensemble", "des Chantiers Sans Erreur"],
+    "contact.desc": "Entreprises, façonneurs, bureaux d'études structure, promoteurs, organismes publics, investisseurs — nous voulons échanger avec quiconque tient à bien exécuter le chantier.",
+    "contact.desc-en": "",
+    "contact.name": "Nom",
+    "contact.name.placeholder": "Votre nom",
+    "contact.email": "E-mail",
+    "contact.email.placeholder": "you@example.com",
+    "contact.role": "Rôle",
+    "contact.role.placeholder": "Sélectionner",
+    "contact.role.contractor": "Entreprise Générale",
+    "contact.role.fabricator": "Façonneur d'Armatures",
+    "contact.role.engineer": "Bureau d'Études Structure",
+    "contact.role.developer": "Promoteur / Maître d'Ouvrage",
+    "contact.role.government": "Organisme Public",
+    "contact.role.investor": "Investisseur",
+    "contact.role.other": "Autre",
+    "contact.message": "Message",
+    "contact.message.placeholder": "Saisissez votre message...",
+    "contact.submit": "Envoyer le Message",
+    "footer.rights": "© 2026 iTech. Tous droits réservés.",
+    "footer.company": "Kairos.ai"
+  },
+  "de": {
+    "nav.crisis": "Lücke",
+    "nav.tech": "Technologie",
+    "nav.product": "Produkt",
+    "nav.process": "Prozess",
+    "nav.results": "Ziele",
+    "nav.advantage": "Vorteile",
+    "nav.pilot": "Kostenloses Pilotprojekt",
+    "nav.app": "Anwendung",
+    "nav.contact": "Kontakt",
+    "hero.badge": "KI + AR Plattform für die Bauausführung",
+    "hero.title": ["Vom Plan zur Abnahme", "Bewehrung ohne Fehler"],
+    "hero.subtitle": "AR-geführter Einbau vor Ort, KI-geprüfte Bewehrung, prüfbare Bestandsdokumentation.",
+    "hero.subtitle-en": "From structural drawing to verified-in-place rebar.",
+    "hero.cta": "Gespräch beginnen",
+    "hero.stat1.label": "Ziel: Reduzierung von Bewehrungs-Nacharbeit",
+    "hero.stat2.label": "Ziel: eingesparte Kalkulationsstunden",
+    "hero.stat3.label": "Bauvolumen Taiwan p. a. (TWD)",
+    "hero.stat3.unit": "Bio.",
+    "hero.stat4.label": "Ziel: verkürzter Abnahmezyklus",
+    "alt.problem": "Baustelle",
+    "problem.label": "DAS PROBLEM",
+    "problem.heading": ["Planungsabsicht und Bauausführung", "Sind Voneinander Getrennt"],
+    "problem.lead": "Statikpläne werden von Hand interpretiert, bevor sie auf der Baustelle ankommen. Fehler zeigen sich oft erst bei der Abnahme — oder nach dem Betonieren. Fachkräfte für die Bewehrung fehlen, Nacharbeit ist teuer, und eine prüfbare Bestandsdokumentation existiert nicht.",
+    "problem.crisis1.stat": "30%",
+    "problem.crisis1.text": "der Kostenüberschreitungen entstehen durch Nacharbeit",
+    "problem.crisis2.stat": "45%",
+    "problem.crisis2.text": "Fachkräftemangel bei Bewehrungsmonteuren",
+    "problem.crisis3.stat": "70%",
+    "problem.crisis3.text": "der Mängel werden erst nach dem Betonieren entdeckt",
+    "problem.crisis4.stat": "0",
+    "problem.crisis4.text": "prüfbare Bestandsdokumentation heute",
+    "problem.quote": "„Wir haben nach Plan gebunden. Der Prüfer kam und sagte, der Abstand stimmt nicht und die Betondeckung ist zu gering. Alles aufschneiden und neu binden — die Woche ist futsch.“",
+    "problem.quote.cite": "— Interview mit einem Bauleiter (illustrativ, kein zugeordnetes Kundenzitat)",
+    "problem.loss.unit": "",
+    "problem.loss1.label": "Direkte Kosten der Bewehrungs-Nacharbeit (× 100 Mio. TWD)",
+    "problem.loss2.label": "Verluste durch Terminverzug (× 100 Mio. TWD)",
+    "problem.loss3.label": "Nacharbeit nach nicht bestandener Abnahme (× 100 Mio. TWD)",
+    "solution.label": "UNSERE TECHNOLOGIE",
+    "solution.heading": ["Durchgängige Ausführungs-Pipeline"],
+    "solution.lead": "Der Statikplan ist die einzige Wahrheit — KI übernimmt alles von der Fertigung bis zur geprüften Verlegung.",
+    "aria.langSelect": "Sprache",
+    "alt.solution.t1": "Diagramm: Bauplan wird in eine Bewehrungsliste zerlegt",
+    "alt.solution.t2": "Diagramm: AR-Overlay leitet die Bewehrungsverlegung vor Ort an",
+    "alt.solution.t3": "Diagramm: KI-Abgleich von Ist- und Sollzustand",
+    "alt.product": "Diagramm: Planzeichnung wird in eine Bewehrungs-Materialliste umgewandelt",
+    "solution.t1.title": "Automatische Planauswertung",
+    "solution.t1.en": "",
+    "solution.t1.desc": "Statikplan → Biegeliste, Schnittliste, Stahlliste. Integriert mit der Wei-Zhi-Engine, die Fertigungsbetriebe direkt ansteuert.",
+    "solution.t1.m1": "Bar Mark: B1 / B2 / B3",
+    "solution.t1.m2": "Durchmesser: #3 ~ #11",
+    "solution.t1.m3": "Länge: 1.250 ± 5 mm",
+    "solution.t1.m4": "Biegung: 90°- / 135°-Haken",
+    "solution.t2.title": "AR-Einbauführung vor Ort",
+    "solution.t2.en": "",
+    "solution.t2.desc": "Die 3D-Bewehrungslage wird auf die reale Schalung projiziert. Abstand, Übergreifungslänge und Hakenrichtung je Stab — die Kolonne verlegt nach Vorgabe.",
+    "solution.t2.m1": "✓ Grün = korrekt positioniert",
+    "solution.t2.m2": "✗ Rot = Abweichung, korrigieren",
+    "solution.t2.m3": "→ Hinweise zu Abstand / Betondeckung",
+    "solution.t2.m4": "🏷 QR-Code bestätigt die Stabidentität",
+    "solution.t3.title": "KI-Prüfung in Echtzeit",
+    "solution.t3.en": "",
+    "solution.t3.desc": "Computer Vision vergleicht Ist- mit Soll-Zustand, meldet jede Abweichung und erzeugt vor dem Betonieren einen signierten Prüfschnappschuss.",
+    "solution.t3.m1": "Abstand: bestanden (Konfidenz 96%)",
+    "solution.t3.m2": "Übergreifungslänge: bestanden (Konfidenz 92%)",
+    "solution.t3.m3": "Betondeckung: -8 mm Abweichung",
+    "product.label": "MODUL BEREITS IM EINSATZ",
+    "product.heading": ["Nicht Nur eine Vision", "die Bewehrungskalkulation Läuft Bereits"],
+    "product.lead": "Die Plan-Auswertungs-Engine läuft heute schon als eigenständiges Modul: AutoCAD-Statikplan → Werkstattzeichnung → Materialliste, vollautomatisch, mit nativem Import in den bestehenden Makro-Workflow des Kunden.",
+    "product.panel.title": "System zur Automatisierung der Bewehrungskalkulation",
+    "product.panel.en": "",
+    "product.panel.desc": "Ein AutoCAD-2021-Plugin plus eine plattformübergreifende Desktop-App wandeln Statikpläne direkt in Werkstattzeichnungen und eine Materiallisten-Arbeitsmappe (.xlsm) um. Die Träger-/Stützenerkennung erreicht die vertraglich vereinbarte Genauigkeitsschwelle, und die Ausgabe lässt sich nativ in die bestehenden Makro-Tools des Kunden importieren — ohne Umstellung der Werkzeuge.",
+    "product.m1": "Träger-/Stützenerkennung ≥ 90%",
+    "product.m2": "Plan → Materialliste, vollautomatisch",
+    "product.m3": "Native Kompatibilität mit GTA-/CCM-Makros",
+    "product.m4": "Konfigurierbare Style-Guide-Regel-Engine",
+    "product.moat1.title": "Planerkennung",
+    "product.moat1.desc": "Liest automatisch Träger-/Stützenlage und Maßangaben gegen die Style-Guide-Regeln",
+    "product.moat2.title": "Automatische Werkstattzeichnungserstellung",
+    "product.moat2.desc": "Erzeugt aus der Erkennung fertigungsfähige Werkstattzeichnungen (.dwg / DXF)",
+    "product.moat3.title": "Materiallisten-Export",
+    "product.moat3.desc": "Erzeugt eine .xlsm-Materialliste im bestehenden Makroformat des Kunden — keine manuelle Neueingabe",
+    "product.moat4.title": "Workflow- und Qualitätsverfolgung",
+    "product.moat4.desc": "Statusverfolgung je Bauteil verdichtet sich zu einem lieferbaren finalen Qualitätsprotokoll",
+    "process.label": "SO FUNKTIONIERT ES",
+    "process.heading": ["Vom Plan zum Signierten Bestandsnachweis"],
+    "process.s1.title": "Plan Importieren",
+    "process.s1.en": "",
+    "process.s1.desc": "Statikplan hochladen; Biegeliste und Schnittliste werden automatisch erzeugt",
+    "process.s2.title": "Fertigen und Liefern",
+    "process.s2.en": "",
+    "process.s2.desc": "Steuert die Werkstattmaschinen an, jeder Stab erhält einen QR-Code, Lieferung nach Betonierabschnitt",
+    "process.s3.title": "AR-Geführter Einbau",
+    "process.s3.en": "",
+    "process.s3.desc": "Die Kolonne sieht das 3D-Overlay auf dem Tablet und bindet gemäß Vorgabe",
+    "process.s4.title": "Prüfen und Dokumentieren",
+    "process.s4.en": "",
+    "process.s4.desc": "CV-Prüfung vor dem Betonieren; signierte, abnahmefähige Dokumentation",
+    "results.label": "PILOTZIELE",
+    "results.heading": ["Pilotziele (Validierung Läuft)"],
+    "results.r1.title": "Bewehrungs-Nacharbeitsquote",
+    "results.r1.metric": "Ziel ≤ 5%",
+    "results.r1.old": "Branche 15-25%",
+    "results.r1.new": "Ziel ≤ 5%",
+    "results.r2.title": "Kalkulationsstunden",
+    "results.r2.metric": "Ziel < 1 Std.",
+    "results.r2.old": "Heute 8-12 Std.",
+    "results.r2.new": "Ziel < 1 Std.",
+    "results.r3.title": "Abnahmezyklus",
+    "results.r3.metric": "Ziel: gleicher Tag",
+    "results.r3.old": "Heute 3-5 Tage",
+    "results.r3.new": "Ziel: gleicher Tag",
+    "results.r4.title": "Materialverschnitt",
+    "results.r4.metric": "Ziel ≤ 2%",
+    "results.r4.old": "Heute 5-8%",
+    "results.r4.new": "Ziel ≤ 2%",
+    "advantage.label": "WETTBEWERBSVORTEIL",
+    "advantage.heading": ["Warum iTech"],
+    "advantage.th1": "Ansatz",
+    "advantage.th2": "Vorteil",
+    "advantage.th3": "Nachteil",
+    "advantage.th4": "iTech-Unterschied",
+    "advantage.r1.method": "Manuelles Lesen von 2D-Plänen",
+    "advantage.r1.pro": "Vertrauter Ablauf",
+    "advantage.r1.con": "Fehleranfällig, keine Vor-Ort-Prüfung",
+    "advantage.r1.edge": "Automatische Auswertung + AR-Abgleich",
+    "advantage.r2.method": "BIM-Viewer (Navisworks)",
+    "advantage.r2.pro": "3D-Visualisierung",
+    "advantage.r2.con": "Bürowerkzeug, nicht auf der Baustelle",
+    "advantage.r2.edge": "AR direkt auf die Bodenplatte gebracht",
+    "advantage.r3.method": "Manuelle Stichprobenprüfung",
+    "advantage.r3.pro": "Erfahrungsbasierte Beurteilung",
+    "advantage.r3.con": "Begrenzte Stichprobe, oft erst nach dem Betonieren",
+    "advantage.r3.edge": "100% durchgängige Prüfung",
+    "advantage.r4.method": "Manuelle Kalkulation",
+    "advantage.r4.pro": "Passt zu bestehenden Abläufen",
+    "advantage.r4.con": "Langsam, fehleranfällig, Versionschaos",
+    "advantage.r4.edge": "Vom Plan zur Kalkulation in Sekunden",
+    "advantage.moat1.title": "Bestandsdaten-Netzwerk",
+    "advantage.moat1.desc": "Jede Baustelle liefert Bestandsdaten, die das Modell schärfen — ein Taiwan-spezifischer Datengraben",
+    "advantage.moat2.title": "Lokale CV-Modelle",
+    "advantage.moat2.desc": "Prüfmodelle, trainiert an taiwanesischen Baustellen mit lokalen Bewehrungsnormen und -praktiken",
+    "advantage.moat3.title": "Beziehungen zu öffentlichen Auftraggebern",
+    "advantage.moat3.desc": "Erfüllt Prüfanforderungen öffentlicher Auftraggeber; wirkt an Standards für Bestandsdokumentation auf Smart-Baustellen mit",
+    "advantage.moat4.title": "Netzwerk aus Fertigungsbetrieben und Bauunternehmen",
+    "advantage.moat4.desc": "Aufgebaut mit Wei-Zhi, dessen Automatisierung von Bewehrungs-Werkstattzeichnungen an die bestehende Kette aus Fertigungsbetrieben und Bauunternehmen andockt",
+    "pilot.label": "KOSTENLOSES PILOTPROJEKT",
+    "pilot.heading": "Kostenloses Pilotprojekt Beantragen",
+    "pilot.desc": "Erzählen Sie uns von Ihrem Unternehmen, wir melden uns zur Abstimmung des Pilotprojekts.",
+    "pilot.company": "Unternehmen",
+    "pilot.company.placeholder": "Name Ihres Unternehmens",
+    "pilot.type": "Bauart",
+    "pilot.type.building": "Hochbau",
+    "pilot.type.civil": "Tiefbau",
+    "pilot.type.industrial": "Industrie / Gewerbebau",
+    "pilot.type.public": "Öffentlicher Bau",
+    "pilot.type.other": "Sonstiges",
+    "pilot.submit": "Kostenloses Pilotprojekt Beantragen",
+    "contact.label": "KONTAKT AUFNEHMEN",
+    "contact.heading": ["Lassen Sie Uns Gemeinsam", "Fehlerfreie Baustellen Schaffen"],
+    "contact.desc": "Bauunternehmen, Fertigungsbetriebe, Tragwerksplaner, Projektentwickler, Behörden, Investoren — wir sprechen mit allen, denen eine korrekte Bauausführung wichtig ist.",
+    "contact.desc-en": "",
+    "contact.name": "Name",
+    "contact.name.placeholder": "Ihr Name",
+    "contact.email": "E-Mail",
+    "contact.email.placeholder": "you@example.com",
+    "contact.role": "Rolle",
+    "contact.role.placeholder": "Bitte wählen",
+    "contact.role.contractor": "Bauunternehmen",
+    "contact.role.fabricator": "Bewehrungs-Fertigungsbetrieb",
+    "contact.role.engineer": "Tragwerksplanungsbüro",
+    "contact.role.developer": "Projektentwickler / Bauherr",
+    "contact.role.government": "Behörde",
+    "contact.role.investor": "Investor",
+    "contact.role.other": "Sonstiges",
+    "contact.message": "Nachricht",
+    "contact.message.placeholder": "Ihre Nachricht eingeben...",
+    "contact.submit": "Nachricht Senden",
+    "footer.rights": "© 2026 iTech. Alle Rechte vorbehalten.",
+    "footer.company": "Kairos.ai"
+  },
+  "it": {
+    "nav.crisis": "Il Problema",
+    "nav.tech": "Tecnologia",
+    "nav.product": "Prodotto",
+    "nav.process": "Processo",
+    "nav.results": "Obiettivi",
+    "nav.advantage": "Vantaggi",
+    "nav.pilot": "Pilota Gratuito",
+    "nav.app": "Applicazione",
+    "nav.contact": "Contatti",
+    "hero.badge": "Piattaforma di Esecuzione Cantiere IA + AR",
+    "hero.title": ["Dal Disegno al Collaudo", "Armatura a Zero Errori"],
+    "hero.subtitle": "Posa guidata in AR, armatura verificata dall'IA, registro as-built verificabile.",
+    "hero.subtitle-en": "From structural drawing to verified-in-place rebar.",
+    "hero.cta": "Avvia una conversazione",
+    "hero.stat1.label": "Riduzione obiettivo delle rilavorazioni di armatura",
+    "hero.stat2.label": "Ore di stima risparmiate (obiettivo)",
+    "hero.stat3.label": "Mercato delle costruzioni a Taiwan (TWD)",
+    "hero.stat3.unit": "T",
+    "hero.stat4.label": "Riduzione del ciclo di collaudo (obiettivo)",
+    "alt.problem": "Cantiere edile",
+    "problem.label": "IL PROBLEMA",
+    "problem.heading": ["L'Intento Progettuale e l'Esecuzione", "in Cantiere Sono Scollegati"],
+    "problem.lead": "I disegni strutturali vengono interpretati a mano prima di arrivare in cantiere. Gli errori emergono solo al collaudo — o dopo il getto. Mancano ferraioli qualificati, le rilavorazioni sono costose e non esiste un registro as-built verificabile.",
+    "problem.crisis1.stat": "30%",
+    "problem.crisis1.text": "degli sforamenti di costo derivano da rilavorazioni",
+    "problem.crisis2.stat": "45%",
+    "problem.crisis2.text": "di carenza di ferraioli qualificati",
+    "problem.crisis3.stat": "70%",
+    "problem.crisis3.text": "dei difetti scoperti dopo il getto",
+    "problem.crisis4.stat": "0",
+    "problem.crisis4.text": "registro as-built verificabile oggi",
+    "problem.quote": "\"Abbiamo legato secondo il disegno. È arrivato il direttore lavori e ha detto che l'interasse non andava bene e il copriferro era insufficiente. Tagliare e rilegare — la settimana è persa.\"",
+    "problem.quote.cite": "— Intervista a un capocantiere (a scopo illustrativo, non una citazione attribuita a un cliente)",
+    "problem.loss.unit": "",
+    "problem.loss1.label": "Costo diretto delle rilavorazioni di armatura (× 100M TWD)",
+    "problem.loss2.label": "Perdite per ritardi di cantiere (× 100M TWD)",
+    "problem.loss3.label": "Rilavorazione per collaudo non superato (× 100M TWD)",
+    "solution.label": "LA NOSTRA TECNOLOGIA",
+    "solution.heading": ["Pipeline di Esecuzione End-to-End"],
+    "solution.lead": "Il disegno strutturale è l'unica fonte di verità — l'IA gestisce tutto, dalla lavorazione alla posa verificata.",
+    "aria.langSelect": "Lingua",
+    "alt.solution.t1": "Schema: disegno strutturale analizzato in un elenco ferri d'armatura",
+    "alt.solution.t2": "Schema: guida AR per il posizionamento dei ferri in cantiere",
+    "alt.solution.t3": "Schema: verifica IA che confronta lo stato costruito col progetto",
+    "alt.product": "Schema: file di disegno convertito in distinta materiali dei ferri",
+    "solution.t1.title": "Analisi Automatica dei Disegni",
+    "solution.t1.en": "",
+    "solution.t1.desc": "Disegno strutturale → distinta ferri, lista di taglio, lista di piegatura. Integrato con il motore Wei-Zhi per inviare i dati direttamente all'officina di lavorazione.",
+    "solution.t1.m1": "Bar Mark: B1 / B2 / B3",
+    "solution.t1.m2": "Diametro: #3 ~ #11",
+    "solution.t1.m3": "Lunghezza: 1.250 ± 5 mm",
+    "solution.t1.m4": "Piegatura: gancio 90° / 135°",
+    "solution.t2.title": "Guida in Cantiere con AR",
+    "solution.t2.en": "",
+    "solution.t2.desc": "La disposizione 3D dell'armatura si sovrappone alla cassaforma reale. Interasse, lunghezza di sovrapposizione e orientamento del gancio per ogni barra — la squadra posa secondo il disegno.",
+    "solution.t2.m1": "✓ Verde = posizione corretta",
+    "solution.t2.m2": "✗ Rosso = scostamento da correggere",
+    "solution.t2.m3": "→ Avvisi di interasse / copriferro",
+    "solution.t2.m4": "🏷 Il codice QR conferma l'identità della barra",
+    "solution.t3.title": "Verifica IA in Tempo Reale",
+    "solution.t3.en": "",
+    "solution.t3.desc": "La visione artificiale confronta l'as-built con l'as-designed, segnala ogni scostamento e produce uno snapshot firmato prima del getto.",
+    "solution.t3.m1": "Interasse: superato (conf. 96%)",
+    "solution.t3.m2": "Lunghezza di sovrapposizione: superato (conf. 92%)",
+    "solution.t3.m3": "Copriferro: scostamento di -8 mm",
+    "product.label": "MODULO GIÀ IN PRODUZIONE",
+    "product.heading": ["Non Solo una Visione", "il Computo dell'Armatura È Già Operativo"],
+    "product.lead": "Il motore di analisi dei disegni è già operativo come modulo autonomo: disegno strutturale AutoCAD → disegno di officina → distinta materiali, completamente automatizzato, con importazione nativa nel flusso macro esistente del cliente.",
+    "product.panel.title": "Sistema di Automazione del Computo Armature",
+    "product.panel.en": "",
+    "product.panel.desc": "Un plugin per AutoCAD 2021 più un'app desktop multipiattaforma trasformano i disegni strutturali direttamente in disegni di officina e in un file di distinta materiali (.xlsm). Il riconoscimento di travi/pilastri supera la soglia di accuratezza contrattuale, e l'output si importa nativamente nelle macro esistenti del cliente — senza bisogno di nuovi strumenti.",
+    "product.m1": "Riconoscimento travi/pilastri ≥ 90%",
+    "product.m2": "Disegno → distinta materiali, completamente automatico",
+    "product.m3": "Compatibilità nativa con macro GTA / CCM",
+    "product.m4": "Motore di regole Style Guide configurabile",
+    "product.moat1.title": "Riconoscimento dei Disegni",
+    "product.moat1.desc": "Legge automaticamente la disposizione di travi/pilastri e le quote rispetto alle regole dello Style Guide",
+    "product.moat2.title": "Generazione Automatica dei Disegni di Officina",
+    "product.moat2.desc": "Produce disegni di officina pronti per la lavorazione (.dwg / DXF) a partire dal riconoscimento",
+    "product.moat3.title": "Esportazione della Distinta Materiali",
+    "product.moat3.desc": "Genera una distinta materiali .xlsm nel formato macro esistente del cliente — senza reinserimento manuale",
+    "product.moat4.title": "Flusso di Lavoro e Controllo Qualità",
+    "product.moat4.desc": "Il tracciamento dello stato per elemento confluisce in un registro qualità finale consegnabile",
+    "process.label": "COME FUNZIONA",
+    "process.heading": ["Dal Disegno all'As-Built Firmato"],
+    "process.s1.title": "Importazione del Disegno",
+    "process.s1.en": "",
+    "process.s1.desc": "Carica il disegno strutturale; distinta ferri e lista di taglio generate automaticamente",
+    "process.s2.title": "Lavorazione e Consegna",
+    "process.s2.en": "",
+    "process.s2.desc": "Pilota le macchine di officina, ogni barra etichettata con QR, consegna per zona di getto",
+    "process.s3.title": "Posa Guidata in AR",
+    "process.s3.en": "",
+    "process.s3.desc": "La squadra vede la sovrapposizione 3D su un tablet e lega secondo le specifiche",
+    "process.s4.title": "Verifica e Registrazione",
+    "process.s4.en": "",
+    "process.s4.desc": "Verifica con visione artificiale prima del getto; registro firmato pronto per il collaudo",
+    "results.label": "OBIETTIVI DEL PILOTA",
+    "results.heading": ["Obiettivi del Pilota (Validazione in Corso)"],
+    "results.r1.title": "Tasso di rilavorazione armatura",
+    "results.r1.metric": "Obiettivo ≤ 5%",
+    "results.r1.old": "Settore 15-25%",
+    "results.r1.new": "Obiettivo ≤ 5%",
+    "results.r2.title": "Ore di stima",
+    "results.r2.metric": "Obiettivo < 1 h",
+    "results.r2.old": "Oggi 8-12 h",
+    "results.r2.new": "Obiettivo < 1 h",
+    "results.r3.title": "Ciclo di collaudo",
+    "results.r3.metric": "Obiettivo in giornata",
+    "results.r3.old": "Oggi 3-5 giorni",
+    "results.r3.new": "Obiettivo in giornata",
+    "results.r4.title": "Scarto di materiale",
+    "results.r4.metric": "Obiettivo ≤ 2%",
+    "results.r4.old": "Oggi 5-8%",
+    "results.r4.new": "Obiettivo ≤ 2%",
+    "advantage.label": "VANTAGGIO COMPETITIVO",
+    "advantage.heading": ["Perché Scegliere iTech"],
+    "advantage.th1": "Approccio",
+    "advantage.th2": "Vantaggio",
+    "advantage.th3": "Svantaggio",
+    "advantage.th4": "Differenza iTech",
+    "advantage.r1.method": "Lettura manuale dei disegni 2D",
+    "advantage.r1.pro": "Flusso di lavoro familiare",
+    "advantage.r1.con": "Soggetto a errori, nessuna verifica in cantiere",
+    "advantage.r1.edge": "Analisi automatica + allineamento AR",
+    "advantage.r2.method": "Visualizzatori BIM (Navisworks)",
+    "advantage.r2.pro": "Visualizzazione 3D",
+    "advantage.r2.con": "Strumento da ufficio, non arriva in cantiere",
+    "advantage.r2.edge": "AR portata sul getto",
+    "advantage.r3.method": "Ispezione manuale a campione",
+    "advantage.r3.pro": "Giudizio esperto",
+    "advantage.r3.con": "Campionamento limitato, spesso dopo il getto",
+    "advantage.r3.edge": "Verifica continua al 100%",
+    "advantage.r4.method": "Computo manuale",
+    "advantage.r4.pro": "Si adatta alle abitudini esistenti",
+    "advantage.r4.con": "Lento, soggetto a errori, caos di versioni",
+    "advantage.r4.edge": "Dal disegno al computo in pochi secondi",
+    "advantage.moat1.title": "Rete di Dati As-Built",
+    "advantage.moat1.desc": "Ogni cantiere aggiunge dati as-built che affinano il modello — un vantaggio di dati specifico per Taiwan",
+    "advantage.moat2.title": "Modelli di Visione Locali",
+    "advantage.moat2.desc": "Modelli di verifica addestrati su cantieri taiwanesi, sulle specifiche e prassi locali di armatura",
+    "advantage.moat3.title": "Rapporti con le Opere Pubbliche",
+    "advantage.moat3.desc": "Soddisfa i requisiti di audit delle opere pubbliche; contribuisce a definire gli standard di registro as-built per i cantieri intelligenti",
+    "advantage.moat4.title": "Rete di Officine e Imprese",
+    "advantage.moat4.desc": "Costruito con Wei-Zhi, la cui automazione dei disegni di officina per armature si collega alla filiera esistente di officine e imprese",
+    "pilot.label": "PILOTA GRATUITO",
+    "pilot.heading": "Richiedi un Pilota Gratuito",
+    "pilot.desc": "Raccontaci della tua azienda: ti contatteremo per organizzare il pilota.",
+    "pilot.company": "Azienda",
+    "pilot.company.placeholder": "Nome della tua azienda",
+    "pilot.type": "Tipo di Cantiere",
+    "pilot.type.building": "Edilizia",
+    "pilot.type.civil": "Opere Civili",
+    "pilot.type.industrial": "Industriale / Capannone",
+    "pilot.type.public": "Opere Pubbliche",
+    "pilot.type.other": "Altro",
+    "pilot.submit": "Richiedi Pilota Gratuito",
+    "contact.label": "CONTATTACI",
+    "contact.heading": ["Costruiamo Insieme", "Cantieri a Zero Errori"],
+    "contact.desc": "Imprese, officine di lavorazione, ingegneri strutturisti, sviluppatori, enti pubblici, investitori — vogliamo parlare con chiunque tenga a eseguire bene il cantiere.",
+    "contact.desc-en": "",
+    "contact.name": "Nome",
+    "contact.name.placeholder": "Il tuo nome",
+    "contact.email": "Email",
+    "contact.email.placeholder": "you@example.com",
+    "contact.role": "Ruolo",
+    "contact.role.placeholder": "Seleziona",
+    "contact.role.contractor": "Impresa Edile",
+    "contact.role.fabricator": "Officina di Ferro",
+    "contact.role.engineer": "Studio di Ingegneria Strutturale",
+    "contact.role.developer": "Sviluppatore / Committente",
+    "contact.role.government": "Ente Pubblico",
+    "contact.role.investor": "Investitore",
+    "contact.role.other": "Altro",
+    "contact.message": "Messaggio",
+    "contact.message.placeholder": "Inserisci il tuo messaggio...",
+    "contact.submit": "Invia Messaggio",
+    "footer.rights": "© 2026 iTech. Tutti i diritti riservati.",
+    "footer.company": "Kairos.ai"
+  },
+  "pt": {
+    "nav.crisis": "O Problema",
+    "nav.tech": "Tecnologia",
+    "nav.product": "Produto",
+    "nav.process": "Processo",
+    "nav.results": "Metas",
+    "nav.advantage": "Vantagens",
+    "nav.pilot": "Piloto Gratuito",
+    "nav.app": "Aplicação",
+    "nav.contact": "Contato",
+    "hero.badge": "Plataforma de Execução de Obra com IA + RA",
+    "hero.title": ["Do Projeto à Vistoria", "Armação Sem Erros"],
+    "hero.subtitle": "Posicionamento guiado por RA, armação verificada por IA, registros as-built auditáveis.",
+    "hero.subtitle-en": "From structural drawing to verified-in-place rebar.",
+    "hero.cta": "Iniciar uma conversa",
+    "hero.stat1.label": "Redução-alvo de retrabalho de armação",
+    "hero.stat2.label": "Horas de orçamento economizadas (meta)",
+    "hero.stat3.label": "Mercado da construção em Taiwan (TWD)",
+    "hero.stat3.unit": "T",
+    "hero.stat4.label": "Redução do ciclo de vistoria (meta)",
+    "alt.problem": "Canteiro de obras",
+    "problem.label": "O PROBLEMA",
+    "problem.heading": ["Intenção de Projeto e Execução", "em Obra Estão Desconectadas"],
+    "problem.lead": "Os desenhos estruturais são interpretados manualmente antes de chegar à laje. Os erros só aparecem na vistoria — ou depois da concretagem. Faltam armadores qualificados, o retrabalho é caro e não existe um registro as-built auditável.",
+    "problem.crisis1.stat": "30%",
+    "problem.crisis1.text": "dos estouros de custo vêm de retrabalho",
+    "problem.crisis2.stat": "45%",
+    "problem.crisis2.text": "de déficit de armadores qualificados",
+    "problem.crisis3.stat": "70%",
+    "problem.crisis3.text": "dos defeitos encontrados após a concretagem",
+    "problem.crisis4.stat": "0",
+    "problem.crisis4.text": "registro as-built auditável hoje",
+    "problem.quote": "\"Amarramos conforme o projeto. O fiscal chegou e disse que o espaçamento estava errado e o cobrimento insuficiente. Cortar e amarrar de novo — lá se foi a semana.\"",
+    "problem.quote.cite": "— Entrevista com um mestre de obras (ilustrativa, não é uma citação atribuída a um cliente)",
+    "problem.loss.unit": "",
+    "problem.loss1.label": "Custo direto de retrabalho de armação (× 100M TWD)",
+    "problem.loss2.label": "Perdas por atraso de cronograma (× 100M TWD)",
+    "problem.loss3.label": "Retrabalho por reprovação na vistoria (× 100M TWD)",
+    "solution.label": "NOSSA TECNOLOGIA",
+    "solution.heading": ["Pipeline de Execução de Ponta a Ponta"],
+    "solution.lead": "O desenho estrutural é a fonte da verdade — a IA cuida de tudo, da fabricação à colocação verificada.",
+    "aria.langSelect": "Idioma",
+    "alt.solution.t1": "Diagrama: desenho estrutural convertido em lista de armaduras",
+    "alt.solution.t2": "Diagrama: orientação em AR para posicionamento de armaduras em obra",
+    "alt.solution.t3": "Diagrama: verificação por IA comparando o construído com o projetado",
+    "alt.product": "Diagrama: arquivo de desenho convertido em lista de materiais de armadura",
+    "solution.t1.title": "Análise Automática de Desenhos",
+    "solution.t1.en": "",
+    "solution.t1.desc": "Desenho estrutural → lista de ferros, lista de corte, lista de dobra. Integrado ao motor Wei-Zhi para alimentar diretamente as oficinas de fabricação.",
+    "solution.t1.m1": "Bar Mark: B1 / B2 / B3",
+    "solution.t1.m2": "Diâmetro: #3 ~ #11",
+    "solution.t1.m3": "Comprimento: 1.250 ± 5 mm",
+    "solution.t1.m4": "Dobra: gancho de 90° / 135°",
+    "solution.t2.title": "Orientação de Campo com RA",
+    "solution.t2.en": "",
+    "solution.t2.desc": "A disposição 3D da armação é sobreposta à cofragem real. Espaçamento, comprimento de sobreposição e orientação do gancho barra a barra — a equipe posiciona conforme o projeto.",
+    "solution.t2.m1": "✓ Verde = posição correta",
+    "solution.t2.m2": "✗ Vermelho = desvio a corrigir",
+    "solution.t2.m3": "→ Avisos de espaçamento / cobrimento",
+    "solution.t2.m4": "🏷 QR confirma a identidade da barra",
+    "solution.t3.title": "Verificação por IA em Tempo Real",
+    "solution.t3.en": "",
+    "solution.t3.desc": "A visão computacional compara o as-built com o as-designed, sinaliza cada desvio e gera um snapshot assinado antes da concretagem.",
+    "solution.t3.m1": "Espaçamento: aprovado (conf. 96%)",
+    "solution.t3.m2": "Comprimento de sobreposição: aprovado (conf. 92%)",
+    "solution.t3.m3": "Cobrimento: desvio de -8 mm",
+    "product.label": "MÓDULO JÁ EM PRODUÇÃO",
+    "product.heading": ["Não É Só uma Visão", "o Orçamento de Armação Já Está Rodando"],
+    "product.lead": "O motor de análise de desenhos já opera como módulo independente: desenho estrutural do AutoCAD → desenho de oficina → lista de materiais, totalmente automatizado, com importação nativa para o fluxo de macros já existente do cliente.",
+    "product.panel.title": "Sistema de Automação de Orçamento de Armação",
+    "product.panel.en": "",
+    "product.panel.desc": "Um plugin para AutoCAD 2021 mais um aplicativo desktop multiplataforma transformam desenhos estruturais diretamente em desenhos de oficina e uma planilha de lista de materiais (.xlsm). O reconhecimento de vigas/pilares atinge o limite de precisão contratado, e a saída é importada nativamente para as macros já existentes do cliente — sem necessidade de novas ferramentas.",
+    "product.m1": "Reconhecimento de vigas/pilares ≥ 90%",
+    "product.m2": "Desenho → lista de materiais, totalmente automático",
+    "product.m3": "Compatibilidade nativa com macros GTA / CCM",
+    "product.m4": "Motor de regras Style Guide configurável",
+    "product.moat1.title": "Reconhecimento de Desenhos",
+    "product.moat1.desc": "Interpreta automaticamente a disposição de vigas/pilares e as cotas conforme as regras do Style Guide",
+    "product.moat2.title": "Geração Automática de Desenhos de Oficina",
+    "product.moat2.desc": "Produz desenhos de oficina prontos para fabricação (.dwg / DXF) a partir do reconhecimento",
+    "product.moat3.title": "Exportação da Lista de Materiais",
+    "product.moat3.desc": "Gera uma lista de materiais .xlsm no formato de macro já existente do cliente — sem redigitação manual",
+    "product.moat4.title": "Fluxo de Trabalho e Controle de Qualidade",
+    "product.moat4.desc": "O rastreamento de status por elemento se consolida em um registro final de qualidade entregável",
+    "process.label": "COMO FUNCIONA",
+    "process.heading": ["Do Desenho ao As-Built Assinado"],
+    "process.s1.title": "Importar Desenho",
+    "process.s1.en": "",
+    "process.s1.desc": "Envie o desenho estrutural; a lista de ferros é gerada automaticamente",
+    "process.s2.title": "Fabricar e Entregar",
+    "process.s2.en": "",
+    "process.s2.desc": "Aciona as máquinas da oficina, cada barra com etiqueta QR, entrega por zona de concretagem",
+    "process.s3.title": "Posicionamento Guiado por RA",
+    "process.s3.en": "",
+    "process.s3.desc": "A equipe vê a sobreposição 3D em um tablet e amarra conforme a especificação",
+    "process.s4.title": "Verificar e Registrar",
+    "process.s4.en": "",
+    "process.s4.desc": "Verificação por visão computacional antes da concretagem; registro assinado pronto para vistoria",
+    "results.label": "METAS DO PILOTO",
+    "results.heading": ["Metas do Piloto (Validação em Andamento)"],
+    "results.r1.title": "Taxa de retrabalho de armação",
+    "results.r1.metric": "Meta ≤ 5%",
+    "results.r1.old": "Setor 15-25%",
+    "results.r1.new": "Meta ≤ 5%",
+    "results.r2.title": "Horas de orçamento",
+    "results.r2.metric": "Meta < 1 h",
+    "results.r2.old": "Hoje 8-12 h",
+    "results.r2.new": "Meta < 1 h",
+    "results.r3.title": "Ciclo de vistoria",
+    "results.r3.metric": "Meta mesmo dia",
+    "results.r3.old": "Hoje 3-5 dias",
+    "results.r3.new": "Meta mesmo dia",
+    "results.r4.title": "Taxa de desperdício de material",
+    "results.r4.metric": "Meta ≤ 2%",
+    "results.r4.old": "Hoje 5-8%",
+    "results.r4.new": "Meta ≤ 2%",
+    "advantage.label": "VANTAGEM COMPETITIVA",
+    "advantage.heading": ["Por Que Escolher a iTech"],
+    "advantage.th1": "Abordagem",
+    "advantage.th2": "Vantagem",
+    "advantage.th3": "Desvantagem",
+    "advantage.th4": "Diferencial iTech",
+    "advantage.r1.method": "Leitura manual de desenhos 2D",
+    "advantage.r1.pro": "Fluxo de trabalho conhecido",
+    "advantage.r1.con": "Sujeito a erros, sem verificação em campo",
+    "advantage.r1.edge": "Análise automática + alinhamento por RA",
+    "advantage.r2.method": "Visualizadores BIM (Navisworks)",
+    "advantage.r2.pro": "Visualização 3D",
+    "advantage.r2.con": "Ferramenta de escritório, não chega à obra",
+    "advantage.r2.edge": "RA levada até a laje",
+    "advantage.r3.method": "Inspeção manual por amostragem",
+    "advantage.r3.pro": "Julgamento de um inspetor experiente",
+    "advantage.r3.con": "Amostragem limitada, muitas vezes após a concretagem",
+    "advantage.r3.edge": "Verificação contínua de 100%",
+    "advantage.r4.method": "Orçamento manual",
+    "advantage.r4.pro": "Se encaixa nos hábitos existentes",
+    "advantage.r4.con": "Lento, sujeito a erros, caos de versões",
+    "advantage.r4.edge": "Do desenho ao orçamento em segundos",
+    "advantage.moat1.title": "Rede de Dados As-Built",
+    "advantage.moat1.desc": "Cada obra soma dados as-built que refinam o modelo — um fosso de dados específico de Taiwan",
+    "advantage.moat2.title": "Modelos de Visão Locais",
+    "advantage.moat2.desc": "Modelos de verificação treinados em obras taiwanesas, com especificações e práticas locais de armação",
+    "advantage.moat3.title": "Relações com Obras Públicas",
+    "advantage.moat3.desc": "Atende requisitos de auditoria de obras públicas; ajuda a definir padrões de registro as-built para canteiros inteligentes",
+    "advantage.moat4.title": "Rede de Fabricantes e Empreiteiras",
+    "advantage.moat4.desc": "Construído com a Wei-Zhi, cuja automação de desenhos de oficina de armação se conecta à cadeia existente de fabricantes e empreiteiras",
+    "pilot.label": "PILOTO GRATUITO",
+    "pilot.heading": "Solicitar um Piloto Gratuito",
+    "pilot.desc": "Conte-nos sobre sua empresa e entraremos em contato para organizar o piloto.",
+    "pilot.company": "Empresa",
+    "pilot.company.placeholder": "Nome da sua empresa",
+    "pilot.type": "Tipo de Obra",
+    "pilot.type.building": "Edificação",
+    "pilot.type.civil": "Obra Civil",
+    "pilot.type.industrial": "Industrial / Galpão",
+    "pilot.type.public": "Obra Pública",
+    "pilot.type.other": "Outro",
+    "pilot.submit": "Solicitar Piloto Gratuito",
+    "contact.label": "FALE CONOSCO",
+    "contact.heading": ["Vamos Construir Juntos", "Obras Sem Erros"],
+    "contact.desc": "Empreiteiras, oficinas de fabricação, engenheiros estruturais, incorporadoras, órgãos públicos, investidores — queremos falar com quem se importa em executar a obra corretamente.",
+    "contact.desc-en": "",
+    "contact.name": "Nome",
+    "contact.name.placeholder": "Seu nome",
+    "contact.email": "E-mail",
+    "contact.email.placeholder": "you@example.com",
+    "contact.role": "Função",
+    "contact.role.placeholder": "Selecione",
+    "contact.role.contractor": "Empreiteira",
+    "contact.role.fabricator": "Oficina de Armação",
+    "contact.role.engineer": "Escritório de Engenharia Estrutural",
+    "contact.role.developer": "Incorporadora / Proprietário",
+    "contact.role.government": "Órgão Público",
+    "contact.role.investor": "Investidor",
+    "contact.role.other": "Outro",
+    "contact.message": "Mensagem",
+    "contact.message.placeholder": "Digite sua mensagem...",
+    "contact.submit": "Enviar Mensagem",
+    "footer.rights": "© 2026 iTech. Todos os direitos reservados.",
+    "footer.company": "Kairos.ai"
   }
 };
 
-// TODO: native JA review — JA copy is best-effort translation; please have a native reviewer pass over construction terminology (e.g. 結束/配筋/かぶり/打設) before public launch.
+// TODO: native review — JA/ES/FR/DE/IT/PT copy is best-effort translation; please have a
+// native reviewer pass over construction terminology in each language before public
+// launch, especially: JA 結束/配筋/かぶり/打設 (tie/rebar-layout/cover/pour), and the
+// rebar/AR/as-built terms in ES/FR/DE/IT/PT.
+
+// zh-TW is the site's fallback locale: used whenever no saved/browser
+// preference matches, and excluded from browser-language auto-detection
+// (it's what everything else falls back to).
+var DEFAULT_LANG = "zh-TW";
+
+// Native display name shown in the <select> option for each language. Adding a
+// language for JS-enabled users only requires touching this object and
+// `translations` above — the JS-populated <select> options and
+// BROWSER_LANG_PREFIXES are both derived from translations' keys below.
+// Two things still need manual attention: toHtmlLang() below (only zh-TW
+// needs a real BCP-47 remap today, but a future key that isn't already a
+// valid bare subtag — e.g. a "pt-BR" alongside "pt" — would too), and the
+// static <option> list in index.html's #langSelect (the no-JS fallback,
+// not touched by populateLangSelect() until JS runs).
+var LANG_LABELS = {
+  "zh-TW": "中文",
+  en: "English",
+  ja: "日本語",
+  es: "Español",
+  fr: "Français",
+  de: "Deutsch",
+  it: "Italiano",
+  pt: "Português"
+};
+
+// zh-TW is the only translations key that isn't already a valid bare BCP-47
+// subtag on its own, hence the single special case rather than a full map.
+function toHtmlLang(lang) {
+  return lang === DEFAULT_LANG ? "zh-Hant" : lang;
+}
+
+function populateLangSelect() {
+  var langSelect = document.getElementById("langSelect");
+  if (!langSelect) return;
+  langSelect.innerHTML = "";
+  Object.keys(translations).forEach(function (lang) {
+    var option = document.createElement("option");
+    option.value = lang;
+    option.textContent = LANG_LABELS[lang] || lang;
+    langSelect.appendChild(option);
+  });
+}
+
+// Every data-i18n-* attribute setLanguage() understands, beyond data-i18n
+// itself (handled separately since it also drives display:none/array-<br>
+// logic the other three don't need). Declared once here — rather than
+// hand-duplicated as a querySelectorAll selector string and separately in
+// scripts/check-i18n-keys.js — so both stay in sync by construction: the CI
+// script reads I18N_SIMPLE_ATTRS back out via the same vm sandbox it already
+// uses for translations/LANG_LABELS/DEFAULT_LANG.
+var I18N_SIMPLE_ATTRS = [
+  { attr: "data-i18n-placeholder", apply: function (el, val) { el.placeholder = val; }, reset: function (el) { el.placeholder = ""; } },
+  { attr: "data-i18n-alt", apply: function (el, val) { el.alt = val; }, reset: function (el) { el.alt = ""; } },
+  { attr: "data-i18n-aria-label", apply: function (el, val) { el.setAttribute("aria-label", val); }, reset: function (el) { el.removeAttribute("aria-label"); } },
+];
+var I18N_ATTRS = ["data-i18n"].concat(I18N_SIMPLE_ATTRS.map(function (spec) { return spec.attr; }));
+var I18N_SELECTOR = I18N_ATTRS.map(function (attr) { return "[" + attr + "]"; }).join(", ");
+
+// hasOwnProperty, not `translations[lang]` truthiness: a bare property
+// lookup on a string like "constructor" resolves through the prototype
+// chain to Object's constructor function (truthy), which would silently
+// treat garbage from localStorage (or a bad browser-language guess) as a
+// valid locale.
+function isKnownLocale(lang) {
+  return Object.prototype.hasOwnProperty.call(translations, lang);
+}
 
 function setLanguage(lang) {
+  var isFallback = !isKnownLocale(lang);
   var t = translations[lang];
-  if (!t) return;
+  if (isFallback) {
+    console.warn('setLanguage: unknown lang "' + lang + '", falling back to ' + DEFAULT_LANG);
+    lang = DEFAULT_LANG;
+    t = translations[lang];
+  }
 
-  document.documentElement.lang = lang === "ja" ? "ja" : lang === "en" ? "en" : "zh-Hant";
+  document.documentElement.lang = toHtmlLang(lang);
 
-  document.querySelectorAll("[data-i18n]").forEach(function (el) {
+  // One pass over every element carrying any data-i18n-* attribute — a given
+  // element may match more than one (e.g. an <input> needing both a
+  // placeholder and an aria-label), so each attribute is handled
+  // independently rather than as mutually-exclusive branches.
+  document.querySelectorAll(I18N_SELECTOR).forEach(function (el) {
     var key = el.getAttribute("data-i18n");
-    var val = t[key];
-    if (val === undefined) return;
+    if (key !== null) {
+      var val = t[key];
+      if (val === undefined) {
+        console.warn('setLanguage: missing key "' + key + '" for lang "' + lang + '"');
+        // Don't leave the element hidden from a previous locale's "" value
+        // (see the empty-translations-hide-the-element comment below) —
+        // a missing key isn't the same as a deliberately blank one.
+        el.style.display = "";
+      } else {
+        // Empty translations hide the element entirely (e.g. a unit label
+        // some locales fold into the surrounding text instead)
+        el.style.display = val === "" ? "none" : "";
 
-    // Arrays become <br>-joined lines (for headings)
-    if (Array.isArray(val)) {
-      // Clear and rebuild with text nodes + <br>
-      while (el.firstChild) el.removeChild(el.firstChild);
-      val.forEach(function (line, i) {
-        el.appendChild(document.createTextNode(line));
-        if (i < val.length - 1) el.appendChild(document.createElement("br"));
-      });
-    } else {
-      el.textContent = val;
+        // Arrays become <br>-joined lines (for headings)
+        if (Array.isArray(val)) {
+          // Clear and rebuild with text nodes + <br>
+          while (el.firstChild) el.removeChild(el.firstChild);
+          val.forEach(function (line, i) {
+            el.appendChild(document.createTextNode(line));
+            if (i < val.length - 1) el.appendChild(document.createElement("br"));
+          });
+        } else {
+          el.textContent = val;
+        }
+      }
     }
+
+    I18N_SIMPLE_ATTRS.forEach(function (spec) {
+      var attrKey = el.getAttribute(spec.attr);
+      if (attrKey === null) return;
+      if (typeof t[attrKey] === "string") {
+        spec.apply(el, t[attrKey]);
+      } else {
+        console.warn('setLanguage: missing/non-string key "' + attrKey + '" for lang "' + lang + '" (' + spec.attr + ')');
+        // Clear rather than leave a previous locale's text showing under
+        // the wrong language.
+        spec.reset(el);
+      }
+    });
   });
 
-  document.querySelectorAll("[data-i18n-placeholder]").forEach(function (el) {
-    var key = el.getAttribute("data-i18n-placeholder");
-    if (t[key] !== undefined) el.placeholder = t[key];
-  });
+  // Sync language switcher
+  var langSelect = document.getElementById("langSelect");
+  if (langSelect) langSelect.value = lang;
 
-  document.querySelectorAll("[data-i18n-alt]").forEach(function (el) {
-    var key = el.getAttribute("data-i18n-alt");
-    if (t[key] !== undefined) el.alt = t[key];
-  });
+  // Don't persist a fallback: an invalid `lang` shouldn't clobber a real saved preference.
+  if (!isFallback) safeStorageSet("itech-lang", lang);
+}
 
-  // Toggle visibility of elements with empty translations
-  document.querySelectorAll("[data-i18n]").forEach(function (el) {
-    var key = el.getAttribute("data-i18n");
-    var val = t[key];
-    if (val === "") {
-      el.style.display = "none";
-    } else if (val !== undefined) {
-      el.style.display = "";
-    }
-  });
+// zh-TW is the browser-locale fallback, so it's intentionally excluded here —
+// every other language auto-detects from navigator.language.
+var BROWSER_LANG_PREFIXES = Object.keys(translations).filter(function (lang) {
+  return lang !== DEFAULT_LANG;
+});
 
-  // Update active language button
-  document.querySelectorAll(".lang-btn").forEach(function (btn) {
-    btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
-  });
+// localStorage can throw (blocked storage, sandboxed iframe, hardened browser
+// config) — never let that abort language init or the langSelect listener setup.
+function safeStorageGet(key) {
+  try {
+    return localStorage.getItem(key);
+  } catch (e) {
+    return null;
+  }
+}
 
-  localStorage.setItem("itech-lang", lang);
+function safeStorageSet(key, value) {
+  try {
+    localStorage.setItem(key, value);
+  } catch (e) {
+    // ignore — worst case the preference just doesn't persist
+  }
 }
 
 function initLanguage() {
-  var saved = localStorage.getItem("itech-lang");
-  if (saved && translations[saved]) {
+  var saved = safeStorageGet("itech-lang");
+  if (saved && isKnownLocale(saved)) {
     setLanguage(saved);
     return;
   }
   var browserLang = navigator.language || "";
-  if (browserLang.startsWith("ja")) {
-    setLanguage("ja");
-  } else if (browserLang.startsWith("en")) {
-    setLanguage("en");
-  } else {
-    setLanguage("zh-TW");
+  for (var i = 0; i < BROWSER_LANG_PREFIXES.length; i++) {
+    if (browserLang.startsWith(BROWSER_LANG_PREFIXES[i])) {
+      setLanguage(BROWSER_LANG_PREFIXES[i]);
+      return;
+    }
   }
+  setLanguage(DEFAULT_LANG);
 }
+
+// All language init lives in this one listener (not script.js) so it runs
+// regardless of what script.js's own DOMContentLoaded handler does.
+document.addEventListener("DOMContentLoaded", function () {
+  populateLangSelect();
+  initLanguage();
+
+  var langSelect = document.getElementById("langSelect");
+  if (langSelect) {
+    langSelect.addEventListener("change", function () {
+      setLanguage(this.value);
+    });
+  }
+});

@@ -1,6 +1,6 @@
 // Scroll-scrubbed 3D hero: camera flies toward a rebar cage as the user scrolls
-// past the hero. Progressive enhancement only — the static hero image + CSS
-// parallax (script.js) is the baseline and stays untouched underneath.
+// past the hero. Progressive enhancement only — falls back to the static
+// blueprint-grid background (.hero-static) when WebGL or `three` is unavailable.
 
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const canvas = document.getElementById('hero-canvas');

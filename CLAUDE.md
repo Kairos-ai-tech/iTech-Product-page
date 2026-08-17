@@ -4,12 +4,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-AI學徒 iTech (AI Apprentice iTech) — a product page / strategy documentation project for an AI + AR platform that digitizes and preserves Taiwan's manufacturing craft skills. Currently in pre-MVP planning stage with business strategy documentation only (no application code yet).
+AI學徒 iTech (AI Apprentice iTech) — a product page / strategy documentation project for an AI + AR platform that digitizes and preserves Taiwan's manufacturing craft skills. Business strategy documentation lives alongside a static marketing/product landing page (vanilla HTML/CSS/JS, no build step) for the AI + AR construction-execution product line.
 
 ## Repository Contents
 
 - `README.md` — Full business plan covering problem, solution, market, business model, financials, and 10-year roadmap
 - `AI學徒-iTech商業策略書簡報.pdf` — Business strategy presentation deck (Chinese)
+- `index.html`, `styles.css`, `script.js`, `hero3d.js`, `i18n.js` — the product landing page: static HTML/CSS with a scroll-scrubbed Three.js hero and client-side i18n (8 languages)
 
 ## Planned Tech Stack
 
