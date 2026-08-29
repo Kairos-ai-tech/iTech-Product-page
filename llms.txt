@@ -8,6 +8,14 @@
 - [AR field guidance + AI verification](https://itech.kairosaitech.com/#solution): In development. 3D rebar layout overlaid on formwork (green = correct placement, red = deviation), and computer-vision comparison of as-built vs. as-designed rebar before the pour.
 - [Free pilot program](https://itech.kairosaitech.com/#pilot): Construction companies, rebar fabricators, and structural engineering firms can apply for a free pilot — company name, email, and construction type.
 
+## FAQ
+
+- What is iTech? iTech is an AI + AR construction execution platform that treats the structural drawing as the single source of truth: it auto-parses drawings into rebar bar-schedules and cut-lists, overlays AR guidance on site for field placement, and uses computer vision to compare as-built vs. as-designed rebar, producing an auditable as-built record.
+- What can iTech do today? The Rebar Estimation Automation System is shipping now (see Product above); AR field guidance and AI as-built verification are in development.
+- Who is iTech for? Construction companies, rebar fabricators, structural engineering firms, and public agencies that need an auditable as-built record.
+- How do I apply for the free pilot? Fill in the free pilot form at https://itech.kairosaitech.com/#pilot with company name, email, and construction type.
+- Who builds iTech? Kairos.ai, focused on Taiwan's construction market and rebar work today, with plans to extend into adjacent trades like CNC machining, mold making, and welding.
+
 ## Company
 
 - [Contact](https://itech.kairosaitech.com/#contact): Contractors, fabricators, structural engineers, developers, public agencies, and investors — reach out via kairos.ai.tech@gmail.com or the on-page contact form.
