@@ -11,6 +11,7 @@ AI學徒 iTech (AI Apprentice iTech) — a product page / strategy documentation
 - `README.md` — Full business plan covering problem, solution, market, business model, financials, and 10-year roadmap
 - `AI學徒-iTech商業策略書簡報.pdf` — Business strategy presentation deck (Chinese)
 - `index.html`, `styles.css`, `script.js`, `hero3d.js`, `i18n.js` — the product landing page: static HTML/CSS with a scroll-scrubbed Three.js hero and client-side i18n (8 languages)
+- `CHANGELOG.md` — version log for the product page (bilingual zh-TW / en); the on-page "版本紀錄 / Version log" block in `index.html` summarizes it, so bump both together
 
 ## Planned Tech Stack
 

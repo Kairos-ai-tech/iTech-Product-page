@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="iTech — AI + AR 營造執行平台。從結構施工圖到驗收，鋼筋施工零誤差。AR 即時指導現場綁紮，AI 自動驗證鋼筋配置，產出可稽核的竣工紀錄。">
-  <meta name="keywords" content="iTech, 鋼筋施工, AR 營造, 智慧工地, 鋼筋自動化, 施工圖自動解析, 竣工驗證, construction execution, rebar verification, AR construction, smart construction, as-built">
+  <meta name="description" content="iTech — AI + AR 營造執行平台。從結構施工圖到驗收，鋼筋施工零誤差。AR 即時指導現場綁紮，AI 自動驗證鋼筋配置；每一個動作都有時間戳記與不可竄改的稽核日誌，內建歐盟、美國、台灣鋼筋施工規範規則庫。">
+  <meta name="keywords" content="iTech, 鋼筋施工, AR 營造, 智慧工地, 鋼筋自動化, 施工圖自動解析, 竣工驗證, construction execution, rebar verification, AR construction, smart construction, as-built, audit log, 稽核日誌, timestamp, Eurocode 2, ACI 318, CNS 560">
   <meta property="og:title" content="iTech — AI + AR 營造執行平台｜從施工圖到驗收，鋼筋施工零誤差">
   <meta property="og:description" content="結構施工圖為唯一真值，AI 接管下料、配送、AR 指導綁紮、CV 驗證與竣工紀錄。From drawing to verified-in-place rebar.">
   <meta property="og:type" content="website">
@@ -48,7 +48,7 @@
         "name": "iTech",
         "url": "https://itech.kairosaitech.com/",
         "email": "kairos.ai.tech@gmail.com",
-        "description": "AI + AR construction execution platform for structural rebar: automated drawing parsing, AR field guidance, and computer-vision as-built verification.",
+        "description": "AI + AR construction execution platform for structural rebar: automated drawing parsing, AR field guidance, computer-vision as-built verification, and a timestamped, append-only audit log with a built-in EU / USA / Taiwan rebar rule library.",
         "parentOrganization": {
           "@type": "Organization",
           "name": "Kairos.ai",
@@ -115,6 +115,14 @@
               "@type": "Answer",
               "text": "iTech 由 Kairos.ai 開發，聚焦台灣營造市場的鋼筋施工場景，未來將延伸至 CNC 加工、模具、焊接等相鄰產業。"
             }
+          },
+          {
+            "@type": "Question",
+            "name": "iTech 如何記錄與稽核現場的每一個動作？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "iTech 對每一個動作（施工圖匯入、下料、AR 就位、AI 驗證、修正、竣工簽章）寫入精確到秒的時間戳記與操作者、裝置，並存入僅可追加、逐筆雜湊鏈結的稽核日誌。每筆判定皆引用歐盟 Eurocode 2、美國 ACI 318 或台灣《混凝土結構設計規範》/ CNS 560 的對應規則，可依案場、樓層或時間區間匯出供監造與主管機關查驗。"
+            }
           }
         ]
       }
@@ -155,6 +163,7 @@
         <li><a href="#solution" data-i18n="nav.tech">技術</a></li>
         <li><a href="#product" data-i18n="nav.product">產品</a></li>
         <li><a href="#process" data-i18n="nav.process">流程</a></li>
+        <li><a href="#compliance" data-i18n="nav.compliance">稽核</a></li>
         <li><a href="#results" data-i18n="nav.results">成效</a></li>
         <li><a href="#advantage" data-i18n="nav.advantage">優勢</a></li>
         <li><a href="#faq" data-i18n="nav.faq">常見問題</a></li>
@@ -567,6 +576,175 @@
     </div>
   </section>
 
+  <!-- ===== COMPLIANCE (audit log + EU / USA / Taiwan rebar rule library) ===== -->
+  <section class="compliance" id="compliance">
+    <div class="container">
+      <p class="section-label fade-in" data-i18n="compliance.label">AUDIT &amp; CODES 稽核與規範</p>
+      <h2 class="section-heading fade-in" data-delay="1" data-i18n="compliance.heading">每一個動作都有時間戳記<br>每一根鋼筋都對得上規範</h2>
+      <p class="section-lead fade-in" data-delay="2" data-i18n="compliance.lead">從施工圖匯入到竣工簽章，iTech 為每一個動作寫入不可竄改的時間戳記；每一次通過 / 不通過判定皆引用歐盟、美國與台灣的鋼筋施工規範，讓稽核不再靠回憶。</p>
+
+      <div class="audit-layout">
+        <!-- Illustrative sample entries — timestamps and bar marks are mock data, not a live feed. -->
+        <figure class="audit-log fade-in" data-delay="3" aria-labelledby="audit-log-title">
+          <figcaption class="audit-log-head">
+            <span class="audit-log-title" id="audit-log-title" data-i18n="compliance.log.title">稽核日誌 · 案場 A-12</span>
+            <span class="audit-log-meta" data-i18n="compliance.log.meta">UTC+8 · 僅可追加 · SHA-256 鏈結</span>
+          </figcaption>
+          <ol class="audit-log-list">
+            <li class="audit-entry ok">
+              <time datetime="2026-09-03T08:02:11+08:00">08:02:11</time>
+              <code>DRAWING_IMPORT</code>
+              <span data-i18n="compliance.log.e1">結構圖 S-201 rev.C 匯入，檔案雜湊已鎖定</span>
+            </li>
+            <li class="audit-entry ok">
+              <time datetime="2026-09-03T08:05:47+08:00">08:05:47</time>
+              <code>CUT_LIST</code>
+              <span data-i18n="compliance.log.e2">計料表產出：B1–B37，共 412 根</span>
+            </li>
+            <li class="audit-entry ok">
+              <time datetime="2026-09-03T09:31:05+08:00">09:31:05</time>
+              <code>AR_PLACE</code>
+              <span data-i18n="compliance.log.e3">樑 B12 第 7 根就位，位置驗證通過</span>
+            </li>
+            <li class="audit-entry warn">
+              <time datetime="2026-09-03T09:32:18+08:00">09:32:18</time>
+              <code>DEVIATION</code>
+              <span data-i18n="compliance.log.e4">保護層 −8 mm，觸發規則 TW-CVR-01</span>
+            </li>
+            <li class="audit-entry ok">
+              <time datetime="2026-09-03T09:40:52+08:00">09:40:52</time>
+              <code>REWORK_OK</code>
+              <span data-i18n="compliance.log.e5">修正後複驗通過，偏差已關閉</span>
+            </li>
+            <li class="audit-entry sign">
+              <time datetime="2026-09-03T10:15:00+08:00">10:15:00</time>
+              <code>SNAPSHOT</code>
+              <span data-i18n="compliance.log.e6">灌漿前竣工快照已簽章（監造）</span>
+            </li>
+          </ol>
+        </figure>
+
+        <div class="audit-features">
+          <div class="moat fade-in" data-delay="4">
+            <div class="moat-line"></div>
+            <h3 data-i18n="compliance.f1.title">動作級時間戳記</h3>
+            <p data-i18n="compliance.f1.desc">匯入、下料、就位、驗證、簽章：每個動作都記錄 UTC 時間、操作者與裝置，精確到秒。</p>
+          </div>
+          <div class="moat fade-in" data-delay="5">
+            <div class="moat-line"></div>
+            <h3 data-i18n="compliance.f2.title">僅可追加的稽核日誌</h3>
+            <p data-i18n="compliance.f2.desc">紀錄一經寫入即不可修改或刪除；逐筆雜湊鏈結，任何竄改都能被偵測。</p>
+          </div>
+          <div class="moat fade-in" data-delay="6">
+            <div class="moat-line"></div>
+            <h3 data-i18n="compliance.f3.title">規範規則引擎</h3>
+            <p data-i18n="compliance.f3.desc">保護層、間距、彎鉤、搭接等檢核以歐盟、美國與台灣規範為依據，每筆紀錄標註引用條文。</p>
+          </div>
+          <div class="moat fade-in" data-delay="7">
+            <div class="moat-line"></div>
+            <h3 data-i18n="compliance.f4.title">一鍵稽核匯出</h3>
+            <p data-i18n="compliance.f4.desc">依案場、樓層或時間區間匯出 PDF / CSV，附完整時間軸，供監造與主管機關查驗。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="rules-intro fade-in">
+        <h3 class="rules-heading" data-i18n="compliance.rules.heading">內建規則庫：歐盟 · 美國 · 台灣</h3>
+        <p class="rules-desc" data-i18n="compliance.rules.desc">iTech 的驗證規則不是寫死的黑盒子。系統內建三套規範基準線，AR 提示與 AI 判定皆引用對應條文，並隨日誌一併存檔。</p>
+      </div>
+
+      <div class="compare-table-wrap rules-table-wrap fade-in" data-delay="1">
+        <table class="compare-table rules-table">
+          <thead>
+            <tr>
+              <th data-i18n="compliance.rules.th0">項目</th>
+              <th data-i18n="compliance.rules.th1">歐盟 EU</th>
+              <th data-i18n="compliance.rules.th2">美國 USA</th>
+              <th data-i18n="compliance.rules.th3">台灣 Taiwan</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row" data-i18n="compliance.rules.r1.label">設計規範</th>
+              <td data-i18n="compliance.rules.r1.eu">EN 1992-1-1（Eurocode 2）混凝土結構設計，加各國國家附錄</td>
+              <td data-i18n="compliance.rules.r1.us">ACI 318-19 結構混凝土建築規範</td>
+              <td data-i18n="compliance.rules.r1.tw">內政部《混凝土結構設計規範》（建築技術規則建築構造編第六章）</td>
+            </tr>
+            <tr>
+              <th scope="row" data-i18n="compliance.rules.r2.label">鋼筋材料標準</th>
+              <td data-i18n="compliance.rules.r2.eu">EN 10080；B500A / B500B / B500C（延性等級）</td>
+              <td data-i18n="compliance.rules.r2.us">ASTM A615（Gr. 40/60/80）、ASTM A706（可銲、耐震）</td>
+              <td data-i18n="compliance.rules.r2.tw">CNS 560；SD280 / SD420 / SD490（W = 可銲）</td>
+            </tr>
+            <tr>
+              <th scope="row" data-i18n="compliance.rules.r3.label">施工與容許誤差規範</th>
+              <td data-i18n="compliance.rules.r3.eu">EN 13670 混凝土結構施工</td>
+              <td data-i18n="compliance.rules.r3.us">ACI 117 容許誤差規範、ACI 301 施工規範</td>
+              <td data-i18n="compliance.rules.r3.tw">公共工程施工綱要規範第 03210 章「鋼筋」</td>
+            </tr>
+            <tr>
+              <th scope="row" data-i18n="compliance.rules.r4.label">最小保護層</th>
+              <td data-i18n="compliance.rules.r4.eu">c_nom = c_min + Δc_dev（10 mm）；c_min ≥ 鋼筋直徑，並依暴露等級 XC1 ≈ 15 mm 至 XS3 ≈ 45 mm</td>
+              <td data-i18n="compliance.rules.r4.us">接觸土壤 75 mm；露天 #6 以上 50 mm、#5 以下 40 mm；室內樑柱 40 mm、版 20 mm</td>
+              <td data-i18n="compliance.rules.r4.tw">澆置於土壤 75 mm；露天 D19 以上 50 mm、D16 以下 40 mm；室內樑柱 40 mm、版 20 mm</td>
+            </tr>
+            <tr>
+              <th scope="row" data-i18n="compliance.rules.r5.label">鋼筋淨間距</th>
+              <td data-i18n="compliance.rules.r5.eu">≥ max(鋼筋直徑, 骨材粒徑 + 5 mm, 20 mm)</td>
+              <td data-i18n="compliance.rules.r5.us">≥ max(25 mm, d_b, 4/3 × 粗骨材最大粒徑)；柱 ≥ max(40 mm, 1.5 d_b)</td>
+              <td data-i18n="compliance.rules.r5.tw">≥ max(25 mm, d_b, 4/3 × 粗骨材最大粒徑)；柱 ≥ max(40 mm, 1.5 d_b)</td>
+            </tr>
+            <tr>
+              <th scope="row" data-i18n="compliance.rules.r6.label">彎鉤與最小彎曲直徑</th>
+              <td data-i18n="compliance.rules.r6.eu">心軸直徑 ≥ 4φ（φ ≤ 16 mm）、7φ（φ > 16 mm）</td>
+              <td data-i18n="compliance.rules.r6.us">6 d_b（#3–#8）、8 d_b（#9–#11）；箍筋 135° 耐震彎鉤延伸 6 d_b ≥ 75 mm</td>
+              <td data-i18n="compliance.rules.r6.tw">6 d_b（D10–D25）、8 d_b（D29–D36）；箍筋 135° 耐震彎鉤延伸 6 d_b ≥ 75 mm</td>
+            </tr>
+            <tr>
+              <th scope="row" data-i18n="compliance.rules.r7.label">搭接長度</th>
+              <td data-i18n="compliance.rules.r7.eu">l₀ = α 係數 × l_b,rqd，≥ max(15φ, 200 mm)</td>
+              <td data-i18n="compliance.rules.r7.us">乙級（Class B）= 1.3 l_d，≥ 300 mm</td>
+              <td data-i18n="compliance.rules.r7.tw">乙級搭接 = 1.3 l_d，≥ 300 mm</td>
+            </tr>
+            <tr>
+              <th scope="row" data-i18n="compliance.rules.r8.label">保護層容許誤差</th>
+              <td data-i18n="compliance.rules.r8.eu">EN 13670：負偏差 −10 mm，正偏差 +10 至 +20 mm（依構件厚度）</td>
+              <td data-i18n="compliance.rules.r8.us">d ≤ 200 mm：±10 mm；d > 200 mm：±13 mm；減少量不得超過規定值 1/3</td>
+              <td data-i18n="compliance.rules.r8.tw">d ≤ 200 mm：±10 mm；d > 200 mm：±13 mm；減少量不得超過規定值 1/3</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="rules-note fade-in" data-i18n="compliance.rules.note">上表為基本規則摘要，供現場快速核對；實際檢核以各國最新版規範、國家附錄與工程契約為準，iTech 規則庫可依專案調整。</p>
+
+      <div class="version-log fade-in" data-delay="1">
+        <h3 data-i18n="compliance.version.heading">版本紀錄</h3>
+        <ol class="version-list">
+          <li class="version-entry current">
+            <span class="version-tag">v1.3</span>
+            <time datetime="2026-09-03">2026-09</time>
+            <span data-i18n="compliance.version.v13">稽核日誌與動作級時間戳記；歐盟 / 美國 / 台灣鋼筋規則庫</span>
+          </li>
+          <li class="version-entry">
+            <span class="version-tag">v1.2</span>
+            <time datetime="2026-08-29">2026-08</time>
+            <span data-i18n="compliance.version.v12">鋼筋估算自動化系統上線；3D 首頁場景；8 語系；免費試點；常見問題</span>
+          </li>
+          <li class="version-entry">
+            <span class="version-tag">v1.1</span>
+            <time datetime="2026-05-27">2026-05</time>
+            <span data-i18n="compliance.version.v11">轉向 AI + AR 營造執行平台；SEO 上線</span>
+          </li>
+          <li class="version-entry">
+            <span class="version-tag">v1.0</span>
+            <time datetime="2026-03-30">2026-03</time>
+            <span data-i18n="compliance.version.v10">產品頁首發（繁中 / 英 / 日）</span>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== RESULTS ===== -->
   <section class="results" id="results">
     <div class="results-bg">
@@ -714,6 +892,10 @@
         <details class="faq-item fade-in" data-delay="6">
           <summary data-i18n="faq.q5.q">iTech 由誰開發？</summary>
           <p data-i18n="faq.q5.a">iTech 由 Kairos.ai 開發，聚焦台灣營造市場的鋼筋施工場景，未來將延伸至 CNC 加工、模具、焊接等相鄰產業。</p>
+        </details>
+        <details class="faq-item fade-in" data-delay="7">
+          <summary data-i18n="faq.q6.q">iTech 如何記錄與稽核現場的每一個動作？</summary>
+          <p data-i18n="faq.q6.a">iTech 對每一個動作（施工圖匯入、下料、AR 就位、AI 驗證、修正、竣工簽章）寫入精確到秒的時間戳記與操作者、裝置，並存入僅可追加、逐筆雜湊鏈結的稽核日誌。每筆判定皆引用歐盟 Eurocode 2、美國 ACI 318 或台灣《混凝土結構設計規範》/ CNS 560 的對應規則，可依案場、樓層或時間區間匯出供監造與主管機關查驗。</p>
         </details>
       </div>
     </div>

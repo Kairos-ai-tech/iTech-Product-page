@@ -6,6 +6,7 @@
 
 - [Rebar Estimation Automation System](https://itech.kairosaitech.com/#product): Shipping today. An AutoCAD 2021 plugin plus a cross-platform desktop app that converts structural drawings directly into shop drawings and a material-list workbook (.xlsm), importing natively into a fabricator's existing macro tooling. Beam/column recognition ≥ 90%.
 - [AR field guidance + AI verification](https://itech.kairosaitech.com/#solution): In development. 3D rebar layout overlaid on formwork (green = correct placement, red = deviation), and computer-vision comparison of as-built vs. as-designed rebar before the pour.
+- [Audit log + rule library](https://itech.kairosaitech.com/#compliance): Every action — drawing import, cut list, AR placement, AI verification, correction, as-built signature — is written with a timestamp to the second, operator and device into an append-only, hash-chained audit log, exportable by site, floor or time range. Verification rules ship with three built-in baselines: EU (EN 1992-1-1 Eurocode 2, EN 10080, EN 13670), USA (ACI 318-19, ACI 117 / ACI 301, ASTM A615 / A706) and Taiwan (MOI Design Code for Concrete Structures, CNS 560, Public Works General Specifications Ch. 03210), covering minimum cover, clear bar spacing, hooks and bend diameters, lap splices and cover tolerances.
 - [Free pilot program](https://itech.kairosaitech.com/#pilot): Construction companies, rebar fabricators, and structural engineering firms can apply for a free pilot — company name, email, and construction type.
 
 ## FAQ
@@ -13,6 +14,7 @@
 - What is iTech? iTech is an AI + AR construction execution platform that treats the structural drawing as the single source of truth: it auto-parses drawings into rebar bar-schedules and cut-lists, overlays AR guidance on site for field placement, and uses computer vision to compare as-built vs. as-designed rebar, producing an auditable as-built record.
 - What can iTech do today? The Rebar Estimation Automation System is shipping now (see Product above); AR field guidance and AI as-built verification are in development.
 - Who is iTech for? Construction companies, rebar fabricators, structural engineering firms, and public agencies that need an auditable as-built record.
+- How does iTech record and audit every action on site? Every action gets a timestamp to the second plus operator and device, stored in an append-only, hash-chained audit log; every pass/fail decision cites the matching rule from Eurocode 2 (EU), ACI 318 (USA) or Taiwan's Design Code for Concrete Structures / CNS 560, and the log exports by site, floor or time range for inspectors and authorities.
 - How do I apply for the free pilot? Fill in the free pilot form at https://itech.kairosaitech.com/#pilot with company name, email, and construction type.
 - Who builds iTech? Kairos.ai, focused on Taiwan's construction market and rebar work today, with plans to extend into adjacent trades like CNC machining, mold making, and welding.
 
@@ -23,5 +25,6 @@
 
 ## Notes
 
-- The product page is bilingual (繁體中文 default, with English and Japanese switchers) — content above reflects the English version.
+- The product page is multilingual (繁體中文 default, plus English, Japanese, Spanish, French, German, Italian and Portuguese) — content above reflects the English version.
+- Version history lives in CHANGELOG.md in the repository and as a short "Version log" block on the page (current: v1.3, 2026-09).
 - Target market: Taiwan construction — CNC machining, mold making, welding, auto repair, plumbing, and sheet metal shops are adjacent verticals in the broader roadmap, but rebar/structural construction is the current focus.

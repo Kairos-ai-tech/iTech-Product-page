@@ -208,8 +208,11 @@ section[id] { scroll-margin-top: 84px; }
   box-shadow: 0 12px 32px -20px rgba(0, 0, 0, 0.5);
 }
 
+/* Wider than --max-width on purpose: ten nav items in the longest locales
+   (es/pt/de/it) need ~1180px of row, more than the 1104px a 1200px
+   container leaves. Only the bar is widened; page sections keep 1200. */
 .nav-container {
-  max-width: var(--max-width);
+  max-width: 1320px;
   margin: 0 auto;
   padding: 0 clamp(20px, 4vw, 48px);
   display: flex;
@@ -249,7 +252,7 @@ section[id] { scroll-margin-top: 84px; }
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 22px;
 }
 
 .nav-links a {
@@ -1035,6 +1038,238 @@ section[id] { scroll-margin-top: 84px; }
   line-height: 1.65;
 }
 
+/* ===== COMPLIANCE (audit log + EU / USA / Taiwan rule library) ===== */
+.compliance {
+  padding: clamp(80px, 12vh, 140px) 0;
+  background: var(--bg);
+}
+
+.audit-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 32px;
+  align-items: start;
+  margin-top: 48px;
+}
+
+/* Mock audit-log panel: dark "terminal" surface so the timestamps read as
+   system output, not marketing copy. Entries are static sample data. */
+.audit-log {
+  background: var(--navy);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  color: var(--cream);
+  font-feature-settings: "tnum";
+}
+
+.audit-log-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 16px 22px;
+  background: var(--navy-deep);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.audit-log-title {
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+}
+
+.audit-log-meta {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--illust-label);
+}
+
+.audit-log-list {
+  padding: 8px 0;
+}
+
+.audit-entry {
+  display: grid;
+  grid-template-columns: auto auto minmax(0, 1fr);
+  align-items: baseline;
+  gap: 14px;
+  padding: 11px 22px 11px 19px;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  border-left: 3px solid transparent;
+}
+
+.audit-entry + .audit-entry {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.audit-entry time,
+.audit-entry code,
+.version-tag {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+.audit-entry time {
+  font-size: 0.8rem;
+  color: var(--accent-mint);
+}
+
+.audit-entry code {
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 2px 8px;
+  border-radius: var(--r-sm);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--illust-label);
+  white-space: nowrap;
+}
+
+.audit-entry span {
+  color: rgba(251, 250, 247, 0.85);
+}
+
+.audit-entry.ok { border-left-color: var(--accent-green-light); }
+.audit-entry.warn { border-left-color: var(--accent-red-light); }
+.audit-entry.warn code {
+  color: var(--accent-red-light);
+  background: rgba(248, 113, 113, 0.12);
+}
+.audit-entry.sign { border-left-color: var(--accent-mint); }
+.audit-entry.sign code {
+  color: var(--navy);
+  background: var(--accent-mint);
+}
+
+.audit-features {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.rules-intro {
+  margin-top: 72px;
+  max-width: 720px;
+}
+
+.rules-heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--navy);
+  margin-bottom: 12px;
+}
+
+.rules-desc {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+.rules-table-wrap {
+  margin: 28px 0 14px;
+}
+
+/* Four dense text columns: force a floor width so the wrapper's overflow-x
+   scroll kicks in rather than squeezing cells into one-word-per-line. */
+.rules-table {
+  min-width: 880px;
+  table-layout: fixed;
+}
+
+.rules-table thead th:first-child {
+  width: 18%;
+}
+
+.rules-table td,
+.rules-table tbody th {
+  padding: 16px 18px;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  vertical-align: top;
+  border-bottom: 1px solid var(--hairline);
+}
+
+/* Row headers: plain-case bold labels, not the uppercase tracked style
+   .compare-table th gives column headers. */
+.rules-table tbody th {
+  text-align: left;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--navy);
+  background: var(--navy-soft);
+}
+
+.rules-table tbody tr:last-child td,
+.rules-table tbody tr:last-child th {
+  border-bottom: none;
+}
+
+.rules-note {
+  max-width: 860px;
+  font-size: 0.8rem;
+  line-height: 1.65;
+  color: var(--text-subtle);
+}
+
+.version-log {
+  margin-top: 64px;
+  padding: 28px 32px;
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-lg);
+}
+
+.version-log h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 12px;
+}
+
+.version-entry {
+  display: grid;
+  grid-template-columns: auto auto minmax(0, 1fr);
+  gap: 16px;
+  align-items: baseline;
+  padding: 11px 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.version-entry + .version-entry {
+  border-top: 1px solid var(--hairline);
+}
+
+.version-tag {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--navy);
+  padding: 2px 10px;
+  border: 1px solid var(--hairline-strong);
+  border-radius: var(--r-full);
+}
+
+.version-entry.current .version-tag {
+  background: var(--teal);
+  border-color: var(--teal);
+  color: #fff;
+}
+
+.version-entry time {
+  font-size: 0.82rem;
+  color: var(--text-subtle);
+  white-space: nowrap;
+  font-feature-settings: "tnum";
+}
+
 /* ===== RESULTS ===== */
 .results {
   position: relative;
@@ -1558,21 +1793,26 @@ section[id] { scroll-margin-top: 84px; }
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .audit-layout {
+    grid-template-columns: 1fr;
+  }
+
   .moats {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* Eight nav items + CTA (added Free Pilot / Application) don't reliably fit a
-   shrinking flex row at tablet widths — the CTA button's text wraps
+/* Nine nav items + CTA (Free Pilot / Application, then Audit) don't reliably
+   fit a shrinking flex row at tablet widths — the CTA button's text wraps
    internally before the row as a whole "overflows" in any way a
    container-width check would catch. Simplest correct fix: use the mobile
-   (hamburger) nav in this whole band instead of trying to squeeze a 9-item
-   row. Re-measured after adding German (longest labels): the logo/lang-
-   select/first-nav-link cluster collides (0px gap) as low as 1121px, not
-   comfortable again until ~1195px. Breakpoint set to 1200px for margin
-   above that. */
-@media (max-width: 1200px) {
+   (hamburger) nav in this whole band instead of trying to squeeze a 10-item
+   row. Re-measured after adding the Audit link, with the bar widened to
+   1320px and link gap 22px: the tightest locales (pt/it/es) keep ~55px
+   between the lang-select and the first link at 1281px and would collide
+   (0px gap) around ~1225px. Breakpoint set to 1280px for margin above
+   that. */
+@media (max-width: 1280px) {
   .nav-toggle { display: block; }
 
   .nav-links {
@@ -1650,6 +1890,27 @@ section[id] { scroll-margin-top: 84px; }
 
   .results-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .audit-features {
+    grid-template-columns: 1fr;
+  }
+
+  /* Time + tag on one row, description wraps underneath — the three-column
+     row has no room for a translated sentence at phone widths. */
+  .audit-entry,
+  .version-entry {
+    grid-template-columns: auto auto;
+    row-gap: 4px;
+  }
+
+  .audit-entry span,
+  .version-entry span:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .version-log {
+    padding: 22px 20px;
   }
 
   .contact-inner {
