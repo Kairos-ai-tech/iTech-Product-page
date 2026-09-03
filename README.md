@@ -13,6 +13,44 @@ AI + AR enables a 20-year-old beginner to learn a master's 40 years of expertise
 
 ---
 
+## Current Product Focus: iTech Construction Execution Platform
+
+The live product page at [itech.kairosaitech.com](https://itech.kairosaitech.com/) applies the AI + AR approach to structural rebar work. The structural drawing is the single source of truth: drawings are parsed into bar schedules and cut lists, AR guides crews placing rebar on site, and computer vision verifies the as-built state before the pour. The Rebar Estimation Automation System (AutoCAD 2021 plugin plus cross-platform desktop app) is shipping today; AR field guidance and AI verification are in development.
+
+### Audit Log and Per-Action Timestamps
+
+Every action on the platform is written to an audit log so inspection no longer depends on memory:
+
+- **Timestamp on every action** — drawing import, cut list generation, AR placement, AI verification, correction, and as-built sign-off each record UTC time, operator, and device, to the second.
+- **Append-only, hash-chained log** — entries can never be edited or deleted; each entry is chained by SHA-256 hash so any tampering is detectable.
+- **Rule citation on every decision** — each pass/fail result records the code clause it was checked against.
+- **One-click export** — PDF / CSV by site, floor, or time range, with the full timeline, for supervising engineers and public agencies.
+
+### Built-in Rebar Rule Library: EU, USA, Taiwan
+
+Verification rules are not a black box. Three code baselines ship built in and are configurable per project:
+
+| Item | EU | USA | Taiwan |
+|------|----|-----|--------|
+| Design code | EN 1992-1-1 (Eurocode 2) + national annexes | ACI 318-19 | MOI Design Code for Concrete Structures (Building Technical Regulations, Ch. 6) |
+| Rebar material | EN 10080; B500A / B / C | ASTM A615 (Gr. 40/60/80), ASTM A706 | CNS 560; SD280 / SD420 / SD490 (W = weldable) |
+| Execution & tolerances | EN 13670 | ACI 117, ACI 301 | Public Works General Specifications, Ch. 03210 |
+| Minimum cover | c_nom = c_min + 10 mm; c_min ≥ bar Ø, by exposure class (XC1 ≈ 15 mm to XS3 ≈ 45 mm) | Against ground 75 mm; exposed #6+ 50 mm, #5- 40 mm; interior beams/columns 40 mm, slabs 20 mm | Cast against soil 75 mm; exposed D19+ 50 mm, D16- 40 mm; interior beams/columns 40 mm, slabs 20 mm |
+| Clear bar spacing | ≥ max(bar Ø, aggregate + 5 mm, 20 mm) | ≥ max(25 mm, d_b, 4/3 × max aggregate); columns ≥ max(40 mm, 1.5 d_b) | Same as USA |
+| Hooks & min bend diameter | Mandrel ≥ 4Ø (Ø ≤ 16 mm), 7Ø (Ø > 16 mm) | 6 d_b (#3–#8), 8 d_b (#9–#11); 135° seismic stirrup hook, 6 d_b ≥ 75 mm | 6 d_b (D10–D25), 8 d_b (D29–D36); 135° seismic stirrup hook, 6 d_b ≥ 75 mm |
+| Lap splice | l₀ = α-factors × l_b,rqd, ≥ max(15Ø, 200 mm) | Class B = 1.3 l_d, ≥ 300 mm | Class B = 1.3 l_d, ≥ 300 mm |
+| Cover tolerance | EN 13670: −10 mm / +10 to +20 mm by member depth | d ≤ 200 mm ±10 mm; d > 200 mm ±13 mm; reduction ≤ 1/3 of specified cover | Same as USA |
+
+These are basic rules for quick field checks. Actual verification follows the latest edition of each code, its national annex, and the project contract.
+
+### Version Log
+
+The product page keeps a version log on the page and in [CHANGELOG.md](CHANGELOG.md). Current release: **v1.3 (2026-09)** — audit log with per-action timestamps and the EU / USA / Taiwan rebar rule library.
+
+The sections below are the original AI Apprentice business plan for the broader craft-skills vision.
+
+---
+
 ## The Problem: Taiwan's Manufacturing Survival Crisis
 
 Taiwan's manufacturing industry faces an unprecedented talent gap. Senior masters are retiring en masse while younger generations refuse to enter the industry, putting traditional craftsmanship at risk of extinction.
