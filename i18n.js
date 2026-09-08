@@ -1572,6 +1572,11 @@ const translations = {
 // (it's what everything else falls back to).
 var DEFAULT_LANG = "zh-TW";
 
+var LANG_STORAGE_KEY = "settime-lang";
+// pre-rebrand storage key — read once as a migration fallback in
+// initLanguage(), then dropped.
+var LEGACY_LANG_STORAGE_KEY = "itech-lang";
+
 // Native display name shown in the <select> option for each language. Adding a
 // language for JS-enabled users only requires touching this object and
 // `translations` above — the JS-populated <select> options and
@@ -1697,7 +1702,7 @@ function setLanguage(lang) {
   if (langSelect) langSelect.value = lang;
 
   // Don't persist a fallback: an invalid `lang` shouldn't clobber a real saved preference.
-  if (!isFallback) safeStorageSet("settime-lang", lang);
+  if (!isFallback) safeStorageSet(LANG_STORAGE_KEY, lang);
 }
 
 // zh-TW is the browser-locale fallback, so it's intentionally excluded here —
@@ -1733,12 +1738,16 @@ function safeStorageRemove(key) {
 }
 
 function initLanguage() {
-  // "itech-lang" was the storage key pre-rebrand — read it as a fallback so
-  // a returning visitor's saved choice isn't silently lost, then migrate it
-  // to the new key and drop the old one so it doesn't linger indefinitely.
-  var legacy = safeStorageGet("itech-lang");
-  var saved = safeStorageGet("settime-lang") || legacy;
-  if (legacy) safeStorageRemove("itech-lang");
+  // LEGACY_LANG_STORAGE_KEY was the storage key pre-rebrand — read it as a
+  // fallback so a returning visitor's saved choice isn't silently lost,
+  // then migrate it to the new key and drop the old one so it doesn't
+  // linger indefinitely. Checked with isKnownLocale (not plain truthiness)
+  // so an unrecognized settime-lang value doesn't shadow a still-valid
+  // legacy one.
+  var current = safeStorageGet(LANG_STORAGE_KEY);
+  var legacy = safeStorageGet(LEGACY_LANG_STORAGE_KEY);
+  var saved = (current && isKnownLocale(current)) ? current : legacy;
+  if (legacy) safeStorageRemove(LEGACY_LANG_STORAGE_KEY);
   if (saved && isKnownLocale(saved)) {
     setLanguage(saved);
     return;

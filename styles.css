@@ -593,31 +593,6 @@ section[id] { scroll-margin-top: calc(var(--navbar-height) + 16px); }
   letter-spacing: 0.01em;
 }
 
-/* .hero is a fixed height:100vh sticky pin (hero3d.js scrubs the 3D scene
-   to scroll progress over it) — it can't grow to fit content, so on short
-   viewports hero-content's width-driven type scale can push the CTA button
-   past the clip boundary entirely invisible (measured: gone below ~780px
-   viewport height at 1440 width, well within normal laptop-with-chrome
-   territory). Trim the vertical rhythm and drop the decorative stats row
-   so the headline + CTA always fit. */
-@media (max-height: 820px) {
-  .hero-content {
-    padding-top: calc(var(--navbar-height) + 24px);
-    padding-bottom: 24px;
-  }
-
-  .hero-badge { margin-bottom: 16px; }
-
-  .hero-title {
-    font-size: clamp(1.75rem, 5vw, 2.75rem);
-    margin-bottom: 14px;
-  }
-
-  .hero-subtitle { margin-bottom: 4px; }
-
-  .hero-stats { display: none; }
-}
-
 .scroll-hint {
   position: absolute;
   bottom: 28px;
@@ -1724,6 +1699,34 @@ section[id] { scroll-margin-top: calc(var(--navbar-height) + 16px); }
     text-overflow: ellipsis;
     white-space: nowrap;
   }
+}
+
+/* .hero is a fixed height:100vh sticky pin (hero3d.js scrubs the 3D scene
+   to scroll progress over it) — it can't grow to fit content, so on short
+   viewports hero-content's width-driven type scale can push the CTA button
+   past the clip boundary entirely invisible (measured: gone below ~780px
+   viewport height at 1440 width, well within normal laptop-with-chrome
+   territory). Trim the vertical rhythm and drop the decorative stats row
+   so the headline + CTA always fit.
+   Placed after (not near) the other .hero-content rules so it always wins
+   the cascade over the max-width:768px block above on viewports matching
+   both (e.g. landscape phones) — same specificity, source order decides. */
+@media (max-height: 820px) {
+  .hero-content {
+    padding-top: calc(var(--navbar-height) + 24px);
+    padding-bottom: 24px;
+  }
+
+  .hero-badge { margin-bottom: 16px; }
+
+  .hero-title {
+    font-size: clamp(1.75rem, 5vw, 2.75rem);
+    margin-bottom: 14px;
+  }
+
+  .hero-subtitle { margin-bottom: 4px; }
+
+  .hero-stats { display: none; }
 }
 
 @media (max-width: 480px) {
