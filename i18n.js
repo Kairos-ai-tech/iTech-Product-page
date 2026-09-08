@@ -100,7 +100,7 @@ const translations = {
     "compliance.moat1.desc": "每筆紀錄以 SHA-256 串接前一筆雜湊，任何竄改或刪除立即可被偵測",
     "compliance.moat2.title": "精確時間戳記",
     "compliance.moat2.desc": "UTC 時間戳配合連續序號，杜絕事後補登、跳號或竄改時序",
-    "compliance.moat3.title": "唯讀式稽核紀錄",
+    "compliance.moat3.title": "僅可新增稽核紀錄",
     "compliance.moat3.desc": "僅可新增、不可修改或刪除，可完整匯出供法律取證與主管機關查核",
     "compliance.moat4.title": "長期保存相容架構",
     "compliance.moat4.desc": "紀錄格式具版本控管，確保跨年度保存週期仍可完整驗證還原",
