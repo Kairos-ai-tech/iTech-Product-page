@@ -1725,7 +1725,9 @@ function safeStorageSet(key, value) {
 }
 
 function initLanguage() {
-  var saved = safeStorageGet("settime-lang");
+  // "itech-lang" was the storage key pre-rebrand — read it as a fallback so
+  // a returning visitor's saved choice isn't silently lost, then migrate it.
+  var saved = safeStorageGet("settime-lang") || safeStorageGet("itech-lang");
   if (saved && isKnownLocale(saved)) {
     setLanguage(saved);
     return;

@@ -419,8 +419,8 @@ section[id] { scroll-margin-top: 84px; }
   inset: 0;
   /* fallback for browsers without color-mix() (pre-2023) — same tint, hand-computed */
   background-image:
-    linear-gradient(rgba(94, 234, 212, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(94, 234, 212, 0.06) 1px, transparent 1px);
+    linear-gradient(rgba(242, 192, 102, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(242, 192, 102, 0.06) 1px, transparent 1px);
   background-image:
     linear-gradient(color-mix(in srgb, var(--accent-gold-light) 6%, transparent) 1px, transparent 1px),
     linear-gradient(90deg, color-mix(in srgb, var(--accent-gold-light) 6%, transparent) 1px, transparent 1px);
@@ -490,7 +490,7 @@ section[id] { scroll-margin-top: 84px; }
   border-radius: 50%;
   background: var(--accent-gold-light);
   /* pre-color-mix() fallback, same pattern as above */
-  box-shadow: 0 0 0 4px rgba(94, 234, 212, 0.18);
+  box-shadow: 0 0 0 4px rgba(242, 192, 102, 0.18);
   box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent-gold-light) 18%, transparent);
 }
 
@@ -1106,7 +1106,7 @@ section[id] { scroll-margin-top: 84px; }
 .result-card:hover {
   background: rgba(255, 255, 255, 0.07);
   /* pre-color-mix() fallback, same pattern as above */
-  border-color: rgba(94, 234, 212, 0.35);
+  border-color: rgba(242, 192, 102, 0.35);
   border-color: color-mix(in srgb, var(--accent-gold-light) 35%, transparent);
   transform: translateY(-3px);
 }
