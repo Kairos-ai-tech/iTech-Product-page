@@ -467,8 +467,9 @@ section[id] { scroll-margin-top: calc(var(--navbar-height) + 16px); }
   z-index: 2;
   /* navbar height + a floor of 64px breathing room, scaling up on taller
      viewports — never thinner than the navbar needs, never as cramped as
-     the old 120px minimum read in practice. */
-  padding: clamp(calc(var(--navbar-height) + 64px), calc(var(--navbar-height) + 9vh), calc(var(--navbar-height) + 172px)) clamp(20px, 4vw, 48px) clamp(48px, 8vh, 96px);
+     the old 120px minimum read in practice. clamp() nested in calc() so
+     the navbar-height addition is written once, not per clamp argument. */
+  padding: calc(var(--navbar-height) + clamp(64px, 9vh, 172px)) clamp(20px, 4vw, 48px) clamp(48px, 8vh, 96px);
   max-width: var(--max-width);
   margin: 0 auto;
   width: 100%;
