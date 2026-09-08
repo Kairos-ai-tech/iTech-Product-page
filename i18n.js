@@ -1747,9 +1747,12 @@ function initLanguage() {
   var current = safeStorageGet(LANG_STORAGE_KEY);
   var legacy = safeStorageGet(LEGACY_LANG_STORAGE_KEY);
   var saved = (current && isKnownLocale(current)) ? current : legacy;
-  if (legacy) safeStorageRemove(LEGACY_LANG_STORAGE_KEY);
   if (saved && isKnownLocale(saved)) {
+    // Persist under the new key before dropping the old one — if the write
+    // throws (quota, hardened storage), the legacy key survives so the
+    // preference isn't lost outright, just re-migrated next visit.
     setLanguage(saved);
+    if (legacy) safeStorageRemove(LEGACY_LANG_STORAGE_KEY);
     return;
   }
   var browserLang = navigator.language || "";
