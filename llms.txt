@@ -1,6 +1,6 @@
-# iTech
+# Settime
 
-> AI + AR construction execution platform for structural rebar. iTech turns a structural drawing into the single source of truth for a construction site: automated bar-schedule/cut-list generation from the drawing, AR overlays that guide field crews placing rebar, and computer-vision verification that produces an auditable as-built record before the pour. Built by Kairos.ai for the Taiwanese construction market (營造/鋼筋施工).
+> AI + AR construction execution platform for structural rebar. Settime turns a structural drawing into the single source of truth for a construction site: automated bar-schedule/cut-list generation from the drawing, AR overlays that guide field crews placing rebar, and computer-vision verification that produces an auditable as-built record before the pour. Built by Kairos.ai for the Taiwanese construction market (營造/鋼筋施工).
 
 ## Product
 
@@ -10,11 +10,11 @@
 
 ## FAQ
 
-- What is iTech? iTech is an AI + AR construction execution platform that treats the structural drawing as the single source of truth: it auto-parses drawings into rebar bar-schedules and cut-lists, overlays AR guidance on site for field placement, and uses computer vision to compare as-built vs. as-designed rebar, producing an auditable as-built record.
-- What can iTech do today? The Rebar Estimation Automation System is shipping now (see Product above); AR field guidance and AI as-built verification are in development.
-- Who is iTech for? Construction companies, rebar fabricators, structural engineering firms, and public agencies that need an auditable as-built record.
+- What is Settime? Settime is an AI + AR construction execution platform that treats the structural drawing as the single source of truth: it auto-parses drawings into rebar bar-schedules and cut-lists, overlays AR guidance on site for field placement, and uses computer vision to compare as-built vs. as-designed rebar, producing an auditable as-built record.
+- What can Settime do today? The Rebar Estimation Automation System is shipping now (see Product above); AR field guidance and AI as-built verification are in development.
+- Who is Settime for? Construction companies, rebar fabricators, structural engineering firms, and public agencies that need an auditable as-built record.
 - How do I apply for the free pilot? Fill in the free pilot form at https://itech.kairosaitech.com/#pilot with company name, email, and construction type.
-- Who builds iTech? Kairos.ai, focused on Taiwan's construction market and rebar work today, with plans to extend into adjacent trades like CNC machining, mold making, and welding.
+- Who builds Settime? Kairos.ai, focused on Taiwan's construction market and rebar work today, with plans to extend into adjacent trades like CNC machining, mold making, and welding.
 
 ## Company
 

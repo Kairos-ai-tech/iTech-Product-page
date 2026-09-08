@@ -1,4 +1,4 @@
-# AI Apprentice iTech
+# AI Apprentice Settime
 
 **Preserving Taiwan's Craft Mastery Through Technology**
 
@@ -38,7 +38,7 @@ Taiwan's manufacturing industry faces an unprecedented talent gap. Senior master
 
 ## The Solution: Three Core Technology Innovations
 
-AI Apprentice iTech transforms masters' tacit knowledge into quantifiable, easily learnable, and transferable digital assets through innovative technology.
+AI Apprentice Settime transforms masters' tacit knowledge into quantifiable, easily learnable, and transferable digital assets through innovative technology.
 
 ### 1. Quantifying Tacit Knowledge
 
@@ -100,7 +100,7 @@ Pricing: NT$300K/year → Customer ROI: **1,063%**
 
 ## Competitive Advantages
 
-| Method | Advantage | Disadvantage | iTech Edge |
+| Method | Advantage | Disadvantage | Settime Edge |
 |--------|-----------|-------------|------------|
 | Traditional apprenticeship | Hands-on teaching | 2-5 years, not scalable | AI 4x faster + replicable |
 | Tutorial videos | Low cost | No interaction, can't spot errors | AR real-time guidance + AI scoring |
@@ -108,8 +108,8 @@ Pricing: NT$300K/year → Customer ROI: **1,063%**
 | Written SOP | Easy to store | Can't describe motion details | Visual + quantified standards |
 
 **Competitor Comparison:**
-- **Strivr (US)** (valued at $1B): VR standardized processes, cost NT$500K-1M vs iTech NT$50-100K
-- **SkillSaver (Japan)**: Recording only vs iTech real-time guidance + AI scoring; project-based vs platform model
+- **Strivr (US)** (valued at $1B): VR standardized processes, cost NT$500K-1M vs Settime NT$50-100K
+- **SkillSaver (Japan)**: Recording only vs Settime real-time guidance + AI scoring; project-based vs platform model
 
 **Four Moats:** Skill database (network effects), AI model advantage (proprietary training data), government relations, master network
 
@@ -317,6 +317,6 @@ Team members graduated from National Tsing Hua University with expertise spannin
 
 ## Contact Us
 
-We welcome investors, enterprise partners, and government agencies interested in AI Apprentice iTech to get in touch.
+We welcome investors, enterprise partners, and government agencies interested in AI Apprentice Settime to get in touch.
 
 Website: [Kairos.ai](https://www.kairosaitech.com/?lang=zh-TW)
