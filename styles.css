@@ -388,6 +388,9 @@ section[id] { scroll-margin-top: 84px; }
   top: 0;
   min-height: 100vh;
   height: 100vh;
+  /* reserve the fixed navbar's height so vertical centering below never
+     pushes hero-content above y=0 and under the navbar on short viewports */
+  padding-top: 68px;
   display: flex;
   flex-direction: column;
   justify-content: center;
