@@ -1534,7 +1534,7 @@ const translations = {
     "compliance.moat1.title": "Cadeia de Hash com Adulteração Detectável",
     "compliance.moat1.desc": "Cada registro é encadeado via SHA-256 ao anterior; qualquer edição ou exclusão é detectada instantaneamente",
     "compliance.moat2.title": "Carimbo de Tempo Preciso",
-    "compliance.moat2.desc": "Carimbos de tempo UTC com números de sequência monótonos que impedem retroatividade, lacunas ou reordenação",
+    "compliance.moat2.desc": "Carimbos de tempo UTC com números de sequência monótonos que impedem retrodatação, lacunas ou reordenação",
     "compliance.moat3.title": "Trilha de Auditoria Somente-Adição",
     "compliance.moat3.desc": "Os registros só podem ser adicionados, nunca editados ou excluídos — totalmente exportável para litígios e revisão regulatória",
     "compliance.moat4.title": "Arquitetura de Retenção de Longo Prazo",
