@@ -126,11 +126,11 @@ const translations = {
     "results.r4.old": "原 5-8%",
     "results.r4.new": "目標 ≤ 2%",
     "advantage.label": "COMPETITIVE EDGE 競爭優勢",
-    "advantage.heading": ["為什麼選擇 iTech"],
+    "advantage.heading": ["為什麼選擇 Settime"],
     "advantage.th1": "方案",
     "advantage.th2": "優點",
     "advantage.th3": "缺點",
-    "advantage.th4": "iTech 差異",
+    "advantage.th4": "Settime 差異",
     "advantage.r1.method": "2D 施工圖人工判讀",
     "advantage.r1.pro": "現行流程熟悉",
     "advantage.r1.con": "易誤讀，無現場驗證",
@@ -157,16 +157,16 @@ const translations = {
     "advantage.moat4.desc": "與威智 (Wei-Zhi) 鋼筋施工圖自動化整合，串接加工廠與營造廠的既有產業鏈",
     "faq.label": "FAQ 常見問題",
     "faq.heading": "常見問題",
-    "faq.q1.q": "iTech 是什麼？",
-    "faq.q1.a": "iTech 是 AI + AR 營造執行平台，以結構施工圖為唯一真值：自動解析施工圖產出鋼筋計料表與下料表、AR 現場疊加指導綁紮、電腦視覺比對竣工與設計狀態，產出可稽核的竣工紀錄。",
-    "faq.q2.q": "iTech 現在可以使用哪些功能？",
+    "faq.q1.q": "Settime 是什麼？",
+    "faq.q1.a": "Settime 是 AI + AR 營造執行平台，以結構施工圖為唯一真值：自動解析施工圖產出鋼筋計料表與下料表、AR 現場疊加指導綁紮、電腦視覺比對竣工與設計狀態，產出可稽核的竣工紀錄。",
+    "faq.q2.q": "Settime 現在可以使用哪些功能？",
     "faq.q2.a": "鋼筋估算自動化系統已上線：AutoCAD 2021 外掛與跨平台桌面版，將結構施工圖直接轉換為加工圖與計料表 (.xlsm)，可直接匯入加工廠既有巨集工具，樑柱辨識率 ≥ 90%。AR 現場指導與 AI 竣工驗證正在開發中。",
-    "faq.q3.q": "誰適合使用 iTech？",
+    "faq.q3.q": "誰適合使用 Settime？",
     "faq.q3.a": "營造廠、鋼筋加工廠、結構技師事務所，以及需要可稽核竣工紀錄的政府機構。",
     "faq.q4.q": "如何申請免費試點？",
     "faq.q4.a": "在下方「免費試點」表單留下公司名稱、Email 與施工類型，我們將主動與您聯繫安排導入。",
-    "faq.q5.q": "iTech 由誰開發？",
-    "faq.q5.a": "iTech 由 Kairos.ai 開發，聚焦台灣營造市場的鋼筋施工場景，未來將延伸至 CNC 加工、模具、焊接等相鄰產業。",
+    "faq.q5.q": "Settime 由誰開發？",
+    "faq.q5.a": "Settime 由 Kairos.ai 開發，聚焦台灣營造市場的鋼筋施工場景，未來將延伸至 CNC 加工、模具、焊接等相鄰產業。",
     "pilot.label": "FREE PILOT 免費試點",
     "pilot.heading": "申請免費試點",
     "pilot.desc": "留下公司資訊，我們將與您聯繫安排試點導入。",
@@ -199,7 +199,7 @@ const translations = {
     "contact.message": "訊息 Message",
     "contact.message.placeholder": "請輸入您的訊息...",
     "contact.submit": "送出訊息 Send Message",
-    "footer.rights": "© 2026 iTech. All rights reserved.",
+    "footer.rights": "© 2026 Settime. All rights reserved.",
     "footer.company": "Kairos.ai"
   },
   "en": {
@@ -320,11 +320,11 @@ const translations = {
     "results.r4.old": "Today 5-8%",
     "results.r4.new": "Target ≤ 2%",
     "advantage.label": "COMPETITIVE EDGE",
-    "advantage.heading": ["Why Choose iTech"],
+    "advantage.heading": ["Why Choose Settime"],
     "advantage.th1": "Approach",
     "advantage.th2": "Advantage",
     "advantage.th3": "Disadvantage",
-    "advantage.th4": "iTech Edge",
+    "advantage.th4": "Settime Edge",
     "advantage.r1.method": "Manual 2D drawing reading",
     "advantage.r1.pro": "Familiar workflow",
     "advantage.r1.con": "Error-prone, no field check",
@@ -351,16 +351,16 @@ const translations = {
     "advantage.moat4.desc": "Built with Wei-Zhi, whose rebar shop-drawing automation plugs into the existing fabricator and contractor chain",
     "faq.label": "FAQ",
     "faq.heading": "Frequently Asked Questions",
-    "faq.q1.q": "What is iTech?",
-    "faq.q1.a": "iTech is an AI + AR construction execution platform that treats the structural drawing as the single source of truth: it auto-parses drawings into rebar bar-schedules and cut-lists, overlays AR guidance on site for field placement, and uses computer vision to compare as-built vs. as-designed rebar, producing an auditable as-built record.",
-    "faq.q2.q": "What can iTech do today?",
+    "faq.q1.q": "What is Settime?",
+    "faq.q1.a": "Settime is an AI + AR construction execution platform that treats the structural drawing as the single source of truth: it auto-parses drawings into rebar bar-schedules and cut-lists, overlays AR guidance on site for field placement, and uses computer vision to compare as-built vs. as-designed rebar, producing an auditable as-built record.",
+    "faq.q2.q": "What can Settime do today?",
     "faq.q2.a": "The Rebar Estimation Automation System is shipping now: an AutoCAD 2021 plugin plus a cross-platform desktop app that converts structural drawings directly into shop drawings and a material-list workbook (.xlsm), importing natively into a fabricator's existing macro tooling, with beam/column recognition ≥ 90%. AR field guidance and AI as-built verification are in development.",
-    "faq.q3.q": "Who is iTech for?",
+    "faq.q3.q": "Who is Settime for?",
     "faq.q3.a": "Construction companies, rebar fabricators, structural engineering firms, and public agencies that need an auditable as-built record.",
     "faq.q4.q": "How do I apply for the free pilot?",
     "faq.q4.a": "Fill in the free pilot form below with your company name, email, and construction type — we'll reach out to arrange onboarding.",
-    "faq.q5.q": "Who builds iTech?",
-    "faq.q5.a": "iTech is built by Kairos.ai, focused on Taiwan's construction market and rebar work today, with plans to extend into adjacent trades like CNC machining, mold making, and welding.",
+    "faq.q5.q": "Who builds Settime?",
+    "faq.q5.a": "Settime is built by Kairos.ai, focused on Taiwan's construction market and rebar work today, with plans to extend into adjacent trades like CNC machining, mold making, and welding.",
     "pilot.label": "FREE PILOT",
     "pilot.heading": "Apply for a Free Pilot",
     "pilot.desc": "Tell us about your company and we'll reach out to set up a pilot rollout.",
@@ -393,7 +393,7 @@ const translations = {
     "contact.message": "Message",
     "contact.message.placeholder": "Enter your message...",
     "contact.submit": "Send Message",
-    "footer.rights": "© 2026 iTech. All rights reserved.",
+    "footer.rights": "© 2026 Settime. All rights reserved.",
     "footer.company": "Kairos.ai"
   },
   "ja": {
@@ -514,11 +514,11 @@ const translations = {
     "results.r4.old": "従来 5-8%",
     "results.r4.new": "目標 ≤ 2%",
     "advantage.label": "競争優位性",
-    "advantage.heading": ["iTechが選ばれる理由"],
+    "advantage.heading": ["Settimeが選ばれる理由"],
     "advantage.th1": "アプローチ",
     "advantage.th2": "利点",
     "advantage.th3": "欠点",
-    "advantage.th4": "iTechの優位性",
+    "advantage.th4": "Settimeの優位性",
     "advantage.r1.method": "2D施工図の手動読解",
     "advantage.r1.pro": "既存の業務に馴染む",
     "advantage.r1.con": "誤読しやすく、現場検証なし",
@@ -545,16 +545,16 @@ const translations = {
     "advantage.moat4.desc": "鉄筋施工図自動化を持つ威智（Wei-Zhi）と統合、既存の加工工場・ゼネコンチェーンに接続",
     "faq.label": "FAQ よくある質問",
     "faq.heading": "よくある質問",
-    "faq.q1.q": "iTechとは何ですか？",
-    "faq.q1.a": "iTechは構造施工図を唯一の真値とするAI + AR施工実行プラットフォームです。図面を自動解析して鉄筋計量表・切断表を生成し、現場ではARで結束作業を指導、コンピュータビジョンで竣工状態と設計を比較し、監査可能な竣工記録を作成します。",
-    "faq.q2.q": "iTechは現在どんな機能が使えますか？",
+    "faq.q1.q": "Settimeとは何ですか？",
+    "faq.q1.a": "Settimeは構造施工図を唯一の真値とするAI + AR施工実行プラットフォームです。図面を自動解析して鉄筋計量表・切断表を生成し、現場ではARで結束作業を指導、コンピュータビジョンで竣工状態と設計を比較し、監査可能な竣工記録を作成します。",
+    "faq.q2.q": "Settimeは現在どんな機能が使えますか？",
     "faq.q2.a": "鉄筋積算自動化システムは提供中です。AutoCAD 2021プラグインとクロスプラットフォームのデスクトップ版で、構造施工図を施工図と計量表（.xlsm）に直接変換し、加工工場の既存マクロツールに取り込めます。梁・柱の認識率は90%以上。AR現場指導とAI竣工検証は開発中です。",
-    "faq.q3.q": "iTechは誰に向いていますか？",
+    "faq.q3.q": "Settimeは誰に向いていますか？",
     "faq.q3.a": "建設会社、鉄筋加工工場、構造設計事務所、監査可能な竣工記録を必要とする政府機関に向いています。",
     "faq.q4.q": "無料パイロットはどう申し込みますか？",
     "faq.q4.a": "下記の無料パイロットフォームに会社名・メールアドレス・施工種別をご入力ください。こちらからご連絡し導入を調整します。",
-    "faq.q5.q": "iTechはどこが開発していますか？",
-    "faq.q5.a": "iTechはKairos.aiが開発しています。現在は台湾の建設市場と鉄筋施工に注力し、今後CNC加工・金型・溶接など関連業界にも展開予定です。",
+    "faq.q5.q": "Settimeはどこが開発していますか？",
+    "faq.q5.a": "SettimeはKairos.aiが開発しています。現在は台湾の建設市場と鉄筋施工に注力し、今後CNC加工・金型・溶接など関連業界にも展開予定です。",
     "pilot.label": "無料パイロット",
     "pilot.heading": "無料パイロットに申し込む",
     "pilot.desc": "貴社の情報をご記入ください。担当者よりご連絡し、パイロット導入を調整いたします。",
@@ -587,7 +587,7 @@ const translations = {
     "contact.message": "メッセージ",
     "contact.message.placeholder": "メッセージを入力してください...",
     "contact.submit": "送信する",
-    "footer.rights": "© 2026 iTech. All rights reserved.",
+    "footer.rights": "© 2026 Settime. All rights reserved.",
     "footer.company": "Kairos.ai"
   },
   "es": {
@@ -708,11 +708,11 @@ const translations = {
     "results.r4.old": "Hoy 5-8%",
     "results.r4.new": "Objetivo ≤ 2%",
     "advantage.label": "VENTAJA COMPETITIVA",
-    "advantage.heading": ["Por Qué Elegir iTech"],
+    "advantage.heading": ["Por Qué Elegir Settime"],
     "advantage.th1": "Enfoque",
     "advantage.th2": "Ventaja",
     "advantage.th3": "Desventaja",
-    "advantage.th4": "Diferencia iTech",
+    "advantage.th4": "Diferencia Settime",
     "advantage.r1.method": "Lectura manual de planos 2D",
     "advantage.r1.pro": "Flujo de trabajo conocido",
     "advantage.r1.con": "Propenso a errores, sin verificación en campo",
@@ -739,16 +739,16 @@ const translations = {
     "advantage.moat4.desc": "Construido con Wei-Zhi, cuya automatización de planos de taller de armadura conecta con la cadena existente de fabricantes y contratistas",
     "faq.label": "FAQ Preguntas frecuentes",
     "faq.heading": "Preguntas frecuentes",
-    "faq.q1.q": "¿Qué es iTech?",
-    "faq.q1.a": "iTech es una plataforma de ejecución de obra con IA + RA que trata el plano estructural como única fuente de verdad: analiza automáticamente los planos para generar listas de despiece de armadura, superpone guías de RA en obra para la colocación, y usa visión artificial para comparar lo construido con lo diseñado, generando un registro as-built auditable.",
-    "faq.q2.q": "¿Qué puede hacer iTech hoy?",
+    "faq.q1.q": "¿Qué es Settime?",
+    "faq.q1.a": "Settime es una plataforma de ejecución de obra con IA + RA que trata el plano estructural como única fuente de verdad: analiza automáticamente los planos para generar listas de despiece de armadura, superpone guías de RA en obra para la colocación, y usa visión artificial para comparar lo construido con lo diseñado, generando un registro as-built auditable.",
+    "faq.q2.q": "¿Qué puede hacer Settime hoy?",
     "faq.q2.a": "El Sistema de Automatización de Estimación de Armadura ya está disponible: un plugin para AutoCAD 2021 y una app de escritorio multiplataforma que convierte planos estructurales directamente en planos de taller y una lista de materiales (.xlsm), compatible con las herramientas de macros del fabricante. Reconocimiento de vigas/columnas ≥ 90%. La guía de RA en campo y la verificación as-built con IA están en desarrollo.",
-    "faq.q3.q": "¿Para quién es iTech?",
+    "faq.q3.q": "¿Para quién es Settime?",
     "faq.q3.a": "Empresas constructoras, fabricantes de armadura, ingenierías estructurales y entidades públicas que necesitan un registro as-built auditable.",
     "faq.q4.q": "¿Cómo solicito el piloto gratuito?",
     "faq.q4.a": "Completa el formulario de piloto gratuito con el nombre de tu empresa, email y tipo de obra — nos pondremos en contacto para coordinar la implementación.",
-    "faq.q5.q": "¿Quién desarrolla iTech?",
-    "faq.q5.a": "iTech es desarrollado por Kairos.ai, enfocado hoy en el mercado de construcción de Taiwán y el trabajo de armadura, con planes de expansión a sectores afines como mecanizado CNC, moldes y soldadura.",
+    "faq.q5.q": "¿Quién desarrolla Settime?",
+    "faq.q5.a": "Settime es desarrollado por Kairos.ai, enfocado hoy en el mercado de construcción de Taiwán y el trabajo de armadura, con planes de expansión a sectores afines como mecanizado CNC, moldes y soldadura.",
     "pilot.label": "PILOTO GRATUITO",
     "pilot.heading": "Solicitar un Piloto Gratuito",
     "pilot.desc": "Cuéntanos sobre tu empresa y nos pondremos en contacto para organizar el piloto.",
@@ -781,7 +781,7 @@ const translations = {
     "contact.message": "Mensaje",
     "contact.message.placeholder": "Escribe tu mensaje...",
     "contact.submit": "Enviar Mensaje",
-    "footer.rights": "© 2026 iTech. Todos los derechos reservados.",
+    "footer.rights": "© 2026 Settime. Todos los derechos reservados.",
     "footer.company": "Kairos.ai"
   },
   "fr": {
@@ -902,11 +902,11 @@ const translations = {
     "results.r4.old": "Aujourd'hui 5-8%",
     "results.r4.new": "Cible ≤ 2%",
     "advantage.label": "AVANTAGE CONCURRENTIEL",
-    "advantage.heading": ["Pourquoi Choisir iTech"],
+    "advantage.heading": ["Pourquoi Choisir Settime"],
     "advantage.th1": "Approche",
     "advantage.th2": "Avantage",
     "advantage.th3": "Inconvénient",
-    "advantage.th4": "Différence iTech",
+    "advantage.th4": "Différence Settime",
     "advantage.r1.method": "Lecture manuelle des plans 2D",
     "advantage.r1.pro": "Flux de travail familier",
     "advantage.r1.con": "Sujet aux erreurs, sans vérification terrain",
@@ -933,16 +933,16 @@ const translations = {
     "advantage.moat4.desc": "Construit avec Wei-Zhi, dont l'automatisation des plans d'atelier d'armature se connecte à la chaîne existante des façonneurs et entreprises",
     "faq.label": "FAQ Questions fréquentes",
     "faq.heading": "Questions fréquentes",
-    "faq.q1.q": "Qu'est-ce qu'iTech ?",
-    "faq.q1.a": "iTech est une plateforme d'exécution de chantier IA + RA qui fait du plan structurel la seule source de vérité : analyse automatique des plans pour générer les nomenclatures et débits d'armature, guidage RA sur site pour la pose, et vision par ordinateur pour comparer l'exécuté au conçu, produisant un dossier des ouvrages exécutés auditable.",
-    "faq.q2.q": "Que peut faire iTech aujourd'hui ?",
+    "faq.q1.q": "Qu'est-ce que Settime ?",
+    "faq.q1.a": "Settime est une plateforme d'exécution de chantier IA + RA qui fait du plan structurel la seule source de vérité : analyse automatique des plans pour générer les nomenclatures et débits d'armature, guidage RA sur site pour la pose, et vision par ordinateur pour comparer l'exécuté au conçu, produisant un dossier des ouvrages exécutés auditable.",
+    "faq.q2.q": "Que peut faire Settime aujourd'hui ?",
     "faq.q2.a": "Le système d'automatisation d'estimation d'armature est disponible dès maintenant : un plugin AutoCAD 2021 et une application de bureau multiplateforme qui convertit les plans structurels directement en plans d'atelier et une nomenclature (.xlsm), compatible avec les outils macro existants du façonneur. Reconnaissance poutres/poteaux ≥ 90 %. Le guidage RA sur chantier et la vérification as-built par IA sont en développement.",
-    "faq.q3.q": "À qui s'adresse iTech ?",
+    "faq.q3.q": "À qui s'adresse Settime ?",
     "faq.q3.a": "Entreprises de construction, façonneurs d'armature, bureaux d'études structure, et organismes publics ayant besoin d'un dossier des ouvrages exécutés auditable.",
     "faq.q4.q": "Comment demander le pilote gratuit ?",
     "faq.q4.a": "Remplissez le formulaire de pilote gratuit ci-dessous avec le nom de votre entreprise, votre email et le type de chantier — nous vous recontacterons pour organiser la mise en œuvre.",
-    "faq.q5.q": "Qui développe iTech ?",
-    "faq.q5.a": "iTech est développé par Kairos.ai, actuellement centré sur le marché de la construction à Taïwan et le travail d'armature, avec une extension prévue vers des secteurs voisins comme l'usinage CNC, le moulage et la soudure.",
+    "faq.q5.q": "Qui développe Settime ?",
+    "faq.q5.a": "Settime est développé par Kairos.ai, actuellement centré sur le marché de la construction à Taïwan et le travail d'armature, avec une extension prévue vers des secteurs voisins comme l'usinage CNC, le moulage et la soudure.",
     "pilot.label": "PILOTE GRATUIT",
     "pilot.heading": "Demander un Pilote Gratuit",
     "pilot.desc": "Parlez-nous de votre entreprise, nous vous contacterons pour organiser le déploiement pilote.",
@@ -975,7 +975,7 @@ const translations = {
     "contact.message": "Message",
     "contact.message.placeholder": "Saisissez votre message...",
     "contact.submit": "Envoyer le Message",
-    "footer.rights": "© 2026 iTech. Tous droits réservés.",
+    "footer.rights": "© 2026 Settime. Tous droits réservés.",
     "footer.company": "Kairos.ai"
   },
   "de": {
@@ -1096,11 +1096,11 @@ const translations = {
     "results.r4.old": "Heute 5-8%",
     "results.r4.new": "Ziel ≤ 2%",
     "advantage.label": "WETTBEWERBSVORTEIL",
-    "advantage.heading": ["Warum iTech"],
+    "advantage.heading": ["Warum Settime"],
     "advantage.th1": "Ansatz",
     "advantage.th2": "Vorteil",
     "advantage.th3": "Nachteil",
-    "advantage.th4": "iTech-Unterschied",
+    "advantage.th4": "Settime-Unterschied",
     "advantage.r1.method": "Manuelles Lesen von 2D-Plänen",
     "advantage.r1.pro": "Vertrauter Ablauf",
     "advantage.r1.con": "Fehleranfällig, keine Vor-Ort-Prüfung",
@@ -1127,16 +1127,16 @@ const translations = {
     "advantage.moat4.desc": "Aufgebaut mit Wei-Zhi, dessen Automatisierung von Bewehrungs-Werkstattzeichnungen an die bestehende Kette aus Fertigungsbetrieben und Bauunternehmen andockt",
     "faq.label": "FAQ Häufige Fragen",
     "faq.heading": "Häufige Fragen",
-    "faq.q1.q": "Was ist iTech?",
-    "faq.q1.a": "iTech ist eine KI- + AR-Plattform für die Bauausführung, die den Statikplan als einzige Wahrheitsquelle behandelt: automatische Planauswertung zu Biegelisten und Schnittlisten, AR-Führung vor Ort für die Verlegung, und Computer Vision zum Abgleich von Ist- und Sollzustand — mit einer prüfbaren Bestandsdokumentation als Ergebnis.",
-    "faq.q2.q": "Was kann iTech heute schon?",
+    "faq.q1.q": "Was ist Settime?",
+    "faq.q1.a": "Settime ist eine KI- + AR-Plattform für die Bauausführung, die den Statikplan als einzige Wahrheitsquelle behandelt: automatische Planauswertung zu Biegelisten und Schnittlisten, AR-Führung vor Ort für die Verlegung, und Computer Vision zum Abgleich von Ist- und Sollzustand — mit einer prüfbaren Bestandsdokumentation als Ergebnis.",
+    "faq.q2.q": "Was kann Settime heute schon?",
     "faq.q2.a": "Das System zur Automatisierung der Bewehrungskalkulation ist bereits verfügbar: ein AutoCAD-2021-Plugin plus eine plattformübergreifende Desktop-App, die Statikpläne direkt in Werkstattzeichnungen und eine Materialliste (.xlsm) umwandelt und nativ in bestehende Makro-Tools des Verarbeiters importiert. Erkennungsrate für Balken/Stützen ≥ 90 %. AR-Feldführung und KI-basierte Bestandsprüfung sind in Entwicklung.",
-    "faq.q3.q": "Für wen ist iTech gedacht?",
+    "faq.q3.q": "Für wen ist Settime gedacht?",
     "faq.q3.a": "Bauunternehmen, Bewehrungsverarbeiter, Tragwerksplanungsbüros und Behörden, die eine prüfbare Bestandsdokumentation benötigen.",
     "faq.q4.q": "Wie bewerbe ich mich für das kostenlose Pilotprojekt?",
     "faq.q4.a": "Füllen Sie unten das Formular für das kostenlose Pilotprojekt mit Firmenname, E-Mail und Bauart aus — wir melden uns zur Abstimmung der Einführung.",
-    "faq.q5.q": "Wer entwickelt iTech?",
-    "faq.q5.a": "iTech wird von Kairos.ai entwickelt, aktuell mit Fokus auf den taiwanesischen Baumarkt und Bewehrungsarbeiten, mit geplanter Erweiterung auf angrenzende Bereiche wie CNC-Bearbeitung, Formenbau und Schweißen.",
+    "faq.q5.q": "Wer entwickelt Settime?",
+    "faq.q5.a": "Settime wird von Kairos.ai entwickelt, aktuell mit Fokus auf den taiwanesischen Baumarkt und Bewehrungsarbeiten, mit geplanter Erweiterung auf angrenzende Bereiche wie CNC-Bearbeitung, Formenbau und Schweißen.",
     "pilot.label": "KOSTENLOSES PILOTPROJEKT",
     "pilot.heading": "Kostenloses Pilotprojekt Beantragen",
     "pilot.desc": "Erzählen Sie uns von Ihrem Unternehmen, wir melden uns zur Abstimmung des Pilotprojekts.",
@@ -1169,7 +1169,7 @@ const translations = {
     "contact.message": "Nachricht",
     "contact.message.placeholder": "Ihre Nachricht eingeben...",
     "contact.submit": "Nachricht Senden",
-    "footer.rights": "© 2026 iTech. Alle Rechte vorbehalten.",
+    "footer.rights": "© 2026 Settime. Alle Rechte vorbehalten.",
     "footer.company": "Kairos.ai"
   },
   "it": {
@@ -1290,11 +1290,11 @@ const translations = {
     "results.r4.old": "Oggi 5-8%",
     "results.r4.new": "Obiettivo ≤ 2%",
     "advantage.label": "VANTAGGIO COMPETITIVO",
-    "advantage.heading": ["Perché Scegliere iTech"],
+    "advantage.heading": ["Perché Scegliere Settime"],
     "advantage.th1": "Approccio",
     "advantage.th2": "Vantaggio",
     "advantage.th3": "Svantaggio",
-    "advantage.th4": "Differenza iTech",
+    "advantage.th4": "Differenza Settime",
     "advantage.r1.method": "Lettura manuale dei disegni 2D",
     "advantage.r1.pro": "Flusso di lavoro familiare",
     "advantage.r1.con": "Soggetto a errori, nessuna verifica in cantiere",
@@ -1321,16 +1321,16 @@ const translations = {
     "advantage.moat4.desc": "Costruito con Wei-Zhi, la cui automazione dei disegni di officina per armature si collega alla filiera esistente di officine e imprese",
     "faq.label": "FAQ Domande frequenti",
     "faq.heading": "Domande frequenti",
-    "faq.q1.q": "Cos'è iTech?",
-    "faq.q1.a": "iTech è una piattaforma di esecuzione cantiere basata su IA + AR che considera il disegno strutturale come unica fonte di verità: analizza automaticamente i disegni per generare distinte e liste di taglio delle armature, sovrappone guide AR in cantiere per la posa, e usa la visione artificiale per confrontare il costruito con il progettato, producendo un registro as-built verificabile.",
-    "faq.q2.q": "Cosa può fare iTech oggi?",
+    "faq.q1.q": "Cos'è Settime?",
+    "faq.q1.a": "Settime è una piattaforma di esecuzione cantiere basata su IA + AR che considera il disegno strutturale come unica fonte di verità: analizza automaticamente i disegni per generare distinte e liste di taglio delle armature, sovrappone guide AR in cantiere per la posa, e usa la visione artificiale per confrontare il costruito con il progettato, producendo un registro as-built verificabile.",
+    "faq.q2.q": "Cosa può fare Settime oggi?",
     "faq.q2.a": "Il Sistema di Automazione del Computo Armature è già disponibile: un plugin per AutoCAD 2021 più un'app desktop multipiattaforma che converte i disegni strutturali direttamente in disegni di officina e in una distinta materiali (.xlsm), importabile negli strumenti macro esistenti del fabbricante. Riconoscimento travi/pilastri ≥ 90%. La guida AR in campo e la verifica as-built con IA sono in sviluppo.",
-    "faq.q3.q": "A chi è rivolto iTech?",
+    "faq.q3.q": "A chi è rivolto Settime?",
     "faq.q3.a": "Imprese di costruzione, officine di lavorazione armature, studi di ingegneria strutturale ed enti pubblici che necessitano di un registro as-built verificabile.",
     "faq.q4.q": "Come richiedo il pilota gratuito?",
     "faq.q4.a": "Compila il modulo del pilota gratuito qui sotto con nome dell'azienda, email e tipo di cantiere: ti contatteremo per organizzare l'avvio.",
-    "faq.q5.q": "Chi sviluppa iTech?",
-    "faq.q5.a": "iTech è sviluppato da Kairos.ai, oggi concentrato sul mercato edile taiwanese e sulle armature, con piani di espansione verso settori affini come lavorazione CNC, stampi e saldatura.",
+    "faq.q5.q": "Chi sviluppa Settime?",
+    "faq.q5.a": "Settime è sviluppato da Kairos.ai, oggi concentrato sul mercato edile taiwanese e sulle armature, con piani di espansione verso settori affini come lavorazione CNC, stampi e saldatura.",
     "pilot.label": "PILOTA GRATUITO",
     "pilot.heading": "Richiedi un Pilota Gratuito",
     "pilot.desc": "Raccontaci della tua azienda: ti contatteremo per organizzare il pilota.",
@@ -1363,7 +1363,7 @@ const translations = {
     "contact.message": "Messaggio",
     "contact.message.placeholder": "Inserisci il tuo messaggio...",
     "contact.submit": "Invia Messaggio",
-    "footer.rights": "© 2026 iTech. Tutti i diritti riservati.",
+    "footer.rights": "© 2026 Settime. Tutti i diritti riservati.",
     "footer.company": "Kairos.ai"
   },
   "pt": {
@@ -1484,11 +1484,11 @@ const translations = {
     "results.r4.old": "Hoje 5-8%",
     "results.r4.new": "Meta ≤ 2%",
     "advantage.label": "VANTAGEM COMPETITIVA",
-    "advantage.heading": ["Por Que Escolher a iTech"],
+    "advantage.heading": ["Por Que Escolher a Settime"],
     "advantage.th1": "Abordagem",
     "advantage.th2": "Vantagem",
     "advantage.th3": "Desvantagem",
-    "advantage.th4": "Diferencial iTech",
+    "advantage.th4": "Diferencial Settime",
     "advantage.r1.method": "Leitura manual de desenhos 2D",
     "advantage.r1.pro": "Fluxo de trabalho conhecido",
     "advantage.r1.con": "Sujeito a erros, sem verificação em campo",
@@ -1515,16 +1515,16 @@ const translations = {
     "advantage.moat4.desc": "Construído com a Wei-Zhi, cuja automação de desenhos de oficina de armação se conecta à cadeia existente de fabricantes e empreiteiras",
     "faq.label": "FAQ Perguntas frequentes",
     "faq.heading": "Perguntas frequentes",
-    "faq.q1.q": "O que é o iTech?",
-    "faq.q1.a": "O iTech é uma plataforma de execução de obra com IA + RA que trata o desenho estrutural como a única fonte de verdade: analisa automaticamente os desenhos para gerar listas de corte e dobra de armadura, sobrepõe orientação em RA no canteiro para a montagem, e usa visão computacional para comparar o construído com o projetado, gerando um registro as-built auditável.",
-    "faq.q2.q": "O que o iTech já faz hoje?",
+    "faq.q1.q": "O que é o Settime?",
+    "faq.q1.a": "O Settime é uma plataforma de execução de obra com IA + RA que trata o desenho estrutural como a única fonte de verdade: analisa automaticamente os desenhos para gerar listas de corte e dobra de armadura, sobrepõe orientação em RA no canteiro para a montagem, e usa visão computacional para comparar o construído com o projetado, gerando um registro as-built auditável.",
+    "faq.q2.q": "O que o Settime já faz hoje?",
     "faq.q2.a": "O Sistema de Automação de Orçamento de Armação já está disponível: um plugin para AutoCAD 2021 e um aplicativo desktop multiplataforma que converte projetos estruturais diretamente em desenhos de oficina e uma lista de materiais (.xlsm), importável nativamente nas ferramentas de macro já usadas pelo fabricante. Reconhecimento de vigas/pilares ≥ 90%. A orientação em RA no campo e a verificação as-built com IA estão em desenvolvimento.",
-    "faq.q3.q": "Para quem é o iTech?",
+    "faq.q3.q": "Para quem é o Settime?",
     "faq.q3.a": "Construtoras, fabricantes de armadura, escritórios de engenharia estrutural e órgãos públicos que precisam de um registro as-built auditável.",
     "faq.q4.q": "Como me candidato ao piloto gratuito?",
     "faq.q4.a": "Preencha o formulário de piloto gratuito abaixo com o nome da empresa, email e tipo de obra — entraremos em contato para organizar a implantação.",
-    "faq.q5.q": "Quem desenvolve o iTech?",
-    "faq.q5.a": "O iTech é desenvolvido pela Kairos.ai, hoje focada no mercado de construção de Taiwan e em armadura, com planos de expansão para setores adjacentes como usinagem CNC, moldes e solda.",
+    "faq.q5.q": "Quem desenvolve o Settime?",
+    "faq.q5.a": "O Settime é desenvolvido pela Kairos.ai, hoje focada no mercado de construção de Taiwan e em armadura, com planos de expansão para setores adjacentes como usinagem CNC, moldes e solda.",
     "pilot.label": "PILOTO GRATUITO",
     "pilot.heading": "Solicitar um Piloto Gratuito",
     "pilot.desc": "Conte-nos sobre sua empresa e entraremos em contato para organizar o piloto.",
@@ -1557,7 +1557,7 @@ const translations = {
     "contact.message": "Mensagem",
     "contact.message.placeholder": "Digite sua mensagem...",
     "contact.submit": "Enviar Mensagem",
-    "footer.rights": "© 2026 iTech. Todos os direitos reservados.",
+    "footer.rights": "© 2026 Settime. Todos os direitos reservados.",
     "footer.company": "Kairos.ai"
   }
 };
@@ -1571,6 +1571,11 @@ const translations = {
 // preference matches, and excluded from browser-language auto-detection
 // (it's what everything else falls back to).
 var DEFAULT_LANG = "zh-TW";
+
+var LANG_STORAGE_KEY = "settime-lang";
+// pre-rebrand storage key — read once as a migration fallback in
+// initLanguage(), then dropped.
+var LEGACY_LANG_STORAGE_KEY = "itech-lang";
 
 // Native display name shown in the <select> option for each language. Adding a
 // language for JS-enabled users only requires touching this object and
@@ -1697,7 +1702,7 @@ function setLanguage(lang) {
   if (langSelect) langSelect.value = lang;
 
   // Don't persist a fallback: an invalid `lang` shouldn't clobber a real saved preference.
-  if (!isFallback) safeStorageSet("itech-lang", lang);
+  if (!isFallback) safeStorageSet(LANG_STORAGE_KEY, lang);
 }
 
 // zh-TW is the browser-locale fallback, so it's intentionally excluded here —
@@ -1719,17 +1724,54 @@ function safeStorageGet(key) {
 function safeStorageSet(key, value) {
   try {
     localStorage.setItem(key, value);
+    return true;
   } catch (e) {
-    // ignore — worst case the preference just doesn't persist
+    // worst case the preference just doesn't persist — return value lets
+    // callers that need to know (e.g. the legacy-key migration) react
+    return false;
+  }
+}
+
+function safeStorageRemove(key) {
+  try {
+    localStorage.removeItem(key);
+  } catch (e) {
+    // ignore
   }
 }
 
 function initLanguage() {
-  var saved = safeStorageGet("itech-lang");
-  if (saved && isKnownLocale(saved)) {
+  // LEGACY_LANG_STORAGE_KEY was the storage key pre-rebrand — read it as a
+  // fallback so a returning visitor's saved choice isn't silently lost,
+  // then migrate it to the new key. Checked with isKnownLocale (not plain
+  // truthiness) so an unrecognized settime-lang value doesn't shadow a
+  // still-valid legacy one.
+  var current = safeStorageGet(LANG_STORAGE_KEY);
+  var legacy = safeStorageGet(LEGACY_LANG_STORAGE_KEY);
+  var currentValid = !!(current && isKnownLocale(current));
+  var legacyValid = !!(legacy && isKnownLocale(legacy));
+  var saved = currentValid ? current : (legacyValid ? legacy : null);
+
+  if (saved) {
+    if (!currentValid && legacyValid) {
+      // Migrating: only drop the legacy key once safeStorageSet confirms
+      // the new one actually wrote — if it throws (quota, hardened
+      // storage), leave both keys as-is so the next visit retries the
+      // migration instead of losing the preference outright.
+      if (safeStorageSet(LANG_STORAGE_KEY, saved)) {
+        safeStorageRemove(LEGACY_LANG_STORAGE_KEY);
+      }
+    } else if (legacy) {
+      // Already on the new key — nothing worth protecting, drop the stale one.
+      safeStorageRemove(LEGACY_LANG_STORAGE_KEY);
+    }
     setLanguage(saved);
     return;
   }
+
+  // Legacy held something, but not a locale this build recognizes (e.g. a
+  // locale later dropped from `translations`) — not worth protecting.
+  if (legacy) safeStorageRemove(LEGACY_LANG_STORAGE_KEY);
   var browserLang = navigator.language || "";
   for (var i = 0; i < BROWSER_LANG_PREFIXES.length; i++) {
     if (browserLang.startsWith(BROWSER_LANG_PREFIXES[i])) {

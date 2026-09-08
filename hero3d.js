@@ -48,7 +48,7 @@ async function init() {
   });
 
   // ===== Blueprint ground grid =====
-  const grid = new THREE.GridHelper(70, 56, 0x0ea5a0, 0x15293f);
+  const grid = new THREE.GridHelper(70, 56, 0xdd8e1f, 0x15293f);
   grid.position.y = -3;
   grid.material.transparent = true;
   grid.material.opacity = 0.32;
@@ -60,7 +60,7 @@ async function init() {
   const radius = 1.5;
   const barHeight = 7;
   const barGeo = new THREE.CylinderGeometry(0.045, 0.045, barHeight, 8);
-  const barMat = new THREE.MeshBasicMaterial({ color: 0x5eead4 });
+  const barMat = new THREE.MeshBasicMaterial({ color: 0xf2c066 });
 
   for (let i = 0; i < barCount; i++) {
     const angle = (i / barCount) * Math.PI * 2;
@@ -70,7 +70,7 @@ async function init() {
   }
 
   const ringGeo = new THREE.TorusGeometry(radius, 0.025, 8, 32);
-  const ringMat = new THREE.MeshBasicMaterial({ color: 0x0ea5a0, transparent: true, opacity: 0.85 });
+  const ringMat = new THREE.MeshBasicMaterial({ color: 0xdd8e1f, transparent: true, opacity: 0.85 });
   const ringCount = 6;
   for (let i = 0; i < ringCount; i++) {
     const ring = new THREE.Mesh(ringGeo, ringMat);
@@ -84,7 +84,7 @@ async function init() {
 
   // ===== AI verification scan plane — sweeps the cage =====
   const scanGeo = new THREE.PlaneGeometry(radius * 2.6, 0.02);
-  const scanMat = new THREE.MeshBasicMaterial({ color: 0x5eead4, transparent: true, opacity: 0.9, side: THREE.DoubleSide });
+  const scanMat = new THREE.MeshBasicMaterial({ color: 0xf2c066, transparent: true, opacity: 0.9, side: THREE.DoubleSide });
   const scanLine = new THREE.Mesh(scanGeo, scanMat);
   scanLine.rotation.x = Math.PI / 2;
   cage.add(scanLine);
@@ -99,7 +99,7 @@ async function init() {
   }
   const particleGeo = new THREE.BufferGeometry();
   particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-  const particleMat = new THREE.PointsMaterial({ color: 0x0ea5a0, size: 0.05, transparent: true, opacity: 0.5 });
+  const particleMat = new THREE.PointsMaterial({ color: 0xdd8e1f, size: 0.05, transparent: true, opacity: 0.5 });
   scene.add(new THREE.Points(particleGeo, particleMat));
 
   // ===== Camera path: pulled-back/high -> inside the cage =====
