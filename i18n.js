@@ -933,7 +933,7 @@ const translations = {
     "advantage.moat4.desc": "Construit avec Wei-Zhi, dont l'automatisation des plans d'atelier d'armature se connecte à la chaîne existante des façonneurs et entreprises",
     "faq.label": "FAQ Questions fréquentes",
     "faq.heading": "Questions fréquentes",
-    "faq.q1.q": "Qu'est-ce qu'Settime ?",
+    "faq.q1.q": "Qu'est-ce que Settime ?",
     "faq.q1.a": "Settime est une plateforme d'exécution de chantier IA + RA qui fait du plan structurel la seule source de vérité : analyse automatique des plans pour générer les nomenclatures et débits d'armature, guidage RA sur site pour la pose, et vision par ordinateur pour comparer l'exécuté au conçu, produisant un dossier des ouvrages exécutés auditable.",
     "faq.q2.q": "Que peut faire Settime aujourd'hui ?",
     "faq.q2.a": "Le système d'automatisation d'estimation d'armature est disponible dès maintenant : un plugin AutoCAD 2021 et une application de bureau multiplateforme qui convertit les plans structurels directement en plans d'atelier et une nomenclature (.xlsm), compatible avec les outils macro existants du façonneur. Reconnaissance poutres/poteaux ≥ 90 %. Le guidage RA sur chantier et la vérification as-built par IA sont en développement.",
