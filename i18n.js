@@ -1724,10 +1724,21 @@ function safeStorageSet(key, value) {
   }
 }
 
+function safeStorageRemove(key) {
+  try {
+    localStorage.removeItem(key);
+  } catch (e) {
+    // ignore
+  }
+}
+
 function initLanguage() {
   // "itech-lang" was the storage key pre-rebrand — read it as a fallback so
-  // a returning visitor's saved choice isn't silently lost, then migrate it.
-  var saved = safeStorageGet("settime-lang") || safeStorageGet("itech-lang");
+  // a returning visitor's saved choice isn't silently lost, then migrate it
+  // to the new key and drop the old one so it doesn't linger indefinitely.
+  var legacy = safeStorageGet("itech-lang");
+  var saved = safeStorageGet("settime-lang") || legacy;
+  if (legacy) safeStorageRemove("itech-lang");
   if (saved && isKnownLocale(saved)) {
     setLanguage(saved);
     return;

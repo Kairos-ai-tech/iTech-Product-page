@@ -3,6 +3,10 @@
   /* brand */
   --gold: #DD8E1F;
   --gold-deep: #96590C;
+  /* mid-tone between --gold and --gold-deep: dark enough to read as a
+     hover-darken, light enough that --navy text on it still clears
+     WCAG AA (4.67:1) — --gold-deep drops navy-on-it to 3.11:1 */
+  --gold-hover: #BA7416;
   --gold-soft: rgba(221, 142, 31, 0.08);
   --navy: #0B1A2D;
   --navy-mid: #15293F;
@@ -80,14 +84,14 @@ a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
 img { max-width: 100%; display: block; }
 
-section[id] { scroll-margin-top: 84px; }
+section[id] { scroll-margin-top: calc(var(--navbar-height) + 16px); }
 
 /* Any translated text node can end up holding an unbroken long word (German
    compound nouns especially) in a narrow container — guard all of them at
    the source instead of re-adding this per heading class as it recurs. */
 [data-i18n] { overflow-wrap: break-word; }
 
-::selection { background: var(--gold); color: #fff; }
+::selection { background: var(--gold); color: var(--navy); }
 
 :focus-visible {
   outline: 2px solid var(--gold-deep);
@@ -281,7 +285,9 @@ section[id] { scroll-margin-top: 84px; }
 
 .nav-cta {
   background: var(--gold) !important;
-  color: #fff !important;
+  /* white on --gold is ~2.64:1, fails WCAG AA even for large text;
+     --navy on --gold is 6.64:1 */
+  color: var(--navy) !important;
   padding: 8px 18px;
   border-radius: var(--r-full);
   font-weight: 600 !important;
@@ -289,7 +295,7 @@ section[id] { scroll-margin-top: 84px; }
 }
 
 .nav-cta:hover {
-  background: var(--gold-deep) !important;
+  background: var(--gold-hover) !important;
   transform: translateY(-1px);
   box-shadow: 0 6px 18px rgba(221, 142, 31, 0.35);
 }
@@ -528,7 +534,7 @@ section[id] { scroll-margin-top: 84px; }
   gap: 10px;
   padding: 14px 30px;
   background: var(--gold);
-  color: #fff;
+  color: var(--navy);
   font-size: 0.95rem;
   font-weight: 600;
   border-radius: var(--r-full);
@@ -536,7 +542,7 @@ section[id] { scroll-margin-top: 84px; }
 }
 
 .hero-cta:hover {
-  background: var(--gold-deep);
+  background: var(--gold-hover);
   transform: translateY(-2px);
   box-shadow: 0 14px 32px -8px rgba(221, 142, 31, 0.55);
 }
@@ -1438,7 +1444,7 @@ section[id] { scroll-margin-top: 84px; }
   width: 100%;
   padding: 14px;
   background: var(--gold);
-  color: #fff;
+  color: var(--navy);
   border: none;
   border-radius: var(--r-md);
   font-size: 0.95rem;
@@ -1454,7 +1460,7 @@ section[id] { scroll-margin-top: 84px; }
 }
 
 .form-submit:hover {
-  background: var(--gold-deep);
+  background: var(--gold-hover);
   transform: translateY(-1px);
   box-shadow: 0 10px 24px -6px rgba(221, 142, 31, 0.5);
 }
@@ -1600,7 +1606,11 @@ section[id] { scroll-margin-top: 84px; }
 
 @media (max-width: 768px) {
   .hero-content {
-    padding-top: 130px;
+    /* smaller, fixed breathing room than the desktop clamp — mobile
+       viewports are short, so the vh-scaled desktop padding (up to 240px
+       top / 96px bottom) would eat too much of the screen */
+    padding-top: calc(var(--navbar-height) + 32px);
+    padding-bottom: 32px;
   }
 
   .hero-stats {
