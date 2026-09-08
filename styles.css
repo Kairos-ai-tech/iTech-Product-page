@@ -1733,25 +1733,25 @@ section[id] { scroll-margin-top: calc(var(--navbar-height) + 16px); }
    viewport height at 1440 width, well within normal laptop-with-chrome
    territory). Trim the vertical rhythm and drop the decorative stats row
    so the headline + CTA always fit.
-   Kept as the LAST media query in this file (every max-width block above
-   also touches .hero-stats/.hero-title) so it always wins the cascade at
-   equal specificity, on any viewport matching both a width and this
-   height condition — e.g. landscape phones. A new max-width block added
-   above this comment must stay above it, not between it and EOF. */
+   Every property below is !important: source order alone proved fragile
+   here — two max-width blocks (768px, then 480px) each independently
+   re-broke this same fix by setting the same properties later in the
+   file. !important makes the short-viewport case win regardless of where
+   a future max-width block lands, no file-position discipline required. */
 @media (max-height: 820px) {
   .hero-content {
-    padding-top: calc(var(--navbar-height) + 24px);
-    padding-bottom: 24px;
+    padding-top: calc(var(--navbar-height) + 24px) !important;
+    padding-bottom: 24px !important;
   }
 
-  .hero-badge { margin-bottom: 16px; }
+  .hero-badge { margin-bottom: 16px !important; }
 
   .hero-title {
-    font-size: clamp(1.75rem, 5vw, 2.75rem);
-    margin-bottom: 14px;
+    font-size: clamp(1.75rem, 5vw, 2.75rem) !important;
+    margin-bottom: 14px !important;
   }
 
-  .hero-subtitle { margin-bottom: 4px; }
+  .hero-subtitle { margin-bottom: 4px !important; }
 
-  .hero-stats { display: none; }
+  .hero-stats { display: none !important; }
 }

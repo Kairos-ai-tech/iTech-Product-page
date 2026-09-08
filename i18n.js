@@ -1724,8 +1724,11 @@ function safeStorageGet(key) {
 function safeStorageSet(key, value) {
   try {
     localStorage.setItem(key, value);
+    return true;
   } catch (e) {
-    // ignore — worst case the preference just doesn't persist
+    // worst case the preference just doesn't persist — return value lets
+    // callers that need to know (e.g. the legacy-key migration) react
+    return false;
   }
 }
 
@@ -1740,21 +1743,35 @@ function safeStorageRemove(key) {
 function initLanguage() {
   // LEGACY_LANG_STORAGE_KEY was the storage key pre-rebrand — read it as a
   // fallback so a returning visitor's saved choice isn't silently lost,
-  // then migrate it to the new key and drop the old one so it doesn't
-  // linger indefinitely. Checked with isKnownLocale (not plain truthiness)
-  // so an unrecognized settime-lang value doesn't shadow a still-valid
-  // legacy one.
+  // then migrate it to the new key. Checked with isKnownLocale (not plain
+  // truthiness) so an unrecognized settime-lang value doesn't shadow a
+  // still-valid legacy one.
   var current = safeStorageGet(LANG_STORAGE_KEY);
   var legacy = safeStorageGet(LEGACY_LANG_STORAGE_KEY);
-  var saved = (current && isKnownLocale(current)) ? current : legacy;
-  if (saved && isKnownLocale(saved)) {
-    // Persist under the new key before dropping the old one — if the write
-    // throws (quota, hardened storage), the legacy key survives so the
-    // preference isn't lost outright, just re-migrated next visit.
+  var currentValid = !!(current && isKnownLocale(current));
+  var legacyValid = !!(legacy && isKnownLocale(legacy));
+  var saved = currentValid ? current : (legacyValid ? legacy : null);
+
+  if (saved) {
+    if (!currentValid && legacyValid) {
+      // Migrating: only drop the legacy key once safeStorageSet confirms
+      // the new one actually wrote — if it throws (quota, hardened
+      // storage), leave both keys as-is so the next visit retries the
+      // migration instead of losing the preference outright.
+      if (safeStorageSet(LANG_STORAGE_KEY, saved)) {
+        safeStorageRemove(LEGACY_LANG_STORAGE_KEY);
+      }
+    } else if (legacy) {
+      // Already on the new key — nothing worth protecting, drop the stale one.
+      safeStorageRemove(LEGACY_LANG_STORAGE_KEY);
+    }
     setLanguage(saved);
-    if (legacy) safeStorageRemove(LEGACY_LANG_STORAGE_KEY);
     return;
   }
+
+  // Legacy held something, but not a locale this build recognizes (e.g. a
+  // locale later dropped from `translations`) — not worth protecting.
+  if (legacy) safeStorageRemove(LEGACY_LANG_STORAGE_KEY);
   var browserLang = navigator.language || "";
   for (var i = 0; i < BROWSER_LANG_PREFIXES.length; i++) {
     if (browserLang.startsWith(BROWSER_LANG_PREFIXES[i])) {
