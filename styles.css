@@ -388,12 +388,14 @@ section[id] { scroll-margin-top: 84px; }
   top: 0;
   min-height: 100vh;
   height: 100vh;
-  /* reserve the fixed navbar's height so vertical centering below never
-     pushes hero-content above y=0 and under the navbar on short viewports */
-  padding-top: 68px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* flex-start, not center: centering a block that can be taller than the
+     viewport pushes it above y=0 and overflow:hidden clips the top clean
+     off — that's what read as "overlapping the navbar" / "too compact".
+     Top-anchored + a generous fluid top offset (below) is immune to that
+     and never gets thinner than the navbar clearance it needs. */
+  justify-content: flex-start;
   overflow: hidden;
 }
 
@@ -456,7 +458,10 @@ section[id] { scroll-margin-top: 84px; }
 .hero-content {
   position: relative;
   z-index: 2;
-  padding: clamp(120px, 16vh, 180px) clamp(20px, 4vw, 48px) 0;
+  /* 68px navbar + a floor of 64px breathing room, scaling up on taller
+     viewports — never thinner than the navbar needs, never as cramped as
+     the old 120px minimum read in practice. */
+  padding: clamp(132px, calc(68px + 9vh), 240px) clamp(20px, 4vw, 48px) clamp(48px, 8vh, 96px);
   max-width: var(--max-width);
   margin: 0 auto;
   width: 100%;
