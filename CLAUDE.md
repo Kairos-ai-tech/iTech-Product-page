@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-AI學徒 iTech (AI Apprentice iTech) — a product page / strategy documentation project for an AI + AR platform that digitizes and preserves Taiwan's manufacturing craft skills. Business strategy documentation lives alongside a static marketing/product landing page (vanilla HTML/CSS/JS, no build step) for the AI + AR construction-execution product line.
+Settime (formerly AI學徒 iTech) — a product page / strategy documentation project for an AI + AR construction-execution platform. Business strategy documentation lives alongside a static marketing/product landing page (vanilla HTML/CSS/JS, no build step) for the AI + AR construction-execution product line.
 
 ## Repository Contents
 
