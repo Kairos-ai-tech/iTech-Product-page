@@ -54,8 +54,12 @@ drafting conventions.
   snapshot (PyTorch/Open3D).
 - **Tamper-evident audit trail** — every action in the pipeline is written
   to a SHA-256 hash-chained, append-only, UTC-timestamped record with
-  monotonic sequence numbers, built to satisfy large contractor groups and
-  government-tender compliance/audit requirements.
+  monotonic sequence numbers, built for large contractor groups and
+  government-tender audit review. This detects tampering after the fact
+  (tamper-*evident*); it is not a certification of compliance with any
+  specific law, regulation, or tender requirement — actual compliance
+  obligations depend on applicable law and contract terms, and the product
+  page carries a legal disclaimer to that effect.
 
 ## Who It's For
 
