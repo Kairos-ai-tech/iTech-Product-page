@@ -23,5 +23,5 @@
 
 ## Notes
 
-- The product page is bilingual (繁體中文 default, with English and Japanese switchers) — content above reflects the English version.
+- The product page supports 8 languages (繁體中文 default, plus English, 日本語, Español, Français, Deutsch, Italiano, and Português switchers) — content above reflects the English version.
 - Target market: Taiwan construction — CNC machining, mold making, welding, auto repair, plumbing, and sheet metal shops are adjacent verticals in the broader roadmap, but rebar/structural construction is the current focus.
