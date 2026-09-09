@@ -6,12 +6,14 @@
 
 - [Rebar Estimation Automation System](https://itech.kairosaitech.com/#product): Shipping today. An AutoCAD 2021 plugin plus a cross-platform desktop app that converts structural drawings directly into shop drawings and a material-list workbook (.xlsm), importing natively into a fabricator's existing macro tooling. Beam/column recognition ≥ 90%.
 - [AR field guidance + AI verification](https://itech.kairosaitech.com/#solution): In development. 3D rebar layout overlaid on formwork (green = correct placement, red = deviation), and computer-vision comparison of as-built vs. as-designed rebar before the pour.
+- [Law & compliance / audit trail](https://itech.kairosaitech.com/#compliance): In development. Every pipeline action will be written to a SHA-256 hash-chained, append-only, UTC-timestamped log with monotonic sequence numbers — tamper-evident (detects alteration), not a compliance certification. Built for large-contractor and government-tender audit review; actual compliance obligations depend on applicable law and contract terms, and the page carries a legal disclaimer to that effect.
 - [Free pilot program](https://itech.kairosaitech.com/#pilot): Construction companies, rebar fabricators, and structural engineering firms can apply for a free pilot — company name, email, and construction type.
 
 ## FAQ
 
 - What is Settime? Settime is an AI + AR construction execution platform that treats the structural drawing as the single source of truth: it auto-parses drawings into rebar bar-schedules and cut-lists, overlays AR guidance on site for field placement, and uses computer vision to compare as-built vs. as-designed rebar, producing an auditable as-built record.
-- What can Settime do today? The Rebar Estimation Automation System is shipping now (see Product above); AR field guidance and AI as-built verification are in development.
+- What can Settime do today? The Rebar Estimation Automation System is shipping now (see Product above); AR field guidance, AI as-built verification, and the law/compliance audit trail are in development.
+- Does the audit trail guarantee legal compliance? No. It is a technical tamper-evidence mechanism (SHA-256 hash chain); it does not certify compliance with any specific law, regulation, or tender requirement. Actual compliance depends on applicable law and contract terms — this is not legal advice.
 - Who is Settime for? Construction companies, rebar fabricators, structural engineering firms, and public agencies that need an auditable as-built record.
 - How do I apply for the free pilot? Fill in the free pilot form at https://itech.kairosaitech.com/#pilot with company name, email, and construction type.
 - Who builds Settime? Kairos.ai, focused on Taiwan's construction market and rebar work today, with plans to extend into adjacent trades like CNC machining, mold making, and welding.

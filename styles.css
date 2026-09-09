@@ -1275,6 +1275,14 @@ section[id] { scroll-margin-top: calc(var(--navbar-height) + 16px); }
   line-height: 1.6;
 }
 
+.compliance-disclaimer {
+  margin-top: 32px;
+  font-size: 0.78rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  max-width: 720px;
+}
+
 /* ===== FAQ ===== */
 .faq {
   padding: clamp(80px, 12vh, 140px) 0;

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Settime — AI + AR 營造執行平台。從結構施工圖到驗收，鋼筋施工零誤差。AR 即時指導現場綁紮，AI 自動驗證鋼筋配置，產出可稽核的竣工紀錄。">
-  <meta name="keywords" content="Settime, 鋼筋施工, AR 營造, 智慧工地, 鋼筋自動化, 施工圖自動解析, 竣工驗證, construction execution, rebar verification, AR construction, smart construction, as-built">
+  <meta name="description" content="Settime — AI + AR 營造執行平台。從結構施工圖到驗收，鋼筋施工零誤差。鋼筋估算自動化已上線，AR 現場指導、AI 竣工驗證與竄改可偵測稽核紀錄正在開發中。">
+  <meta name="keywords" content="Settime, 鋼筋施工, AR 營造, 智慧工地, 鋼筋自動化, 施工圖自動解析, 竣工驗證, 稽核鏈, 法遵, construction execution, rebar verification, AR construction, smart construction, as-built, audit trail, compliance">
   <meta property="og:title" content="Settime — AI + AR 營造執行平台｜從施工圖到驗收，鋼筋施工零誤差">
   <meta property="og:description" content="結構施工圖為唯一真值，AI 接管下料、配送、AR 指導綁紮、CV 驗證與竣工紀錄。From drawing to verified-in-place rebar.">
   <meta property="og:type" content="website">
@@ -90,7 +90,7 @@
             "name": "Settime 現在可以使用哪些功能？",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "鋼筋估算自動化系統已上線：AutoCAD 2021 外掛與跨平台桌面版，將結構施工圖直接轉換為加工圖與計料表 (.xlsm)，可直接匯入加工廠既有巨集工具，樑柱辨識率 ≥ 90%。AR 現場指導與 AI 竣工驗證正在開發中。"
+              "text": "鋼筋估算自動化系統已上線：AutoCAD 2021 外掛與跨平台桌面版，將結構施工圖直接轉換為加工圖與計料表 (.xlsm)，可直接匯入加工廠既有巨集工具，樑柱辨識率 ≥ 90%。AR 現場指導、AI 竣工驗證與法遵稽核鏈正在開發中。"
             }
           },
           {
@@ -115,6 +115,14 @@
             "acceptedAnswer": {
               "@type": "Answer",
               "text": "Settime 由 Kairos.ai 開發，聚焦台灣營造市場的鋼筋施工場景，未來將延伸至 CNC 加工、模具、焊接等相鄰產業。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "稽核鏈能保證符合法規要求嗎？",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "不能。稽核鏈是技術性防竄改機制（SHA-256 雜湊鏈），可偵測竄改與刪除，但不構成對任何特定法規、驗收基準或政府標案要求之合規保證。實際法遵義務依個案適用法規及契約條款而定，建議就個案洽詢法律顧問；本頁面內容不構成法律意見。"
             }
           }
         ]
@@ -528,8 +536,8 @@
   <section class="compliance" id="compliance">
     <div class="container">
       <p class="section-label fade-in" data-i18n="compliance.label">LAW &amp; COMPLIANCE 法遵與稽核</p>
-      <h2 class="section-heading fade-in" data-delay="1" data-i18n="compliance.heading">每一筆紀錄，禁得起稽核與法律檢驗</h2>
-      <p class="section-lead fade-in" data-delay="2" data-i18n="compliance.lead">從圖紙解析到現場驗證，每個動作都寫入竄改可偵測的稽核鏈，滿足大型營造集團與政府標案的法遵要求。</p>
+      <h2 class="section-heading fade-in" data-delay="1" data-i18n="compliance.heading">每一筆紀錄，完整留存供稽核與法律程序查閱</h2>
+      <p class="section-lead fade-in" data-delay="2" data-i18n="compliance.lead">從圖紙解析到現場驗證，每個動作都寫入竄改可偵測的稽核鏈，支援大型營造集團與政府標案的稽核審查需求。</p>
 
       <div class="moats">
         <div class="moat fade-in" data-delay="3">
@@ -553,6 +561,8 @@
           <p data-i18n="compliance.moat4.desc">紀錄格式具版本控管，確保跨年度保存週期仍可完整驗證還原</p>
         </div>
       </div>
+
+      <p class="compliance-disclaimer fade-in" data-delay="7" data-i18n="compliance.disclaimer">稽核鏈為技術性防竄改機制，不構成對任何特定法規、驗收基準或政府標案要求之合規保證。實際法遵義務依個案適用法規及契約條款而定，建議就個案洽詢法律顧問；本頁面內容不構成法律意見。</p>
     </div>
   </section>
 
@@ -710,7 +720,7 @@
         <div class="moat fade-in" data-delay="5">
           <div class="moat-line"></div>
           <h3 data-i18n="advantage.moat3.title">公共工程關係</h3>
-          <p data-i18n="advantage.moat3.desc">符合公共工程稽核要求，主動參與制定智慧工地竣工紀錄標準</p>
+          <p data-i18n="advantage.moat3.desc">支援公共工程稽核審查需求，主動參與制定智慧工地竣工紀錄標準</p>
         </div>
         <div class="moat fade-in" data-delay="6">
           <div class="moat-line"></div>
@@ -734,7 +744,7 @@
         </details>
         <details class="faq-item fade-in" data-delay="3">
           <summary data-i18n="faq.q2.q">Settime 現在可以使用哪些功能？</summary>
-          <p data-i18n="faq.q2.a">鋼筋估算自動化系統已上線：AutoCAD 2021 外掛與跨平台桌面版，將結構施工圖直接轉換為加工圖與計料表 (.xlsm)，可直接匯入加工廠既有巨集工具，樑柱辨識率 ≥ 90%。AR 現場指導與 AI 竣工驗證正在開發中。</p>
+          <p data-i18n="faq.q2.a">鋼筋估算自動化系統已上線：AutoCAD 2021 外掛與跨平台桌面版，將結構施工圖直接轉換為加工圖與計料表 (.xlsm)，可直接匯入加工廠既有巨集工具，樑柱辨識率 ≥ 90%。AR 現場指導、AI 竣工驗證與法遵稽核鏈正在開發中。</p>
         </details>
         <details class="faq-item fade-in" data-delay="4">
           <summary data-i18n="faq.q3.q">誰適合使用 Settime？</summary>
@@ -747,6 +757,10 @@
         <details class="faq-item fade-in" data-delay="6">
           <summary data-i18n="faq.q5.q">Settime 由誰開發？</summary>
           <p data-i18n="faq.q5.a">Settime 由 Kairos.ai 開發，聚焦台灣營造市場的鋼筋施工場景，未來將延伸至 CNC 加工、模具、焊接等相鄰產業。</p>
+        </details>
+        <details class="faq-item fade-in" data-delay="7">
+          <summary data-i18n="faq.q6.q">稽核鏈能保證符合法規要求嗎？</summary>
+          <p data-i18n="faq.q6.a">不能。稽核鏈是技術性防竄改機制（SHA-256 雜湊鏈），可偵測竄改與刪除，但不構成對任何特定法規、驗收基準或政府標案要求之合規保證。實際法遵義務依個案適用法規及契約條款而定，建議就個案洽詢法律顧問；本頁面內容不構成法律意見。</p>
         </details>
       </div>
     </div>
