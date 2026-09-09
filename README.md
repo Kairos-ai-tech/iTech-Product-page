@@ -6,8 +6,8 @@ Settime treats the structural drawing as the single source of truth for a
 construction site: it automatically parses drawings into rebar bar-schedules
 and cut-lists, drives fabrication directly, overlays AR guidance so field
 crews place rebar to spec, and uses computer vision to verify as-built
-against as-designed before the pour — producing an auditable record a
-government inspector or general contractor can actually trust.
+against as-designed before the pour — producing an auditable record for
+review by government inspectors and general contractors.
 
 Built by [Kairos.ai](https://www.kairosaitech.com/?lang=zh-TW) for Taiwan's
 construction market (營造/鋼筋施工).
@@ -82,9 +82,8 @@ developers/owners and investors evaluating the platform.
   improves with use, building a Taiwan-specific data advantage.
 - **Local CV model** — trained on real Taiwanese job-site footage, tuned to
   domestic rebar specs and field practice.
-- **Public-works relationships** — built to meet public-project audit
-  requirements, with a hand in shaping smart-construction as-built
-  standards.
+- **Public-works relationships** — built to support public-project audit
+  review, with a hand in shaping smart-construction as-built standards.
 - **Fabricator/contractor network** — an in-house shop-drawing automation
   engine that plugs directly into the existing fabricator and contractor
   supply chain.
