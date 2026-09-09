@@ -4,12 +4,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Settime (formerly AI學徒 iTech) — a product page / strategy documentation project for an AI + AR construction-execution platform. Business strategy documentation lives alongside a static marketing/product landing page (vanilla HTML/CSS/JS, no build step) for the AI + AR construction-execution product line.
+SetTime (formerly AI學徒 iTech) — a product page / strategy documentation project for an AI + AR construction-execution platform. Business strategy documentation lives alongside a static marketing/product landing page (vanilla HTML/CSS/JS, no build step) for the AI + AR construction-execution product line.
 
 ## Repository Contents
 
 - `README.md` — Product overview: pipeline, what's shipping vs. in development, competitive positioning, tech stack
-- `AI學徒-iTech商業策略書簡報.pdf` — Legacy business strategy deck from the original craft-skill-training pivot (Chinese) — predates the rebrand to Settime/rebar-construction; kept for historical reference, not current strategy
+- `AI學徒-iTech商業策略書簡報.pdf` — Legacy business strategy deck from the original craft-skill-training pivot (Chinese) — predates the rebrand to SetTime/rebar-construction; kept for historical reference, not current strategy
 - `index.html`, `styles.css`, `script.js`, `hero3d.js`, `i18n.js` — the product landing page: static HTML/CSS with a scroll-scrubbed Three.js hero and client-side i18n (8 languages)
 - `llms.txt`, `sitemap.xml`, `robots.txt` — SEO/AEO/GEO: machine-readable product summary and crawl configuration
 

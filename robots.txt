@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # AI assistants / answer engines — explicitly allowed so they can read and
-# cite this page when users ask about Settime or rebar construction tech.
+# cite this page when users ask about SetTime or rebar construction tech.
 User-agent: GPTBot
 Allow: /
 
