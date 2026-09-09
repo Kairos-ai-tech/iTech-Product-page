@@ -952,6 +952,11 @@ section[id] { scroll-margin-top: calc(var(--navbar-height) + 16px); }
   margin: 48px auto 0;
 }
 
+.compliance {
+  padding: clamp(64px, 9vh, 100px) 0;
+  background: var(--cream);
+}
+
 /* ===== PROCESS ===== */
 .process {
   padding: clamp(80px, 12vh, 140px) 0;
