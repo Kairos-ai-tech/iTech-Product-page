@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const role = document.getElementById('role').value;
     const message = document.getElementById('message').value;
 
-    submitViaMailto('Settime 營造執行平台 — 聯絡表單 from ' + name, [
+    submitViaMailto('SetTime 營造執行平台 — 聯絡表單 from ' + name, [
       '姓名 Name: ' + name,
       'Email: ' + email,
       '身份 Role: ' + role,
@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const email = document.getElementById('pilotEmail').value;
     const constructionType = document.getElementById('pilotType').value;
 
-    submitViaMailto('Settime 免費試點申請 from ' + company, [
+    submitViaMailto('SetTime 免費試點申請 from ' + company, [
       '公司名稱 Company: ' + company,
       'Email: ' + email,
       '施工類型 Construction Type: ' + constructionType,

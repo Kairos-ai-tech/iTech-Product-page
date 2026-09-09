@@ -1,8 +1,8 @@
-# Settime
+# SetTime
 
 **AI + AR Construction Execution Platform for Structural Rebar**
 
-Settime treats the structural drawing as the single source of truth for a
+SetTime treats the structural drawing as the single source of truth for a
 construction site: it automatically parses drawings into rebar bar-schedules
 and cut-lists, drives fabrication directly, overlays AR guidance so field
 crews place rebar to spec, and uses computer vision to verify as-built
@@ -69,7 +69,7 @@ developers/owners and investors evaluating the platform.
 
 ## Why Not the Alternatives
 
-| Current method | Upside | Gap | Settime |
+| Current method | Upside | Gap | SetTime |
 |---|---|---|---|
 | Manual 2D drawing reading | Familiar workflow | Easy to misread, no field verification | Automated parsing + AR alignment |
 | BIM viewers (Navisworks) | 3D visualization | Office tool, no field guidance | Brings AR into the field |
@@ -136,7 +136,7 @@ building AI systems from 0 to 1.
 ## Contact Us
 
 We welcome contractors, fabricators, structural engineers, developers,
-government agencies, and investors interested in Settime to get in touch.
+government agencies, and investors interested in SetTime to get in touch.
 
 - Free pilot program: apply via the [product page](https://itech.kairosaitech.com/#pilot)
   with company name, email, and construction type.
