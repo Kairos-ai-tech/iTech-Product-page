@@ -194,6 +194,8 @@ section[id] { scroll-margin-top: calc(var(--navbar-height) + 16px); }
 
 @media (prefers-reduced-motion: reduce) {
   .fade-in { opacity: 1; transform: none; transition: none; }
+  .moat-icon,
+  .result-icon { opacity: 1; transform: none; transition: none; }
 }
 
 /* ===== Navbar ===== */
@@ -1124,6 +1126,35 @@ section[id] { scroll-margin-top: calc(var(--navbar-height) + 16px); }
   transform: translateY(-3px);
 }
 
+.result-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--r-md);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--accent-gold-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  opacity: 0;
+  transform: scale(0.5) rotate(10deg);
+  transition: transform 0.5s var(--ease-out-expo) 0.1s, opacity 0.4s ease 0.1s;
+}
+
+.result-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.fade-in.visible .result-icon {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+.result-card:hover .result-icon {
+  transform: scale(1.08) rotate(4deg);
+}
+
 .result-metric {
   display: block;
   font-family: var(--font-display);
@@ -1273,6 +1304,70 @@ section[id] { scroll-margin-top: calc(var(--navbar-height) + 16px); }
   font-size: 0.85rem;
   color: var(--text-muted);
   line-height: 1.6;
+}
+
+.moat-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--r-md);
+  background: var(--gold-soft);
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  opacity: 0;
+  transform: scale(0.5) rotate(-10deg);
+  transition: transform 0.5s var(--ease-out-expo) 0.1s, opacity 0.4s ease 0.1s;
+}
+
+.moat-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.fade-in.visible .moat-icon {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+.moat:hover .moat-icon {
+  transform: scale(1.08) rotate(-4deg);
+}
+
+/* ===== Section decorative watermarks (results / advantage) ===== */
+.results-illustration {
+  position: absolute;
+  top: 50%;
+  right: clamp(-40px, 2vw, 40px);
+  transform: translateY(-50%);
+  width: clamp(200px, 26vw, 340px);
+  height: clamp(200px, 26vw, 340px);
+  color: var(--accent-gold-light);
+  opacity: 0.14;
+  pointer-events: none;
+}
+
+.advantage {
+  position: relative;
+}
+
+.advantage > .container {
+  position: relative;
+  z-index: 1;
+}
+
+.advantage-illustration {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(320px, 46vw, 620px);
+  height: clamp(320px, 46vw, 620px);
+  color: var(--gold);
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .compliance-disclaimer {
