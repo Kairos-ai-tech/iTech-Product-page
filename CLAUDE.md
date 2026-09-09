@@ -8,26 +8,28 @@ Settime (formerly AI學徒 iTech) — a product page / strategy documentation pr
 
 ## Repository Contents
 
-- `README.md` — Full business plan covering problem, solution, market, business model, financials, and 10-year roadmap
-- `AI學徒-iTech商業策略書簡報.pdf` — Business strategy presentation deck (Chinese)
+- `README.md` — Product overview: pipeline, what's shipping vs. in development, competitive positioning, tech stack
+- `AI學徒-iTech商業策略書簡報.pdf` — Legacy business strategy deck from the original craft-skill-training pivot (Chinese) — predates the rebrand to Settime/rebar-construction; kept for historical reference, not current strategy
 - `index.html`, `styles.css`, `script.js`, `hero3d.js`, `i18n.js` — the product landing page: static HTML/CSS with a scroll-scrubbed Three.js hero and client-side i18n (8 languages)
+- `llms.txt`, `sitemap.xml`, `robots.txt` — SEO/AEO/GEO: machine-readable product summary and crawl configuration
 
-## Planned Tech Stack
+## Tech Stack
 
 | Layer | Technologies |
 |-------|-------------|
-| Backend | Django, FastAPI, Celery, Redis, PostgreSQL |
-| AI/ML | PyTorch, TensorFlow, MediaPipe, OpenCV |
-| Frontend | React, TypeScript, Three.js, WebXR |
-| Deployment | Docker, Ansible, GCP/AWS, Kubernetes |
+| Drawing automation | AutoCAD 2021 plugin, .NET, Avalonia (cross-platform desktop) |
+| AR field guidance | ARKit, RealityKit |
+| Computer vision | PyTorch, Open3D |
+| Product page | Vanilla HTML/CSS/JS, Three.js + WebXR |
 
 ## Key Domain Concepts
 
-- **隱性知識顯性化**: Converting implicit craft knowledge (hand feel, sound, experience) into quantifiable AI parameters
-- **AR即時指導**: Real-time AR overlay guidance using skeleton tracking (green=correct, red=incorrect)
-- **AI智慧評分**: Automated scoring using DTW time-series comparison + GPT-generated improvement suggestions
-- Target industries: CNC machining, mold making, welding, auto repair, plumbing, sheet metal
+- **結構施工圖數位化**: The structural drawing is the single source of truth — parsed once into bar-schedule/cut-list/bend-list data that drives every downstream step (fabrication, AR guidance, verification)
+- **AR即時指導**: Real-time AR overlay of the 3D rebar layout on formwork during field placement (green = correct position, red = deviation)
+- **AI 竣工驗證**: Computer-vision comparison of as-built vs. as-designed rebar, producing a pass/fail per requirement and a signed pre-pour snapshot
+- **稽核鏈 (audit trail)**: SHA-256 hash-chained, append-only, timestamped record of pipeline actions, built for government/enterprise compliance review
+- Current focus: rebar/structural construction in Taiwan. Roadmap targets adjacent trades: CNC machining, mold making, welding, auto repair, plumbing, sheet metal
 
 ## Language
 
-All business documentation is in Traditional Chinese (繁體中文). The README and PDF are written for a Taiwanese audience (investors, government, enterprise clients).
+The product page and `README.md` are in Traditional Chinese / English (繁體中文 primary, 8 languages total). The legacy PDF business deck is Traditional Chinese, written for the original craft-skill-training pitch — do not treat it as authoritative for the current product.
