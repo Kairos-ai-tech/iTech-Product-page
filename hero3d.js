@@ -63,6 +63,11 @@ async function init() {
   canvas.addEventListener('webglcontextrestored', () => {
     contextLost = false;
     canvas.classList.add('ready'); // fades back in; transitionend above drops .no-3d
+    // Doesn't manually re-upload geometry/materials on restore — verified
+    // safe for this scene: everything here is procedural BufferGeometry +
+    // solid-color MeshBasicMaterial (no textures), which this vendored
+    // three.js build re-uploads on its own. Confirmed via WEBGL_lose_context
+    // (lose -> restore -> screenshot matched the pre-loss render, no errors).
   });
 
   // ===== Blueprint ground grid =====
