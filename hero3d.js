@@ -1,6 +1,8 @@
-// Scroll-scrubbed 3D hero: camera flies toward a rebar cage as the user scrolls
-// past the hero. Progressive enhancement only — falls back to the static
-// blueprint-grid background (.hero-static) when WebGL or `three` is unavailable.
+// Page-wide 3D backdrop: fixed behind every section. The camera flies toward
+// a rebar cage while the user scrolls through the hero, then holds and keeps
+// idling for the rest of the page. Progressive enhancement only — falls back
+// to the static blueprint-grid background (.hero-static, hero section only)
+// when WebGL or `three` is unavailable.
 
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const canvas = document.getElementById('hero-canvas');
@@ -27,6 +29,28 @@ async function init() {
     return; // module load failed — keep the static fallback, fail silently
   }
 
+  // `ready` on the canvas and `canvas-ready` on <html> always flip together
+  // (see setReady below) so .hero-static can crossfade against the canvas's
+  // own 1.1s opacity transition in real time — see the html.canvas-ready
+  // rule in styles.css for why that section specifically needs a synced
+  // crossfade rather than an instant swap.
+  function setReady(on) {
+    canvas.classList.toggle('ready', on);
+    document.documentElement.classList.toggle('canvas-ready', on);
+  }
+
+  // Only toggle the opaque fallback (.no-3d) — which gates every *other*
+  // section's glass background — once the canvas's own opacity transition
+  // actually finishes, never at the instant setReady() is called. Flipping
+  // it early would translucent-ify those sections before the canvas behind
+  // them has visually caught up. (.hero-static doesn't depend on .no-3d
+  // any more; it crossfades directly off `canvas-ready`, see above.)
+  canvas.addEventListener('transitionend', (e) => {
+    if (e.propertyName === 'opacity') {
+      document.documentElement.classList.toggle('no-3d', !canvas.classList.contains('ready'));
+    }
+  });
+
   const isNarrow = window.innerWidth < 768;
 
   const scene = new THREE.Scene();
@@ -38,13 +62,23 @@ async function init() {
   renderer.setClearColor(0x0b1a2d, 1);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, isNarrow ? 1.5 : 2));
 
+  // Context loss now degrades the whole page's backdrop, not just the hero,
+  // so fall all the way back to the opaque static styling while it's lost
+  // rather than leaving every section's glass background over nothing.
   let contextLost = false;
   canvas.addEventListener('webglcontextlost', (e) => {
     e.preventDefault();
     contextLost = true;
+    setReady(false); // fades out; transitionend above restores .no-3d
   });
   canvas.addEventListener('webglcontextrestored', () => {
     contextLost = false;
+    setReady(true); // fades back in; transitionend above drops .no-3d
+    // Doesn't manually re-upload geometry/materials on restore — verified
+    // safe for this scene: everything here is procedural BufferGeometry +
+    // solid-color MeshBasicMaterial (no textures), which this vendored
+    // three.js build re-uploads on its own. Confirmed via WEBGL_lose_context
+    // (lose -> restore -> screenshot matched the pre-loss render, no errors).
   });
 
   // ===== Blueprint ground grid =====
@@ -127,17 +161,17 @@ async function init() {
     return Math.min(1, Math.max(0, -rect.top / total));
   }
 
-  let active = true;
-  new IntersectionObserver((entries) => {
-    active = entries[0].isIntersecting;
-  }, { threshold: 0 }).observe(track);
-
   let ready = false;
   const startTime = performance.now();
 
   function tick() {
     requestAnimationFrame(tick);
-    if (!active || contextLost) return;
+    // ponytail: rendering pauses only on a backgrounded tab (document.hidden).
+    // It still runs every frame for the whole page whenever the tab is
+    // visible — required for the idle backdrop to keep animating past the
+    // hero, per the page-wide-backdrop design. Add scroll-based throttling
+    // if mobile battery complaints come in.
+    if (contextLost || document.hidden) return;
 
     const t = (performance.now() - startTime) / 1000;
     const p = getProgress();
@@ -155,7 +189,7 @@ async function init() {
 
     if (!ready) {
       ready = true;
-      canvas.classList.add('ready');
+      setReady(true);
     }
   }
   tick();

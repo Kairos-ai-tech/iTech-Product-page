@@ -102,15 +102,16 @@ metal.
 | Drawing automation | AutoCAD 2021 plugin, .NET, Avalonia (cross-platform desktop) |
 | AR field guidance | ARKit, RealityKit |
 | Computer vision | PyTorch, Open3D |
-| Web / product page | Vanilla HTML/CSS/JS, Three.js + WebXR (scroll-scrubbed 3D hero) |
+| Web / product page | Vanilla HTML/CSS/JS, Three.js + WebXR (rebar-cage backdrop, page-wide) |
 | Audit trail | SHA-256 hash chaining, append-only JSONL storage |
 
 ## Repository Contents
 
 - `index.html`, `styles.css`, `script.js`, `hero3d.js`, `i18n.js` — the
-  product landing page: static HTML/CSS with a scroll-scrubbed Three.js hero
-  and client-side i18n (8 languages: 繁體中文, English, 日本語, Español,
-  Français, Deutsch, Italiano, Português).
+  product landing page: static HTML/CSS with a Three.js rebar-cage backdrop
+  (scroll-scrubbed flythrough during the hero, then a fixed translucent
+  background behind every section) and client-side i18n (8 languages:
+  繁體中文, English, 日本語, Español, Français, Deutsch, Italiano, Português).
 - `llms.txt` — a machine-readable summary of the product for AI answer
   engines (AEO/GEO).
 - `sitemap.xml`, `robots.txt` — standard SEO crawl configuration, with

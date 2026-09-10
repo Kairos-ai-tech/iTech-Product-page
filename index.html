@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-Hant" class="no-3d">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -132,6 +132,11 @@
   </script>
 </head>
 <body>
+  <!-- Page-wide 3D backdrop: fixed behind every section, driven by hero3d.js.
+       Falls back to the .hero-static blueprint grid (hero-only) via the
+       .no-3d class on <html> when WebGL/JS/reduced-motion rules it out. -->
+  <canvas id="hero-canvas" class="hero-canvas" aria-hidden="true"></canvas>
+
   <nav class="navbar" id="navbar">
     <div class="nav-container">
       <a href="https://www.kairosaitech.com/?lang=zh-TW" class="nav-logo" target="_blank" rel="noopener">
@@ -180,7 +185,6 @@
   <section class="hero" id="hero">
     <div class="hero-bg">
       <div class="hero-static" aria-hidden="true"></div>
-      <canvas id="hero-canvas" class="hero-canvas" aria-hidden="true"></canvas>
       <div class="hero-overlay"></div>
     </div>
     <div class="hero-content">

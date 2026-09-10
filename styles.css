@@ -28,6 +28,15 @@
   --surface: #FFFFFF;
   --cream: #F4F1EC;
   --warm-white: #FBFAF7;
+  /* translucent surfaces: let the fixed page-wide 3D canvas show through
+     section backgrounds. Light surfaces stay near-opaque to protect text
+     contrast; dark navy surfaces can go a little more see-through since the
+     canvas itself is navy-toned. rgba literals, not color-mix() — same
+     pre-2023-browser reasoning as .hero-static::before's fallback above. */
+  --bg-glass: rgba(251, 250, 247, 0.93);
+  --cream-glass: rgba(244, 241, 236, 0.93);
+  --navy-glass: rgba(11, 26, 45, 0.88);
+  --navy-mid-glass: rgba(21, 41, 63, 0.88);
 
   /* ink */
   --text: #0B1A2D;
@@ -419,6 +428,31 @@ section[id] { scroll-margin-top: calc(var(--navbar-height) + 16px); }
   background:
     radial-gradient(120% 90% at 15% 15%, rgba(221, 142, 31, 0.16) 0%, transparent 55%),
     linear-gradient(160deg, var(--navy) 0%, var(--navy-deep) 55%, var(--navy) 100%);
+  opacity: 1;
+  transition: opacity 1.1s var(--ease-out-expo);
+}
+
+/* Crossfades out in lockstep with .hero-canvas fading in — both toggled by
+   hero3d.js at the same moment (canvas.classList 'ready' / html.classList
+   'canvas-ready'), same 1.1s duration — and fades back in on context loss.
+   Only the hero needs a synced crossfade: its opaque fallback and the fixed
+   canvas occupy the exact same screen region, so anything less than a real
+   crossfade reads as a pause-then-pop. Other glass sections (.no-3d below)
+   snap instantly, which is fine there since their opaque/translucent alpha
+   delta is small enough to be imperceptible. Opacity here also fades out
+   .hero-static::before's grid-line pattern with it, since pseudo-elements
+   composite with their host's opacity. */
+html.canvas-ready .hero-static {
+  opacity: 0;
+}
+
+/* No canvas behind the glass surfaces in this case — fall back to fully
+   opaque so sections don't wash out against the plain body background. */
+html.no-3d {
+  --bg-glass: var(--bg);
+  --cream-glass: var(--cream);
+  --navy-glass: var(--navy);
+  --navy-mid-glass: var(--navy-mid);
 }
 
 .hero-static::before,
@@ -443,11 +477,13 @@ section[id] { scroll-margin-top: calc(var(--navbar-height) + 16px); }
 }
 
 .hero-canvas {
-  position: absolute;
+  position: fixed;
   inset: 0;
   width: 100%;
   height: 100%;
   display: block;
+  z-index: -1;
+  pointer-events: none;
   opacity: 0;
   transition: opacity 1.1s var(--ease-out-expo);
 }
@@ -637,7 +673,7 @@ section[id] { scroll-margin-top: calc(var(--navbar-height) + 16px); }
   display: grid;
   grid-template-columns: 0.42fr 0.58fr;
   min-height: 80vh;
-  background: var(--bg);
+  background: var(--bg-glass);
 }
 
 .problem-visual {
@@ -789,7 +825,7 @@ section[id] { scroll-margin-top: calc(var(--navbar-height) + 16px); }
 /* ===== SOLUTION ===== */
 .solution {
   padding: clamp(80px, 12vh, 140px) 0;
-  background: var(--bg);
+  background: var(--bg-glass);
 }
 
 .solution .container {
@@ -951,7 +987,7 @@ section[id] { scroll-margin-top: calc(var(--navbar-height) + 16px); }
 /* ===== PRODUCT ===== */
 .product {
   padding: clamp(64px, 9vh, 100px) 0;
-  background: var(--cream);
+  background: var(--cream-glass);
 }
 
 .product .container {
@@ -977,13 +1013,13 @@ section[id] { scroll-margin-top: calc(var(--navbar-height) + 16px); }
 
 .compliance {
   padding: clamp(64px, 9vh, 100px) 0;
-  background: var(--cream);
+  background: var(--cream-glass);
 }
 
 /* ===== PROCESS ===== */
 .process {
   padding: clamp(80px, 12vh, 140px) 0;
-  background: var(--cream);
+  background: var(--cream-glass);
   position: relative;
 }
 
@@ -1088,7 +1124,7 @@ section[id] { scroll-margin-top: calc(var(--navbar-height) + 16px); }
 .results-static {
   position: absolute;
   inset: 0;
-  background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 60%, var(--navy) 100%);
+  background: linear-gradient(160deg, var(--navy-glass) 0%, var(--navy-mid-glass) 60%, var(--navy-glass) 100%);
 }
 
 .results-static::before {
@@ -1224,7 +1260,7 @@ section[id] { scroll-margin-top: calc(var(--navbar-height) + 16px); }
 /* ===== ADVANTAGE ===== */
 .advantage {
   padding: clamp(80px, 12vh, 140px) 0;
-  background: var(--bg);
+  background: var(--bg-glass);
 }
 
 .compare-table-wrap {
@@ -1464,7 +1500,7 @@ section[id] { scroll-margin-top: calc(var(--navbar-height) + 16px); }
 .contact {
   background:
     radial-gradient(80% 60% at 0% 0%, rgba(221, 142, 31, 0.18) 0%, transparent 55%),
-    linear-gradient(155deg, var(--navy) 0%, var(--navy-mid) 100%);
+    linear-gradient(155deg, var(--navy-glass) 0%, var(--navy-mid-glass) 100%);
   padding: clamp(80px, 12vh, 140px) 0;
   position: relative;
   overflow: hidden;
