@@ -1,6 +1,8 @@
-// Scroll-scrubbed 3D hero: camera flies toward a rebar cage as the user scrolls
-// past the hero. Progressive enhancement only — falls back to the static
-// blueprint-grid background (.hero-static) when WebGL or `three` is unavailable.
+// Page-wide 3D backdrop: fixed behind every section. The camera flies toward
+// a rebar cage while the user scrolls through the hero, then holds and keeps
+// idling for the rest of the page. Progressive enhancement only — falls back
+// to the static blueprint-grid background (.hero-static, hero section only)
+// when WebGL or `three` is unavailable.
 
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const canvas = document.getElementById('hero-canvas');
@@ -26,6 +28,8 @@ async function init() {
   } catch (e) {
     return; // module load failed — keep the static fallback, fail silently
   }
+
+  document.documentElement.classList.remove('no-3d');
 
   const isNarrow = window.innerWidth < 768;
 
@@ -127,17 +131,12 @@ async function init() {
     return Math.min(1, Math.max(0, -rect.top / total));
   }
 
-  let active = true;
-  new IntersectionObserver((entries) => {
-    active = entries[0].isIntersecting;
-  }, { threshold: 0 }).observe(track);
-
   let ready = false;
   const startTime = performance.now();
 
   function tick() {
     requestAnimationFrame(tick);
-    if (!active || contextLost) return;
+    if (contextLost) return;
 
     const t = (performance.now() - startTime) / 1000;
     const p = getProgress();
