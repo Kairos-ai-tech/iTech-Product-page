@@ -29,11 +29,22 @@ async function init() {
     return; // module load failed — keep the static fallback, fail silently
   }
 
-  // Only toggle the opaque fallback (.no-3d) once the canvas's own opacity
-  // transition (1.1s, see .hero-canvas in styles.css) actually finishes —
-  // never at the instant `ready`/context-lost/context-restored toggles,
-  // which would flip every section's background before the canvas behind
-  // it has visually caught up.
+  // `ready` on the canvas and `canvas-ready` on <html> always flip together
+  // (see setReady below) so .hero-static can crossfade against the canvas's
+  // own 1.1s opacity transition in real time — see the html.canvas-ready
+  // rule in styles.css for why that section specifically needs a synced
+  // crossfade rather than an instant swap.
+  function setReady(on) {
+    canvas.classList.toggle('ready', on);
+    document.documentElement.classList.toggle('canvas-ready', on);
+  }
+
+  // Only toggle the opaque fallback (.no-3d) — which gates every *other*
+  // section's glass background — once the canvas's own opacity transition
+  // actually finishes, never at the instant setReady() is called. Flipping
+  // it early would translucent-ify those sections before the canvas behind
+  // them has visually caught up. (.hero-static doesn't depend on .no-3d
+  // any more; it crossfades directly off `canvas-ready`, see above.)
   canvas.addEventListener('transitionend', (e) => {
     if (e.propertyName === 'opacity') {
       document.documentElement.classList.toggle('no-3d', !canvas.classList.contains('ready'));
@@ -58,11 +69,11 @@ async function init() {
   canvas.addEventListener('webglcontextlost', (e) => {
     e.preventDefault();
     contextLost = true;
-    canvas.classList.remove('ready'); // fades out; transitionend above restores .no-3d
+    setReady(false); // fades out; transitionend above restores .no-3d
   });
   canvas.addEventListener('webglcontextrestored', () => {
     contextLost = false;
-    canvas.classList.add('ready'); // fades back in; transitionend above drops .no-3d
+    setReady(true); // fades back in; transitionend above drops .no-3d
     // Doesn't manually re-upload geometry/materials on restore — verified
     // safe for this scene: everything here is procedural BufferGeometry +
     // solid-color MeshBasicMaterial (no textures), which this vendored
@@ -178,7 +189,7 @@ async function init() {
 
     if (!ready) {
       ready = true;
-      canvas.classList.add('ready');
+      setReady(true);
     }
   }
   tick();

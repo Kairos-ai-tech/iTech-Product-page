@@ -425,15 +425,25 @@ section[id] { scroll-margin-top: calc(var(--navbar-height) + 16px); }
 .hero-static {
   position: absolute;
   inset: 0;
-}
-
-/* Opaque blueprint-grid fill only when the page-wide 3D canvas isn't running
-   (no-JS, no WebGL, reduced-motion) — otherwise the fixed canvas shows
-   through the hero instead. See .no-3d on <html>, toggled by hero3d.js. */
-.no-3d .hero-static {
   background:
     radial-gradient(120% 90% at 15% 15%, rgba(221, 142, 31, 0.16) 0%, transparent 55%),
     linear-gradient(160deg, var(--navy) 0%, var(--navy-deep) 55%, var(--navy) 100%);
+  opacity: 1;
+  transition: opacity 1.1s var(--ease-out-expo);
+}
+
+/* Crossfades out in lockstep with .hero-canvas fading in — both toggled by
+   hero3d.js at the same moment (canvas.classList 'ready' / html.classList
+   'canvas-ready'), same 1.1s duration — and fades back in on context loss.
+   Only the hero needs a synced crossfade: its opaque fallback and the fixed
+   canvas occupy the exact same screen region, so anything less than a real
+   crossfade reads as a pause-then-pop. Other glass sections (.no-3d below)
+   snap instantly, which is fine there since their opaque/translucent alpha
+   delta is small enough to be imperceptible. Opacity here also fades out
+   .hero-static::before's grid-line pattern with it, since pseudo-elements
+   composite with their host's opacity. */
+html.canvas-ready .hero-static {
+  opacity: 0;
 }
 
 /* No canvas behind the glass surfaces in this case — fall back to fully
