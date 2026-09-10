@@ -29,7 +29,16 @@ async function init() {
     return; // module load failed — keep the static fallback, fail silently
   }
 
-  document.documentElement.classList.remove('no-3d');
+  // Only toggle the opaque fallback (.no-3d) once the canvas's own opacity
+  // transition (1.1s, see .hero-canvas in styles.css) actually finishes —
+  // never at the instant `ready`/context-lost/context-restored toggles,
+  // which would flip every section's background before the canvas behind
+  // it has visually caught up.
+  canvas.addEventListener('transitionend', (e) => {
+    if (e.propertyName === 'opacity') {
+      document.documentElement.classList.toggle('no-3d', !canvas.classList.contains('ready'));
+    }
+  });
 
   const isNarrow = window.innerWidth < 768;
 
@@ -42,13 +51,18 @@ async function init() {
   renderer.setClearColor(0x0b1a2d, 1);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, isNarrow ? 1.5 : 2));
 
+  // Context loss now degrades the whole page's backdrop, not just the hero,
+  // so fall all the way back to the opaque static styling while it's lost
+  // rather than leaving every section's glass background over nothing.
   let contextLost = false;
   canvas.addEventListener('webglcontextlost', (e) => {
     e.preventDefault();
     contextLost = true;
+    canvas.classList.remove('ready'); // fades out; transitionend above restores .no-3d
   });
   canvas.addEventListener('webglcontextrestored', () => {
     contextLost = false;
+    canvas.classList.add('ready'); // fades back in; transitionend above drops .no-3d
   });
 
   // ===== Blueprint ground grid =====
@@ -136,7 +150,12 @@ async function init() {
 
   function tick() {
     requestAnimationFrame(tick);
-    if (contextLost) return;
+    // ponytail: rendering pauses only on a backgrounded tab (document.hidden).
+    // It still runs every frame for the whole page whenever the tab is
+    // visible — required for the idle backdrop to keep animating past the
+    // hero, per the page-wide-backdrop design. Add scroll-based throttling
+    // if mobile battery complaints come in.
+    if (contextLost || document.hidden) return;
 
     const t = (performance.now() - startTime) / 1000;
     const p = getProgress();
